@@ -41,12 +41,14 @@ Abstract 摘要：本文是openGauss 3.0.0 Release版本的整体测试策略，
 
 >   缩略语清单：
 
-| 缩略语 | 英文全名 | 中文解释 |
-|--------|----------|----------|
-|        |          |          |
-|        |          |          |
-|        |          |          |
-|        |          |          |
+| 缩略语 | 英文全名                             | 中文解释       |
+| ------ | ------------------------------------ | -------------- |
+| LTS    | Long time support                    | 长时间维护     |
+| CVE    | Common Vulnerabilities and Exposures | 公共漏洞和暴露 |
+| SQL    | Structured Query Language            | 结构化查询语言 |
+| DML    | Data Manipulation Language           | 数据操纵语言   |
+| DDL    | Data Definition Language             | 数据定义语言   |
+| DCL    | Data Control Language                | 数据控制语言   |
 
 # <br>概述
 
@@ -56,7 +58,7 @@ openGauss是一款全面友好开放，携手伙伴共同打造的企业级开�
 
 ## 版本背景
 
-openGauss 3.0.0 Release版本是openGauss第二个长期支持版本，维护周期为3年，本次发布的重大特性有：
+openGauss 3.0.0 Release版本是openGauss第二个长期支持版本（LTS），维护周期为3年，本次发布的重大特性有：
 
 1. 行表压缩产品化能力增强
 2. 发布订阅产品化能力增强
@@ -286,11 +288,23 @@ openGauss社区开源版本需要满足安全基本要求，以达到安全合�
 
 #### 数据库兼容
 
-| Domain           | Feature | 测试策略 |
-| ---------------- | ------- | -------- |
-| Oracle数据库兼容 |         |          |
-| MySQL数据库兼容  |         |          |
-| PG数据库兼容     |         |          |
+| Domain           | Feature                                  | 测试策略                                                     |
+| ---------------- | ---------------------------------------- | ------------------------------------------------------------ |
+| Oracle数据库兼容 | orafce插件支持openGauss                  | 验证对FIXED、LONGBLOB等6类数据类型的兼容，关注数据类型的结构、语义、约束等，和oracle保持一致 |
+|                  | openGauss支持enum数据类型                | 验证对enum数据类型的兼容，关注数据类型的结构、语义、约束等，和oralce保持一致 |
+| MySQL数据库兼容  | sql引擎插件化                            | 实现SQL引擎插件化，提取公共接口，并将冗余度降低到80%         |
+|                  | 实现FIXED、LONGBLOB等6类数据类型的兼容   | 验证对FIXED、LONGBLOB、MEDIUMBLOB、TINYBLOB、BINARY、VARBINARY6类数据类型的兼容，关注数据类型的结构、语义、约束等，和MySQL保持一致 |
+|                  | openGauss兼容MySQL条件类型函数           | 验证对COALESCE、INTERVAL、IFNULL、NULLIP、STPCMP、isnull条件类型函数的兼容，关注函数行为（功能、入参、出参、异常场景等）和MySQL保持一致 |
+|                  | openGauss兼容MySQL数学函数               | 验证对CONV、CRC32、PI3种数学函数的兼容，关注函数行为（功能、入参、出参、异常场景等）和MySQL保持一致 |
+|                  | 支持MySQL时间类型date等类型的兼容        | 验证对date、timestamp、datetime、time、year、year(4)、year(2)等7个时间类型的兼容，关注数据类型的结构、语义、约束等，和MySQL保持一致 |
+|                  | 实现对MySQL的set数据类型的兼容           | 验证对set数据类型的兼容，关注数据类型的结构、语义、约束等，和MySQL保持一致 |
+|                  | 实现对MySQL的SHA/SHA1/SHA2函数的兼容     | 验证对SHA/SHA1/SHA2函数的兼容，关注函数行为（功能、入参、出参、异常场景等）和MySQL保持一致 |
+|                  | 支持GROUP_CONCAT函数                     | 验证对GROUP_CONCAT函数的兼容，关注函数行为（功能、入参、出参、异常场景等）和MySQL保持一致 |
+|                  | DELETE语句支持从多个表中删除数据         | 验证对MySQL同时删除多表语法的兼容，对语法的功能、删除后效果进行测试，和MySQL保持一致 |
+|                  | DELETE语句支持ORDER BY功能               | 验证对MySQL Delete语法支持ORDER BY功能的兼容，按照给定排序后的行依次删除，结合limit进行组合测试 |
+|                  | 实现IF、HEX、UUID、FORMAT等4个函数的兼容 | 验证对IF、HEX、UUID、FORMAT函数的兼容，关注函数行为（功能、入参、出参、异常场景等）和MySQL保持一致 |
+| PG数据库兼容     | openGauss支持pgfincore的兼容             | 验证pgfincore和openGauss的对接以及查询性能的提升，验证pgfincore对接后功能的100%兼容，对性能提升进行摸底 |
+|                  | 支持reindex concurrently                 | 验证对reindex concurrently语法的兼容，测试带concurrently关键字进行reindex时，不阻塞其他事务 |
 
 ### 资料测试
 
