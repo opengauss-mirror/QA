@@ -5,10 +5,11 @@
 
 修订记录
 
-| 日期      | 修订版本 | CR号 | 修改  章节                 | 修改描述                       | 作者        |
-| --------- | -------- | ---- | -------------------------- | ------------------------------ | ----------- |
-| 2022.1.5  | 1.0      |      |                            | 版本测试策略初稿               | yansong_lee |
-| 2022.1.18 | 1.1      |      | 测试分析设计策略、测试重点 | 针对新增需求进行对应章节的刷新 | yansong_lee |
+| 日期      | 修订版本 | CR号 | 修改  章节                             | 修改描述                                                     | 作者                                                         |
+| --------- | -------- | ---- | -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 2022.1.5  | 1.0      |      |                                        | 版本测试策略初稿                                             | yansong_lee<br>dbowner_zhang<br>xiongdaofu<br>zfy1110<br>zhangao_za |
+| 2022.1.18 | 1.1      |      | 测试分析设计策略、测试重点             | 针对新增需求进行对应章节的刷新                               | yansong_lee<br/>dbowner_zhang<br/>xiongdaofu<br/>zfy1110<br/>zhangao_za |
+| 2022.1.29 | 1.2      |      | 修改测试分层策略、兼容性测试和测试重点 | 分层策略区分组件测试和集成验收，兼容性测试描述清楚架构和操作系统规格，测试重点在集成验收阶段增加长稳测试和性能基线验收 | yansong_lee<br/>dbowner_zhang<br/>xiongdaofu<br/>zfy1110<br/>zhangao_za |
 
 
 目 录
@@ -102,16 +103,16 @@ openGauss 3.0.0 Release版本发布的需求列表如下：
 
 | 需求                                                         | 开发主体      | 测试主体 | 验证策略                                                     |
 | ------------------------------------------------------------ | ------------- | -------- | ------------------------------------------------------------ |
-| 【openGauss 3.0.0 LTS】CM集群管理开源                        | Tools         | QA       | 验证CM集群管理工具的功能和可靠性                             |
-| 【openGauss 3.0.0 LTS】openGauss分布式解决方案               | Tools         | QA       | 验证shardingSphere对接openGauss数据库的功能、可靠性和性能    |
-| 【openGauss 3.0.0 LTS】openGauss支持行表、索引压缩           | StorageEngine | QA       | 验证行表压缩的功能、可靠性、性能、资料和长时间稳定性         |
-| 【openGauss 3.0.0 LTS】openGauss支持发布订阅的多地多活       | StorageEngine | QA       | 验证发布订阅的功能、可靠性、资料和长时间稳定性               |
-| 【openGauss 3.0.0 LTS】Data Studio开源                       | Tools         | QA       | 验证DataStudio工具的功能、可靠性和资料                       |
-| 【openGauss 3.0.0 LTS】支持小型化部署，空载内存底噪<250M，安装包<20M | StorageEngine | QA       | 验证小型化安装部署以及关键指标的达成情况（空载内存底噪<250M，安装包<20M） |
-| 【openGauss 3.0.0 LTS】支持当前会话统计中加入归一化SQL处理，提升慢SQL历史信息诊断 | SQLEngine     | QA       | 验证本需求的功能和可靠性                                     |
-| 【openGauss 3.0.0 LTS】openGauss支持SQL引擎插件化            | SQLEngine     | QA       | 验证插件的编译安装和关键规格指标达成                         |
-| 【openGauss 3.0.0 LTS】openGauss支持5220鲲鹏服务器达成100w tpmC | StorageEngine | QA       | 验证在5220鲲鹏服务器上对openGauss进行tpcc性能测试            |
-| 【openGauss 3.0.0 LTS】openGauss支持Global system cache      | StorageEngine | QA       | 验证支持系统表syscache的全局缓存的功能、可靠性、资料和长时间稳定性 |
+| 【openGauss 3.0.0 LTS】CM集群管理开源                        | Tools         | QA       | 1、验证CM集群管理工具的功能和可靠性<br>2、部署openGauss+CM进行长稳测试，关注其仲裁能力 |
+| 【openGauss 3.0.0 LTS】openGauss分布式解决方案               | Tools         | QA       | 1、验证shardingSphere对接openGauss数据库的功能、可靠性和性能<br>2、关注分布式关键性能指标达成情况 |
+| 【openGauss 3.0.0 LTS】openGauss支持行表、索引压缩           | StorageEngine | QA       | 1、验证行表压缩的功能、可靠性、性能、资料和长时间稳定性<br>2、关注行表压缩的不同压缩率下的空间表现，同时关注升级兼容性 |
+| 【openGauss 3.0.0 LTS】openGauss支持发布订阅的多地多活       | StorageEngine | QA       | 1、验证发布订阅的功能、可靠性、资料和长时间稳定性<br/>2、关注发布端断连后的恢复措施，以及订阅端避免重复订阅。同时关注升级兼容性 |
+| 【openGauss 3.0.0 LTS】Data Studio开源                       | Tools         | QA       | 1、验证Data Studio工具的功能、可靠性和资料<br/>2、关注Data Studio源码的编译和构建，关注软件包和其他发布件的验收 |
+| 【openGauss 3.0.0 LTS】支持小型化部署，空载内存底噪<250M，安装包<20M | StorageEngine | QA       | 1、验证小型化安装部署以及关键指标的达成情况（空载内存底噪<250M，安装包<20M）<br/>2、关注小型化包的编译和构建，关注软件包和其他发布件的验收 |
+| 【openGauss 3.0.0 LTS】支持当前会话统计中加入归一化SQL处理，提升慢SQL历史信息诊断 | SQLEngine     | QA       | 1、验证本需求的功能和可靠性<br/>2、关注升级兼容性            |
+| 【openGauss 3.0.0 LTS】openGauss支持SQL引擎插件化            | SQLEngine     | QA       | 1、验证插件的编译安装和关键规格指标达成<br/>2、关注SQL 引擎插件的编译安装，关注发布件的验收 |
+| 【openGauss 3.0.0 LTS】openGauss支持5220鲲鹏服务器达成100w tpmC | StorageEngine | QA       | 1、验证在5220鲲鹏服务器上对openGauss进行tpcc性能测试<br/>2、验收openGauss支持5220鲲鹏服务器达成100w tpmC |
+| 【openGauss 3.0.0 LTS】openGauss支持Global system cache      | StorageEngine | QA       | 1、验证支持系统表syscache的全局缓存的功能、可靠性、资料和长时间稳定性<br/>2、关注升级兼容性 |
 
 # 测试分析设计策略
 
@@ -217,8 +218,8 @@ openGauss社区开源版本需要满足安全基本要求，以达到安全合�
 |              | 2P（Taishan 200 2280 6426）单节点 8H                         | 150万      | 与Release基线数据差异小于5%以内可接受 |
 |              | 2P（Taishan 200 2280 6426）一主一备 1H                       | 120万      | 与Release基线数据差异小于5%以内可接受 |
 |              | 4P（Taishan 200 2280 7260）单节点 1H                         | 230万      | 与Release基线数据差异小于5%以内可接受 |
-|              | 2P（Taishan 200 2280 5220）单节点 1H                         | 100万      | 与Release基线数据差异小于5%以内可接受 |
-|              | 分布式OLTP，TPCC线性度0.8，2P（Taishan 200 2280 6426）16节点 1H | 1000万     | 与Release基线数据差异小于5%以内可接受 |
+|              | 2P（Taishan 200 2280 5220）单节点 1H                         | 100万      | 此即为Release基线数据                 |
+|              | 分布式OLTP，TPCC线性度0.8，2P（Taishan 200 2280 6426）16节点 1H | 1000万     | 此即为Release基线数据                 |
 | RTO          | 一主两同步备failover                                         | 10s        | 与Release基线数据差异小于5%以内可接受 |
 
 ### 兼容性测试
@@ -234,7 +235,7 @@ openGauss社区开源版本需要满足安全基本要求，以达到安全合�
 
 | Domain       | 测试策略                                                     |
 | ------------ | ------------------------------------------------------------ |
-| 服务器兼容   | 继承已有测试能力，支持在X86/鲲鹏服务器上部署                 |
+| 服务器兼容   | 继承已有测试能力，支持在X86（Intel(R) Xeon(R) Gold）/鲲鹏（Kunpeng 920）服务器上部署 |
 | 存储设备兼容 | 继承已有测试能力，支持在本地盘、云盘上部署，支持在SAS，SATA，SSD部署 |
 
 #### 软件兼容
@@ -242,7 +243,7 @@ openGauss社区开源版本需要满足安全基本要求，以达到安全合�
 | Domain       | 测试策略                                                     |
 | ------------ | ------------------------------------------------------------ |
 | 支持云化部署 | 继承已有测试能力，支持容器化部署                             |
-| 操作系统兼容 | 继承已有测试能力，支持在openEuler 20.03 LTS、CentOS 7.6操作系统上部署 |
+| 操作系统兼容 | 继承已有测试能力，支持在X86+openEuler 20.03 LTS、X86+CentOS 7.6、ARM+麒麟V10和ARM+openEuler 20.03 LTS操作系统上部署 |
 
 ### 资料测试
 
@@ -328,7 +329,7 @@ openGauss 3.0.0 Release版本按照社区开发模式进行运作，结合社区
 1. 关注版本构建，包括数据库的编译安装，社区三方件的编译和其他组件的适配
 2. 测试执行动作收尾闭环
 3. 回归问题单
-4. 专项：资料测试
+4. 专项：资料测试，性能基线数据验收
 
 #### 测试阶段8：
 
