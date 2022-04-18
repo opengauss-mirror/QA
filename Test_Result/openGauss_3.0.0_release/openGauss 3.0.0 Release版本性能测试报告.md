@@ -57,7 +57,7 @@ RTO：高可用特性。使用benchmarksql工具对主备节点进行加压，�
 | 硬件型号                                            | 硬件配置信息                                                 | 备注 |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280 5220) | CPU：Kunpeng-920 2p 64核<br />内存：512G<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：4*25GE Hi1822 |      |
-| ARM+openEuler 2P<br />TaiShan 200 (Model 2280 720)  | CPU：Kunpeng-920 2p 128核<br />内存：768G<br />硬盘：NVME 3.7T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：4*25GE Hi1822 |      |
+| ARM+openEuler 2P<br />TaiShan 200 (Model 2280 7260) | CPU：Kunpeng-920 2p 128核<br />内存：768G<br />硬盘：NVME 3.7T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：4*25GE Hi1822 |      |
 | ARM+openEuler 4P<br />TaiShan 200 (Model 2480 7260) | CPU：Kunpeng-920 4p 256核<br />内存：1T<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：4*25GE10GE |      |
 
 OS版本说明如下：
@@ -77,7 +77,7 @@ OS版本说明如下：
 | 2P(Taishan 200 2280 7260 ARM)环境下单节点1H                  | 性能测试tpmC指标验收，使用benchmarksql工具，生成1000仓库的测试数据，在696并发下进行1H的单节点压力测试，测试过程符合指标规定的要求。多轮测试下测试结果稳定。<br />基于TaiShan 200 (Model 2280 7260)测试，单节点1H，tpmC 159.9W |
 | 2P(Taishan 200 2280 7260 ARM)环境下单节点8H                  | 性能测试tpmC指标验收，使用benchmarksql工具，生成1000仓库的测试数据，在696并发下进行1H的单节点压力测试，测试过程符合指标规定的要求。多轮测试下测试结果稳定。<br />基于TaiShan 200 (Model 2280 7260)测试，单节点8H，tpmC 144.9W |
 | 2P(Taishan 200 2280 7260 ARM)环境下一主一备1H                | 性能测试tpmC指标验收，使用benchmarksql工具，生成1000仓库的测试数据，在580并发下进行1H的单节点压力测试，测试过程符合指标规定的要求。多轮测试下测试结果稳定。<br />基于TaiShan 200 (Model 2280 7260)测试，单节点8H，tpmC 117.3W |
-| 4P ARM环境下单节点1H                                         | 性能测试tpmC指标验收，使用benchmarksql工具，生成1000仓库的测试数据，在812并发下进行1H的单节点压力测试，测试过程符合指标规定的要求。多轮测试下测试结果稳定。<br />基于TaiShan 200 (Model 2480)，单节点1H，tpmC 232.4W |
+| 4P(TaiShan 200 2480 7260 ARM)环境下单节点1H                  | 性能测试tpmC指标验收，使用benchmarksql工具，生成1000仓库的测试数据，在812并发下进行1H的单节点压力测试，测试过程符合指标规定的要求。多轮测试下测试结果稳定。<br />基于TaiShan 200 (Model 2480)，单节点1H，tpmC 232.4W |
 | 2P(Taishan 200 2280 5220 ARM)环境下单节点1H                  | 性能测试tpmC指标验收，使用benchmarksql工具，生成1000仓库的测试数据，在300并发下进行1H的单节点压力测试，测试过程符合指标规定的要求。多轮测试下测试结果稳定。<br />astore场景：基于TaiShan 200 (Model 2280)测试，单节点1H，tpmC 100.0W |
 | 2P 128核环境下，分布式16节点（8pcs+7ss-jdbc+1ss-proxy）1H    | 性能测试tpmC指标验收，使用benchmarksql工具，生成8000仓库的测试数据，在7*700并发下进行1H的8节点压力测试，测试过程符合指标规定的要求，测试结果达标1000W。多轮测试下测试结果稳定。<br />基于TaiShan 200 (Model 2280)，8节点1H，tpmC 1073.3W |
 | 2P 128核环境下，分布式ss-jdbc性能损耗场景（1pcs+1ss-jdbc）1H | 性能测试tpmC指标验收，使用benchmarksql工具，生成1000仓库的测试数据，ss-jdbc在700并发下进行1H的1节点压力测试，测试过程符合指标规定的要求，测试结果性能损耗15%以内。多轮测试下测试结果稳定。<br />基于TaiShan 200 (Model 2280)，ss-jdcbc1节点1H，tpmC 136W（数据库直连1节点1H，tpmC 150W），性能损耗(150-136)/150=9.3%。 |
@@ -167,7 +167,7 @@ OS版本说明如下：
 
 单节点在极限场景配置下tpmC为117W+：tpmC = 1173019.8
 
-### 4.1.4 4P ARM环境下单节点1H
+### 4.1.4 7260 4P ARM环境下单节点1H
 
 测试步骤：
 
@@ -185,7 +185,7 @@ OS版本说明如下：
 
 单节点在极限场景配置下tpmC为232W+：tpmC = 2323472.16
 
-### 4.1.5 2P ARM环境下单节点1H
+### 4.1.5 5220 2P ARM环境下单节点1H
 
 测试步骤：
 
@@ -203,7 +203,7 @@ OS版本说明如下：
 
 单节点在极限场景配置下tpmC为100W+：tpmC = 1000080.35
 
-### 4.1.6 2P环境下，分布式16节点（8pcs+7ss-jdbc+1ss-proxy）1H
+### 4.1.6 7260 2P环境下，分布式16节点（8pcs+7ss-jdbc+1ss-proxy）1H
 
 测试步骤：
 
@@ -225,7 +225,7 @@ OS版本说明如下：
 
 ​	8分片在极限场景配置下tpmC = 1073.3W
 
-### 4.1.7 2P环境下，分布式ss-jdbc性能损耗场景（1pcs+1ss-jdbc）1H
+### 4.1.7 7260 2P环境下，分布式ss-jdbc性能损耗场景（1pcs+1ss-jdbc）1H
 
 测试步骤：
 
