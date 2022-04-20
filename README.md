@@ -10,7 +10,7 @@
 
 #### 组织会议
 
-- 公开的会议时间：北京时间 每双周三下午17:00-18:00
+- 公开的会议时间：北京时间 每双周五15:00-17:00
 
 #### 成员
 
@@ -23,14 +23,15 @@
 + ##### Committer列表
 
   - [@xiongdaofu](https://gitee.com/xiongdaofu)
-
   - [@j00313273](https://gitee.com/j00313273)
-
   - [@zhoufangyuan](https://gitee.com/zhoufangyuan)
-
   - [@chendong76](https://gitee.com/chendong76)
-
   - [@zhangao_za](https://gitee.com/zhangao_za)
+  - [@liao-shiting](https://gitee.com/liao-shiting)
+  - [@roxanne315](https://gitee.com/roxanne315)
+  - [@min-sun](https://gitee.com/min-sun)
+  - [@sun-jingyuan](https://gitee.com/sun-jingyuan)
+  - [@szoscar55](https://gitee.com/szoscar55)
 
 #### 联系方式
 
