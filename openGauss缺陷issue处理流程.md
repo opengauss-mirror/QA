@@ -112,5 +112,5 @@
 
 ### openGauss [CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)流程
 
-![avatar](./images/openGauss CCB处理流程.png)
+![avatar](./images/openGauss%20CCB处理流程.png)
 
