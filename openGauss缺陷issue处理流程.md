@@ -26,7 +26,7 @@
 
 ### 1、缺陷issue处理流程
 
-为提升缺陷issue处理效率，标准流程主要分为以下6步：
+为提升缺陷issue处理效率，标准流程主要分为以下7步：
 
 - 提交issue
 - QA sig组审核
@@ -34,9 +34,12 @@
 - 开发人员根因分析
 - 开发人员实施修改
 - 代码review&合入
+- QA sig组组织验收
 - 测试人员回归验证
 
-上述的6步为最简洁的流程，实际操作过程可能会有所变动，详情见[openGauss缺陷issue处理流程](https://gitee.com/opengauss/QA/issues/I51H9R?from=project-issue)。
+上述的7步为最简洁的流程，实际操作过程可能会有所变动，详情见[openGauss缺陷issue处理流程](https://gitee.com/opengauss/QA/issues/I51H9R?from=project-issue)。
+
+![avatar](./images/openGauss缺陷issue处理流程.png)
 
 ### 2、提单要求
 
@@ -54,6 +57,8 @@
 - 挂起
 - 已取消
 
+![avatar](./images/openGauss缺陷issue状态迁移图示.png)
+
 ### 4、缺陷issue正常关闭原则
 
 + 通过测试人员回归验证，证明问题已经得到了解决，并且没有产生新问题的情况下可以关闭（issue状态设置为已验收）
@@ -66,17 +71,17 @@
 
 ### 6、缺陷issue降级原则
 
-+ 降级问题提交到对应特性sig 组CCB评审裁决，满足1个月不复现或者3000次不复现的要求，对于不复现的问题单需要提供影响分析
++ 降级问题提交到对应特性sig 组[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)评审裁决，满足1个月不复现或者3000次不复现的要求，对于不复现的问题单需要提供影响分析
 
 ### 7、缺陷issue挂起原则
 
-+ 对于经过努力仍然长期不可复现的问题，在CCB评审以后，可以挂起。参考“缺陷issue降级原则”进行处理，直到降为“非问题”
-+ 社区当前版本无法解决、且不是阻塞性问题，经过CCB裁决可以挂起，在下个版本激活解决
-+ 社区当前版本无法解决，解决成本较高，但对质量影响不大的问题，经过CCB裁决可以挂起，在下个版本激活解决
++ 对于经过努力仍然长期不可复现的问题，在[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)评审以后，可以挂起。参考“缺陷issue降级原则”进行处理，直到降为“非问题”
++ 社区当前版本无法解决、且不是阻塞性问题，经过[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)裁决可以挂起，在下个版本激活解决
++ 社区当前版本无法解决，解决成本较高，但对质量影响不大的问题，经过[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)裁决可以挂起，在下个版本激活解决
 
 ### 8、缺陷issue转需求原则
 
-+ 经过对应特性sig组CCB裁决，可将issue类型设置为“需求”
++ 经过对应特性sig组[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)裁决，可将issue类型设置为“需求”
 
 ## 五、缺陷类issue优先级定义
 
@@ -93,14 +98,19 @@
 | 流程环节          | 处理时间要求                                  | 责任人                  |
 | ----------------- | --------------------------------------------- | ----------------------- |
 | 提交issue         | 最长不超过1个自然日                           | 提单人                  |
-| QA sig组审核      | 最长不超过2个自然日                           | QA sig组maintainer      |
-| 特性所属sig组审核 | 最长不超过2个自然日                           | 特性所属sig组maintainer |
+| QA sig组审核      | 最长不超过1个自然日                           | QA sig组maintainer      |
+| 特性所属sig组审核 | 最长不超过1个自然日                           | 特性所属sig组maintainer |
 | 开发人员根因分析  | 不超过3个自然日，否则需要作为TOP纳入sig组决策 | 开发人员                |
 | 开发人员实施修改  | 不超过7个自然日，否则需要作为TOP纳入sig组决策 | 开发人员                |
-| 代码review&合入   | 不超过7个自然日                               | 特性所属sig组maintainer |
+| 代码review&合入   | 不超过5个自然日                               | 特性所属sig组maintainer |
+| QA sig组组织验收  | 不超过1个自然日                               | QA sig组maintainer      |
 | 测试人员回归验证  | 不超过2个自然日                               | 测试人员                |
 
-注：每个缺陷类issue从创建到关闭，尽量在20天内完成。
+注：每个缺陷类issue从创建到关闭，必须在20天内完成。
 
+## 附件
 
+### openGauss [CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)流程
+
+![avatar](./images/openGauss CCB处理流程.png)
 
