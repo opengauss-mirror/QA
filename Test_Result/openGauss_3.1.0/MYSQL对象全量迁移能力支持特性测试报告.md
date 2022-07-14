@@ -86,9 +86,9 @@ pg_chameleon支持全量迁移mysql数据库对象至openGauss，共计执行63�
 
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                     | 问题状态 |
 | ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| 1    | [I59JS1]( <https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I59JS1?from=project-issue ) | 主要     | 源库创建存储过程，过程体中含变量赋值，迁移存储过程至openGauss侧报错 | 已验收   |
+| 1    | [I59JS1](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I59JS1?from=project-issue) | 主要     | 源库创建存储过程，过程体中含变量赋值，迁移存储过程至openGauss侧报错 | 已验收   |
 | 2    | [I59DJO](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I59DJO?from=project-issue) | 主要     | 变色龙迁移触发器报错                                         | 已验收   |
-| 3    | [I598ZA]( <https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I598ZA?from=project-issue ) | 主要     | 表的列名为反引号加空格的形式，表可迁移成功，视图迁移报错     | 已验收   |
+| 3    | [I598ZA](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I598ZA?from=project-issue) | 主要     | 表的列名为反引号加空格的形式，表可迁移成功，视图迁移报错     | 已验收   |
 | 4    | [I59UV3](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I59UV3?from=project-issue) | 次要     | 源库创建自定义函数，返回值为sql语句或表达式，迁移报错        | 已验收   |
 | 5    | [I5AXUD](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I5AXUD?from=project-issue) | 主要     | 存储过程中存储体为set transaction设置事务隔离级别，迁移报语法错误，多解析一个set | 已验收   |
 | 6    | [I5AVCB](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I5AVCB?from=project-issue) | 主要     | 存储过程体中，创建用户，迁移至openGauss侧调用报错            | 已验收   |
