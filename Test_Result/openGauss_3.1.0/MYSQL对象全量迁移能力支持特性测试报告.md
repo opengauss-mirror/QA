@@ -16,7 +16,7 @@ pg_chameleon、全量迁移、mysql对象
 
 摘要：
 
-本文档主要介绍pg_chameleon迁移工具支持全量迁移mysql数据库对象，包括视图（VIEW）、触发器（TRIGGER）、存储过程(PROCEDURE )、自定义函数(FUNCTION ）、列的comment，使用chameleon将这些创建的数据库对象和数据迁移到openGauss中，并给出最终测试结论。 
+本文档主要介绍pg_chameleon迁移工具支持全量迁移mysql数据库对象，包括视图（VIEW）、触发器（TRIGGER）、存储过程(PROCEDURE)、自定义函数(FUNCTION）、列的comment，使用chameleon将这些创建的数据库对象和数据迁移到openGauss中，并给出最终测试结论。 
 
 缩略语清单：
 
@@ -62,7 +62,7 @@ pg_chameleon支持全量迁移mysql数据库对象至openGauss，共计执行63�
 
 - mysql使用5.7版本
 - openGauss需使用兼容B库
-- 变色龙中的第三方库Druid目前的版本为1.2.8，本身不支持解析mysql侧某些参数，暂时无法屏蔽，会导致迁移失败。如源库创建存储过程含openGauss侧不支持的参数，迁移存储过程报错；存储过程体含开启事务等操作，迁移报错
+- pg_chameleon中的第三方库Druid目前的版本为1.2.8，本身不支持解析mysql侧某些参数，暂时无法屏蔽，会导致迁移失败。如源库创建存储过程含openGauss侧不支持的参数，迁移存储过程报错；存储过程体含开启事务等操作，迁移报错
 - 若想迁移到openGauss的表名和视图名的大小写与MySQL一致，MySQL的系统变量lower_case_table_names的值应设置为0。存在大小写的触发器名、自定义函数名、存储过程名迁移前后一致。当在openGauss访问这些字段时，需要使用双引号才能识别该字段
 - 查询sch_chameleon.t_replica_object表（注意en_object_type的值是为大写）即可获取。
 -  mysql与openGauss的兼容性语法说明详见[openGauss-tools-sql-translator](https://gitee.com/opengauss/openGauss-tools-sql-translator)
