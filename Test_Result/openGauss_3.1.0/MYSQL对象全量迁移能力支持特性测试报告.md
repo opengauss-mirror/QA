@@ -12,11 +12,11 @@
 
  关键词： 
 
-pg_chameleon、全量迁移、mysql对象
+chameleon、全量迁移、mysql对象
 
 摘要：
 
-本文档主要介绍pg_chameleon迁移工具支持全量迁移mysql数据库对象，包括视图（VIEW）、触发器（TRIGGER）、存储过程(PROCEDURE)、自定义函数(FUNCTION）、列的comment，使用chameleon将这些创建的数据库对象和数据迁移到openGauss中，并给出最终测试结论。 
+本文档主要介绍chameleon迁移工具支持全量迁移mysql数据库对象，包括视图（VIEW）、触发器（TRIGGER）、存储过程(PROCEDURE)、自定义函数(FUNCTION）、列的comment，使用chameleon将这些创建的数据库对象和数据迁移到openGauss中，并给出最终测试结论。 
 
 缩略语清单：
 
@@ -26,7 +26,7 @@ pg_chameleon、全量迁移、mysql对象
 
 # 1     特性概述
 
-pg_chameleon迁移工具支持全量迁移mysql数据库的视图、触发器、存储过程、自定义函数、列的comment至openGauss侧，保证迁移成功且迁移后的对象在openGauss侧可以正常使用。
+chameleon迁移工具支持全量迁移mysql数据库的视图、触发器、存储过程、自定义函数、列的comment至openGauss侧，保证迁移成功且迁移后的对象在openGauss侧可以正常使用。
 
 # 2     特性测试信息
 
@@ -46,7 +46,7 @@ pg_chameleon迁移工具支持全量迁移mysql数据库的视图、触发器、
 
 ## 3.1   测试整体结论
 
-pg_chameleon支持全量迁移mysql数据库对象至openGauss，共计执行63条用例，主要覆盖了功能测试和资料测试。功能测试覆盖在mysql数据库分别创建视图、触发器、存储过程、自定义函数、创建表时给列添加comment，使用chameleon工具迁移上述对象到openGauss，保证迁移后的对象在openGauss可以正常使用。因mysql和openGauss的语法存在差异，对于openGauss侧不支持的语法以及Druid 无法解析的参数，若迁移失败，日志会有合理提示（语法差异详见[openGauss-tools-sql-translator)](https://gitee.com/opengauss/openGauss-tools-sql-translator)）。资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单18个，需求单1个，其中2个缺陷单经评审转为需求，其余16个缺陷均已解决，回归通过，无遗留风险，整体质量良好。
+chameleon支持全量迁移mysql数据库对象至openGauss，共计执行63条用例，主要覆盖了功能测试和资料测试。功能测试覆盖在mysql数据库分别创建视图、触发器、存储过程、自定义函数、创建表时给列添加comment，使用chameleon工具迁移上述对象到openGauss，保证迁移后的对象在openGauss可以正常使用。因mysql和openGauss的语法存在差异，对于openGauss侧不支持的语法以及Druid 无法解析的参数，若迁移失败，日志会有合理提示（语法差异详见[openGauss-tools-sql-translator)](https://gitee.com/opengauss/openGauss-tools-sql-translator)）。资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单16个，缺陷均已解决，回归通过，无遗留风险，整体质量良好。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | :----------------------------------------------------------- |
@@ -62,7 +62,7 @@ pg_chameleon支持全量迁移mysql数据库对象至openGauss，共计执行63�
 
 - mysql使用5.7版本
 - openGauss需使用兼容B库
-- pg_chameleon中的第三方库Druid目前的版本为1.2.8，本身不支持解析mysql侧某些参数，暂时无法屏蔽，会导致迁移失败。如源库创建存储过程含openGauss侧不支持的参数，迁移存储过程报错；存储过程体含开启事务等操作，迁移报错
+- chameleon中的第三方库Druid目前的版本为1.2.8，本身不支持解析mysql侧某些参数，暂时无法屏蔽，会导致迁移失败。如源库创建存储过程含openGauss侧不支持的参数，迁移存储过程报错；存储过程体含开启事务等操作，迁移报错
 - 若想迁移到openGauss的表名和视图名的大小写与MySQL一致，MySQL的系统变量lower_case_table_names的值应设置为0。存在大小写的触发器名、自定义函数名、存储过程名迁移前后一致。当在openGauss访问这些字段时，需要使用双引号才能识别该字段
 - 查询sch_chameleon.t_replica_object表（注意en_object_type的值是为大写）即可获取。
 -  mysql与openGauss的兼容性语法说明详见[openGauss-tools-sql-translator](https://gitee.com/opengauss/openGauss-tools-sql-translator)
@@ -79,8 +79,8 @@ pg_chameleon支持全量迁移mysql数据库对象至openGauss，共计执行63�
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   | 19       | 0    | 8    | 11   | 0      |
-| 百分比 |          | 0%   | 42%  | 58%  | 0%     |
+| 数目   | 16      | 0    | 6    | 10   | 0      |
+| 百分比 |          | 0%   | 38%  | 62%  | 0%     |
 
 ###  3.3.3 问题单汇总
 
@@ -123,7 +123,7 @@ pg_chameleon支持全量迁移mysql数据库对象至openGauss，共计执行63�
 
 | 测试步骤：                   | 测试结果                                                     |
 | ---------------------------- | ------------------------------------------------------------ |
-| 1. mysql侧创建存储过程并迁移 | 执行30条用例，发现10个bug，2个转为需求，其余8个现已修复且验收通过 |
+| 1. mysql侧创建存储过程并迁移 | 执行30条用例，发现8个bug，现已修复且验收通过 |
 
 ### 4.1.4 迁移自定义函数
 
@@ -147,11 +147,11 @@ pg_chameleon支持全量迁移mysql数据库对象至openGauss，共计执行63�
 
 | 版本名称                       | 测试用例数 | 用例执行结果            | 发现问题单数 |
 | ------------------------------ | ---------- | ----------------------- | ------------ |
-| openGauss 3.0.0 build b2c6e04e | 63         | Passed：63<br>Failed：0 | 19           |
+| openGauss 3.0.0 build b2c6e04e | 63         | Passed：63<br>Failed：0 | 16           |
 
 *数据项说明：*
 
-* 累计发现缺陷单18个，需求单1个，其中2个缺陷经评审转为需求，其余16个缺陷均已解决且回归通过
+* 累计发现缺陷单16个，缺陷均已解决且回归通过
 * 失败用例已在后续问题修复后，回归issue执行通过
 
 ## 4.3   后续测试建议
