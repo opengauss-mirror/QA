@@ -14,7 +14,7 @@
 
 关键词： onlineMigration工具；在线DDL外键
 
-摘要：本文档主要介绍oracle-openGauss在线迁移工具由oracle(生产端)，debezium，kafka， onlineMigration-openGauss(消费端)这几部分组成的在线DDL外键测试特性报告。
+摘要：本文档主要介绍oracle-openGauss在线迁移工具由oracle(生产端)，debezium，kafka，onlineMigration-openGauss（消费端）这几部分组成的在线DDL外键测试特性报告。
 
 缩略语清单：
 
@@ -24,11 +24,9 @@
 
 # 1     特性概述
 
-oracle-openGauss在线迁移工具由oracle(生产端)，debezium，kafka， OnlineMigration-openGauss(消费端)这几部分组成。debezium监控oracle中的变化并把改变的记录捕捉到记录到kafak中的topic中，然后通过onlineMigration把topic中的记录迁移到openGauss数据库中，这样就组成从oracle到openGauss的在线迁移。
+oracle-openGauss在线迁移工具由oracle(生产端)，debezium，kafka，onlineMigration-openGauss(消费端)这几部分组成。debezium负责监控oracle中的数据变化，将数据改变捕捉并记录到kafak生成的topic中，然后通过onlineMigration把topic中的记录迁移到openGauss数据库中，这样就完成从oracle到openGauss的在线迁移。
 
 # 2     特性测试信息
-
-本节描述被测对象的版本信息和测试的时间及测试轮次，包括依赖的硬件。
 
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
 | ------------------------------ | ------------ | ------------ |
@@ -48,14 +46,12 @@ oracle-openGauss在线迁移工具由oracle(生产端)，debezium，kafka， Onl
 
 ## 3.1   测试整体结论
 
-oracle在线DDL迁移外键共计执行87条用例，主要覆盖了功能测试。功能测试覆盖表级外键，列级外键，包括外键的drop，alter；发现问题已解决，回归通过，无遗留风险，整体质量良好。
+oracle在线DDL迁移外键共计执行87条用例，主要覆盖了功能测试。功能测试覆盖表级外键，列级外键，包括外键的drop，alter；共计发现7条问题，其中6条发现问题已解决，1条转需求。问题均回归通过，无遗留风险，整体质量良好。
 
 | 测试活动 | 活动评价                                                  |
 | -------- | --------------------------------------------------------- |
 | 功能测试 | create外键，alter table add外键，alter table drop外键测试 |
 | 功能测试 | 验证DML和DDL的执行顺序测试                                |
-（当插入的数据量较小时（插入10000条数据进行测试），执行顺序为DDL-DML-DDL,当数据量较大时，（插入1000000条数据进行测试），执行顺序为当DML执行到中途时会执行DDL,执行完DDL后再执行剩余的DML操作，当DML中途时修改openGauss侧的表名，DML操作会被中断，online里面报错，表不存在。
-
 ## 3.2   约束说明
 
 1. Oracle及openGauss两端数据库需有同名schema，如“C##ROMA_LOGMINER”；
@@ -75,8 +71,8 @@ oracle在线DDL迁移外键共计执行87条用例，主要覆盖了功能测试
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 | 备注 |
 | ------ | -------- | ---- | ---- | ---- | ------ | ---- |
-| 数目   | 6        | 0    | 2    | 4    | 0      |      |
-| 百分比 | 100%     | 0%   | 33%  | 66%  | 0%     |      |
+| 数目   | 7        | 0    | 3    | 4    | 0      |      |
+| 百分比 | 100%     | 0%   | 43%  | 57%  | 0%     |      |
 
 ### 3.3.3 问题单汇总
 
@@ -88,6 +84,7 @@ oracle在线DDL迁移外键共计执行87条用例，主要覆盖了功能测试
 | 4    | [I553TN](https://gitee.com/openGauss/openGauss-tools-onlineMigration/issues/I553TN?from=project-issue) | 次要 | alter table add在两表均添加联合主键，迁移不成功              | 已验收 |
 | 5    | [I553FV](https://gitee.com/openGauss/openGauss-tools-onlineMigration/issues/I553FV?from=project-issue) | 次要 | 当父表中包含联合主键时，迁移不成功                           | 已验收 |
 | 6    | [I53NN1](https://gitee.com/openGauss/openGauss-tools-onlineMigration/issues/I53NN1?from=project-issue) | 次要 | or在线迁移外键先迁移带主键的父表和不带外键的子表，再给子表添加外键约束，迁移失败 | 已验收 |
+| 7    | [I55PNL](https://gitee.com/opengauss/openGauss-tools-onlineMigration/issues/I55PNL?from=project-issue) | 主要 | 在线迁移过程中DML和DDL的执行顺序问题                         | 已验收 |
 
 # 4     测试执行
 
@@ -95,9 +92,9 @@ oracle在线DDL迁移外键共计执行87条用例，主要覆盖了功能测试
 
 ### 4.1.1 功能测试
 
-| 测试步骤：                                                   | 测试结果                                                  |
-| ------------------------------------------------------------ | --------------------------------------------------------- |
-| 1. 开启两端数据库并设置同名schema<br />2. 开启kafka、onlineMigration等工具 | 共执行87条用例，<br />共发现6个bug，6条现已修复且验收通过 |
+| 测试步骤：                                                   | 测试结果                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1. 开启两端数据库并设置同名schema<br />2. 开启kafka、onlineMigration等工具 | 共执行87条用例，<br />共发现7个bug，6条现已修复且验收通过，1条转需求 |
 
 #### 4.1.1.1 create外键测试
 
@@ -113,24 +110,24 @@ oracle在线DDL迁移外键共计执行87条用例，主要覆盖了功能测试
 
 #### 4.1.1.3 alter table drop外键测试
 
-| 测试步骤：                    | 测试结果                                                |
-| ----------------------------- | ------------------------------------------------------- |
-| 1. create table drop 删除外键 | 共执行29条用例<br />共发现1个bug，1条现已修复且验收通过 |
+| 测试步骤：                    | 测试结果                                                     |
+| ----------------------------- | ------------------------------------------------------------ |
+| 1. create table drop 删除外键 | 共执行29条用例<br />共发现2个bug，1条现已修复且验收通过，1条转需求 |
 
 ## 4.2   测试执行统计数据
 
-| 版本名称                      | 测试用例数 | 用例执行结果          | 发现问题单数 |
-| ----------------------------- | ---------- | --------------------- | ------------ |
-| openGauss 3.0.0build 02c14696 | 87         | Passed：87  Failed：0 | 6            |
+| 版本名称                       | 测试用例数 | 用例执行结果          | 发现问题单数 |
+| ------------------------------ | ---------- | --------------------- | ------------ |
+| openGauss 3.0.0 build 02c14696 | 87         | Passed：87  Failed：0 | 7            |
 
 数据说明
 
 1. 目前onlineMigration不支持分区表迁移，涉及用例数目为11个
+2. 1条issue转为需求
 
 ## 4.3   后续测试建议
 
 1. 约束实现后需对继承特性进行验证
-2. 在oracle侧建表不指定schema，会默认迁移到和oracle用户同名的schema下，这样就导致alter外键和DML的时候会迁移失败，因为在oracle侧如果不指定schema会默认是到openGauss侧的public下找表
 
 # 5     附件
 
