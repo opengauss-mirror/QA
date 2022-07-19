@@ -15,7 +15,7 @@
 
 关键词： kafka，debezium，Oracle，onlineMigration工具，在线迁移DDL外键语法
 
-摘要：本文档主要介绍oracle-openGauss在线迁移工具由oracle(生产端)，debezium，kafka，onlineMigration-openGauss（消费端）这几部分组成的在线DDL外键测试特性报告。
+摘要：本文档主要介绍oracle-openGauss在线迁移工具实现Oracle-openGauss在线迁移DDL外键语法的特性测试报告。该迁移工具由oracle(生产端)，debezium，kafka，onlineMigration-openGauss（消费端）这几部分组成。
 
 缩略语清单：
 
@@ -58,8 +58,9 @@ oracle在线DDL迁移外键共计执行87条用例，主要覆盖了功能测试
 
 1. Oracle及openGauss两端数据库需有同名schema，如“C##ROMA_LOGMINER”；
 2. 开启zookeeper、kafka、kafka_connector、onlineMigration工具并保证正常运行；
-3. 各对象名（表名、字段名、约束名等）需加上双引号，可保证两端数据库迁移结果一致；
-4. 关闭迁移工具后需更改kafka_connector连接名或清空/tmp下kafka日志；
+3. Oracle使用19c版本，openGauss为兼容A库；
+4. 各对象名（表名、字段名、约束名等）需加上双引号，可保证两端数据库迁移结果一致；
+5. 关闭迁移工具后需更改kafka_connector连接名或清空/tmp下kafka日志；
 
 ## 3.3   遗留问题分析
 
@@ -71,10 +72,10 @@ oracle在线DDL迁移外键共计执行87条用例，主要覆盖了功能测试
 
 ### 3.3.2 问题统计
 
-|        | 问题总数 | 严重 | 主要 | 次要 | 不重要 | 备注            |
-| ------ | -------- | ---- | ---- | ---- | ------ | --------------- |
-| 数目   | 7        | 0    | 3    | 4    | 0      | 1条主要单转需求 |
-| 百分比 | 100%     | 0%   | 43%  | 57%  | 0%     |                 |
+|        | 问题总数 | 严重 | 主要 | 次要 | 不重要 | 备注                    |
+| ------ | -------- | ---- | ---- | ---- | ------ | ----------------------- |
+| 数目   | 7        | 0    | 3    | 4    | 0      | 1条主要问题单转为需求单 |
+| 百分比 | 100%     | 0%   | 43%  | 57%  | 0%     |                         |
 
 ### 3.3.3 问题单汇总
 
