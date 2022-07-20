@@ -15,7 +15,7 @@
 
 关键词： kafka，debezium，Oracle，onlineMigration工具，在线迁移DDL外键语法
 
-摘要：本文档主要介绍oracle-openGauss在线迁移工具实现Oracle-openGauss在线迁移DDL外键语法的特性测试报告。该迁移工具由oracle(生产端)，debezium，kafka，onlineMigration-openGauss（消费端）这几部分组成。
+摘要：在线迁移工具由Oracle（生产端），debezium，kafka，onlineMigration-openGauss（消费端）这几部分组成，本次测试针对该工具支持在线迁移DDL外键语法，本文档主要介绍Oracle-openGauss在线迁移工具支持在线迁移DDL外键语法的特性测试结果。
 
 缩略语清单：
 
