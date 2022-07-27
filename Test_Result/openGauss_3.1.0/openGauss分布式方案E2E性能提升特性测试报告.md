@@ -5,11 +5,11 @@
 
 修订记录
 
-| 日期      | 修订   版本 | 修改描述             | 作者       |
-| --------- | ----------- | -------------------- | ---------- |
-| 2022-7-22 | 1.0         | 特性测试报告初稿完成 | peilinqian |
-|           |             |                      |            |
-|           |             |                      |            |
+| 日期      | 修订   版本 | 修改描述                     | 作者       |
+| --------- | ----------- | ---------------------------- | ---------- |
+| 2022-7-22 | 1.0         | 特性测试报告初稿完成         | peilinqian |
+| 2022-7-27 | 1.1         | 修改测试组网信息和缩略词信息 | peilinqian |
+|           |             |                              |            |
 
  关键词： 
 
@@ -23,7 +23,7 @@
 
 | 缩略语         | 英文全名                                   | 中文解释                                                     |
 | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
-| TTPC           | Transaction Processing Performance Council | 事务处理性能委员会。                                         |
+| TPC            | Transaction Processing Performance Council | 事务处理性能委员会。                                         |
 | TPC-C          | Trade Promotion Coordination Committee     | 在线事务处理（OLTP）的基准程序。                             |
 | tpmC           | transaction per minute                     | TPC-C的吞吐量，按有效TPC-C配置期间每分钟处理的平均交易次数测试。 |
 | ss-proxy       | ShardingSphere-Proxy                       | 定位为透明化的数据库代理端，提供封装了数据库二进制协议的服务。 |
@@ -107,23 +107,23 @@ ShardingSphere代码中存在通过捕获异常控制流程的逻辑。由于异
 
 **1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 测试组⽹：**
 
-• 1 节点 openGauss：20.20.20.56； 
+• 1 节点 openGauss：IP1 
 
-• 1 节点 ss-proxy 5.0.0 / 5.1.1：20.20.20.67； 
+• 1 节点 ss-proxy 5.0.0 / 5.1.1：IP2 
 
-• 1 节点 BenchmarkSQL：20.20.20.88； 
+• 1 节点 BenchmarkSQL：IP3 
 
-• 1 节点 ZooKeeper：20.20.20.88
+• 1 节点 ZooKeeper：IP3 
 
-**6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL 测试组⽹**：
+**6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL测试组⽹**：
 
-• 6 节点 openGauss：54\56\58\62\82\85 
+• 6 节点 openGauss：IP1~IP6 
 
-• 6 节点 ss-proxy 5.0.0 / 5.1.1：52\60\70\73\76\79 
+• 6 节点 ss-proxy 5.0.0 / 5.1.1：IP7~IP12 
 
-• 3 节点tpcc：64\67\88 
+• 3 节点tpcc：IP13~IP15
 
-• 1 节点zookeeper：88 
+• 1 节点zookeeper：IP15 
 
 ## 4.2  测试步骤&结果
 
