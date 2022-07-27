@@ -123,7 +123,7 @@ ShardingSphere 在使用 JDBC API 的过程中，为尽量减少资源的占用�
 
 ## 4.2  测试步骤&结果
 
-### 4.2.1  1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL ，优化前后Proxy 的 CPU 使⽤率比对
+### 4.2.1  1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 优化前后Proxy 的 CPU 使⽤率比对
 
 **测试步骤**
 
@@ -225,7 +225,7 @@ jfr print --events CPULoad shardingsphere-proxy-opengauss-${⽇期时间}.jfr | 
 
 | **版本名称**               | **测试用例数** | **用例执行结果**        | **发现问题单数** |
 | -------------------------- | -------------- | ----------------------- | ---------------- |
-| ShardingSphere-Proxy 5.0.0 | 4              | Passed：2<br/>Failed：0 | 0                |
+| ShardingSphere-Proxy 5.0.0 | 2              | Passed：2<br/>Failed：0 | 0                |
 | ShardingSphere-Proxy 5.1.1 | 2              | Passed：2<br/>Failed：0 | 0                |
 
 数据项说明：
