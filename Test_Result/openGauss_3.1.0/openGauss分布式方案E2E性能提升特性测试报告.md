@@ -211,7 +211,7 @@ useProxy=true //设置为true，收集SQL延时信息
 | 版本                       | 中间数据                                                     | 测试结果                                                     |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ShardingSphere-Proxy 5.0.0 | job1 avg NEW_ORDER 18.502 <br />job2 avg NEW_ORDER 18.908 <br />job3 avg NEW_ORDER 19.599 <br />total avg NEW_ORDER 19.003<br /><br />job1 tpmC 	540479.54 <br />job2 tpmC 	537228.26 <br />job3 tpmC 	515467.31 <br />total tpmC	1593175.11 | 延时(avg NEW_ORDER)：19.003<br/>tpmc：1593175.11             |
-| ShardingSphere-Proxy 5.0.0 | job1 avg NEW_ORDER 9.436<br/>job2 avg NEW_ORDER 9.6<br/>job3 avg NEW_ORDER 9.455<br/>total avg NEW_ORDER 9.497<br /><br />job1 tpmC 	897867.86<br/>job2 tpmC 	879339.59<br/>job3 tpmC 	873438.27<br/>total tpmC	2650645.72 | 延时(avg NEW_ORDER)：9.497<br/>tpmc：2650645.72              |
+| ShardingSphere-Proxy 5.1.1 | job1 avg NEW_ORDER 9.436<br/>job2 avg NEW_ORDER 9.6<br/>job3 avg NEW_ORDER 9.455<br/>total avg NEW_ORDER 9.497<br /><br />job1 tpmC 	897867.86<br/>job2 tpmC 	879339.59<br/>job3 tpmC 	873438.27<br/>total tpmC	2650645.72 | 延时(avg NEW_ORDER)：9.497<br/>tpmc：2650645.72              |
 | 结论                       |                                                              | 延时下降百分比：<br />(19.003-9.497)/19.003≈ 50.0%   > 10%<br />tpmc性能提升：<br />(2650645.72-1593175.11)/1593175.11≈ 66.38%   > 15% |
 
 ### 4.2.4 1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 连跑30min，ss-proxy热点锁统计
@@ -256,9 +256,9 @@ jfr summary shardingsphere-proxy-opengauss-${⽇期时间}.jfr | grep JavaMonito
 
 **测试结果**
 
-5.0.0统计进⼊临界区事件数：8 < 10000
+ShardingSphere-Proxy 5.0.0统计进⼊临界区事件数：8 < 10000
 
-5.1.1统计进⼊临界区事件数：0 < 10000
+ShardingSphere-Proxy 5.1.1统计进⼊临界区事件数：0 < 10000
 
 注：查询统计数值⼩于 10000结果均正常
 
@@ -310,4 +310,3 @@ terminalWarehouseFixed=true
 无
 
 ****
-
