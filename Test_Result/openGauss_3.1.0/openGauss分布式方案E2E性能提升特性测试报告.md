@@ -1,6 +1,6 @@
 ![avatar](../../images/openGauss.png)
 
-版权所有 © 2021  openGauss社区
+版权所有 © 2022  openGauss社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
 
 修订记录
@@ -9,7 +9,7 @@
 | --------- | ----------- | ---------------------------- | ---------- |
 | 2022-7-22 | 1.0         | 特性测试报告初稿完成         | peilinqian |
 | 2022-7-27 | 1.1         | 修改测试组网信息和缩略词信息 | peilinqian |
-|           |             |                              |            |
+| 2022-7-28 | 1.2         | 根据评审意见修改测试报告     | peilinqian |
 
  关键词： 
 
@@ -49,10 +49,10 @@ ShardingSphere代码中存在通过捕获异常控制流程的逻辑。由于异
 
 # 2     特性测试信息
 
-| 版本名称                 | 测试起始时间 | 测试结束时间 |
-| ------------------------ | ------------ | ------------ |
-| ss-proxy 5.0.0（优化前） | 2022-7-20    | 2022-7-21    |
-| ss-proxy 5.1.1（优化后） | 2022-7-22    | 2022-7-26    |
+| 版本名称                             | 测试起始时间 | 测试结束时间 |
+| ------------------------------------ | ------------ | ------------ |
+| ShardingSphere-Proxy 5.0.0（优化前） | 2022-7-20    | 2022-7-21    |
+| ShardingSphere-Proxy 5.1.1（优化后） | 2022-7-22    | 2022-7-26    |
 
 | 硬件型号                                       | 硬件配置信息                                                 | 备注                   |
 | ---------------------------------------------- | ------------------------------------------------------------ | ---------------------- |
@@ -61,11 +61,11 @@ ShardingSphere代码中存在通过捕获异常控制流程的逻辑。由于异
 
 | 软件名称       | 软件版本                                                     | 备注                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| BenchmarkSQL   | 定制版本<br />commit：27b4eef1b6d499af68dccd33a9a1fd758f47a7db | 修改随机参数使完美sharding，增加负载均衡参数。<br />取包地址：<br />https://gitee.com/opengauss_sharding/benchmarksql |
+| BenchmarkSQL   | 定制版本<br />commit ID：27b4eef1b6d499af68dccd33a9a1fd758f47a7db | 修改随机参数使完美sharding，增加负载均衡参数。<br />取包地址：<br />https://gitee.com/opengauss_sharding/benchmarksql |
 | aarch64 jdk    | 17.0.1                                                       |                                                              |
-| ss-proxy       | ShardingSphere-Proxy 5.0.0 <br />ShardingSphere-Proxy 5.1.1  | sharding官网发布包                                           |
+| ss-proxy       | ShardingSphere-Proxy 5.0.0 <br />ShardingSphere-Proxy 5.1.1  | ShardingSphere官网发布包                                     |
 | zookeeper      | 3.7.0                                                        |                                                              |
-| openGauss      | openGauss 3.0.1                                              |                                                              |
+| openGauss      | openGauss 3.0.1 <br />commit ID：ee99e115                    |                                                              |
 | async-profiler | async-profiler-2.7-linux-arm64                               | 工具链接：<br />https://github.com/jvm-profiling-tools/async-profiler |
 
 
@@ -74,12 +74,12 @@ ShardingSphere代码中存在通过捕获异常控制流程的逻辑。由于异
 
 ## 3.1   测试整体结论
 
-共计执行5个用例，主要覆盖了优化前后的性能比对测试和稳定性测试，未发现问题，整体质量良好。
+共设计5个用例，主要覆盖了优化前后的性能比对测试和稳定性测试。其中，性能比对测试用例4个，稳定性测试用例1个；性能比对测试用例分别在  ShardingSphere5.0.0和  ShardingSphere5.1.1版本各执行一次，稳定性测试用例在ShardingSphere5.1.1执行一次；未发现问题，整体质量良好。
 
 | 测试活动     | 活动评价                                                     |
 | ------------ | ------------------------------------------------------------ |
-| 性能比对测试 | （1）1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 优化后单线程 E2E 延时减少 30.9%、性能提升32.5%；符合需求预期。<br />（2）1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 优化后 250 线程 E2E 延时减少 60.1%、 性能提升105.47%；符合需求预期。<br />（3）6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL 优化后 250 线程 E2E 延时减少 50.0%、 性能提升 66.38%；符合需求预期。<br />（4）1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 连跑30min，ss-proxy ⽆热点锁；符合需求预期。 |
-| 稳定性测试   | 1 节点 openGauss + 1 节点 ss-proxy（5.1.1版本） + 1 节点 BenchmarkSQL 连跑24H ，正常无报错。 |
+| 性能比对测试 | （1）1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 优化后单线程 E2E 延时减少 30.9%、性能提升32.5%；验收通过。<br />（2）1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 优化后 250 线程 E2E 延时减少 60.1%、 性能提升105.47%；验收通过。<br />（3）6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL 优化后 250 线程 E2E 延时减少 50.0%、 性能提升 66.38%；验收通过。<br />（4）1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 连跑30min，ss-proxy ⽆热点锁；验收通过。 |
+| 稳定性测试   | 1 节点 openGauss + 1 节点 ss-proxy（5.1.1版本） + 1 节点 BenchmarkSQL 连跑24H ，正常无报错；验收通过。 |
 
 ## 3.2   约束说明
 
@@ -107,37 +107,25 @@ ShardingSphere代码中存在通过捕获异常控制流程的逻辑。由于异
 
 **1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 测试组⽹：**
 
-• 1 节点 openGauss：IP1 
-
-• 1 节点 ss-proxy 5.0.0 / 5.1.1：IP2 
-
-• 1 节点 BenchmarkSQL：IP3 
-
-• 1 节点 ZooKeeper：IP3 
+![1658981068484](images/openGauss分布式方案1分片组网图.png)
 
 **6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL测试组⽹**：
 
-• 6 节点 openGauss：IP1~IP6 
-
-• 6 节点 ss-proxy 5.0.0 / 5.1.1：IP7~IP12 
-
-• 3 节点tpcc：IP13~IP15
-
-• 1 节点zookeeper：IP15 
+![1658981068484](images/openGauss分布式方案6分片组网图.png)
 
 ## 4.2  测试步骤&结果
 
-### 4.2.1  1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL ，单线程优化前后NEW_ORDER延时及tpmc比对
+### 4.2.1  1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 单线程优化前后NEW_ORDER延时及tpmC比对
 
 **测试步骤:**
 
-以下测试步骤分别对 ss-proxy 5.0.0 和 ss-proxy 5.1.1 各执⾏⼀次： 
+以下测试步骤分别在ShardingSphere-Proxy 5.0.0 和 ShardingSphere-Proxy 5.1.1 版本各执⾏⼀次。
 
 （1）配置 ss-proxy 的 server.yaml 与1节点config-sharding.yaml 
 
 （2）启动 ss-proxy 进程
 
-（3）启动 BenchmarkSQL 预热10min后待tpmc稳定后，发压 5min，BenchmarkSQL 关键配置如下： 
+（3）启动 BenchmarkSQL 预热10min后待tpmC稳定后，发压 5min，BenchmarkSQL 关键配置如下： 
 
 ```
 terminals=1 
@@ -154,23 +142,23 @@ useProxy=true   //设置为true，收集SQL延时信息
 
 **测试结果：**
 
-| 版本  | 测试结果                                                     |
-| ----- | ------------------------------------------------------------ |
-| 5.0.0 | 延时(avg NEW_ORDER)：9.873<br/>tpmc：4251.57                 |
-| 5.1.1 | 延时(avg NEW_ORDER)：6.818<br/>tpmc：5632.86                 |
-| 结论  | 延时下降百分比：(9.873-6.818)/9.873 ≈ 30.9%<br />tpmc性能提升：(5632.86-4251.57)/4251.57 ≈ 32.5% |
+| 版本                       | 测试结果                                                     |
+| -------------------------- | ------------------------------------------------------------ |
+| ShardingSphere-Proxy 5.0.0 | 延时(avg NEW_ORDER)：9.873<br/>tpmc：4251.57                 |
+| ShardingSphere-Proxy 5.1.1 | 延时(avg NEW_ORDER)：6.818<br/>tpmc：5632.86                 |
+| 结论                       | 延时下降百分比：(9.873-6.818)/9.873 ≈ 30.9% > 20%<br />tpmc性能提升：(5632.86-4251.57)/4251.57 ≈ 32.5% > 10% |
 
-### 4.2.2  1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL ， 250 线程优化前后NEW_ORDER延时及tpmc比对
+### 4.2.2  1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 250 线程优化前后NEW_ORDER延时及tpmC比对
 
 **测试步骤:**
 
-以下测试步骤分别对 ss-proxy 5.0.0 和 ss-proxy 5.1.1 各执⾏⼀次： 
+以下测试步骤分别在ShardingSphere-Proxy 5.0.0 和 ShardingSphere-Proxy 5.1.1 版本各执⾏⼀次。 
 
 （1）配置 ss-proxy 的 server.yaml 与1节点的config-sharding.yaml 
 
 （2）启动 ss-proxy 进程
 
-（3）启动 BenchmarkSQL 预热10min后待tpmc稳定后，发压 5min，BenchmarkSQL 关键配置如下： 
+（3）启动 BenchmarkSQL 预热10min后待tpmC稳定后，发压 5min，BenchmarkSQL 关键配置如下： 
 
 ```
 terminals=250 
@@ -187,23 +175,23 @@ useProxy=true   //设置为true，收集SQL延时信息
 
 **测试结果：**
 
-| 版本  | 测试结果                                                     |
-| ----- | ------------------------------------------------------------ |
-| 5.0.0 | 延时(avg NEW_ORDER)：39.434<br/>tpmc：270146.46              |
-| 5.1.1 | 延时(avg NEW_ORDER)：15.708<br/>tpmc：555074.93              |
-| 结论  | 延时下降百分比：(39.434-15.708)/39.434≈ 60.1%   >10%<br />tpmc性能提升：(555074.93-270146.46)/270146.46≈ 105.47%   >15% |
+| 版本                       | 测试结果                                                     |
+| -------------------------- | ------------------------------------------------------------ |
+| ShardingSphere-Proxy 5.0.0 | 延时(avg NEW_ORDER)：39.434<br/>tpmc：270146.46              |
+| ShardingSphere-Proxy 5.1.1 | 延时(avg NEW_ORDER)：15.708<br/>tpmc：555074.93              |
+| 结论                       | 延时下降百分比：(39.434-15.708)/39.434≈ 60.1% > 10%<br />tpmc性能提升：(555074.93-270146.46)/270146.46≈ 105.47% > 15% |
 
-### 4.2.3 6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL，250 线程优化前后NEW_ORDER延时及tpmc比对
+### 4.2.3 6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL 250 线程优化前后NEW_ORDER延时及tpmC比对
 
 **测试步骤** 
 
-以下测试步骤分别对 ss-proxy 5.0.0 和 ss-proxy 5.1.1 各执⾏⼀次： 
+以下测试步骤分别在ShardingSphere-Proxy 5.0.0 和 ShardingSphere-Proxy 5.1.1 版本各执⾏⼀次。 
 
 （1）配置 ss-proxy 的 server.yaml 与6节点的config-sharding.yaml 
 
 （2） 同时启动 6 节点 ss-proxy 进程
 
-（3）同时启动 3 节点 BenchmarkSQL 预热10min后待tpmc稳定后，发压 5min，BenchmarkSQL 关键配置如下： 
+（3）同时启动 3 节点 BenchmarkSQL 预热10min后待tpmC稳定后，发压 5min，BenchmarkSQL 关键配置如下： 
 
 ```
 terminals=250 
@@ -220,11 +208,11 @@ useProxy=true //设置为true，收集SQL延时信息
 
 **测试结果：**
 
-| 版本  | 中间数据                                                     | 测试结果                                                     |
-| ----- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 5.0.0 | job1 avg NEW_ORDER 18.502 <br />job2 avg NEW_ORDER 18.908 <br />job3 avg NEW_ORDER 19.599 <br />total avg NEW_ORDER 19.003<br /><br />job1 tpmC 	540479.54 <br />job2 tpmC 	537228.26 <br />job3 tpmC 	515467.31 <br />total tpmC	1593175.11 | 延时(avg NEW_ORDER)：19.003<br/>tpmc：1593175.11             |
-| 5.1.1 | job1 avg NEW_ORDER 9.436<br/>job2 avg NEW_ORDER 9.6<br/>job3 avg NEW_ORDER 9.455<br/>total avg NEW_ORDER 9.497<br /><br />job1 tpmC 	897867.86<br/>job2 tpmC 	879339.59<br/>job3 tpmC 	873438.27<br/>total tpmC	2650645.72 | 延时(avg NEW_ORDER)：9.497<br/>tpmc：2650645.72              |
-| 结论  |                                                              | 延时下降百分比：<br />(19.003-9.497)/19.003≈ 50.0%   >10%<br />tpmc性能提升：<br />(2650645.72-1593175.11)/1593175.11≈ 66.38%   >15% |
+| 版本                       | 中间数据                                                     | 测试结果                                                     |
+| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ShardingSphere-Proxy 5.0.0 | job1 avg NEW_ORDER 18.502 <br />job2 avg NEW_ORDER 18.908 <br />job3 avg NEW_ORDER 19.599 <br />total avg NEW_ORDER 19.003<br /><br />job1 tpmC 	540479.54 <br />job2 tpmC 	537228.26 <br />job3 tpmC 	515467.31 <br />total tpmC	1593175.11 | 延时(avg NEW_ORDER)：19.003<br/>tpmc：1593175.11             |
+| ShardingSphere-Proxy 5.0.0 | job1 avg NEW_ORDER 9.436<br/>job2 avg NEW_ORDER 9.6<br/>job3 avg NEW_ORDER 9.455<br/>total avg NEW_ORDER 9.497<br /><br />job1 tpmC 	897867.86<br/>job2 tpmC 	879339.59<br/>job3 tpmC 	873438.27<br/>total tpmC	2650645.72 | 延时(avg NEW_ORDER)：9.497<br/>tpmc：2650645.72              |
+| 结论                       |                                                              | 延时下降百分比：<br />(19.003-9.497)/19.003≈ 50.0%   > 10%<br />tpmc性能提升：<br />(2650645.72-1593175.11)/1593175.11≈ 66.38%   > 15% |
 
 ### 4.2.4 1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 连跑30min，ss-proxy热点锁统计
 
@@ -274,11 +262,11 @@ jfr summary shardingsphere-proxy-opengauss-${⽇期时间}.jfr | grep JavaMonito
 
 注：查询统计数值⼩于 10000结果均正常
 
-### 4.2.5 1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 连跑24H
+### 4.2.5 1 节点 openGauss + 1 节点 ss-proxy（5.1.1版本） + 1 节点 BenchmarkSQL 连跑24H
 
 **测试步骤**
 
-以下测试步骤在 ss-proxy 5.1.1 执⾏⼀次： 
+以下测试步骤在ShardingSphere-Proxy 5.1.1 版本执⾏⼀次。 ： 
 
 （1）配置 ss-proxy 的 server.yaml 与1节点的config-sharding.yaml 
 
@@ -309,7 +297,7 @@ terminalWarehouseFixed=true
 
 数据项说明：
 
-测试用例数：5个，测试通过：5个；
+测试用例数：5个；其中4个用例需要在ShardingSphere-Proxy 5.0.0、ShardingSphere-Proxy 5.1.1版本各执行一次进行结果比对。1个用例在ShardingSphere-Proxy 5.1.1版本测试1次；测试通过：5个；
 
 发现问题单数：0个。
 
@@ -319,12 +307,7 @@ terminalWarehouseFixed=true
 
 # **5     附件**
 
-
-
-****
-
-
+无
 
 ****
 
-****

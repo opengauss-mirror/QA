@@ -1,6 +1,6 @@
 ![avatar](../../images/openGauss.png)
 
-版权所有 © 2021  openGauss社区
+版权所有 © 2022  openGauss社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
 
 修订记录
@@ -9,7 +9,7 @@
 | --------- | ----------- | ---------------------------- | ---------- |
 | 2022-7-22 | 1.0         | 特性测试报告初稿完成         | peilinqian |
 | 2022-7-27 | 1.1         | 修改测试组网信息和缩略词信息 | peilinqian |
-|           |             |                              |            |
+| 2022-7-28 | 1.2         | 根据评审意见修改测试报告     | peilinqian |
 
  关键词： 
 
@@ -46,10 +46,10 @@ ShardingSphere 在使用 JDBC API 的过程中，为尽量减少资源的占用�
 
 # 2     特性测试信息
 
-| 版本名称                 | 测试起始时间 | 测试结束时间 |
-| ------------------------ | ------------ | ------------ |
-| ss-proxy 5.0.0（优化前） | 2022-7-20    | 2022-7-21    |
-| ss-proxy 5.1.1（优化后） | 2022-7-22    | 2022-7-26    |
+| 版本名称                             | 测试起始时间 | 测试结束时间 |
+| ------------------------------------ | ------------ | ------------ |
+| ShardingSphere-Proxy 5.0.0（优化前） | 2022-7-20    | 2022-7-21    |
+| ShardingSphere-Proxy 5.1.1（优化后） | 2022-7-22    | 2022-7-26    |
 
 | 硬件型号                                       | 硬件配置信息                                                 | 备注                   |
 | ---------------------------------------------- | ------------------------------------------------------------ | ---------------------- |
@@ -58,11 +58,11 @@ ShardingSphere 在使用 JDBC API 的过程中，为尽量减少资源的占用�
 
 | 软件名称       | 软件版本                                                     | 备注                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| BenchmarkSQL   | 定制版本<br />commit：27b4eef1b6d499af68dccd33a9a1fd758f47a7db | 修改随机参数使完美sharding，增加负载均衡参数。<br />取包地址：<br />https://gitee.com/opengauss_sharding/benchmarksql |
+| BenchmarkSQL   | 定制版本<br />commit ID：27b4eef1b6d499af68dccd33a9a1fd758f47a7db | 修改随机参数使完美sharding，增加负载均衡参数。<br />取包地址：<br />https://gitee.com/opengauss_sharding/benchmarksql |
 | aarch64 jdk    | 17.0.1                                                       |                                                              |
-| ss-proxy       | ShardingSphere-Proxy 5.0.0 <br />ShardingSphere-Proxy 5.1.1  | sharding官网发布包                                           |
+| ss-proxy       | ShardingSphere-Proxy 5.0.0 <br />ShardingSphere-Proxy 5.1.1  | ShardingSphere官网发布包                                     |
 | zookeeper      | 3.7.0                                                        |                                                              |
-| openGauss      | openGauss 3.0.1                                              |                                                              |
+| openGauss      | openGauss 3.0.1 <br />commit ID：ee99e115                    |                                                              |
 | async-profiler | async-profiler-2.7-linux-arm64                               | 工具链接：<br />https://github.com/jvm-profiling-tools/async-profiler |
 
 
@@ -71,11 +71,11 @@ ShardingSphere 在使用 JDBC API 的过程中，为尽量减少资源的占用�
 
 ## 3.1   测试整体结论
 
-共计执行2个用例，主要覆盖了优化前后的性能比对测试，未发现问题，整体质量良好。
+共设计2个用例，主要覆盖了优化前后的性能比对测试。分别在  ShardingSphere5.0.0和  ShardingSphere5.1.1版本各执行一次，未发现问题，整体质量良好。
 
 | 测试活动     | 活动评价                                                     |
 | ------------ | ------------------------------------------------------------ |
-| 性能比对测试 | （1）1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 优化后Proxy 的 CPU 使⽤率下降 54.6%；符合需求预期。<br />（2）6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL 优化后Proxy 的 CPU 使⽤率下降 56.8%；符合需求预期。 |
+| 性能比对测试 | （1）1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 优化后Proxy 的 CPU 使⽤率下降 54.6%；规格目标达成。<br />（2）6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL 优化后Proxy 的 CPU 使⽤率下降 56.8%；规格目标达成。 |
 
 ## 3.2   约束说明
 
@@ -103,23 +103,11 @@ ShardingSphere 在使用 JDBC API 的过程中，为尽量减少资源的占用�
 
 **1 节点 openGauss + 1 节点 ss-proxy + 1 节点 BenchmarkSQL 测试组⽹：**
 
-• 1 节点 openGauss：IP1 
-
-• 1 节点 ss-proxy 5.0.0 / 5.1.1：IP2 
-
-• 1 节点 BenchmarkSQL：IP3 
-
-• 1 节点 ZooKeeper：IP3 
+![1658981068484](images/openGauss分布式方案1分片组网图.png)
 
 **6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL测试组⽹**：
 
-• 6 节点 openGauss：IP1~IP6 
-
-• 6 节点 ss-proxy 5.0.0 / 5.1.1：IP7~IP12 
-
-• 3 节点tpcc：IP13~IP15
-
-• 1 节点zookeeper：IP15 
+![1658981068484](images/openGauss分布式方案6分片组网图.png)
 
 ## 4.2  测试步骤&结果
 
@@ -127,7 +115,7 @@ ShardingSphere 在使用 JDBC API 的过程中，为尽量减少资源的占用�
 
 **测试步骤**
 
-以下测试步骤分别对 ss-proxy 5.0.0 和 ss-proxy 5.1.1 各执⾏⼀次： 
+以下测试步骤分别在ShardingSphere-Proxy 5.0.0 和 ShardingSphere-Proxy 5.1.1 版本各执⾏⼀次。
 
 （1）配置 ss-proxy 的 server.yaml 与1 节点 config-sharding.yaml 
 
@@ -149,7 +137,7 @@ limitTxnsPerMin=1066666
 terminalWarehouseFixed=true 
 ```
 
-（5）结束 async-profiler 采样
+（5）结束 async-profiler 采样：
 
 ```
 ./profiler.sh stop $(jps -l | grep 'org.apache.shardingsphere.proxy.Bootstrap' | awk '{print $1}') 
@@ -167,17 +155,17 @@ jfr print --events CPULoad shardingsphere-proxy-opengauss-${⽇期时间}.jfr | 
 
 **测试结果：**
 
-| 版本  | 测试结果                                                     |
-| ----- | ------------------------------------------------------------ |
-| 5.0.0 | JVM us: 1285.64<br/>JVM sy: 208.633<br/>JVM total: **1494.27** |
-| 5.1.1 | JVM us: 465.351<br/>JVM sy: 212.804<br/>JVM total: **678.155** |
-| 结论  | (1494.27-678.155)/1494.27 = 54.6% >10%                       |
+| 版本                       | 测试结果                                                     |
+| -------------------------- | ------------------------------------------------------------ |
+| ShardingSphere-Proxy 5.0.0 | JVM us: 1285.64<br/>JVM sy: 208.633<br/>JVM total: **1494.27** |
+| ShardingSphere-Proxy 5.1.1 | JVM us: 465.351<br/>JVM sy: 212.804<br/>JVM total: **678.155** |
+| 结论                       | (1494.27-678.155)/1494.27 = 54.6% >10%                       |
 
 ### 4.2.2 6 节点 openGauss + 6 节点 ss-proxy + 3 节点 BenchmarkSQL 优化前后Proxy 的 CPU 使⽤率比对
 
 **测试步骤**
 
-以下测试步骤分别对 ss-proxy 5.0.0 和 ss-proxy 5.1.1 各执⾏⼀次： 
+以下测试步骤分别在ShardingSphere-Proxy 5.0.0 和 ShardingSphere-Proxy 5.1.1 版本各执⾏⼀次。
 
 （1）配置 ss-proxy 的 server.yaml 与6节点 config-sharding.yaml
 
@@ -215,11 +203,11 @@ jfr print --events CPULoad shardingsphere-proxy-opengauss-${⽇期时间}.jfr | 
 
 **测试结果：**
 
-| 版本  | 测试结果                                                     |
-| ----- | ------------------------------------------------------------ |
-| 5.0.0 | proxy1 JVM total:	1635.31<br/>proxy2 JVM total:	1625.47<br/>proxy3 JVM total:	1635.94<br/>proxy4 JVM total:	1626.45<br/>proxy5 JVM total:	1624.77<br/>proxy6 JVM total:	1621.81<br/>JVM total:	**9769.75** |
-| 5.1.1 | proxy1 JVM total:	707.499<br/>proxy2 JVM total:	704.303<br/>proxy3 JVM total:	685.555<br/>proxy4 JVM total:	699.31<br/>proxy5 JVM total:	708.924<br/>proxy6 JVM total:	713.407<br/>JVM total:	**4218.998** |
-| 结论  | (9769.75-4218.998)/9769.75 = 56.8% >10%                      |
+| 版本                       | 测试结果                                                     |
+| -------------------------- | ------------------------------------------------------------ |
+| ShardingSphere-Proxy 5.0.0 | proxy1 JVM total:	1635.31<br/>proxy2 JVM total:	1625.47<br/>proxy3 JVM total:	1635.94<br/>proxy4 JVM total:	1626.45<br/>proxy5 JVM total:	1624.77<br/>proxy6 JVM total:	1621.81<br/>JVM total:	**9769.75** |
+| ShardingSphere-Proxy 5.1.1 | proxy1 JVM total:	707.499<br/>proxy2 JVM total:	704.303<br/>proxy3 JVM total:	685.555<br/>proxy4 JVM total:	699.31<br/>proxy5 JVM total:	708.924<br/>proxy6 JVM total:	713.407<br/>JVM total:	**4218.998** |
+| 结论                       | (9769.75-4218.998)/9769.75 = 56.8% >10%                      |
 
 ## **4.3 测试执行统计数据**
 
@@ -230,7 +218,7 @@ jfr print --events CPULoad shardingsphere-proxy-opengauss-${⽇期时间}.jfr | 
 
 数据项说明：
 
-测试用例数：2个，测试通过：2个；
+测试用例数：2个；2个用例需要在ShardingSphere-Proxy 5.0.0、ShardingSphere-Proxy 5.1.1版本各执行一次进行结果比对；测试通过：2个；
 
 发现问题单数：0个。
 
@@ -240,12 +228,4 @@ jfr print --events CPULoad shardingsphere-proxy-opengauss-${⽇期时间}.jfr | 
 
 # **5     附件**
 
-
-
-****
-
-
-
-****
-
-****
+无
