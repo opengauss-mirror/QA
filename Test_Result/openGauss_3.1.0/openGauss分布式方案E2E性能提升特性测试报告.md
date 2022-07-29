@@ -218,7 +218,7 @@ useProxy=true //设置为true，收集SQL延时信息
 
 **测试步骤**
 
-以下测试步骤分别对 ss-proxy 5.0.0 和 ss-proxy 5.1.1 各执⾏⼀次： 
+以下测试步骤分别在ShardingSphere-Proxy 5.0.0 和 ShardingSphere-Proxy 5.1.1 版本各执⾏⼀次。 
 
 （1）配置 ss-proxy 的 server.yaml 与1节点的config-sharding.yaml 
 
