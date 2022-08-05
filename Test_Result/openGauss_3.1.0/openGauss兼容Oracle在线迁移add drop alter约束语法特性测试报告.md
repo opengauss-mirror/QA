@@ -193,12 +193,12 @@ Oracle在线迁移支持DDL约束语句alter table add/drop/alter约束语法共
 
 | 版本名称                       | 测试用例数 | 用例执行结果                                     | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------------------------------ | ------------ |
-| openGauss 3.0.0 build 02c14696 | 134        | Passed：134  <br />Failed：0<br />Unavailable：0 | 21           |
+| openGauss 3.0.0 build 02c14696 | 134        | Passed：133  <br />Failed：1<br />Unavailable：0 | 21           |
 
 数据说明
 
 1. 共发现21个问题，19条已修改并验证通过，1条非问题取消，1条经CCB评审挂起
-2. 失败用例已在后续issue回归中执行通过
+2. 1条用例因问题单挂起执行失败，其余失败用例已在后续issue回归中执行通过
 
 ## 4.3   后续测试建议
 
@@ -251,11 +251,3 @@ INSERT 0 4
 --step7:清理环境 expect:清理环境成功
 drop table "C##ROMA_LOGMINER"."t_const_0001" cascade constraint purge;
 ```
-
- 
-
-
-
- 
-
- 
