@@ -46,7 +46,7 @@ VARCHAR(n)，CHARACTER VARYING(n)，VARCHAR2(n)，NVARCHAR(n)，TEXT，CLOB字�
 
 ## 3.1   测试整体结论
 
-字符型数据类型对比忽略尾部空格特性，共计执行用例55个，主要VARCHAR(n)，CHARACTER VARYING(n)，VARCHAR2(n)，NVARCHAR(n)，TEXT，CLOB几种字符型数据类型，发现2条问题已解决，回归通过，无遗留风险，整体质量良好。
+字符型数据类型对比忽略尾部空格特性，共计执行用例57个，主要VARCHAR(n)，CHARACTER VARYING(n)，VARCHAR2(n)，NVARCHAR(n)，TEXT，CLOB几种字符型数据类型，发现2条问题已解决，回归通过，无遗留风险，整体质量良好。
 
 |               测试活动               | 活动评价 |
 | :----------------------------------: | :------: |
