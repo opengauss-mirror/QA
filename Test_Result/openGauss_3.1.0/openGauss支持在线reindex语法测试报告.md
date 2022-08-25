@@ -16,7 +16,7 @@ openGauss支持在线reindex索引
 
 摘要：
 
-本文档主要介绍openGauss支持在线reindex索引的特性测试报告。
+本文档主要对openGauss支持在线reindex重建索引进行测试，并给出测试报告。
 
 缩略语清单：
 
