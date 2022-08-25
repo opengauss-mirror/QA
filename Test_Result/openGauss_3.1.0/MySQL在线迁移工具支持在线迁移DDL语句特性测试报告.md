@@ -186,7 +186,7 @@ openGauss-MySQL在线迁移工具支持在线迁移DDL语句，共计执行61条
 
 | 测试步骤                                                     | 测试结果                                    |
 | ------------------------------------------------------------ | ------------------------------------------- |
-| 1.chameleon开启在线迁移<br />chameleon start_replica --config default --source mysql<br />2.MySQL侧ALTER分区表EXCHANGE PARTITION<br />3.openGauss侧查询表信息 | 执行8条用例，发现2个bug，现已修复且验收通过 |
+| 1.chameleon开启在线迁移<br />chameleon start_replica --config default --source mysql<br />2.MySQL侧ALTER分区表EXCHANGE PARTITION<br />3.openGauss侧查询表信息 | 执行8条用例，发现3个bug，现已修复且验收通过 |
 
 ### 4.1.7 在线ALTER分区表REORGANIZE PARTITION
 
