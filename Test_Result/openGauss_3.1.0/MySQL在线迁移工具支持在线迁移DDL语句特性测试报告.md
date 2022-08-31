@@ -75,21 +75,32 @@ openGauss-MySQL在线迁移工具支持在线迁移DDL语句，共计执行61条
 
 - openGauss需使用兼容B库。
 
+- 对于索引或约束中的表达式，如索引前缀表达式id(5)的写法目前暂会迁移为col_name。
+
 - 迁移后的索引或者约束如index_name会改写为tbl_name_index_name的带有表名前缀的格式。
 
-- 由于目前openGauss内核的限制，暂不支持迁移MySQL数据库中一级分区表的部分修改表分区的功能，详见下表。
+- openGauss支持的分区表类型详见以下表格，其中不支持的分区表将暂不迁移。
 
-  |            | 增加分区 | 删除分区 | 清空分区 | 合并分区 | 交换分区 | 切割分区 |
-  | ---------- | -------- | -------- | -------- | -------- | -------- | -------- |
-  | 哈希分区表 | ×        | ×        | √        | ×        | √        | ×        |
-  | 列表分区表 | √        | √        | √        | ×        | √        | ×        |
-  | 范围分区   | √        | √        | √        | √        | √        | √        |
+  |                      | Range分区            | List分区             | Hash/Key分区         | 二级分区             |
+  | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
+  | ADD PARTITION        | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss ✓ |
+  | DROP PARTITION       | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss ✓ |
+  | TRUNCATE PARTITION   | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss ✓ |
+  | COALESCE PARTITION   | MySQL ×，openGauss × | MySQL ×，openGauss × | MySQL ✓，openGauss × | MySQL ×，openGauss × |
+  | EXCHANGE PARTITION   | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss × |
+  | REORGANIZE PARTITION | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss × | MySQL ✓，openGauss × |
   
-- 由于目前openGauss内核的限制，二级分区的分区表可以正常迁移MySQL数据库ALTER PARTITION中的ADD/DROP/TRUNCATE功能，COALESCE/REORGANIZE/EXCHANGE功能暂不支持。
-
-- 对于HASH分区及KEY分区表在线迁移，由于MySQL和openGauss中HASH分区内核实现不同，迁移后openGauss数据存放分区与MySQL中数据存放的分区存在差异。
-
-- 由于目前openGauss内核的限制，不支持分区键相同的二级分区表。
+  备注：
+  
+  ADD/DROP PARTITION 中，openGauss内核中hash分区不支持添加和删除分区，故hash分区不支持。
+  
+  TRUNCATE PARTITION 中，openGauss内核中hash分区数据与MySQL存放分区数据不一致，故hash分区支持但数据不一致。
+  
+  COALESCE PARTITION 中，MySQL中COALESCE PARTITION can only be used on HASH/KEY partitions，RANGE/LIST分区不支持该操作，openGauss无对应操作，故仅hash分区能使用COALESCE操作。由于openGauss内核中list和hash分区不支持切割和合成分区，故hash分区不支持。
+  
+  EXCHANGE PARTITION 中，openGauss内核中hash分区数据与MySQL存放分区数据不一致，故hash分区支持但数据不一致。openGauss内核中二级分区暂不支持EXCHANGE操作，故二级分区不支持。
+  
+  REORGANIZE PARTITION 中，openGauss侧采用MERGE和SPLIT实现分区的MySQL中的REORGANIZE。openGauss内核中list和hash分区不支持切割和合成分区，故list分区和hash分区不支持。openGauss内核二级分区不支持split操作，故二级分区也不支持。
 
 ## 3.3   遗留问题分析
 
