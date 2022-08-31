@@ -8,6 +8,7 @@
 | 日期      | 修订版本 | 修改描述         | 作者            |
 | :-------- | :------- | :--------------- | :-------------- |
 | 2022-8-20 | 1.0      | 特性测试报告初稿 | zou_jialiang050 |
+| 2022.8.31 | 1.1      | 增加缺陷密度     | zou_jialiang050 |
 
  关键词： show columns、show tables、show plugins
 
@@ -83,13 +84,13 @@ openGauss兼容mysql show columns tables plugins语法特性，共计执行用�
 
 | 测试步骤                                                     | 测试结果                      |
 | :------------------------------------------------------------ | :----------------------------- |
-| 1.show columns语法参数及功能验证，例如模糊匹配、条件筛选、多种数据类型字段显示、有无select权限操作、多种约束显示正确性等验证。 | 共执行用例37条<br />未发现bug |
+| 1.show [full] {columns \| fileds} {from \| in} tbl_name [{from \| in} db_name] [like 'pattern' \| where expr]语法参数及功能验证，例如模糊匹配、条件筛选、多种数据类型字段显示、有无select权限操作、多种约束显示正确性等验证。 | 共执行用例37条<br />未发现bug |
 
 ###  4.1.2   show tables功能测试
 
 | 测试步骤                                                     | 测试结果                        |
 | :------------------------------------------------------------ | :------------------------------- |
-| 1.show tables语法参数及功能验证，例如模糊匹配、条件筛选、多种格式表显示正确性等验证。 | 共执行条用例23条<br />未发现bug |
+| 1.show [full] tables [{from \| in} db_name] [like 'pattern' \| where expr]语法参数及功能验证，例如模糊匹配、条件筛选、多种格式表显示正确性等验证。 | 共执行条用例23条<br />未发现bug |
 
 ###  4.1.3   show plugins功能测试
 
@@ -103,7 +104,7 @@ openGauss兼容mysql show columns tables plugins语法特性，共计执行用�
 
 | 测试步骤                                                     | 测试结果                       |
 | :------------------------------------------------------------ | :------------------------------ |
-| 1.验证show columns、tables、plugins 文档描述是否准确、示例是否正确等。 | 共执行条用例1条<br />未发现bug |
+| 1.验证show columns、show tables、show plugins 文档描述是否准确、示例是否正确等。 | 共执行条用例1条<br />未发现bug |
 
 ## 4.3   测试执行统计数据
 
@@ -111,34 +112,40 @@ openGauss兼容mysql show columns tables plugins语法特性，共计执行用�
 | :----------------------------- | :---------- | :------------------------- | :------------ |
 | openGauss3.0.0 build 3d018a7e | 63         | Passed：63<br />Failed：0 | 0            |
 
+缺陷单共0个，修改代码量为1.5kloc， 缺陷密度为0个/kloc
+
 ## 4.4   后续测试建议
 
-1.是否所有用户都可以使用show plugins查看插件
+1.多种不同权限用户执行show plugins查看插件状态
 
 # 5     附件
 
 ```
-openGauss=# show tables;
- Tables_in_tst_schema 
-----------------------
- tst_t1
- tst_v1
- t_t2
-(3 rows)
-
-openGauss=# show full tables;
+test=# show full tables;
  Tables_in_tst_schema | Table_type 
 ----------------------+------------
  tst_t1               | BASE TABLE
  tst_v1               | VIEW
- t_t2                 | BASE TABLE
+ test                 | BASE TABLE
 (3 rows)
 
-openGauss=# show full tables in tst_schema;
- Tables_in_tst_schema | Table_type 
-----------------------+------------
- tst_t1               | BASE TABLE
- tst_v1               | VIEW
- t_t2                 | BASE TABLE
-(3 rows)
+test=# show columns from test;
+ Field |  Type   | Null | Key | Default | Extra 
+-------+---------+------+-----+---------+-------
+ c1    | integer | YES  |     | NULL    |
+(1 rows)
+
+test=# show plugins;
+      Name       |  Status  | Type | Library | License |                     Comment
+-----------------+----------+------+---------+---------+--------------------------------
+ hstore          | ACTIVE   |      | NULL    |         | data type for storing sets of (key, value) pairs
+ security_plugin | ACTIVE   |      | NULL    |         | provides security functionality
+ plpgsql         | ACTIVE   |      | NULL    |         | PL/pgSQL procedural language
+ log_fdw         | ACTIVE   |      | NULL    |         | Foreign-Data Wrapper for accessing logging data
+ file_fdw        | ACTIVE   |      | NULL    |         | foreign-data wrapper for flat file access
+ postgres_fdw    | DISABLED |      | NULL    |         | foreign-data wrapper for remote PostgreSQL servers
+ mot_fdw         | ACTIVE   |      | NULL    |         | foreign-data wrapper for MOT access
+ dolphin         | ACTIVE   |      | NULL    |         | sql engine
+ dist_fdw        | ACTIVE   |      | NULL    |         | foreign-data wrapper for distfs access
+(10 rows)
 ```
