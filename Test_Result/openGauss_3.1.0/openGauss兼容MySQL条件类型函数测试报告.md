@@ -16,7 +16,7 @@ dolphin插件，条件类型函数，兼容B库，mysql
 
 摘要：
 
-本文档主要介绍openGauss在兼容B库情形下安装dolphin插件，实现兼容mysql五个条件类型函数coalesce()、gs_interval()、isnull()、ifnull()、strcmp()的特性测试报告。其中，coalesce()函数返回参数列表中第一个非null的参数值；gs_interval(N,N1...Na...)函数返N1到Na的个数，Na表示第一个大于N的参数；ifnull()函数返回第一个参数，若第一个参数为空，返回第二个参数；isnul()函数用于判断参数是否为null，参数为null返回1，否则返回0；strcmp()函数比较两个字符串，两个字符串相等返回0，前者小返回-1，否则返回1。
+本文档主要介绍openGauss在兼容B库且有dolphin插件的情形下，实现兼容mysql五个条件类型函数coalesce()、gs_interval()、isnull()、ifnull()、strcmp()。其中，coalesce()函数返回参数列表中第一个非null的参数值；gs_interval(N,N1...Na...)函数返N1到Na的个数，Na表示第一个大于N的参数；ifnull()函数返回第一个参数，若第一个参数为空，返回第二个参数；isnul()函数用于判断参数是否为null，参数为null返回1，否则返回0；strcmp(str1,str2)函数比较两个字符串，两个字符串相等返回0，str1小于str2返回-1，否则返回1。
 
 # 1     特性概述
 
@@ -60,8 +60,8 @@ openGauss兼容mysql条件类型函数共计执行用例176条，主要覆盖了
 
 1. mysql使用5.7版本
 2. openGauss需使用兼容B库且有dolphin插件
-3. 函数的参数为二进制和布尔类型时，部分结果与mysql返回结果不一致
-4. coalesce函数的参数为字符串时，部分结果与mysql返回结果不一致
+3. ifnull函数，第一个参数为null，第二个参数为二进制或布尔类型时，函数返回结果与mysql返回结果不一致
+4. coalesce函数的参数为字符串，且字符串中包含字母、符号、汉字时，函数返回结果与mysql返回结果不一致
 
 ## 3.3   遗留问题分析
 
@@ -145,7 +145,7 @@ openGauss兼容mysql条件类型函数共计执行用例176条，主要覆盖了
 数据说明
 
 1. 累计发现问题单6个，3个已解决并回归通过，2个非问题取消，1个经plugin sig组评审不予修改
-2. 修改代码量7.954kloc，缺陷密度为0.37个/kloc
+2. 缺陷密度：3(缺陷个数) / 7.954(代码行数) = 0.37(个/kloc)
 
 ## 4.3   后续测试建议
 
