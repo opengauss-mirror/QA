@@ -50,7 +50,7 @@ MySQL在线迁移工具支持在线迁移DDL语句至openGauss侧，包括在线
 
 ## 3.1   测试整体结论
 
-openGauss-MySQL在线迁移工具支持在线迁移DDL语句，共计执行61条用例，主要覆盖了功能测试和资料测试。功能测试覆盖在MySQL数据库分别在线创建分区表、在线增加分区、在线删除分区、在线截断分区、在线合并分区、在线交换分区、在线重组分区、在线创建索引、在线删除索引、在线创建外键、在线删除外键、在线创建唯一约束、在线删除唯一约束，使用chameleon工具在线迁移上述对象到openGauss，保证迁移后的对象在openGauss可以正常使用。对于openGauss目前不支持的功能（详见[  chameleon使用指南.md](https://gitee.com/openGauss/openGauss-tools-chameleon/blob/master/chameleon%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.md)）会迁移失败，日志会有合理提示。资料测试覆盖校验资料描述完整准确，示例执行结果正确。累计发现缺陷单36个，35个缺陷已解决，回归通过，1个确认非问题已取消，整体质量良好。
+openGauss-MySQL在线迁移工具支持在线迁移DDL语句，共计执行61条用例，主要覆盖了功能测试和资料测试。功能测试覆盖在MySQL数据库分别在线创建分区表、在线增加分区、在线删除分区、在线截断分区、在线合并分区、在线交换分区、在线重组分区、在线创建索引、在线删除索引、在线创建外键、在线删除外键、在线创建唯一约束、在线删除唯一约束，使用chameleon工具在线迁移上述对象到openGauss，保证迁移后的对象在openGauss可以正常使用。对于openGauss目前不支持的功能（详见[  chameleon使用指南.md](https://gitee.com/openGauss/openGauss-tools-chameleon/blob/master/chameleon%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.md)）会迁移失败，日志会有合理提示。资料测试覆盖校验资料描述完整准确，示例执行结果正确。累计发现缺陷单38个，37个缺陷已解决，回归通过，1个确认非问题已取消，整体质量一般。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | :----------------------------------------------------------- |
@@ -75,22 +75,35 @@ openGauss-MySQL在线迁移工具支持在线迁移DDL语句，共计执行61条
 
 - openGauss需使用兼容B库。
 
+- 对于索引或约束中的表达式，如索引前缀表达式id(5)的写法目前暂会迁移为col_name。
+
 - 迁移后的索引或者约束如index_name会改写为tbl_name_index_name的带有表名前缀的格式。
 
-- 由于目前openGauss内核的限制，一级分区表暂不支持特定修改表分区的功能，见下表。
+- openGauss支持的分区表类型详见以下表格，其中不支持的分区表将暂不迁移。
 
-  |          | 哈希分区表 | 列表分区表 |
-  | -------- | ---------- | ---------- |
-  | 增加分区 | ×          | √          |
-  | 删除分区 | ×          | √          |
-  | 切割分区 | ×          | ×          |
-  | 合成分区 | ×          | ×          |
-
-- 由于目前openGauss内核的限制，二级分区的分区表可以正常迁移MySQL数据库ALTER PARTITION中的ADD/DROP/TRUNCATE功能，COALESCE/REORGANIZE/EXCHANGE功能暂不支持。
-
-- 对于HASH分区及KEY分区表在线迁移，由于MySQL和openGauss中HASH分区内核实现不同，迁移后openGauss数据存放分区与MySQL中数据存放的分区存在差异。
-
-- 由于目前openGauss内核的限制，二级分区表不支持有主键约束、自增约束、唯一约束的表。
+  |          | Range分区            | List分区             | Hash/Key分区         | 二级分区             |
+  | -------- | -------------------- | -------------------- | -------------------- | -------------------- |
+  | 增加分区 | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss ✓ |
+  | 删除分区 | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss ✓ |
+  | 截断分区 | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss ✓ |
+  | 合并分区 | MySQL ×，openGauss × | MySQL ×，openGauss × | MySQL ✓，openGauss × | MySQL ×，openGauss × |
+  | 交换分区 | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss × |
+  | 重组分区 | MySQL ✓，openGauss ✓ | MySQL ✓，openGauss × | MySQL ✓，openGauss × | MySQL ✓，openGauss × |
+  | 切割分区 | MySQL ×，openGauss ✓ | MySQL ×，openGauss × | MySQL ×，openGauss × | MySQL ×，openGauss × |
+  
+  备注：
+  
+  1.由于openGauss内核中Hash分区表不支持添加和删除分区，故Hash分区表增加分区和删除分区功能不支持迁移。
+  
+  2.由于openGauss内核中Hash分区数据与MySQL存放分区数据不一致，故Hash分区表截断分区或交换分区功能支持迁移，但数据与MySQL侧有差异。
+  
+  3.MySQL中合并分区只能用于Hash/Key分区表，由于openGauss内核中Hash分区表不支持切割和合成分区，故Hash分区表合并分区功能不支持迁移。
+  
+  4.由于openGauss内核中二级分区表暂不支持交换分区，故二级分区表交换分区功能不支持迁移。
+  
+  5.由于openGauss内核中List分区表和Hash分区表不支持切割和合成分区，故List分区表和Hash分区表重组分区功能不支持迁移。openGauss内核中二级分区表不支持切割分区功能，故二级分区表重组分区功能也不支持迁移。
+  
+  6.由于目前openGauss内核不支持一级分区和二级分区的键相同，故二级分区表不支持迁移分区键相同的表。
 
 ## 3.3   遗留问题分析
 
@@ -104,8 +117,8 @@ openGauss-MySQL在线迁移工具支持在线迁移DDL语句，共计执行61条
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   | 36 | 0    | 26 | 10 | 0 |
-| 百分比 | 100% | 0%   | 72% | 28% | 0%  |
+| 数目   | 38 | 0    | 27 | 11 | 0 |
+| 百分比 | 100% | 0%   | 71% | 29% | 0%  |
 
 ###  3.3.3 问题单汇总
 
@@ -147,6 +160,8 @@ openGauss-MySQL在线迁移工具支持在线迁移DDL语句，共计执行61条
 | 34   | [I5DAN0](https://gitee.com/openGauss/openGauss-tools-chameleon/issues/I5DAN0?from=project-issue) | 主要     | MySQL在线对具有任意形式唯一约束的复合分区表create index，openGauss侧迁移失败 | 已验收   |
 | 35   | [I5FWAG](https://gitee.com/openGauss/openGauss-tools-chameleon/issues/I5FWAG?from=project-issue) | 次要     | MySQL在线创建表(添加无符号选项)，openGauss侧无符号约束未迁移 | 已取消   |
 | 36   | [I5EWGN](https://gitee.com/openGauss/openGauss-tools-chameleon/issues/I5EWGN?from=project-issue) | 次要     | 开启在线迁移，40min左右，MySQL侧执行业务，在线迁移报错       | 已验收   |
+| 37   | [I5OWH0](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I5OWH0?from=project-issue) | 主要     | 二级分区ADD PARTITION报错                                    | 已验收   |
+| 38   | [I5P0JK](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I5P0JK?from=project-issue) | 次要     | 【测试类型：资料】chameleon使用指南中第四节部分内容表述不准确 | 已验收   |
 
 # 4     测试执行
 
@@ -230,6 +245,14 @@ openGauss-MySQL在线迁移工具支持在线迁移DDL语句，共计执行61条
 | ------------------------------------------------------------ | ------------------------------------------- |
 | 1.chameleon开启在线迁移<br />chameleon start_replica --config default --source mysql<br />2.MySQL侧创删除唯一索引<br />3.openGauss侧查询表信息 | 执行2条用例，发现1个bug，现已修复且验收通过 |
 
+### 4.1.14 资料测试
+
+| 测试步骤                                         | 测试结果                       |
+| ------------------------------------------------ | ------------------------------ |
+| 1.校验资料描述是否完整准确，示例执行结果是否正确 | 发现1个bug，现已修复且验收通过 |
+
+
+
 ## 4.2  测试执行统计数据
 
 | 版本名称                       | 测试用例数 | 用例执行结果              | 发现问题单数 |
@@ -238,13 +261,13 @@ openGauss-MySQL在线迁移工具支持在线迁移DDL语句，共计执行61条
 | openGauss 3.0.0 build 8d13b3e3 | 61         | Passed：44<br/>Failed：17 | 17           |
 | openGauss 3.0.0 build 038d63d6 | 61         | Passed：61<br/>Failed：0  | 0            |
 
-* 累计发现缺陷单36个，35个已解决且回归通过，1个非问题已取消。
-* 缺陷密度：35(缺陷个数) / 1.42(代码行数) = 25.4(个/kloc)。
+* 累计发现缺陷单38个，37个已解决且回归通过，1个非问题已取消。
+* 缺陷密度：37(缺陷个数) / 1.42(代码行数) = 26.1(个/kloc)。
 
 ## 4.4   后续测试建议
 
 -  待openGauss支持哈希分区表切割分区、合成分区、添加和删除分区，列表分区表支持切割分区、合成分区后，验证分区表添加分区、删除分区、切割分区、合成分区功能是否迁移成功。
--  待openGauss支持二级分区表中的COALESCE/REORGANIZE/EXCHANGE功能，验证ALTER分区表COALESCE PARTITION、ALTER分区表REORGANIZE PARTITION、ALTER分区表EXCHANGE PARTITION功能是否迁移成功。
+-  待openGauss支持二级分区表中的合并分区、重组分区、交换分区功能，验证二级分区表合并分区、重组分区、交换分区功能是否迁移成功。
 
 # 5     附件
 
