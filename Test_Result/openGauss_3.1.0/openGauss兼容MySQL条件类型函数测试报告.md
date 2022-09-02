@@ -84,7 +84,7 @@ openGauss兼容mysql条件类型函数共计执行用例176条，主要覆盖了
 | ---- | ------------------------------------------------------------ | -------- | ---------------------------------------------------- | -------- |
 | 1    | [I5E0YN](https://gitee.com/opengauss/Plugin/issues/I5E0YN?from=project-issue) | 次要     | gs_interval函数参数为timestamp类型时报错             | 已验收   |
 | 2    | [I5E369](https://gitee.com/opengauss/Plugin/issues/I5E369?from=project-issue) | 次要     | gs_interval函数参数为空格时报错                      | 已验收   |
-| 3    | [I5E479](https://gitee.com/opengauss/Plugin/issues/I5E479?from=project-issue) | 次要     | gs_interval等5个函数select执行200万次，执行时间过长  | 已验收   |
+| 3    | [I5E479](https://gitee.com/opengauss/Plugin/issues/I5E479?from=project-issue) | 次要     | gs_interval等5个函数select执行200万次，执行时间过长  | 已取消   |
 | 4    | [I5FHJ0](https://gitee.com/opengauss/Plugin/issues/I5FHJ0?from=project-issue) | 次要     | ifnull等4个条件类型函数在插件仓里没有说明文档        | 已验收   |
 | 5    | [I5E2UH](https://gitee.com/opengauss/Plugin/issues/I5E2UH?from=project-issue) | 次要     | coalesce函数部分结果返回错误                         | 已取消   |
 | 6    | [I5E2XF](https://gitee.com/opengauss/Plugin/issues/I5E2XF?from=project-issue) | 次要     | ifnull函数参数为二进制类型和布尔类型时，部分结果报错 | 已取消   |
