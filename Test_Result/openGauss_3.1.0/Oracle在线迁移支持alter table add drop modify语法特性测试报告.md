@@ -9,6 +9,7 @@
 | ---------- | -------- | -------------------- | ---------- |
 | 2022-09-01 | 1.0      | 特性测试报告初稿完成 | lizhuo9527 |
 | 2022-09-02 | 1.1      | 修改特性测试报告     | lizhuo9527 |
+| 2022-09-03 | 1.2      | 修改特性测试报告     | lizhuo9527 |
 
 关键词： 
 
@@ -139,7 +140,7 @@ Oracle在线迁移支持DDL语句add/drop/modify语法共计执行33条用例，
 
 | 测试步骤                                                     | 测试结果                                               |
 | ------------------------------------------------------------ | ------------------------------------------------------ |
-| 1. add/drop/modify primary key<br />2. add/drop/modifyforeign key<br />3. add/drop/modify unique<br />4. add/drop/modify check | 执行4条用例，<br />共发现1个bug，1条现已修复且验收通过 |
+| 1. add/drop/modify primary key<br />2. add/drop/modify foreign key<br />3. add/drop/modify unique<br />4. add/drop/modify check | 执行4条用例，<br />共发现1个bug，1条现已修复且验收通过 |
 
 #### 4.1.1.5 drop column cascade constraints强制删除字段测试
 
@@ -164,17 +165,17 @@ Oracle在线迁移支持DDL语句add/drop/modify语法共计执行33条用例，
 | 版本名称                                                     | 测试用例数 | 用例执行结果              | 发现问题单数 |
 | ------------------------------------------------------------ | ---------- | ------------------------- | ------------ |
 | openGauss 3.0.0 build 02c14696<br/>onlineMigration v1.0 dbbcb9a | 33         | Passed：27<br />Failed：6 | 5            |
-| openGauss 3.0.0 build 02c14696<br/>onlineMigration v1.0 fb0500b | 6          | Passed：6<br />Failed：0  | 0            |
+| openGauss 3.0.0 build 02c14696<br/>onlineMigration v1.0 fb0500b | 33         | Passed：33<br />Failed：0 | 0            |
 
 数据项说明
 
 1. 共发现5个问题，5条已修改并验证通过
 2. 失败用例已在后续问题修复后，回归issue执行通过
-3. 缺陷密度：5个(缺陷个数)/1.53kloc(代码行数)=3.27(个/kloc)
+3. 缺陷密度：5个(缺陷个数)/1.53kloc(代码行数)=3.3(个/kloc)
 
 ## 4.3   后续测试建议
 
-1. 关注各对象名大小写混合使用情况下，工具的迁移结果
+1. 关注onlineMigration工具控制大小写开关的参数`--smartConversionOfObjectNames`，验证添加该参数后的执行结果
 
 # 5     附件
 
