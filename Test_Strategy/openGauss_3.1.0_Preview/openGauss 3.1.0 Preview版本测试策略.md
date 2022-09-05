@@ -5,11 +5,11 @@
 
 修订记录
 
-| 日期     | 修订版本 | CR号 | 修改  章节 | 修改描述         | 作者                      |
-| -------- | -------- | ---- | ---------- | ---------------- | ------------------------- |
-| 2022.8.4 | 1.0      |      |            | 版本测试策略初稿 | yansong_lee<br>zhangao_za |
-|          |          |      |            |                  |                           |
-|          |          |      |            |                  |                           |
+| 日期     | 修订版本 | CR号 | 修改  章节                     | 修改描述         | 作者                      |
+| -------- | -------- | ---- | ------------------------------ | ---------------- | ------------------------- |
+| 2022.8.4 | 1.0      |      |                                | 版本测试策略初稿 | yansong_lee<br>zhangao_za |
+| 2022.9.5 | 2.0      |      | 测试分层策略；测试分析设计策略 | 补充相关策略     | yansong_lee               |
+|          |          |      |                                |                  |                           |
 
 
 目 录
@@ -59,13 +59,15 @@ openGauss是一款全面友好开放，携手伙伴共同打造的企业级开�
 
 ## 版本背景
 
-openGauss 3.1.0 Preview版本是openGauss第二个创新版本，维护周期为0.5年，面向openGauss的场景化、工具链和兼容性场景，提供更多新特性和功能，给开发者和用户带来全新的体验，服务更多的领域和更多的用户。除了修复bug和cve漏洞外，本次发布的重大特性有：
+openGauss 3.1.0 Preview版本是openGauss第二个创新版本，维护周期为0.5年，面向openGauss的场景化、工具链和兼容性场景，提供更多新特性和功能，给开发者和用户带来全新的体验，服务更多的领域和更多的用户。除了修复bug和cve漏洞外，本次发布的有：
 
 1. 【openGauss 3.1.0 Preview】支持基于共享存储、共享内存的资源池化架构，满足实时一致性的一写多读
 2. 【openGauss 3.1.0 Preview】集成openLookeng，提供集群AP能力
 3. 【openGauss 3.1.0 Preview】CM管理ShardingSphere Proxy和注册中心，支持异常情况重新拉起
 4. 【openGauss 3.1.0 Preview】轻量化版本支持发布订阅功能
 5. 【openGauss 3.1.0 Preview】行存表压缩能力增强（高效压缩算法）
+
+等重大特性。
 
 ## 需求范围
 
@@ -110,19 +112,67 @@ openGauss 3.1.0 Preview版本是openGauss第二个创新版本，维护周期为
 
 # 测试分层策略
 
-| 需求 | 开发主体 | 测试主体 | 验证策略 |
-| ---- | -------- | -------- | -------- |
-|      |          |          |          |
-|      |          |          |          |
+| 序号 | 需求                                                         | 开发主体           | 测试主体 | 验证策略 |
+| ---- | ------------------------------------------------------------ | ------------------ | -------- | -------- |
+| 1    | 【openGauss 3.1.0 Preview】支持基于共享存储、共享内存的资源池化架构，满足实时一致性的一写多读 | StorageEngine      | QA       |          |
+| 2    | 【openGauss 3.1.0 Preview】集成openLookeng，提供集群AP能力   | Plugin             | QA       |          |
+| 3    | 【openGauss 3.1.0 Preview】CM管理ShardingSphere Proxy和注册中心，支持异常情况重新拉起 | CM                 | QA       |          |
+| 4    | 【openGauss 3.1.0 Preview】轻量化版本支持发布订阅功能        | StorageEngine      | QA       |          |
+| 5    | 【openGauss 3.1.0 Preview】行存表压缩能力增强（高效压缩算法） | StorageEngine      | QA       |          |
+| 6    | 【openGauss 3.1.0 Preview】发布订阅能力增强，支持基础数据同步和备份恢复 | SQLEngine          | QA       |          |
+| 7    | 【openGauss 3.1.0 Preview】支持基于主备双集群流式复制的异地容灾方案 | StorageEngine      | QA       |          |
+| 8    | 【openGauss 3.1.0 Preview】主机支持记录满足多数派日志的LSN，gs_ctl build支持拒绝目标LSN比此LSN要小的增量build | StorageEngine      | QA       |          |
+| 9    | 【openGauss 3.1.0 Preview】CM开放状态查询和推送能力，支持用户应用/中间件感知当前主备角色 | CM                 | QA       |          |
+| 10   | 【openGauss 3.1.0 Preview】CM支持用户自定义组件监控和管理    | CM                 | QA       |          |
+| 11   | 【openGauss 3.1.0 Preview】DCF策略化多数派                   | DCF                | QA       |          |
+| 12   | 【openGauss 3.1.0 Preview】postgresql_fdw执行性能提升，支持聚合和条件下推到远端执行功能 | Plugin             | QA       |          |
+| 13   | 【openGauss 3.1.0 Preview】基础算子性能提升                  | SQLEngine          | QA       |          |
+| 14   | 【openGauss 3.1.0 Preview】DBMind自治运维平台                | AI                 | QA       |          |
+| 15   | 【openGauss 3.1.0 Preview】智能优化器                        | AI                 | QA       |          |
+| 16   | 【openGauss 3.1.0 Preview】支持细粒度Any权限增强             | SecurityTechnology | QA       |          |
+| 17   | 【openGauss 3.1.0 Preview】MySQL全量迁移性能提升             | Tools              | QA       |          |
+| 18   | 【openGauss 3.1.0 Preview】支持MySQL增量迁移                 | Tools              | QA       |          |
+| 19   | 【openGauss 3.1.0 Preview】支持数据全量&增量校验             | Tools              | QA       |          |
+| 20   | 【openGauss 3.1.0 Preview】数据类型兼容                      | SQLEngine          | QA       |          |
+| 21   | 【openGauss 3.1.0 Preview】系统函数兼容                      | SQLEngine          | QA       |          |
+| 22   | 【openGauss 3.1.0 Preview】DDL兼容                           | SQLEngine          | QA       |          |
+| 23   | 【openGauss 3.1.0 Preview】DML兼容                           | SQLEngine          | QA       |          |
+| 24   | 【openGauss 3.1.0 Preview】PL/SQL兼容                        | SQLEngine          | QA       |          |
+| 25   | 【openGauss 3.1.0 Preview】SHOW语法兼容                      | SQLEngine          | QA       |          |
+| 26   | 【openGauss 3.1.0 Preview】其他语法兼容                      | SQLEngine          | QA       |          |
 
 # 测试分析设计策略
 
 ## 新增feature测试设计策略
 
-| 序号 | Feature | 重点 | 设计思路 | 备注 |
-| ---- | ------- | ---- | -------- | ---- |
-|      |         |      |          |      |
-|      |         |      |          |      |
+| 序号 | Feature                                                      | 重点 | 设计思路 | 备注 |
+| ---- | ------------------------------------------------------------ | ---- | -------- | ---- |
+| 1    | 【openGauss 3.1.0 Preview】支持基于共享存储、共享内存的资源池化架构，满足实时一致性的一写多读 |      |          |      |
+| 2    | 【openGauss 3.1.0 Preview】集成openLookeng，提供集群AP能力   |      |          |      |
+| 3    | 【openGauss 3.1.0 Preview】CM管理ShardingSphere Proxy和注册中心，支持异常情况重新拉起 |      |          |      |
+| 4    | 【openGauss 3.1.0 Preview】轻量化版本支持发布订阅功能        |      |          |      |
+| 5    | 【openGauss 3.1.0 Preview】行存表压缩能力增强（高效压缩算法） |      |          |      |
+| 6    | 【openGauss 3.1.0 Preview】发布订阅能力增强，支持基础数据同步和备份恢复 |      |          |      |
+| 7    | 【openGauss 3.1.0 Preview】支持基于主备双集群流式复制的异地容灾方案 |      |          |      |
+| 8    | 【openGauss 3.1.0 Preview】主机支持记录满足多数派日志的LSN，gs_ctl build支持拒绝目标LSN比此LSN要小的增量build |      |          |      |
+| 9    | 【openGauss 3.1.0 Preview】CM开放状态查询和推送能力，支持用户应用/中间件感知当前主备角色 |      |          |      |
+| 10   | 【openGauss 3.1.0 Preview】CM支持用户自定义组件监控和管理    |      |          |      |
+| 11   | 【openGauss 3.1.0 Preview】DCF策略化多数派                   |      |          |      |
+| 12   | 【openGauss 3.1.0 Preview】postgresql_fdw执行性能提升，支持聚合和条件下推到远端执行功能 |      |          |      |
+| 13   | 【openGauss 3.1.0 Preview】基础算子性能提升                  |      |          |      |
+| 14   | 【openGauss 3.1.0 Preview】DBMind自治运维平台                |      |          |      |
+| 15   | 【openGauss 3.1.0 Preview】智能优化器                        |      |          |      |
+| 16   | 【openGauss 3.1.0 Preview】支持细粒度Any权限增强             |      |          |      |
+| 17   | 【openGauss 3.1.0 Preview】MySQL全量迁移性能提升             |      |          |      |
+| 18   | 【openGauss 3.1.0 Preview】支持MySQL增量迁移                 |      |          |      |
+| 19   | 【openGauss 3.1.0 Preview】支持数据全量&增量校验             |      |          |      |
+| 20   | 【openGauss 3.1.0 Preview】数据类型兼容                      |      |          |      |
+| 21   | 【openGauss 3.1.0 Preview】系统函数兼容                      |      |          |      |
+| 22   | 【openGauss 3.1.0 Preview】DDL兼容                           |      |          |      |
+| 23   | 【openGauss 3.1.0 Preview】DML兼容                           |      |          |      |
+| 24   | 【openGauss 3.1.0 Preview】PL/SQL兼容                        |      |          |      |
+| 25   | 【openGauss 3.1.0 Preview】SHOW语法兼容                      |      |          |      |
+| 26   | 【openGauss 3.1.0 Preview】其他语法兼容                      |      |          |      |
 
 ## 继承feature/组件测试设计策略
 
@@ -207,12 +257,12 @@ openGauss社区开源版本需要满足安全基本要求，以达到安全合�
 
 | **指标大项** | **指标小项**                                                 | **指标值** | **说明**                              |
 | ------------ | ------------------------------------------------------------ | ---------- | ------------------------------------- |
-| TPCC         | 2P（Taishan 200 2280 6426）单节点 1H                         | 150万      | 与Release基线数据差异小于5%以内可接受 |
-|              | 2P（Taishan 200 2280 6426）单节点 8H                         | 150万      | 与Release基线数据差异小于5%以内可接受 |
-|              | 2P（Taishan 200 2280 6426）一主一备 1H                       | 120万      | 与Release基线数据差异小于5%以内可接受 |
+| TPCC         | 2P（Taishan 200 2280 7260）单节点 1H                         | 150万      | 与Release基线数据差异小于5%以内可接受 |
+|              | 2P（Taishan 200 2280 7260）单节点 8H                         | 150万      | 与Release基线数据差异小于5%以内可接受 |
+|              | 2P（Taishan 200 2280 7260）一主一备 1H                       | 120万      | 与Release基线数据差异小于5%以内可接受 |
 |              | 4P（Taishan 200 2280 7260）单节点 1H                         | 230万      | 与Release基线数据差异小于5%以内可接受 |
 |              | 2P（Taishan 200 2280 5220）单节点 1H                         | 100万      | 与Release基线数据差异小于5%以内可接受 |
-|              | 分布式OLTP，TPCC线性度0.8，2P（Taishan 200 2280 6426）16节点 1H | 1000万     | 与Release基线数据差异小于5%以内可接受 |
+|              | 分布式OLTP，TPCC线性度0.8，2P（Taishan 200 2280 7260）16节点 1H | 1000万     | 与Release基线数据差异小于5%以内可接受 |
 | RTO          | 一主两同步备failover                                         | 10s        | 与Release基线数据差异小于5%以内可接受 |
 
 ### 兼容性测试
@@ -221,7 +271,7 @@ openGauss社区开源版本需要满足安全基本要求，以达到安全合�
 
 | Domain     | 测试策略                                                     |
 | ---------- | ------------------------------------------------------------ |
-| 升级路径   | 1.升级路径<font color=red> **仍需确认升级路径**</font>><br>--支持openGauss 1.1.0升级到openGauss 3.1.0；<br/>--支持openGauss 2.0.0升级到openGauss 3.1.0；<br/>--支持openGauss 2.0.1升级到openGauss 3.1.0；<br/>--支持openGauss 2.1.0升级到openGauss 3.1.0；<br/>--支持openGauss 3.0.0升级到openGauss 3.1.0<br/>2.升级失败或者升级未提交，可以回滚到原版本<br>3.故障场景下，环境恢复后升级可以重入并升级成功 |
+| 升级路径   | 1.升级路径<br>--支持openGauss 2.0.0升级到openGauss 3.1.0；<br/>--支持openGauss 2.0.1升级到openGauss 3.1.0；<br/>--支持openGauss 3.0.0升级到openGauss 3.1.0<br/>2.升级失败或者升级未提交，可以回滚到原版本<br>3.故障场景下，环境恢复后升级可以重入并升级成功 |
 | 升级兼容性 | 关注升级后特性功能运行正常                                   |
 
 #### 硬件兼容
