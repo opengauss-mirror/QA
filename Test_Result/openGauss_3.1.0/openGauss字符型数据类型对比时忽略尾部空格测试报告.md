@@ -38,7 +38,7 @@ openGauss在兼容b库下，可以实现对VARCHAR(n)，CHARACTER VARYING(n)，V
 
 | 环境信息 | 配置信息                                                     | 备注 |
 | :------- | :----------------------------------------------------------- | :---- |
-| 虚拟机   | CPU：Intel(R) Xeon(R) Gold 6161 8核<br />内存：1*32GB<br />硬盘：100G<br />OS：openEluer release 20.03(LTS) |      |
+| 虚拟机   | CPU：Intel(R) Xeon(R) Gold 6161 8核<br />内存：32GB<br />硬盘：100G<br />OS：openEluer release 20.03(LTS) |      |
 
 # 3     测试结论概述
 
