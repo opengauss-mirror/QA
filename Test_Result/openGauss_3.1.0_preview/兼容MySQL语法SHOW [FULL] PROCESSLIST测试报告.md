@@ -10,7 +10,7 @@
 | 2022-08-12 | 1.0      | 特性测试报告初稿完成 | lujianpei001 |
 | 2022-08-16 | 1.1      | 根据评审意见修改     | lujianpei001 |
 | 2022-08-30 | 1.2      | 再次根据评审意见修改 | lujianpei001 |
-
+| 2022-09-07 | 1.3      | 修改缺陷密度单位与测试结论 | lihongji |
  关键词： 
 
 dolphin插件，SHOW [FULL] PROCESSLIST，兼容B库，MySQL
