@@ -95,7 +95,7 @@ openGauss支持pgfincore插件共计执行60条用例，主要覆盖了功能测
 | 1    | [I5PCGC](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PCGC) | 主要 | 调用函数当表样为分区表时，回显的relpath的oid值和分区表的oid值对应不上 | 已验收 |
 | 2    | [I5PAK0](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PAK0) | 主要 | 使用select \* from pgfadvise_loader('pgbench_accounts', 0, true, true, B'111000')函数 ，第一项参数为函数支持的表样名称，第五项参数是databit字段值，第五项参数和第一项参数之间缺少对应关系 | 已验收 |
 | 3    | [I5PAIE](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PAIE) | 次要 | 使用select \* from pgfincore(‘test’, true)函数第二项参数输入布尔类型来实现databit字段的激活，当表样中没有插入数据，表样不占用内存的时候，使用true参数激活databit字段不回显数值，（只有表样中插入数据占用内存的时候回显数值） | 已验收 |
-| 4    | [I5PAGF](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PAGF) | 次要 | 使用select \* from pgfincore(‘test’, true)函数第二项参数输入布尔类型来实现databit字段的激活，然而opengauss中，真值的有效文本除了true参数值，还有整数型的输入，输入范围（-2^63-1~-1;1~2^63）;假值的有效文本除了false参数值,还有0值 | 已验收 |
+| 4    | [I5PAGF](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PAGF) | 次要 | 使用select \* from pgfincore(‘test’, true)函数第二项参数输入布尔类型来实现databit字段的激活，然而opengauss中，真值的有效文本除了true参数值，还有整数型的输入，输入范围（-2^63-1~-1,1~2^63）;假值的有效文本除了false参数值,还有0值 | 已验收 |
 | 5    | [I5P6SJ](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5P6SJ) | 次要 | select \* from pgfadvise_loader('pgbench_accounts', 0, true, true, B'111000');对于不支持的对象分区表报错信息有误 | 已验收 |
 
 # 4     测试执行
