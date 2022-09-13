@@ -27,7 +27,7 @@
 
 # 1     特性概述
 
-pgfincore是插件的名称，该插件总共包含12个函数。其中pgsysconf（包含2个函数）这个函数输出操作系统块的大小，操作系统页面缓冲区中空闲页面的数量；pgfincore（包含2个函数）函数提供页面缓存的信息；pgadvise函数（总共包含7个函数）用来将占用磁盘的数据刷入或刷出内存，由于内存不占用数据库的buffer，刷入内存可以提升数据库的查询性能。
+pgfincore是插件的名称，该插件总共包含12个函数。其中pgsysconf（包含2个函数）这个函数输出操作系统块的大小，操作系统页面缓冲区中空闲页面的数量；pgfincore（包含2个函数）函数提供页面缓存的信息；pgfincore_drawer函数，渲染返回的databit字段值；pgadvise函数（总共包含7个函数）用来将占用磁盘的数据刷入或刷出内存，由于内存不占用数据库的buffer，刷入内存可以提升数据库的查询性能。
 
 # 2     特性测试信息
 
@@ -73,7 +73,7 @@ openGauss支持pgfincore插件共计执行60条用例，主要覆盖了功能测
 
 4. 将表样刷入刷出内存时，同时将表样上的索引信息刷入刷出内存
 
-   ## 3.3 遗留问题分析
+## 3.3 遗留问题分析
 
 ### 3.3.1 遗留问题影响以及规避措施
 
@@ -95,7 +95,7 @@ openGauss支持pgfincore插件共计执行60条用例，主要覆盖了功能测
 | 1    | [I5PCGC](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PCGC) | 主要 | 调用函数当表样为分区表时，回显的relpath的oid值和分区表的oid值对应不上 | 已验收 |
 | 2    | [I5PAK0](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PAK0) | 主要 | 使用select \* from pgfadvise_loader('pgbench_accounts', 0, true, true, B'111000')函数 ，第一项参数为函数支持的表样名称，第五项参数是databit字段值，第五项参数和第一项参数之间缺少对应关系 | 已验收 |
 | 3    | [I5PAIE](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PAIE) | 次要 | 使用select \* from pgfincore(‘test’, true)函数第二项参数输入布尔类型来实现databit字段的激活，当表样中没有插入数据，表样不占用内存的时候，使用true参数激活databit字段不回显数值，（只有表样中插入数据占用内存的时候回显数值） | 已验收 |
-| 4    | [I5PAGF](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PAGF) | 次要 | 使用select \* from pgfincore(‘test’, true)函数第二项参数输入布尔类型来实现databit字段的激活，然而opengauss中，真值的有效文本除了true参数值，还有整数型的输入，输入范围（1~2^63-1,-1~-2^63-1）;假值的有效文本除了false参数值,还有0值 | 已验收 |
+| 4    | [I5PAGF](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5PAGF) | 次要 | 使用select \* from pgfincore(‘test’, true)函数第二项参数输入布尔类型来实现databit字段的激活，然而opengauss中，真值的有效文本除了true参数值，还有整数型的输入，输入范围（-2^63-1~-1;1~2^63）;假值的有效文本除了false参数值,还有0值 | 已验收 |
 | 5    | [I5P6SJ](https://e.gitee.com/opengaussorg/projects/379702/bugs/table?%2Fissue=I5P6SJ&issue=I5P6SJ) | 次要 | select \* from pgfadvise_loader('pgbench_accounts', 0, true, true, B'111000');对于不支持的对象分区表报错信息有误 | 已验收 |
 
 # 4     测试执行
@@ -159,7 +159,7 @@ openGauss支持pgfincore插件共计执行60条用例，主要覆盖了功能测
 
 说明：
 
-1.openGauss 3.0.0 build  b07c959b版本测试时发现5个问题。
+1.openGauss 3.0.0 build b07c959b版本测试时发现5个问题。
 
 2.openGauss 3.1.0 build b4215eeb版本回归5个问题单，验收通过。
 
