@@ -14,11 +14,11 @@
 
 关键词： 
 
-debezium；kafka；onlineMigration；Oracle；openGauss；在线迁移add/drop/alter约束语法
+debezium；kafka；onlineMigration；openGauss；在线迁移add/drop/alter约束语法
 
 摘要：
 
-在线迁移工具由Oracle（生产端），debezium，kafka，onlineMigration及openGauss（消费端）这几部分组成。本次测试针对迁移工具支持DDL语句的add/drop/alter约束语法，本文档主要介绍Oracle-openGauss在线迁移工具支持DDL语句add/drop/alter约束语法特性测试结果。
+在线迁移工具由O*（生产端），debezium，kafka，onlineMigration及openGauss（消费端）这几部分组成。本次测试针对迁移工具支持DDL语句的add/drop/alter约束语法，本文档主要介绍在线迁移工具支持DDL语句add/drop/alter约束语法特性测试结果。
 
 缩略语清单：
 
@@ -28,33 +28,29 @@ debezium；kafka；onlineMigration；Oracle；openGauss；在线迁移add/drop/a
 
 # 1     特性概述
 
-openGauss在兼容A库情形下，依次开启kafka、kafka_connector、onlineMigration工具，由debezium监控Oracle中DDL及DML语句的变化并把记录捕捉到kafak的topic中，然后通过onlineMigration消费topic中的记录并迁移到openGauss数据库中，这样就完成从Oracle到openGauss的在线迁移。
+openGauss在兼容A库情形下，依次开启kafka、kafka_connector、onlineMigration工具，由debezium监控O*中DDL及DML语句的变化并把记录捕捉到kafak的topic中，然后通过onlineMigration消费topic中的记录并迁移到openGauss数据库中，这样就完成到openGauss的在线迁移。
 
-本次特性支持DDL语句的add/drop/alter约束语法，即在create table迁移完成后，通过alter table add/drop constraint语句执行添加、删除primary key、foreign key、unique、check、not null、default约束操作后，可以顺利的由Oracle端迁移至openGauss端，并使得约束在openGauss端生效，且不影响insert、update、delete语句的迁移。
+本次特性支持DDL语句的add/drop/alter约束语法，即在create table迁移完成后，通过alter table add/drop constraint语句执行添加、删除primary key、foreign key、unique、check、not null、default约束操作后，可以顺利的由O*端迁移至openGauss端，并使得约束在openGauss端生效，且不影响insert、update、delete语句的迁移。
 
 # 2     特性测试信息
-
-特性测试的版本信息及测试时间、测试轮次
 
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
 | ------------------------------ | ------------ | ------------ |
 | openGauss 3.0.0 build 02c14696 | 2022-06-20   | 2022-07-29   |
-| Oracle version 19.3.0.0.0      | 2022-06-20   | 2022-07-29   |
+| O* version 19.3.0.0.0          | 2022-06-20   | 2022-07-29   |
 | kafka v2.13-2.8.1              | 2022-06-20   | 2022-07-29   |
 | debezium v1.8.1                | 2022-06-20   | 2022-07-29   |
 | onlineMigration v1.0           | 2022-06-20   | 2022-07-29   |
 
-特性测试的硬件环境信息
-
-| 硬件型号       | 硬件配置信息                                                 | 备注 |
-| -------------- | ------------------------------------------------------------ | ---- |
-| OpenStack Nova | CPU:  Intel(R) Xeon(R) Platinum 8378A CPU @ 3.00GHz<br>内存：32GB<br>硬盘：1000G<br>OS：Linux version 3.10.0-1160.53.1.el7.x86_64 (Red Hat 4.8.5-44)<br>文件系统：XFS |      |
+| 硬件型号 | 硬件配置信息                                                 | 备注 |
+| -------- | ------------------------------------------------------------ | ---- |
+| 虚拟机   | CPU:  Intel(R) Xeon(R) Platinum 8378A CPU @ 3.00GHz<br>内存：32GB<br>硬盘：1000G<br>OS：Linux version 3.10.0-1160.53.1.el7.x86_64 (Red Hat 4.8.5-44)<br>文件系统：XFS |      |
 
 # 3     测试结论概述
 
 ## 3.1   测试整体结论
 
-Oracle在线迁移支持DDL约束语句alter table add/drop/alter约束语法共计执行134条用例，主要覆盖了功能测试及资料测试。功能测试主要包括以下7个方面：
+O*在线迁移支持DDL约束语句alter table add/drop/alter约束语法共计执行134条用例，主要覆盖了功能测试及资料测试。功能测试主要包括以下7个方面：
 
  	1. 各种约束类型，如单一、复合的主外键、unique、check约束，外键的on delete cascade、on delete set null及no action参数，default约束的不同数据类型，check约束的表达式等；
  	2. 同一张表的同一字段及不同字段add/drop/alter多个约束；
@@ -66,7 +62,7 @@ Oracle在线迁移支持DDL约束语句alter table add/drop/alter约束语法共
 
 资料测试主要验证资料的描述的准确性以及示例的正确性。
 
-发现问题共计21条，其中19条问题已解决并回归通过，1条非问题取消，1条经CCB评审后挂起。该特性遗留风险点1个，即在线迁移过程中，Oracle的对象名（表名、列名、约束名）在未加双引号且大小写混合使用的情形下，onlineMigration工具因对象名的大小写识别问题导致添加约束的DDL语句迁移失败。因此在该工具使用中，需要将SQL语句中各对象名两端添加双引号，以此规避该问题，保证迁移结果准确无误。其余项无遗留风险，整体质量良好。
+发现问题共计21条，其中19条问题已解决并回归通过，1条非问题取消，1条经CCB评审后挂起。该特性遗留风险点1个，即在线迁移过程中，O*的对象名（表名、列名、约束名）在未加双引号且大小写混合使用的情形下，onlineMigration工具因对象名的大小写识别问题导致添加约束的DDL语句迁移失败。因此在该工具使用中，需要将SQL语句中各对象名两端添加双引号，以此规避该问题，保证迁移结果准确无误。其余项无遗留风险，整体质量良好。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -83,8 +79,8 @@ Oracle在线迁移支持DDL约束语句alter table add/drop/alter约束语法共
 
 ## 3.2   约束说明
 
-1. openGauss为兼容A库的情形，Oracle版本为Oracle version 19.3.0.0.0；
-2. Oracle及openGauss两端数据库需有同名schema，如“C##ROMA_LOGMINER”；
+1. openGauss为兼容A库的情形，O*版本为19.3.0.0.0；
+2. O*及openGauss两端数据库需有同名schema，如“C##ROMA_LOGMINER”；
 3. 依次开启zookeeper、kafka、kafka_connector、onlineMigration工具并保证正常运行；
 4. 启动onlineMigration时，参数--smartConversionOfObjectNames表示大小写转换开关，启动命令包含该参数则大小写转换开关开启，否则开关关闭。目前，约束（create table包含约束及add/drop/alter约束）暂不支持大小写转换开关；
 5. 各对象名（表名、字段名、约束名等）两端需加上双引号，保证数据库迁移结果的准确；
@@ -137,55 +133,55 @@ Oracle在线迁移支持DDL约束语句alter table add/drop/alter约束语法共
 
 ### 4.1.1 功能测试
 
-| 测试步骤：                                                   | 测试结果                                                     |
+| 测试步骤                                                     | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1. 开启两端数据库并设置同名schema<br />2. 开启kafka、onlineMigration等工具 | 共执行134条用例<br />共发现21个bug，19条现已修复且验收通过<br />1条非问题取消，1条经CCB评审挂起 |
 
 #### 4.1.1.1 约束类型测试
 
-| 测试步骤：                                                   | 测试结果                                                |
+| 测试步骤                                                     | 测试结果                                                |
 | ------------------------------------------------------------ | ------------------------------------------------------- |
 | 1. 单一、复合的主外键、unique、check约束<br>2. 外键的on delete cascade、set null及no action参数<br>3. default约束的不同数据类型<br>4. check约束的表达式 | 共执行23条用例<br />共发现9个bug，9条现已修复且验收通过 |
 
 #### 4.1.1.2 同一张表的同一字段及不同字段add/drop/alter多个约束测试
 
-| 测试步骤：                                                   | 测试结果                                                  |
+| 测试步骤                                                     | 测试结果                                                  |
 | ------------------------------------------------------------ | --------------------------------------------------------- |
 | 1.  验证同一字段add/drop多个约束<br >2.  验证同一张表的不同字段add drop多个相同约束 | 共执行20条用例，<br />共发现3个bug，3条现已修复且验收通过 |
 
 #### 4.1.1.3 openGauss端存在同名表（手动建表）add/drop/alter约束测试
 
-| 测试步骤：                                                   | 测试结果                                      |
+| 测试步骤                                                     | 测试结果                                      |
 | ------------------------------------------------------------ | --------------------------------------------- |
 | 1. openGauss端手动创建同名表<br>2. 表结构相同、表结构不同<br>3. add/drop/alter约束 | 执行20条用例，未发现bug<br />执行结果符合预期 |
 
 #### 4.1.1.4 在openGauss端手动修改表结构（增删改字段）的情形测试
 
-| 测试步骤：                                            | 测试结果                                      |
+| 测试步骤                                              | 测试结果                                      |
 | ----------------------------------------------------- | --------------------------------------------- |
 | 1. 增删改字段名、数据类型 <br />2. 手动添加、删除约束 | 执行30条用例，未发现bug<br />执行结果符合预期 |
 
 #### 4.1.1.5 openGauss端表中手动添加违反约束的数据测试
 
-| 测试步骤：                                             | 测试结果                                        |
+| 测试步骤                                               | 测试结果                                        |
 | ------------------------------------------------------ | ----------------------------------------------- |
 | 1. 插入违反约束的数据<br>2. 在线迁移add/drop/alter约束 | 共执行11条用例，未发现bug<br />执行结果符合预期 |
 
 #### 4.1.1.6 已包含约束的表add/drop/alter约束情形测试
 
-| 测试步骤：                                            | 测试结果                                                |
+| 测试步骤                                              | 测试结果                                                |
 | ----------------------------------------------------- | ------------------------------------------------------- |
 | 1. openGauss端建表后手动添加约束<br />2. 执行迁移操作 | 共执行10条用例<br />共发现1个bug，1条现已修复且验收通过 |
 
 #### 4.1.1.7 对象名大小写混合使用测试
 
-| 测试步骤：                                                   | 测试结果                                                     |
+| 测试步骤                                                     | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1. 表名未加引号且大小写混用 <br />2. 列名、约束名未加引号且大小写混用 | 共执行10条用例<br />共发现4个bug，2条现已修复且验收通过<br />1条经CCB评审后挂起<br />1条非问题取消 |
 
 #### 4.1.1.8 DML迁移测试
 
-| 测试步骤：                             | 测试结果                                                |
+| 测试步骤                               | 测试结果                                                |
 | -------------------------------------- | ------------------------------------------------------- |
 | 1. 建表并添加约束 <br />2. DML语句迁移 | 共执行10条用例<br />共发现4个bug，4条现已修复且验收通过 |
 
@@ -208,7 +204,7 @@ Oracle在线迁移支持DDL约束语句alter table add/drop/alter约束语法共
 
 # 5     附件
 
-### 5.1 Oracle-openGauss在线迁移add/drop/alter约束语句执行过程示例
+### 5.1 O*-openGauss在线迁移add/drop/alter约束语句执行过程示例
 
 ```sql
 --step1:创建普通行存表 expect:创建表成功

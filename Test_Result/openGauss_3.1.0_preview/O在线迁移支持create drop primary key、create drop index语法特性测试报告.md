@@ -17,7 +17,7 @@ kafka；onlineMigration；debezium；在线迁移；DDL语句；create/drop prim
 
 摘要：
 
-在线迁移工具由Oracle（生产端），debezium，kafka， onlineMigration，openGauss（消费端）这几部分组成，本文档针对在线迁移工具支持DDL语句的create/drop primary key及create/drop index语法进行测试，并给出特性测试结论。
+在线迁移工具由O*（生产端），debezium，kafka， onlineMigration，openGauss（消费端）这几部分组成，本文档针对在线迁移工具支持DDL语句的create/drop primary key及create/drop index语法进行测试，并给出特性测试结论。
 
 缩略语清单：
 
@@ -27,7 +27,7 @@ kafka；onlineMigration；debezium；在线迁移；DDL语句；create/drop prim
 
 # 1     特性概述
 
-openGauss在兼容A库情形下，依次开启kafka、kafka_connector、onlineMigration工具，由debezium监控Oracle中DDL及DML语句的变化并把记录捕捉到kafak的topic中，然后通过onlineMigration消费topic中的记录并迁移到openGauss数据库中，这样就完成从Oracle到openGauss的在线迁移。
+openGauss在兼容A库情形下，依次开启kafka、kafka_connector、onlineMigration工具，由debezium监控O*中DDL及DML语句的变化并把记录捕捉到kafak的topic中，然后通过onlineMigration消费topic中的记录并迁移到openGauss数据库中，完成在线迁移。
 
 本次特性支持在线迁移create primary key、drop primary key、create index、drop index语法。
 
@@ -36,7 +36,7 @@ openGauss在兼容A库情形下，依次开启kafka、kafka_connector、onlineMi
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
 | ------------------------------ | ------------ | ------------ |
 | openGauss 3.0.0 build 02c14696 | 2022-08-24   | 2022-09-01   |
-| Oracle version 19.3.0.0.0      | 2022-08-24   | 2022-09-01   |
+| O* version 19.3.0.0.0          | 2022-08-24   | 2022-09-01   |
 | kafka v2.13-2.8.1              | 2022-08-24   | 2022-09-01   |
 | debezium v1.8.1                | 2022-08-24   | 2022-09-01   |
 | onlineMigration v1.0           | 2022-08-24   | 2022-09-01   |
@@ -49,7 +49,7 @@ openGauss在兼容A库情形下，依次开启kafka、kafka_connector、onlineMi
 
 ## 3.1   测试整体结论
 
-Oracle在线迁移支持DDL语句create/drop primary key及create/drop index语法共计执行52条用例，主要覆盖了功能测试及资料测试。功能测试主要覆盖以下9个方面：
+O*在线迁移支持DDL语句create/drop primary key及create/drop index语法共计执行52条用例，主要覆盖了功能测试及资料测试。功能测试主要覆盖以下9个方面：
 
 1. create [unique] index结合排序参数asc/desc，指定列表达式expression(Function-based index)的场景
 
@@ -82,7 +82,7 @@ Oracle在线迁移支持DDL语句create/drop primary key及create/drop index语�
 
    - --indexPrefix索引添加前缀功能
 
-9. Oracle多session执行多表DDL及DML场景
+9. O*多session执行多表DDL及DML场景
 
 资料测试主要验证资料的描述的准确性以及示例的正确性。
 
@@ -98,18 +98,18 @@ Oracle在线迁移支持DDL语句create/drop primary key及create/drop index语�
 | 功能测试 | 特殊场景验证，通过                                           |
 | 功能测试 | 前序已支持的功能验证，通过                                   |
 | 功能测试 | onlineMigration工具三个参数的验证，通过                      |
-| 功能测试 | Oracle多session执行多表DDL及DML场景验证，通过                |
+| 功能测试 | O*多session执行多表DDL及DML场景验证，通过                    |
 | 资料测试 | 资料描述准确，示例执行无误，整体质量良好                     |
 
 ## 3.2   约束说明
 
 1. openGauss数据库为兼容A库；
-2. Oracle数据库版本为19.3.0.0.0；
-3. Oracle及openGauss两端数据库需有同名schema，如“C##ROMA_LOGMINER”；
+2. O*数据库版本为19.3.0.0.0；
+3. O*及openGauss两端数据库需有同名schema，如“C##ROMA_LOGMINER”；
 4. 开启zookeeper、kafka、kafka_connector、onlineMigration工具并保证正常运行；
 5. 最后一次执行的DDL语句会置于onlineMigration的缓存中，需要DML语句驱动其迁移；
-6. Oracle中primary key及unique约束可以关联普通索引(B-Tree index)，但openGauss中primary key及unique约束必须关联唯一索引(unique index)；
-7. Oracle的Bitmap index、Domain index类型索引openGauss不支持，因此迁移至openGauss端转换为普通B_Tree索引；
+6. O*中primary key及unique约束可以关联普通索引(B-Tree index)，但openGauss中primary key及unique约束必须关联唯一索引(unique index)；
+7. O*的Bitmap index、Domain index类型索引openGauss不支持，因此迁移至openGauss端转换为普通B_Tree索引；
 8. 在线迁移工具暂不支持分区表迁移，因此基于分区表的索引Partitioned index不支持在线迁移；
 9. 关闭迁移工具后需更改kafka_connector连接名或清空/tmp下kafka日志
 
@@ -195,11 +195,11 @@ Oracle在线迁移支持DDL语句create/drop primary key及create/drop index语�
 | ------------------------------------------------------------ | ------------------------------------------ |
 | 1. --frombegining断点续传<br>2. --smartConversionOfObjectNames大小写转换开关<br>3. --indexPrefix索引添加前缀 | 执行3条用例，<br />未发现bug，结果符合预期 |
 
-#### 4.1.1.9 Oracle多session执行多表DDL及DML场景测试
+#### 4.1.1.9 O*多session执行多表DDL及DML场景测试
 
-| 测试步骤                                    | 测试结果                                   |
-| ------------------------------------------- | ------------------------------------------ |
-| 1. Oracle多开session<br>2. 三表DDL及DML迁移 | 执行1条用例，<br />未发现bug，结果符合预期 |
+| 测试步骤                                | 测试结果                                   |
+| --------------------------------------- | ------------------------------------------ |
+| 1. O*多开session<br>2. 三表DDL及DML迁移 | 执行1条用例，<br />未发现bug，结果符合预期 |
 
 ## 4.2   测试执行统计数据
 
@@ -220,10 +220,10 @@ Oracle在线迁移支持DDL语句create/drop primary key及create/drop index语�
 
 # 5     附件
 
-### 5.1 Oracle-openGauss在线迁移DDL语句执行过程示例
+### 5.1 O*-openGauss在线迁移DDL语句执行过程示例
 
 ```sql
---step1:Oracle创建表 expect:迁移成功
+--step1:O*创建表 expect:迁移成功
 create table c##roma_logminer.t_index_0001(
 	col1 int,
 	col2 varchar(50),
