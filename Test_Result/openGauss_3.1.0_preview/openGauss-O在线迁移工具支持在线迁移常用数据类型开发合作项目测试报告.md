@@ -125,7 +125,7 @@ openGauss在兼容A库情形下，依次开启kafka、kafka_connector、onlineMi
 | 序号 | issue号                                                      | 级别 | 问题简述                                                     | 状态   |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------ |
 | 1    | [I5QJJY](https://gitee.com/openGauss/openGauss-tools-onlineMigration/issues/I5QJJY?from=project-issue) | 次要 | 在线迁移工具插入含xmltype类型数据进行迁移，迁移至openGauss的数据类型与预期不符 | 已验收 |
-| 2    | [I5QJFG](https://gitee.com/openGauss/openGauss-tools-onlineMigration/issues/I5QJFG?from=project-issue) | 次要 | 执行资料中sdo_topo_geometry数据类型的用例，执行迁移失败      | 已取消 |
+| 2    | [I5QJFG](https://gitee.com/openGauss/openGauss-tools-onlineMigration/issues/I5QJFG?from=project-issue) | 次要 | 执行资料中sdo_topo_geometry数据类型的用例，执行迁移失败      | 已验收 |
 | 3    | [I5Q03A](https://gitee.com/openGauss/openGauss-tools-onlineMigration/issues/I5Q03A?from=project-issue) | 次要 | 补充完善onlineMigration及相关工具的资料                      | 已验收 |
 
 # 4     测试执行
