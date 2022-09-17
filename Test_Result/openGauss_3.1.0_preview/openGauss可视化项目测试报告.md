@@ -181,21 +181,21 @@ openGauss可视化工具DataShowGUI工具，共执行用例105个，提交问题
 * 缺陷密度：13(缺陷个数)/27.939kloc(代码行数)=0.47(个/kloc)
 
 # 5     附件
-1.柱状图图例![输入图片说明](../../images/%E6%8A%98%E7%BA%BF%E5%9B%BE.jpg)
-![输入图片说明](../../images/%E6%9F%B1%E7%8A%B6%E5%9B%BE.jpg)
+1.柱状图图例
+![输入图片说明](images/%E6%9F%B1%E7%8A%B6%E5%9B%BE.jpg)
 2.条形图图例
-![输入图片说明](../../images/%E6%9D%A1%E5%BD%A2%E5%9B%BE.jpg)
+![输入图片说明](images/%E6%9D%A1%E5%BD%A2%E5%9B%BE.jpg)
 3.折线图图例
-![输入图片说明](../../images/%E6%8A%98%E7%BA%BF%E5%9B%BE.jpg)
+![输入图片说明](images/%E6%8A%98%E7%BA%BF%E5%9B%BE.jpg)
 4.面积图图例
-![输入图片说明](../../images/%E9%9D%A2%E7%A7%AF%E5%9B%BE.jpg)
+![输入图片说明](images/%E9%9D%A2%E7%A7%AF%E5%9B%BE.jpg)
 5.散点图图例
-![输入图片说明](../../images/%E6%95%A3%E7%82%B9%E5%9B%BE.jpg)
+![输入图片说明](images/%E6%95%A3%E7%82%B9%E5%9B%BE.jpg)
 6.组合图示例
-![输入图片说明](../../images/%E7%BB%84%E5%90%88%E5%9B%BE.jpg)
+![输入图片说明](images/%E7%BB%84%E5%90%88%E5%9B%BE.jpg)
 7.饼状图示例
-![输入图片说明](../../images/%E9%A5%BC%E7%8A%B6%E5%9B%BE.jpg)
+![输入图片说明](images/%E9%A5%BC%E7%8A%B6%E5%9B%BE.jpg)
 8.雷达图示例
-![输入图片说明](../../images/%E9%9B%B7%E8%BE%BE%E5%9B%BE.jpg)
+![输入图片说明](images/%E9%9B%B7%E8%BE%BE%E5%9B%BE.jpg)
 9.3D散点图示例
-![输入图片说明](../../images/3D%E6%95%A3%E7%82%B9%E5%9B%BE.jpg)
+![输入图片说明](images/3D%E6%95%A3%E7%82%B9%E5%9B%BE.jpg)
