@@ -17,7 +17,7 @@ DataShowGUI、可视化数据
 
  摘要：
 
-本工具支持用户从openGauss数据库导入数据、支持用户上传利用Data Studio工具从openGauss数据库导出的CSV、Excel、TEXT文件，继而以柱状图、饼状图、折线图、散点图、组合图、条形图、面积图、雷达图以及3D曲面图进行展示。
+本工具支持用户从openGauss数据库导入数据、支持用户上传利用Data Studio工具从openGauss数据库导出的CSV、Excel、TEXT文件、或者其他满足格式要求的CSV、Excel、TEXT文件，继而以柱状图、饼状图、折线图、散点图、组合图、条形图、面积图、雷达图以及3D曲面图进行展示。
 
 缩略语清单：
 
