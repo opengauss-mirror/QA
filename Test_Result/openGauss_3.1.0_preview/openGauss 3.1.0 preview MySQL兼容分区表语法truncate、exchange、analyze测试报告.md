@@ -9,6 +9,7 @@
 | ---- | ----------- | -------- | ---- |
 | 2022-09-05 | 1.0 | 报告初稿 | zhanbiao.chen |
 | 2022-09-16 | 1.1 | 完善问题状态、测试结论 | zhanbiao.chen |
+| 2022-09-22 | 1.2 | 根据检视意见修改 | zhanbiao.chen |
 
 关键词：兼容B库，dolphin插件，truncate，exchange，analyze
 
@@ -60,7 +61,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL分区表�
 
 # 2     特性测试信息
 
-测试软件环境
+被测对象的版本信息和测试的时间
 
 | 版本名称 | 测试起始时间 | 测试结束时间 |
 | -------- | ------------ | ------------ |
@@ -68,11 +69,11 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL分区表�
 | openGauss 3.1.0 build 0b50eccc |  2022-09-01 | 2022-09-16  |
 | dolphin 1.0 | 2022-09-01 | 2022-09-16  |
 
-描述特性测试的硬件环境信息
+特性测试的环境信息
 
 | 硬件型号 | 硬件配置信息 | 备注 |
 | -------- | ------------ | ---- |
-| X86 CentOS 7.6 | CPU: Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz <br /> MEM: 32GB <br /> DISK: 200GB <br /> OS: CentOS Linux release 7.6.1810 (Core) |      |
+| 虚拟机 | CPU: Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz <br /> MEM: 32GB <br /> DISK: 200GB <br /> OS: CentOS Linux release 7.6.1810 (Core) |      |
 
 # 3     测试结论概述
 
