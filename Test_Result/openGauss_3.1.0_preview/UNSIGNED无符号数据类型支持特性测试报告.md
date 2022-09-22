@@ -5,10 +5,10 @@
 
 修订记录
 
-| 日期       | 修订   版本 | 修改描述             | 作者      |
-| ---------- | ----------- | -------------------- | --------- |
-| 2022-09-21 | 1.0         | 特性测试报告初稿完成 | zhanghang |
-|            |             |                      |           |
+| 日期       | 修订   版本 | 修改描述                 | 作者      |
+| ---------- | ----------- | ------------------------ | --------- |
+| 2022-09-21 | 1.0         | 特性测试报告初稿完成     | zhanghang |
+| 2022-09-22 | 1.1         | 修改问题单状态及相关表述 | zhanghang |
 
  关键词： 
 
@@ -61,7 +61,7 @@ int；bigint；tinyint；smallint；unsigned
 
 8.验证是否为关键字
 
-资料测试覆盖资料描述是否准确、约束覆盖是否全面以及示例是否正确。累计发现缺陷单5个，2个问题单已修复且回归通过，3个问题单目前状态已完成，未转测。
+资料测试覆盖资料描述是否准确、约束覆盖是否全面以及示例是否正确。累计发现缺陷单5个，5个问题单已修复且回归通过，无遗留风险，整体质量良好。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -103,9 +103,9 @@ int；bigint；tinyint；smallint；unsigned
 | ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
 | 1    | [I5RAVQ](https://gitee.com/opengauss/Plugin/issues/I5RAVQ?from=project-issue) | 次要     | BIGINT UNSIGNED类型插入空值，返回结果报错；使用ignore参数后error未降级为warning | 已验收   |
 | 2    | [I5RC16](https://gitee.com/opengauss/Plugin/issues/I5RC16?from=project-issue) | 次要     | BIGINT UNSIGNED类型插入浮点数，返回结果与预期结果不符        | 已验收   |
-| 3    | [I5RSK0](https://gitee.com/opengauss/Plugin/issues/I5RSK0?from=project-issue) | 次要     | 将负数显式转换为text类型后插入UNSIGNED类型列，结果和预期不符 | 已完成   |
-| 4    | [I5RTAI](https://gitee.com/opengauss/Plugin/issues/I5RTAI?from=project-issue) | 次要     | 将不同超过最大位数的负数显式转换为float类型后再转换为BIGINT UNSIGNED（uint8）类型，结果不一致 | 已完成   |
-| 5    | [I5RVPO](https://gitee.com/opengauss/Plugin/issues/I5RVPO?from=project-issue) | 次要     | 使用ignore参数将超范围的数显式转换为text类型后插入BIGINT UNSIGNED类型列，结果和预期不符 | 已完成   |
+| 3    | [I5RSK0](https://gitee.com/opengauss/Plugin/issues/I5RSK0?from=project-issue) | 次要     | 将负数显式转换为text类型后插入UNSIGNED类型列，结果和预期不符 | 已验收   |
+| 4    | [I5RTAI](https://gitee.com/opengauss/Plugin/issues/I5RTAI?from=project-issue) | 次要     | 将不同超过最大位数的负数显式转换为float类型后再转换为BIGINT UNSIGNED（uint8）类型，结果不一致 | 已验收   |
+| 5    | [I5RVPO](https://gitee.com/opengauss/Plugin/issues/I5RVPO?from=project-issue) | 次要     | 使用ignore参数将超范围的数显式转换为text类型后插入BIGINT UNSIGNED类型列，结果和预期不符 | 已验收   |
 
 
 
@@ -121,9 +121,9 @@ int；bigint；tinyint；smallint；unsigned
 
 #### 4.1.2 tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与其他数据类型之间的显式转换和隐式转换
 
-| 测试步骤                                                     | 测试结果                                           |
-| ------------------------------------------------------------ | -------------------------------------------------- |
-| 1.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与数值类型之间的显式转换和隐式转换<br />2.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与货币类型之间的显式转换和隐式转换<br />3.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与布尔类型之间的显式转换和隐式转换<br />4.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与二进制类型之间的显式转换和隐式转换<br />5.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与日期/时间类型之间的显式转换和隐式转换<br />6.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与浮点类型之间的显式转换和隐式转换 | 执行9条用例，发现3个bug，3个目前状态已完成，未转测 |
+| 测试步骤                                                     | 测试结果                                     |
+| ------------------------------------------------------------ | -------------------------------------------- |
+| 1.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与数值类型之间的显式转换和隐式转换<br />2.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与货币类型之间的显式转换和隐式转换<br />3.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与布尔类型之间的显式转换和隐式转换<br />4.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与二进制类型之间的显式转换和隐式转换<br />5.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与日期/时间类型之间的显式转换和隐式转换<br />6.tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned与浮点类型之间的显式转换和隐式转换 | 执行9条用例，发现3个bug，3个已修复且验收通过 |
 
 #### 4.1.3 在表、视图、存储过程、自定义函数中使用tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned类型
 
@@ -176,7 +176,7 @@ int；bigint；tinyint；smallint；unsigned
 
 数据说明
 
-1.  测试过程中共发现5个bug，2个问题单均已修复且回归通过，3个问题单目前状态已完成，未转测
+1.  测试过程中共发现5个bug，5个问题单均已修复且回归通过
 2.  缺陷密度：5个（缺陷个数）/35.103kloc（代码行数）=0.1个/kloc
 
 ## 4.4 后续测试建议
