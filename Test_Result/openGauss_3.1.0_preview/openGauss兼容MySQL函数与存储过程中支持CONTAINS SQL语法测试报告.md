@@ -15,15 +15,15 @@
 
 关键词：
 
-dolphin插件，DETERMINISTIC，兼容B库
+dolphin插件，CONTAINS SQL，兼容B库
 
 摘要：
 
-本文档主要介绍openGauss在兼容B库且有dolphin插件的情形下，实现兼容mysql使用函数与存储过程中支持DETERMINISTIC语法。
+本文档主要介绍openGauss在兼容B库且有dolphin插件的情形下，实现兼容mysql函数与存储过程中支持CONTAINS SQL语法。
 
 # 1     特性概述
 
-openGauss在兼容B库情形下，安装dolphin插件，可以实现实现兼容mysql函数与存储过程中支持DETERMINISTIC语法。
+openGauss在兼容B库情形下，安装dolphin插件，可以实现实现兼容mysql函数与存储过程中支持CONTAINS SQL语法。
 
 # 2     特性测试信息
 
