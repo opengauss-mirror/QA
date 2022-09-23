@@ -103,7 +103,7 @@ openGauss支持细粒度滚动升级共计执行178条用例。其中2.0.3-maste
 | 3    | [I5RGQR](https://gitee.com/opengauss/openGauss-OM/issues/I5RGQR?from=project-issue) | 主要 | 滚动升级--单节点升级成功后执行--continue升级其余节点报错     | 已验收 |
 | 4    | [I5S8I8](https://gitee.com/opengauss/openGauss-OM/issues/I5S8I8?from=project-issue) | 主要 | 滚动升级--无cm-带cm主机执行命令单节点升级备机，升级成功后备机升级主节点，升级报错 | 待办的 |
 | 5    | [I5RWR4](https://gitee.com/opengauss/openGauss-server/issues/I5RWR4?from=project-issue) | 主要 | 2.0.4-3.1.0灰度升级成功后回滚再次升级回滚失败报错            | 待办的 |
-|      | [I5RH92](https://gitee.com/opengauss/openGauss-server/issues/I5RH92?from=project-issue) | 主要 | 3.0.0-3.1.0灰度升级后回滚再次灰度升级报错                    | 待办的 |
+| 6    | [I5RH92](https://gitee.com/opengauss/openGauss-server/issues/I5RH92?from=project-issue) | 主要 | 3.0.0-3.1.0灰度升级后回滚再次灰度升级报错                    | 待办的 |
 
 # 4     测试执行
 
@@ -161,7 +161,7 @@ openGauss支持细粒度滚动升级共计执行178条用例。其中2.0.3-maste
 
 说明：
 
-1.openGauss 3.1.0 build 0b50eccc版本测试中共发现6个问题，其中6个均为主要单，2个待办，其余4个已回归，验收通过。
+1.openGauss 3.1.0 build 0b50eccc版本测试中共发现6个问题，其中6个均为主要单，3个待办，其余3个已回归，验收通过。
 
 2.缺陷密度为 6(缺陷个数)/0.18k(代码行数)=33.33(个/kloc)。
 
