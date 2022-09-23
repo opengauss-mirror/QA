@@ -16,10 +16,11 @@ dolphin插件，Replace语法，兼容B库，mysql
 
 摘要：
 
-本文档主要介绍openGauss在兼容B库且有dolphin插件，同时开启b_compatibility_mode参数的情形下，实现兼容mysql数据库使用#符号进行注释，实现效果保持和--一致，其中因为该功能实现在插件上，因此还会识别出注释符后的结束符号‘；’。
+本文档主要介绍openGauss在兼容B库且有dolphin插件的情形下，实现兼容mysql数据库replace语法中识别LOW_PRIORITY,DELAYED关键字。其中对于2个关键字不区分大小写，但不允许LOW_PRIORITY和DELAYED同时出现。
+
 # 1     特性概述
 
-openGauss在兼容B库情形下，安装dolphin插件同时开启b_compatibility_mode参数的情形下，可以实现使用#符号进行注释的功能。
+openGauss在兼容B库情形下，安装dolphin插件，可以实现对mysql的replace语法关于LOW_PRIORITY,DELAYED的识别和兼容。
 
 # 2     特性测试信息
 
@@ -41,24 +42,23 @@ openGauss在兼容B库情形下，安装dolphin插件同时开启b_compatibility
 
 ## 3.1   测试整体结论
 
-openGauss兼容使用#符号进行注释共计执行用例17条，主要实现符号#进行注释同行在注释符后面的内容，但会识别结束符‘；’。
+openGauss兼容mysql-replace语法完善共计执行用例22条，主要覆盖了replace原有功能上添加LOW_PRIORITY,DELAYED关键字，比如replace..select语句，replace..set语句，replace values语句等。主要覆盖了功能测试、性能测试及资料测试。资料测试覆盖校验资料的描述及示例的执行结果。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | ------------------------------------------------------------|
 | 功能测试 | 编译库、编译插件，执行结果符合预期，通过                        |
-| 功能测试 | 在存储过程中声明，语句各位置测试符号#                           |
-| 功能测试 | 在自定义函数中声明，语句各位置测试符号#                         |
-| 功能测试 | 在普通sql语句，例如建表插入各个位置测试符号#                    |
-| 功能测试 | 在各个对象名中测试包含注释符#                                  |
-| 资料测试 | 资料描述准确，示例的执行结果正确，通过                          |
+| 功能测试 | 结合replace..select语句测试关键字LOW_PRIORITY,DELAYED识别     |
+| 功能测试 | 结合replace..set语句测试关键字LOW_PRIORITY,DELAYED识别        |
+| 功能测试 | 结合replace..values语句测试关键字LOW_PRIORITY,DELAYED识别     |
+| 功能测试 | 通过replace往含有索引的表中插入新数据兼容关键字LOW_PRIORITY,DELAYED识别 |
+| 功能测试 | 通过replace往含有索引的表中插入已有数据兼容关键字LOW_PRIORITY,DELAYED识别 |
+| 资料测试 | 资料描述准确，示例的执行结果正确，通过                       |
 
 ## 3.2   约束说明
 
 1. mysql使用8.0.11版本
 2. openGauss需使用兼容B库且有dolphin插件
-3. 注释符#后的结束符“；”仍然会被视为一个结束
-4.使用#符号进行注释需要先开启参数b_compatibility_mode，否则#符号作为异或操作符号或者一个字符存在
-
+3. 关键字LOW_PRIORITY,DELAYED不能同时出现
 
 ## 3.3   遗留问题分析
 
@@ -72,16 +72,13 @@ openGauss兼容使用#符号进行注释共计执行用例17条，主要实现�
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   | 2        | 0    | 2    |     | 0      |
-| 百分比 | 100%     | 0    | 100%    |    0 | 0      |
+| 数目   | 0        | 0    | 0    | 6    | 0      |
+| 百分比 | 100%     | 0    | 0    | 100% | 0      |
 
 ### 3.3.3  问题单汇总
 
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                             | 问题状态 |
 | ---- | ------------------------------------------------------------ | -------- | ---------------------------------------------------- | -------- |
-| 1    | [I5E0YN](https://gitee.com/opengauss/Plugin/issues/I5E0YN?from=project-issue) | 主要   | 自定义函数或存储过程中plsql语句以#结尾                  | 处理中  |
-| 2    | https://gitee.com/opengauss/openGauss-server/issues/I5QBTL?from=project-issue | 主要   | 存储过程中声明变量包含注释符#，#无法正常注释后续内容      | 处理中   |
-
 
 # 4     测试执行
 
@@ -93,11 +90,11 @@ openGauss兼容使用#符号进行注释共计执行用例17条，主要实现�
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1. 编译安装openGauss数据库<br />2. 编译dolphin插件<br />3. 创建兼容B库并安装dolphin插件 <br />4. 执行用例 | 编译库及插件成功，共执行176条用例，<br /> |
 
-#### 4.1.1.1 使用注释符#进行注释测试
+#### 4.1.1.1 关键字LOW_PRIORITY,DELAYED兼容以前replace功能
 
 | 测试步骤                                                     | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1. 在兼容B库并安装dolphin插件的环境 <br />2. 按照测试用例对符号#的注释功能在各方面进行测试 <br />
+| 1. 在兼容B库并安装dolphin插件的环境 <br />2. 按照测试用例对新增关键字LOW_PRIORITY,DELAYED进行测试 | 测试通过<br />
 
 
 
@@ -111,7 +108,7 @@ openGauss兼容使用#符号进行注释共计执行用例17条，主要实现�
 
 | 版本名称                       | 测试用例数 | 用例执行结果                  | 发现问题单数 |
 | ------------------------------ | ---------- | ----------------------------- | ------------ |
-| openGauss 3.1.0 build a100917c | 16        | Passed：12  <br />Failed：4  | 2            |
+| openGauss 3.1.0 build a100917c | 22        | Passed：22  <br />Failed：0  | 0            |
 
 
 ## 4.3   后续测试建议
@@ -124,10 +121,10 @@ openGauss兼容使用#符号进行注释共计执行用例17条，主要实现�
 
 ```sql
 
-set b_compatibility_mode=on;
-create table test# (a int)
-(a int);
-select 1#4
-;
+create table t_test(id int primary key,info text);
+
+replace low_priority  t_test values(1,'dd'),(2,'zz');
+
+replace delayed t_test values(3,'dd'),(4,'zz');
 
 ```
