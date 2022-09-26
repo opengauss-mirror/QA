@@ -43,7 +43,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL数据库�
 
 ## 3.1   测试整体结论
 
-openGauss dolphin插件MySQL兼容insert into set函数，共计执行45个用例，主要覆盖功能测试、约束测试、资料测试以及备份恢复测试。功能测试主要包括使用MySQL语法中的关键词测试、insert into set支持的数据类型测试、对全部字段赋值，存在一个字段对应一个值、一个字段对应多个值以及一个字段有多个值对应的测试、对部分字段赋值包括不赋值部分有约束或无约束两种情况，以及一个字段对应一个值、一个字段有多个值对应以及一个字段多次对应值的测试、对数据类型以及数据长度的测试、修改表名或不指定表名的测试、在单表或多表中利用子查询插入值以及在事物、存储过程等不同场景中执行的测试；约束测试验证了insert into set函数的测试用例在非兼容"B"库下执行数据库可稳定运行；备份恢复测试验证是否可以逻辑备份逻辑恢复、物理备份以及物理恢复的功能。测试中发现3个问题，2个已取消,1个挂起。
+openGauss dolphin插件MySQL兼容insert into set函数，共计执行45个用例，主要覆盖功能测试、约束测试、资料测试以及备份恢复测试。功能测试主要包括使用MySQL语法中的关键词测试、insert into set支持的数据类型测试、对全部字段赋值，存在一个字段对应一个值、一个字段对应多个值以及一个字段有多个值对应的测试、对部分字段赋值包括不赋值部分有约束或无约束两种情况，以及一个字段对应一个值、一个字段有多个值对应以及一个字段多次对应值的测试、对数据类型以及数据长度的测试、修改表名或不指定表名的测试、在单表或多表中利用子查询插入值以及在事物、存储过程等不同场景中执行的测试；约束测试验证了insert into set函数的测试用例在非兼容"B"库下执行数据库可稳定运行；备份恢复测试验证是否可以逻辑备份逻辑恢复、物理备份以及物理恢复的功能。测试中发现3个问题，2个已挂起,1个已取消。
 
 | 测试活动 | 活动评价 |
 | -------- | -------- |
@@ -75,7 +75,9 @@ openGauss dolphin插件MySQL兼容insert into set函数，共计执行45个用�
 
 |  问题单号 |  问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
 | -------- | -------- | -------- | ------------------ | -------- |
-|    [I5QQ7Z](https://gitee.com/opengauss/Plugin/issues/I5QQ7Z?from=project-issue) | 在insert into set里边无法识别表的列    |    次要      |当对表中某一列赋值为表中另外一个相同类型的列，插入操作会报错，需要避免使用表中列对列赋值操作|挂起|
+|    [I5QQOC](https://gitee.com/opengauss/Plugin/issues/I5QQOC?from=project-issue) | 在insert into set里边无法插入BINARY_DOUBLE数据类型  |    次要      |当使用BINARY_DOUBLE类型插入数据时会报错，应该转换为binary_double数>据类型就会正常插入|挂起|
+|    [I5QQ7Z](https://gitee.com/opengauss/Plugin/issues/I5QQ7Z?from=project-issue) | 在insert into set里边无法识别表的列
+    |    次要      |当对表中某一列赋值为表中另外一个相同类型的列，插入操作会报错，需要避免使用表中列对列赋值操作|挂起|
 
 ### 3.3.2 问题统计
 
@@ -88,9 +90,9 @@ openGauss dolphin插件MySQL兼容insert into set函数，共计执行45个用�
 
 | 问题单号 | 问题描述 | 问题级别 | 当前状态 |
 | -------- | -------- | -------- | -------- |
-| [I5QQOC](https://gitee.com/opengauss/Plugin/issues/I5QQOC?from=project-issue) | 在insert into set里边无法插入BINARY_DOUBLE数据类型 | 次要 | 已取消 |
+| [I5QQOC](https://gitee.com/opengauss/Plugin/issues/I5QQOC?from=project-issue) | 在insert into set里边无法插入BINARY_DOUBLE数据类型 | 次要 | 已挂起 |
 | [I5QQGS](https://gitee.com/opengauss/Plugin/issues/I5QQGS?from=project-issue) | 在insert into set里边对列设置为false无作用 | 次要 | 已取消 |
-| [I5QQ7Z](https://gitee.com/opengauss/Plugin/issues/I5QQ7Z?from=project-issue) | 在insert into set里边无法识别表的列 | 次要 | 挂起 |
+| [I5QQ7Z](https://gitee.com/opengauss/Plugin/issues/I5QQ7Z?from=project-issue) | 在insert into set里边无法识别表的列 | 次要 | 已挂起 |
 
 # 4     测试执行
 
@@ -144,7 +146,7 @@ openGauss dolphin插件MySQL兼容insert into set函数，共计执行45个用�
 
 ## 4.2   后续测试建议
 
-1.挂起问题:<br />使用表中列对列赋值是否可以成功执行，当对表中某一列赋值为表中另外一个相同类型的列，插入操作会报错，需要避免使用表中列对列赋值操作;<br />2.已取消问题<br />1:当使用BINARY_DOUBLE类型插入数据时会报错，应该转换为binary_double数据类型就会正常插入；<br />已取消问题2:此问题属于opengauss与MySQL机制不同导致，当在表中定义一个字符类型长度小于5的列，输入FALSE会报错，在这种情况下应认为FALSE为字符串，其字符长度限制不可在长度小于5的字符类型中插入。
+1.挂起问题:<br />使用表中列对列赋值是否可以成功执行，当对表中某一列赋值为表中另外一个相同类型的列，插入操作会报错，需要避免使用表中列对列赋值操作;<br />2.已挂起问题<br />1:当使用BINARY_DOUBLE类型插入数据时会报错，应该转换为binary_double数据类型就会正常插入，所以该列名大小写处理问题，不归该特性处理。<br />已取消问题:此问题属于opengauss与MySQL机制不同导致，当在表中定义一个字符类型长度小于5的列，输入FALSE会报错，在这种情况下应认为FALSE为字符串，其字符长度限制不可在长度小于5的字符类型中插入。
 
 # 5     附件
 
