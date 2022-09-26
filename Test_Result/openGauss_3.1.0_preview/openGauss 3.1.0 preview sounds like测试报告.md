@@ -147,7 +147,7 @@ openGauss dolphin插件MySQL兼容sounds like函数，共执行33个用例，主
 
 ## 4.2   后续测试建议
 
-在og中select soundex('dao')=soundex('wo');返回的一定是bool值，因为他是做函数值比较操作，必然是返回bool类型的结果(true或者false)。而mysql的返回值是有自己的处理。所以这是两种数据库的差异造成的，不属于soundex的bug。
+在og中select soundex('dao')=soundex('wo')返回的一定是bool值，因为他是做函数值比较操作，必然是返回bool类型的结果(true或者false),而mysql的返回值是有自己的处理，所以返回值不同这是两种数据库的差异造成的，不属于soundex的bug。
 
 # 5     附件
 
