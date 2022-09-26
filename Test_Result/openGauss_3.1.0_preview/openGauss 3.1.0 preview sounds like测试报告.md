@@ -43,7 +43,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL的sounds 
 
 ## 3.1   测试整体结论
 
-openGauss dolphin插件MySQL兼容sounds like函数，共执行33个用例，主要覆盖功能测试、约束测试、资料测试以及备份恢复测试。功能测试覆盖了soundex的基础测试以及sounds like在单表以及多表中的多值查询测试和单值比较测试；约束测试验证了sounds like函数的测试用例在非兼容"B"库下执行数据库可稳定运行；备份恢复测试验证是否可以逻辑备份逻辑恢复、物理备份以及物理恢复的功能。测试中发现6个问题，6个已解决且回归通过。
+openGauss dolphin插件MySQL兼容sounds like函数，共执行33个用例，主要覆盖功能测试、约束测试、资料测试以及备份恢复测试。功能测试覆盖了soundex的基础测试以及sounds like在单表以及多表中的多值查询测试和单值比较测试；约束测试验证了sounds like函数的测试用例在非兼容"B"库下执行数据库可稳定运行；备份恢复测试验证是否可以逻辑备份逻辑恢复、物理备份以及物理恢复的功能。测试中发现6个问题，5个已解决且回归通过，1个已取消。
 
 | 测试活动 | 活动评价 |
 | -------- | -------- |
@@ -85,7 +85,7 @@ openGauss dolphin插件MySQL兼容sounds like函数，共执行33个用例，主
 | [I5QS2B](https://gitee.com/opengauss/Plugin/issues/I5QS2B?from=project-issue) | 在soundex里边其他语言中有空格，输出无法跳过空格 | 次要 | 已验收 |
 | [I5QS0S](https://gitee.com/opengauss/Plugin/issues/I5QS0S?from=project-issue) | 在soundex里边对单数值的处理结果，没有0填充 | 次要 | 已验收  |
 | [I5PE6V](https://gitee.com/opengauss/Plugin/issues/I5PE6V?from=project-issue) | sounds like中soundex对于部分特殊符号在开头位置的处理 | 次要 | 已验收  |
-| [I5PDI4](https://gitee.com/opengauss/Plugin/issues/I5PDI4?from=project-issue) | sounds like中soundex的比较运算 | 次要 | 已验收  |
+| [I5PDI4](https://gitee.com/opengauss/Plugin/issues/I5PDI4?from=project-issue) | sounds like中soundex的比较运算 | 次要 | 已取消  |
 | [I5S1VE](https://gitee.com/opengauss/Plugin/issues/I5S1VE?from=project-issue) | MySQ兼容soundex对其他语言的处理中存在保留2个字符的情况，预期应该只保留一个，与MySQL不一致 | 主要 | 已验收 |
 | [I5SLWO](https://gitee.com/opengauss/Plugin/issues/I5SLWO?from=project-issue) | 在soundex执行过程中，存在如刚刚开启数据库，执行了一个错误的SQL语句后，soundex执行后的结果不准确；或执行多次soundex才会出现正确结果 | 主要 | 已验收 |
 
@@ -147,7 +147,7 @@ openGauss dolphin插件MySQL兼容sounds like函数，共执行33个用例，主
 
 ## 4.2   后续测试建议
 
-无
+在og中select soundex('dao')=soundex('wo');返回的一定是bool值，因为他是做函数值比较操作，必然是返回bool类型的结果(true或者false)。而mysql的返回值是有自己的处理。所以这是两种数据库的差异造成的，不属于soundex的bug。
 
 # 5     附件
 
