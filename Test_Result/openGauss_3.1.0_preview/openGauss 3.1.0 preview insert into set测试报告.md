@@ -75,7 +75,7 @@ openGauss dolphin插件MySQL兼容insert into set函数，共计执行45个用�
 
 |  问题单号 |  问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
 | -------- | -------- | -------- | ------------------ | -------- |
-|    [I5QQOC](https://gitee.com/opengauss/Plugin/issues/I5QQOC?from=project-issue) | 在insert into set里边无法插入BINARY_DOUBLE数据类型  |    次要      |当使用BINARY_DOUBLE类型插入数据时会报错，应该转换为binary_double数>据类型就会正常插入|挂起|
+|    [I5QQOC](https://gitee.com/opengauss/Plugin/issues/I5QQOC?from=project-issue) | 在insert into set里边无法插入BINARY_DOUBLE数据类型  |    次要      |当使用BINARY_DOUBLE类型插入数据时会报错，应该转换为binary_double数据类型就会正常插入|挂起|
 |    [I5QQ7Z](https://gitee.com/opengauss/Plugin/issues/I5QQ7Z?from=project-issue) | 在insert into set里边插入表中其他列，无法识别表的列|    次要      |当对表中某一列赋值为表中另外一个相同类型的列，插入操作会报错，需要避免使用表中列对列赋值操作|挂起|
 
 ### 3.3.2 问题统计
@@ -145,7 +145,7 @@ openGauss dolphin插件MySQL兼容insert into set函数，共计执行45个用�
 
 ## 4.2   后续测试建议
 
-1.挂起问题:使用表中列对列赋值是否可以成功执行，当对表中某一列赋值为表中另外一个相同类型的列，插入操作会报错，需要避免使用表中列对列赋值操作;2.已挂起问题1:当使用BINARY_DOUBLE类型插入数据时会报错，应该转换为binary_double数据类型就会正常插入，所以该列名大小写处理问题，不归该特性处理。已取消问题:此问题属于opengauss与MySQL机制不同导致，当在表中定义一个字符类型长度小于5的列，输入FALSE会报错，在这种情况下应认为FALSE为字符串，其字符长度限制不可在长度小于5的字符类型中插入。
+1.挂起问题1:使用表中列对列赋值是否可以成功执行，当对表中某一列赋值为表中另外一个相同类型的列，插入操作会报错，需要避免使用表中列对列赋值操作;已挂起问题2:当使用BINARY_DOUBLE类型插入数据时会报错，应该转换为binary_double数据类型就会正常插入，所以该列名大小写处理问题，不归该特性处理。2.已取消问题1:此问题属于opengauss与MySQL机制不同导致，当在表中定义一个字符类型长度小于5的列，输入FALSE会报错，在这种情况下应认为FALSE为字符串，其字符长度限制不可在长度小于5的字符类型中插入。
 
 # 5     附件
 
