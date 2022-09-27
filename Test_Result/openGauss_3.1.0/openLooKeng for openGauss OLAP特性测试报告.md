@@ -8,8 +8,6 @@
 | 日期       | 修订   版本 | 修改描述             | 作者       |
 | ---------- | ----------- | -------------------- | ---------- |
 | 2022-09-15 | 1.0         | 特性测试报告初稿完成 | peilinqian |
-|            |             |                      |            |
-|            |             |                      |            |
 
 关键词： 
 
@@ -80,7 +78,7 @@ openLookeng从shardingSphere注册中心访问元数据，订阅元数据修改�
 
 （2）依赖shardingSphere+ZK注册中心+opengauss集群部署方式；
 
-（3）Java 8 Update 161或更高版本(8u161+) (64位)。同时支持Oracle JDK和OpenJDK；AArch64(Bisheng JDK 1.8.262 或者更高版本)；
+（3）Java 8 Update 161或更高版本(8u161+) (64位)。同时支持Oracle JDK和Open JDK；AArch64 (Bisheng JDK 1.8.262 或者更高版本)；
 
 （4）openLooKeng存在支持数据类型限制，见"5.1 openLooKeng官网资料链接"章节；
 
@@ -149,18 +147,24 @@ openLookeng从shardingSphere注册中心访问元数据，订阅元数据修改�
 | 版本名称                                     | 测试用例数           | 用例执行结果                                  | 发现问题单数 |
 | -------------------------------------------- | -------------------- | --------------------------------------------- | ------------ |
 | openLooKeng CLI 1.6.0-RC5-70-g5abdf10-dirty  | 46                   | Passed：41<br/>Failed：5                      | 9            |
-| openLooKeng CLI 1.6.0-RC5-213-gdf92160-dirty | 46<br />回归issue：5 | Passed：42<br/>Failed：4<br />issue passed：5 | 5            |
+| openLooKeng CLI 1.6.0-RC5-213-gdf92160-dirty | 46<br />回归issue：5 | Passed：44<br/>Failed：2<br />issue passed：5 | 5            |
 | openLooKeng CLI 1.6.0-RC5-216-g4b3da00-dirty | 回归issue：2         | issue passed：2                               | 0            |
+
+*数据项说明：*
 
 - 全量功能覆盖两轮测试：
 
   第一轮测试openLooKeng适配shardingSphere5.1.1官网包，执行用例46个，通过41个，不通过5个；发现问题9个；
 
-  第二轮测试openLooKeng适配shardingSphere5.2.0官网包，执行用例46个，通过44个，不通过2个；回归问题单3个，均通过；新增问题单3个；
+  第二轮测试openLooKeng适配shardingSphere5.2.0官网包，执行用例46个，通过44个，不通过2个；回归问题单5个，均通过；新增问题单5个；
 
-  第三轮进行问题单回归1个；
+  第三轮进行问题单回归2个；
 
-  最终测试用例执行通过42个，不通过2个，遗留问题单7个；
+- 累计发现缺陷14个，其中7个已修复或者通过资料规避，遗留缺陷单7个；
+
+- 最终测试用例执行通过44个，不通过2个；
+
+- 缺陷密度为14(缺陷个数)/4k(代码行数)=3.5(个/kloc)
 
 ## 4.3   性能测试数据统计
 
@@ -235,8 +239,6 @@ openLookeng从shardingSphere注册中心访问元数据，订阅元数据修改�
 - openLookeng部署文档：
 
   https://docs.openlookeng.io/zh/docs/docs/installation/deployment.html
-
-  
 
 - openLooKeng支持数据类型文档：
 
