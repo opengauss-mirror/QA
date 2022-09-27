@@ -7,7 +7,7 @@
 
 | 日期       | 修订   版本 | 修改描述             | 作者       |
 | ---------- | ----------- | -------------------- | ---------- |
-| 2022-09-15 | 1.0         | 特性测试报告初稿完成 | peilinqian |
+| 2022-09-26 | 1.0         | 特性测试报告初稿完成 | peilinqian |
 
 关键词： 
 
@@ -68,7 +68,7 @@ openLookeng从shardingSphere注册中心访问元数据，订阅元数据修改�
 
 | 测试活动   | 活动评价                                                     |
 | ---------- | ------------------------------------------------------------ |
-| 功能测试   | （1）验证openLooKeng从shardingSphere注册中心访问元数据信息正确，元数据信息修改变化后访问信息正确；包括表和视图的分片信息、读写分离信息；<br />（2）验证openLooKeng与支持语法，测试覆盖：数据类型、select语法（filter/聚合函数/基础运算及函数）目前支持数据类型有限，以openlookeng官网资料说明为准；客户端查询存在优化类bug；<br />（3）验证tpch 10G数据量级别下21条SQL查询语句功能验证（说明tpch SQL语句共22条，其中一条涉及create view操作，openLooKeng暂不支持该语法），测试结果与直连openGauss进行比对测试，结果一致；<br />（4）验证指定分片单表、随机分片单表、分库不分表、分库分表、广播表、视图等对象查询功能正常，测试结果正确。<br />整体结论：存在部分问题，遗留处理，后续优化解决。验收通过。 |
+| 功能测试   | （1）验证openLooKeng从shardingSphere注册中心访问元数据信息正确，元数据信息修改变化后访问信息正确；包括表和视图的分片信息、读写分离信息；<br />（2）验证openLooKeng与支持语法，测试覆盖：数据类型、select语法（filter/聚合函数/基础运算及函数）目前支持数据类型有限，以openlookeng官网资料说明为准；客户端查询存在优化类bug；<br />（3）验证tpch 10G数据量级别下21条SQL查询语句功能验证（说明：tpch SQL语句共22条，其中一条涉及create view操作，openLooKeng暂不支持该语法），测试结果与直连openGauss进行比对测试，结果一致；<br />（4）验证指定分片单表、随机分片单表、分库不分表、分库分表、广播表、视图等对象查询功能正常，测试结果正确。<br />整体结论：存在部分问题，遗留处理，后续优化解决。验收通过。 |
 | 可靠性测试 | 针对注册中心及opengauss分片进行故障注入，验证openLooKeng故障场景下正常提示报错，恢复故障后，功能正常、可正常查询。验收通过。 |
 | 性能测试   | （1）验证相同数据量下，openGauss1分片、openLooKeng+openGauss1分片、openLooKeng+openGauss2分片、openLooKeng+openGauss3分片、openLooKeng+openGauss5分片，验证tpch查询SQL随着分片增加查询性能提升；<br />（2）openLooKeng+openGauss2分片、openLooKeng+openGauss2分片读写分离场景，验证tpch查询SQL在读写分离场景下性能提升。<br />验收通过。 |
 
@@ -134,11 +134,11 @@ openLookeng从shardingSphere注册中心访问元数据，订阅元数据修改�
 
 ## 4.1   测试组网图
 
-**功能测试组网：**
+**功能测试&分片性能测试组网：**
 
 ![pic1](images/openGauss-OLAP特性组网图.png)
 
-**性能读写分离测试组网：**
+**读写分离测试组网：**
 
 ![pic2](images/openGauss-OLAP特性读写分离组网图.png)
 
