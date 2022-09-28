@@ -90,9 +90,7 @@ chameleon init_replica --config default --source mysql --debug
 
 ## 4.2   测试数据统计
 
-<center> 表1  单表数据总量递增平均校验速度
-</center>
-
+<center> 表1  单表数据总量递增平均校验速度</center>
 | 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/s） |
 | :----------: | :------------: | :--------: | :------------------: |
 |      1       |      16.3      |    300     |          30          |
