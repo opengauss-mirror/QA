@@ -139,7 +139,7 @@ openGauss dolphin插件MySQL兼容make_set函数，共计执行21个用例，主
 
 ## 4.3   后续测试建议
 
-1.已取消问题1:此问题属于opengauss与MySQL机制不同导致，在opengauss中make_set里边出现除数为0则会出现错误，应避免使用除数为0的操作；已取消问题2:此问题属于opengauss与MySQL机制不同导致，在opengauss中make_set里边出现除不尽的数，则会出现较多的小数点后位数，不出现错误可正常使用。
+1.已取消问题[I5QRWR](https://gitee.com/opengauss/Plugin/issues/I5QRWR?from=project-issue):此问题属于opengauss与MySQL机制不同导致，在opengauss中make_set里边出现除数为0则会出现错误，应避免使用除数为0的操作；已取消问题[I5RENG](https://gitee.com/opengauss/Plugin/issues/I5RENG?from=project-issue):此问题属于opengauss与MySQL机制不同导致，在opengauss中make_set里边出现除不尽的数，则会出现较多的小数点后位数，不出现错误可正常使用。
 # 5     附件
 
 无
