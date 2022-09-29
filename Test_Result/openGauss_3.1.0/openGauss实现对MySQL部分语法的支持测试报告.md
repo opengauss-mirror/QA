@@ -8,7 +8,7 @@
 |   日期    | 修订版本 |               修改描述               |      作者       |
 | :------- | :------ | :---------------------------------- | :------------- |
 | 2022-9-14 |   1.0    |           特性测试报告初稿           | zou_jialiang050 |
-| 2022-9-21 | 1.0 | 修改bug状态 | zou_jialiang050 |
+| 2022-9-29 | 1.1 | 修改bug状态 | zou_jialiang050 |
 
  关键词： tablespace、rollup、create table、rename、collate、charset、index、row_format、charset
 
@@ -32,6 +32,7 @@ openGauss在兼容b库下，可以实现对create table table_name select、crea
 | :---------------------------- | :----------- | :----------- |
 | MYSQL 5.7                     | 2022-9-1     | 2022-9-14    |
 | openGauss3.1.0 build b4215eeb | 2022-9-1     | 2022-9-14    |
+| openGauss3.1.0 build 1068fe6d | 2022-9-14    | 2022-9-29    |
 
 | 环境信息 | 配置信息                                                     | 备注 |
 | :------- | :----------------------------------------------------------- | :---- |
@@ -41,7 +42,7 @@ openGauss在兼容b库下，可以实现对create table table_name select、crea
 
 ## 3.1   测试整体结论
 
-openGauss实现对MYSQL部分语法的支持特性测试中，共计执行用例96个，主要涉及create table table_name select、create tablespace space_name add datafile 'file_path' engine = engine_name、alter table old_table_name rename {to | as} new_table_name、create index index_name [using {btree | hash} on table_name(key_part,...)、兼容表级、字段级charset、collate，表级row_format语法、兼容group  by with rollup语法，剩余1条问题待确认。
+openGauss实现对MYSQL部分语法的支持特性测试中，共计执行用例96个，主要涉及create table table_name select、create tablespace space_name add datafile 'file_path' engine = engine_name、alter table old_table_name rename {to | as} new_table_name、create index index_name [using {btree | hash} on table_name(key_part,...)、兼容表级、字段级charset、collate，表级row_format语法、兼容group  by with rollup语法，发现1条问题，已验收，无遗留风险，整体质量良好。
 
 | 测试活动 | 活动评价                                                     |
 | :------ | :----------------------------------------------------------- |
@@ -64,7 +65,7 @@ openGauss实现对MYSQL部分语法的支持特性测试中，共计执行用例
 
 | 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
 | :------ | :------ | :------ | :---------------- | :------ |
-|    [I5QHIQ](https://gitee.com/opengauss/Plugin/issues/I5QHIQ)    | 兼容b库下执行create tablespace add datafile不支持.ibd文件 | 次要 | 待评审后确认是否支持ibd文件 | 待确认 |
+|    NA    |  |          |  |  |
 
 ### 3.3.2 问题统计
 
@@ -77,7 +78,7 @@ openGauss实现对MYSQL部分语法的支持特性测试中，共计执行用例
 
 | 序号 |                           issue号                            | 问题级别 |                           问题简述                           | 问题状态 |
 | :-- | :---------------------------------------------------------- | :------ | :---------------------------------------------------------- | :------ |
-|  1   |  [I5QHIQ](https://gitee.com/opengauss/Plugin/issues/I5QHIQ)  |   次要   | 兼容b库下执行create tablespace add datafile不支持.ibd文件 |  待确认  |
+|  1   |  [I5QHIQ](https://gitee.com/opengauss/Plugin/issues/I5QHIQ)  |   次要   | 兼容b库下执行create tablespace add datafile不支持.ibd文件 |  已验收  |
 
 # 4     测试执行
 
@@ -130,8 +131,9 @@ openGauss实现对MYSQL部分语法的支持特性测试中，共计执行用例
 | 版本名称                      | 测试用例数 | 用例执行结果            | 发现问题单数 |
 | :----------------------------- | :---------- | :----------------------- | :------------ |
 | openGauss3.1.0 build b4215eeb | 96      | Passed:96<br />Failed:1 | 1           |
+| openGauss3.1.0 build 1068fe6d | 96 | Passed:96<br />Failed:1 | 0 |
 
-累计发现缺陷单1个，剩余1个问题单待确认。
+累计发现缺陷单1个，1个问题但已验收。
 
 缺陷单共1个，修改代码量为0.93kloc， 缺陷密度为1.08个/kloc
 
