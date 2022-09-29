@@ -45,8 +45,8 @@
 
 | 环境信息       | 配置信息                                                     | 备注 |
 | -------------- | ------------------------------------------------------------ | ---- |
-| OpenStack Nova | CPU:  Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz<br>内存：16GB<br>硬盘：ssd<br>OS：Centos Linux 7 |      |
-| OpenStack Nova | CPU:  Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz<br/>内存：16GB<br/>硬盘：ssd<br/>OS：openEuler release 20.03 (LTS-SP1) |      |
+| OpenStack Nova | CPU:  Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz<br>内存：32GB<br>硬盘：ssd<br>OS：Centos Linux 7 |      |
+| OpenStack Nova | CPU:  Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz<br/>内存：32GB<br/>硬盘：ssd<br/>OS：openEuler release 20.03 (LTS-SP1) |      |
 
 
 
@@ -101,8 +101,8 @@ openGauss支持细粒度滚动升级共计执行178条用例。其中2.0.3-maste
 | 1    | [I5NRP8](https://gitee.com/opengauss/openGauss-OM/issues/I5NRP8?from=project-issue) | 主要 | 滚动升级--单节点滚动升级主节点，滚动升级失败                 | 已验收 |
 | 2    | [I5O0XA](https://gitee.com/opengauss/openGauss-OM/issues/I5O0XA?from=project-issue) | 主要 | 滚动升级--所有节点升级成功后，回退异常报错2.0.4-master       | 已验收 |
 | 3    | [I5RGQR](https://gitee.com/opengauss/openGauss-OM/issues/I5RGQR?from=project-issue) | 主要 | 滚动升级--单节点升级成功后执行--continue升级其余节点报错     | 已验收 |
-| 4    | [I5S8I8](https://gitee.com/opengauss/openGauss-OM/issues/I5S8I8?from=project-issue) | 主要 | 滚动升级--无cm-带cm主机执行命令单节点升级备机，升级成功后备机升级主节点，升级报错 | 待办的 |
-| 5    | [I5RWR4](https://gitee.com/opengauss/openGauss-server/issues/I5RWR4?from=project-issue) | 主要 | 2.0.4-3.1.0灰度升级成功后回滚再次升级回滚失败报错            | 待办的 |
+| 4    | [I5S8I8](https://gitee.com/opengauss/openGauss-OM/issues/I5S8I8?from=project-issue) | 主要 | 滚动升级--无cm-带cm主机执行命令单节点升级备机，升级成功后备机升级主节点，升级报错 | 已验收 |
+| 5    | [I5RWR4](https://gitee.com/opengauss/openGauss-server/issues/I5RWR4?from=project-issue) | 主要 | 2.0.4-3.1.0灰度升级成功后回滚再次升级回滚失败报错            | 已验收 |
 | 6    | [I5RH92](https://gitee.com/opengauss/openGauss-server/issues/I5RH92?from=project-issue) | 主要 | 3.0.0-3.1.0灰度升级后回滚再次灰度升级报错                    | 待办的 |
 
 # 4     测试执行
@@ -133,7 +133,7 @@ openGauss支持细粒度滚动升级共计执行178条用例。其中2.0.3-maste
 
 | 测试步骤                                                     | 测试结果                        |
 | ------------------------------------------------------------ | ------------------------------- |
-| 1.取2.0.4包安装一主两备数据库 <br />2.2.0.4-master升级后主机新建用户 <br />3.2.0.4-master升级回退 <br />4.查看查看新建用户是否存在 | 共执行3条用例  执行结果符合预期 |
+| 1.取2.0.4包安装一主两备数据库 <br />2.2.0.4-master升级后主机新建用户 <br />3.2.0.4-master升级回退 <br />4.查看新建用户是否存在 | 共执行3条用例  执行结果符合预期 |
 
 #### 4.1.2.4检查直接安装的master数据库与2.0.4升级到master数据库表样一致性
 
