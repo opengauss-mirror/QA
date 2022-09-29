@@ -41,9 +41,9 @@ MySQL、chameleon、openGauss、datachecker、kafka、全量校验性能、30MB/
 | kafka 2.13-2.8.11              | 2022-09-11   | 2022-09-21   |
 | datachecker 0.0.1              | 2022-09-11   | 2022-09-21   |
 
-硬件环境信息：
+环境配置信息：
 
-| 硬件型号                 | 硬件配置信息                                                 | 备注                           |
+| 环境信息                 | 配置信息                                                 | 备注                           |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------ |
 | TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920  128核<br />内存：1021GB<br />硬盘：7.3TB<br />OS：openEuler release 20.03 (LTS) | openGauss 3.1.0 build b30defda |
 | TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920  128核<br />内存：765GB<br />硬盘：3.0TB<br />OS：openEuler release 20.03 (LTS-SP1) | MySQL 5.7.27                   |
