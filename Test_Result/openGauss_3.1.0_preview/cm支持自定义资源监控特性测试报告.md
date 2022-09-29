@@ -8,11 +8,11 @@
 | 日期      | 修订   版本 | 修改描述             | 作者    |
 | :-------- | ----------- | -------------------- | ------- |
 | 2022-9-22 | 1.0         | 特性测试报告初稿完成 | qiuying |
-|           |             |                      |         |
+|    2022.9.29        |    V1.1         |   根据评审意见修改       |    qiuying     |
 
  关键词： 
 
-CM、自定义资源、Sharding、openLooKeng、zookeeper
+CM、自定义资源、ShardingSphere Proxy、openLooKeng、zookeeper
 
 摘要：
 
@@ -39,20 +39,20 @@ CM、自定义资源、Sharding、openLooKeng、zookeeper
 | openGauss 3.0.0 build 8198a77b | 2022-8-24    | 2022-8-28    |
 | openGauss 3.1.0 build 2c0ccaf9 | 2022-9-22    | 2022-9-29    |
 
-| 硬件型号      | 硬件配置信息                                                 | 备注 |
+| 环境信息      | 配置信息                                                 | 备注 |
 | ------------- | ------------------------------------------------------------ | ---- |
-| x86+openEuler | Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz 4核<br/>内存：32GB<br/>硬盘：300G<br/>OS：openEuler release 20.03 (LTS-SP1) |      |
+| 虚拟机 | Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz 4核<br/>内存：32GB<br/>硬盘：300G<br/>OS：openEuler release 20.03 (LTS-SP1) |      |
 
 # 3     测试结论概述
 
 ## 3.1   测试整体结论
 
-CM实现自定义资源管理，共计执行77条用例，主要覆盖了功能测试、可靠性和资料测试。功能测试覆盖对自定义资源sharding/zookeeper/openlookeng的状态进行监控和异常启停，json文件的配置，使用json文件对所需监控资源进行配置，实现CM对自定义资源的管理。可靠性测试覆盖在CPU、磁盘、网络异常时，CM是否可以正常管理资源。资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单8个，6个问题已解决且回归通过，剩余2个缺陷待解决，整体质量良好。
+CM实现自定义资源管理，共计执行77条用例，主要覆盖了功能测试、可靠性和资料测试。功能测试覆盖对自定义资源ss-proxy/zookeeper/openlookeng的状态进行监控和异常启停，json文件的配置，使用json文件对所需监控资源进行配置，实现CM对自定义资源的管理。可靠性测试覆盖在CPU、磁盘、网络异常时，CM是否可以正常管理资源。资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单8个，6个问题已解决且回归通过，剩余2个缺陷待解决，整体质量良好。
 
 | 测试活动   | 活动评价                                                     |
 | ---------- | :----------------------------------------------------------- |
 | 功能测试   | 对于json文件中配置错误或合理的参数，重启集群，会打印合理且明确的日志信息 |
-| 功能测试   | 配置资源sharding、zookeeper、openlookeng，CM可实现查询，启停资源，异常处理，整体质量良好 |
+| 功能测试   | 配置资源ss-proxy、zookeeper、openlookeng，CM可实现查询，启停资源，异常处理，整体质量良好 |
 | 功能测试   | 扩容和升级场景下，对自定义资源的管理正常                     |
 | 可靠性测试 | CPU、网络，磁盘等故障场景下CM管理资源正常                  |
 | 资料测试   | 资料对于新增加的功能描述准确，示例的执行结果正确，整体质量良好 |
@@ -60,13 +60,15 @@ CM实现自定义资源管理，共计执行77条用例，主要覆盖了功能�
 ## 3.2   约束说明
 
 - 数据库可适配安装CM
-- 安装配置资源sharding/zookeeper/openlookeng
+- 安装配置资源ss-proxy/zookeeper/openlookeng
 
 ## 3.3   遗留问题分析
 
 ### 3.3.1 遗留问题影响以及规避措施
 
-无
+| 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
+| -------- | -------- | -------- | ------------------ | -------- |
+| N/A      |          |          |                    |          |
 
 ### 3.3.2 问题统计
 
@@ -85,8 +87,8 @@ CM实现自定义资源管理，共计执行77条用例，主要覆盖了功能�
 | 4    | [I5FG8U](https://gitee.com/opengauss/CM/issues/I5FG8U?from=project-issue) | 次要     | CM执行cm_ctl stop -n NODEID停止某节点后，-I 单独启动资源，提示启动资源成功，实际query查询显示资状态Unknown | 已验收   |
 | 5    | [I5H53F](https://gitee.com/opengauss/CM/issues/I5H53F?from=project-issue) | 次要     | interval设置超过2时cm_ctl 查询资源状态显示unknown            | 已验收   |
 | 6    | [I5H5FF](https://gitee.com/opengauss/CM/issues/I5H5FF?from=project-issue) | 次要     | CM1主2备扩容为1主3备,扩容失败                                | 已验收   |
-| 7    | [I5TD7U](https://gitee.com/opengauss/CM/issues/I5TD7U?from=project-issue) | 不重要     | CM集群扩容后执行减容，减容成功但cm提示创建ssl连接失败                                | 未解决   |
-| 8    | [I5TJQD](https://gitee.com/opengauss/CM/issues/I5TJQD?from=project-issue) | 不重要     | CM资料和help中无-I参数的使用说明，使用cm_ctl stop -I会停止整个集群                                | 未解决   |
+| 7    | [I5TD7U](https://gitee.com/opengauss/CM/issues/I5TD7U?from=project-issue) | 不重要     | CM集群扩容后执行减容，减容成功但cm提示创建ssl连接失败                                | 待办的   |
+| 8    | [I5TJQD](https://gitee.com/opengauss/CM/issues/I5TJQD?from=project-issue) | 不重要     | CM资料和help中无-I参数的使用说明，使用cm_ctl stop -I会停止整个集群                                | 待办的   |
 
 # 4     测试执行
 

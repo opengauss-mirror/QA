@@ -8,7 +8,7 @@
 | 日期       | 修订   版本 | 修改描述 | 作者    |
 | ---------- | ----------- | -------- | ------- |
 | 2022.09.22 | V1.0        | 初稿     | qiuying |
-|            |             |          |         |
+|    2022.9.29        |    V1.1         |   根据评审意见修改       |    qiuying     |
 
  关键词： 
 
@@ -28,7 +28,7 @@ online在线迁移、增量迁移、性能、3w tps
 
 在特定场景下借助online在线迁移工具把Mysql的DML操作迁移到openGauss数据库，insert和混合迁移性能满足3w tps。
 
-特定场景如下：使用sysbench向Mysql压测数据，当oltp-table-size = 1000、oltp-tables-count =10、oltp-tables-count=30、使用insert模型时，MySQL数据在线迁移性能满足3w tps。
+特定场景如下：使用sysbench向Mysql压测数据，当oltp-table-size = 1000、oltp-tables-count =10、num-threads=30、使用insert模型时，MySQL数据在线迁移性能满足3w tps。
 
 # 2     特性测试信息
 
@@ -56,11 +56,11 @@ online在线迁移、增量迁移、性能、3w tps
 
 openGauss 数据增量迁移性能满足3w tps特性，共执行用例12个，无问题单，无遗留风险，整体质量良好。
 
-根据测试数据，得出结论：当oltp-table-size = 1000、oltp-tables-count =10、oltp-tables-count=30、使用insert模型时，MySQL数据在线迁移性能满足3w tps。
+根据测试数据，得出结论：当oltp-table-size = 1000、oltp-tables-count =10、num-threads=30、使用insert模型时，MySQL数据在线迁移性能满足3w tps。
 
 ## 3.2   约束说明
 
-1、MySQL 5.7以上版本，数据库除初始用户外的数据库用户均有复制权；配置文件添加以下参数：
+1、MySQL 5.7.27版本，数据库除初始用户外的数据库用户均有复制权；配置文件添加以下参数：
 
 MySQL参数设置： log_bin=ON, binlog_format=ROW, binlog_row_image=FULL, gtid_mode = ON
 

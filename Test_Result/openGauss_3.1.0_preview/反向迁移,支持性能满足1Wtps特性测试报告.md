@@ -8,7 +8,7 @@
 | 日期       | 修订   版本 | 修改描述 | 作者    |
 | ---------- | ----------- | -------- | ------- |
 | 2022.09.22 | V1.0        | 初稿     | qiuying |
-|            |             |          |         |
+|    2022.9.29        |    V1.1         |   根据评审意见修改       |    qiuying     |
 
  关键词： 
 
@@ -28,7 +28,7 @@
 
 MySQL在线迁移到openGauss之后，支持反向迁移，把数据从openGauss侧迁移到MySQL侧，insert反向迁移性能达到3w tps。
 
-insert场景如下：使用sysbench向mysql压测数据，当oltp-table-size = 10000、oltp-tables-count =100、oltp-tables-count=100、使用insert模型时，反向迁移性能满足3w tps。
+insert场景如下：使用sysbench向mysql压测数据，当oltp-table-size = 10000、oltp-tables-count =100、num-threads=100、使用insert模型时，反向迁移性能满足3w tps。
 
 # 2     特性测试信息
 
@@ -54,11 +54,11 @@ insert场景如下：使用sysbench向mysql压测数据，当oltp-table-size = 1
 
 ## 3.1   测试整体结论
 
-openGauss侧的增量数据反向迁移到MySQL，且性能满足3w tps特性，共执行用例12个，主要覆盖了功能测试、性能测试和资料测试。功能测试覆盖在opengauss数据库分别执行增删改操作，使用反向迁移工具迁移上述DML操作到MySQL，保证迁移前后数据的一致性、有序性和完整性。资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单2个，1个缺陷已解决，回归通过，剩余1个缺陷暂未解决，整体质量良好。
+openGauss侧的增量数据反向迁移到MySQL，且性能满足3w tps特性，共执行用例21个，主要覆盖了功能测试、性能测试和资料测试。功能测试覆盖在opengauss数据库分别执行增删改操作，使用反向迁移工具迁移上述DML操作到MySQL，保证迁移前后数据的一致性、有序性和完整性。资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单2个，1个缺陷已解决，回归通过，剩余1个缺陷暂未解决，整体质量良好。
 
 ## 3.2   约束说明
 
-1、MySQL 5.7以上版本，数据库除初始用户外的数据库用户均有复制权；配置文件添加以下参数：
+1、MySQL 5.7.27版本，数据库除初始用户外的数据库用户均有复制权；配置文件添加以下参数：
 
 MySQL参数设置： log_bin=ON, binlog_format=ROW, binlog_row_image=FULL, gtid_mode = ON
 
@@ -82,7 +82,9 @@ MySQL参数设置： log_bin=ON, binlog_format=ROW, binlog_row_image=FULL, gtid_
 
 ### 3.3.1 遗留问题影响以及规避措施
 
-无
+| 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
+| -------- | -------- | -------- | ------------------ | -------- |
+| N/A      |          |          |                    |          |
 
 ### 3.3.2 问题统计
 
@@ -96,7 +98,7 @@ MySQL参数设置： log_bin=ON, binlog_format=ROW, binlog_row_image=FULL, gtid_
 |序号| issue号                                                      | 级别 | 问题简述                                     | 状态   |
 | ---- | ------------------------------------------------------------ | ---- | -------------------------------------------- | ------ |
 | 1    | [I5SDIF](https://gitee.com/opengauss/CM/issues/I5SDIF?from=project-issue) | 次要 | 启动反向迁移工具时，指定错误参数时提示不合理 | 已验收 |
-| 2 | [I5SBS4](https://gitee.com/opengauss/CM/issues/I5SBS4?from=project-issue) | 次要 | chameleon drop_replic_schema无法停掉迁移进程 | 未解决 |
+| 2 | [I5SBS4](https://gitee.com/opengauss/CM/issues/I5SBS4?from=project-issue) | 次要 | chameleon drop_replic_schema无法停掉迁移进程 | 待办的 |
 
 # 4     测试执行
 
@@ -177,7 +179,7 @@ select sum(table_rows) from information_schema.tables where table_schema='onlint
 
 | 版本名称                       | 测试用例数 | 用例执行结果              | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------- | ------------ |
-| openGauss 3.1.0 build 4c9602a1 | 21         | Passed: 11<br />Failed: 1 | 2            |
+| openGauss 3.1.0 build 4c9602a1 | 21         | Passed: 19<br />Failed: 2 | 2            |
 
 *数据项说明：*
 
