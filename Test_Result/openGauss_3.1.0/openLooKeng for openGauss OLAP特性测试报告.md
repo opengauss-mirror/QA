@@ -77,7 +77,7 @@ openLookeng从shardingSphere注册中心访问元数据，订阅元数据修改�
 
 （1）目前openLooKeng仅支持对openGauss的select语法，其他DDL、DML语法不支持；
 
-（2）依赖shardingSphere+ZK注册中心+opengauss集群部署方式；
+（2）依赖shardingSphere+ZK注册中心+opengauss集群部署方式；shardingSphere版本限制5.2.0及以上；
 
 （3）Java 8 Update 161或更高版本(8u161+) (64位)。同时支持Oracle JDK和Open JDK；AArch64 (Bisheng JDK 1.8.262 或者更高版本)；
 
