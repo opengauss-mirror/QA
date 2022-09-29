@@ -173,7 +173,7 @@ chameleon init_replica --config default --source mysql --debug
 
 ### 4.3.1 测试结果分析
 
-本次测试中，部分场景下会出现全量迁移性能不满足30MB/s的情况（详见下表）：
+本次测试中，部分场景下会出现全量数据校验性能不满足30MB/s的情况（详见下表）：
 
 | 约束条件        | 校验速度 |
 | :-------------- | :------: |
@@ -181,7 +181,7 @@ chameleon init_replica --config default --source mysql --debug
 
 根据测试数据，分析可得：
 
-当被校验的数据总量较小（小于1GB），校验速度不满足30M/S。其他场景下，MySQL数据全量迁移性能满足30MB/s。
+当被校验的数据总量较小（小于1GB），校验速度不满足30M/S。其他场景下，datacheck全量数据校验性能满足30MB/s。
 
 ### 4.3.2 测试数据统计
 
