@@ -79,7 +79,7 @@ datachecker数据校验工具（全量）共计执行43条用例，主要覆盖�
 
 | 序号 | issue号                                                      | 级别 | 问题简述                                                     | 状态   |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------ |
-| 1    | [I5PP11](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PP11?from=project-issue) | 主要<b> | 源、宿端表数量存在差异，校验结果进入轮询状态，无结果文件输出<b> | 已验收<bb> |
+| 1    | [I5PP11](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PP11?from=project-issue) | 主要<b> | 源、宿端表数量存在差异，校验结果进入轮询状态，无结果文件输出<b> | 已验收<bbb> |
 | 2    | [I5PVER](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PVER?from=project-issue) | 主要 | 源、宿端存在同名表Ａ与ａ，只输出了Ａ表的校验结果文件         | 待修复 |
 | 3    | [I5Q5B4](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5Q5B4?from=project-issue) | 主要 | 校验服务进入轮询状态，无法生成第10张表的结果文件             | 已验收 |
 | 4    | [I5P71L](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5P71L?from=project-issue) | 次要 | 源、宿端表仅含一条数据时，无法生成校验结果                   | 已验收 |
