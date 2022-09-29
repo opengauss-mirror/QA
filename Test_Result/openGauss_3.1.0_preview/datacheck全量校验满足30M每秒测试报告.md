@@ -78,15 +78,15 @@ datacheck全量校验MySQL与openGauss数据的一致性满足校验速度30MB/s
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 | 转需求 |
 | ------ | :------: | :--: | :--: | :--: | :----: | :----: |
-| 数目   |    10    |  0   |  3   |  6   |   0    |   1    |
-| 百分比 |   100%   |  0%  | 30%  | 60%  |   0%   |  10%   |
+| 数目   |    2    |  0   |  1   |  1   |   0    |   0    |
+| 百分比 |   100%   |  0%  | 50%  | 50%  |   0%   |  0%   |
 
 ### 3.3.3 问题单汇总
 
 | 序号 | issue号                                                      | 级别 | 问题简述                        | 状态   |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------- | ------ |
 | 1    | [I5PP11](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PP11?from=project-issue) | 主要 | 15G数据源端抽取服务报错         | 已验收 |
-| 2    | [I5PVER](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PVER?from=project-issue) | 主要 | 错误率超出50%，校验日志包空指针 | 待修复 |
+| 2    | [I5PVER](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PVER?from=project-issue) | 主要 | 错误率超出50%，校验日志包空指针 | 已验收 |
 
 # 4     测试执行
 
