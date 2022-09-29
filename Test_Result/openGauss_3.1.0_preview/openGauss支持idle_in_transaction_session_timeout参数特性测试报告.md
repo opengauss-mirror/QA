@@ -8,14 +8,15 @@
 | 日期      | 修订   版本 | 修改描述             | 作者       |
 | :-------- | ----------- | -------------------- | ---------- |
 | 2022-9-22 | 1.0         | 特性测试报告初稿完成 | chengyao25 |
+| 2022-9-29 | 1.1         | 依据检视意见修改     | chengyao25 |
 
  关键词： 
 
- idle_in_transaction_session_timeout  、session_timeout、 idle、idle_in_transaction、idle_in_transaction_block 
+ idle_in_transaction_session_timeout、session_timeout、idle、idle_in_transaction、idle_in_transaction_block 
 
 摘要：
 
-本文档主要介绍新增 idle_in_transaction_session_timeout 参数，在线程池场景与非线程池场景下设置idle_in_transaction_session_timeout 与session_timeout参数 控制 idle、idle_in_transaction、idle_in_transaction_block三种场景下会话超时时间， 并给出最终测试结论。 
+本文档主要介绍新增 idle_in_transaction_session_timeout参数，在线程池场景与非线程池场景下设置idle_in_transaction_session_timeout与session_timeout参数控制 idle、idle_in_transaction、idle_in_transaction_block三种场景下会话超时时间，并给出最终测试结论。 
 
 缩略语清单：
 
@@ -25,7 +26,7 @@
 
 # 1     特性概述
 
-idle_in_transaction_session_timeout是一个guc参数，其值是用于控制idle_in_transaction和idle_in_transaction_block两种场景的会话超时时间 。该参数为userset类型参数，拥有三种设置方式，设置成功后与session_timeout结合使用，在线程池与非线程池场景下控制idle、idle_in_transaction、idle_in_transaction_block三种状态的会话超时时间。只有idle_in_transaction_session_timeout生效时，只控制idle_in_transaction和idle_in_transaction_block场景的会话超时，idle_in_transaction_session_timeout与session_timeout同时生效，以设置时长较短的参数控制会话超时时间(idle状态只受session_timeout参数控制)。
+idle_in_transaction_session_timeout是一个guc参数，其值是用于控制idle_in_transaction和idle_in_transaction_block两种场景的会话超时时间。该参数为userset类型参数，拥有三种设置方式，设置成功后与session_timeout结合使用，在线程池与非线程池场景下控制idle、idle_in_transaction、idle_in_transaction_block三种状态的会话超时时间。只有idle_in_transaction_session_timeout生效时，只控制idle_in_transaction和idle_in_transaction_block场景的会话超时，idle_in_transaction_session_timeout与session_timeout同时生效，以设置时长较短的参数控制会话超时时间(idle状态只受session_timeout参数控制)。
 
 # 2     特性测试信息
 
@@ -34,7 +35,7 @@ idle_in_transaction_session_timeout是一个guc参数，其值是用于控制idl
 | openGauss 3.0.0 build 801d945a | 2022-9-7     | 2022-9-13    |
 | openGauss 3.1.0 build 88ca9bcd | 2022-9-22    | 2022-9-22    |
 
-| 硬件型号   | 硬件配置信息                                                 | 备注 |
+| 环境信息   | 硬件配置信息                                                 | 备注 |
 | ---------- | ------------------------------------------------------------ | ---- |
 | x86+centOS | Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz 4核<br/>内存：32GB<br/>硬盘：300G<br/>OS：CentOS Linux release 7.6.1810 (Core) |      |
 
@@ -42,7 +43,7 @@ idle_in_transaction_session_timeout是一个guc参数，其值是用于控制idl
 
 ## 3.1   测试整体结论
 
-新增guc参数idle_in_transaction_session_timeout支持openGauss，共计执行51条用例，主要覆盖功能测试和资料测试。功能测试覆盖通过gs_guc set 方式、gs_guc reload方式、指定数据库、用户、会话级别参数的方式进行参数设置，在线程场景与非线程场景下设置idle_in_transaction_session_timeout与session_timeout参数，控制idle、idle_in_transaction、idle_in_transaction_block三种状态的会话超时时间，通过jdbc连接数据库进行设置观察数据库断开时间，会话超时会断开连接并且提示由哪个参数影响造成的超时。资料测试覆盖资料的描述是否正确，示例的执行是否成功。累计发现缺陷单1个，缺陷均已解决，回归通过，无遗留风险，整体质量良好。
+新增guc参数idle_in_transaction_session_timeout支持openGauss，共计执行51条用例，主要覆盖功能测试和资料测试。功能测试覆盖通过gs_guc set方式、gs_guc reload方式、指定数据库、用户、会话级别参数的方式进行参数设置，在线程场景与非线程场景下设置idle_in_transaction_session_timeout与session_timeout参数，控制idle、idle_in_transaction、idle_in_transaction_block三种状态的会话超时时间，通过jdbc连接数据库进行设置观察数据库断开时间，会话超时会断开连接并且提示由哪个参数影响造成的超时。资料测试覆盖资料的描述是否正确，示例的执行是否成功。累计发现缺陷单1个，缺陷均已解决，回归通过，无遗留风险，整体质量良好。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | :----------------------------------------------------------- |
@@ -56,15 +57,15 @@ idle_in_transaction_session_timeout是一个guc参数，其值是用于控制idl
 
 ## 3.2   约束说明
 
-1. idle_in_transaction_session_timeout参数的取值范围为：0 - 86400。
+1. idle_in_transaction_session_timeout参数的取值范围为：0 - 86400（单位为秒）。
 
 ## 3.3   遗留问题分析
 
 ### 3.3.1 遗留问题影响以及规避措施
 
-| 问题单号 | 问题描述 |
-| -------- | -------- |
-| NA       |          |
+ 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
+| -------- | -------- | -------- | ------------------ | -------- |
+| NA       |          |          |                    |          |
 
 ### 3.3.2 问题统计
 
@@ -136,16 +137,8 @@ idle_in_transaction_session_timeout是一个guc参数，其值是用于控制idl
 
 ## 4.3   后续测试建议
 
-无
+1.后续对参数idle_in_transaction_session_timeout的边界值86400进行测试。
 
 # 5     附件
 
 无
-
- 
-
-
-
- 
-
- 
