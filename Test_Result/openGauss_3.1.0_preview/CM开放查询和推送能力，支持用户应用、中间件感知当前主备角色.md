@@ -66,25 +66,18 @@ CM开放查询和推送能力，支持用户应用（中间件）感知当前主
 
 ## 3.2   约束说明
 
-1.数据库需要使用3.1.0版本
 
-2.用户使用的应用/中间件需要用户根据自身需求自定义开发
+1.提供了用户使用的应用/中间件demo，其他具体功能需要用户根据自身需求自定义开发
 
-3.CMRestAP默认使用http服务，支持配置访问白名单，若要使用https服务，需要在启动cmrestapi-xxx.jar组件时，指定系统参数serve.ssl相关参数来启动https服务，配置参数示例：
+2.本程序需要依赖cm相关进程和指令，所以必须与cm同时运行，需配置自定义资源配置文件，配置方法详见自定义资源监控特性相关内容
+
+3.CMRestAP默认使用http服务，支持配置访问白名单，若要使用https服务，需要在启动cmrestapi-3.1.0-RELEASE.jar组件时，指定系统参数serve.ssl相关参数来启动https服务，配置参数示例：
 
 ```
 -Dserver.port=服务监听端口 -Dserver.ssl.key-store=秘钥文件路径 -Dserver.ssl.key-store-password=秘钥文件密码 -Dserver.ssl.key-store-type=秘钥类型  
-如：java -jar -Dserver.port=8443 -Dserver.ssl.key-store=/home/omm/keystore.p12 -Dserver.ssl.key-store-password=Abcdef@123 -Dserver.ssl.key-store-type=PKCS12 cmrestapi-xxx.jar -e envFile
+如：java -jar -Dserver.port=8443 -Dserver.ssl.key-store=/home/omm/keystore.p12 -Dserver.ssl.key-store-password=Abcdef@123 -Dserver.ssl.key-store-type=PKCS12 cmrestapi-3.1.0-RELEASE.jar -e envFile
 ```
 
-4.由于本程序使用了springboot框架，默认启动会占用较大内存（约1G左右），若并发量不大不希望该程序占用较大内存，则可以在启动时指定一些系统参数减小内存占用，启动示例：
-
-```
--XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=56m -Xms128m -Xmx128m -Xmn32m -Xss328k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC  
-如：java -jar -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=56m -Xms128m -Xmx128m -Xmn32m -Xss328k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC cmrestapi-xxx.jar -e envFile
-```
-
-5.本程序需要依赖cm相关进程和指令，所以必须与cm同时运行，需配置自定义资源配置文件，配置方法详见自定义资源监控特性相关内容。
 
 ## 3.3   遗留问题分析
 
@@ -126,7 +119,7 @@ CM开放查询和推送能力，支持用户应用（中间件）感知当前主
 
 | 测试步骤                                 | 测试结果                          |
 | ---------------------------------------- | --------------------------------- |
-| 填写url键值对和app键值对作为入参进行测试 | 执行8条用例，发现bug2个，验收通过 |
+| 填写url键值对和app键值对作为入参进行测试 | 执行8条用例，未发现bug，验收通过 |
 
 ## 4.1.4   推送功能
 
@@ -156,11 +149,11 @@ CM开放查询和推送能力，支持用户应用（中间件）感知当前主
 
 | 测试步骤                                               | 测试结果                          |
 | ------------------------------------------------------ | --------------------------------- |
-| 资料描述准确，示例完整，可正确操作，格式正确，测试通过 | 执行1条用例，发现bug1给，验收通过 |
+| 资料描述准确，示例完整，可正确操作，格式正确，测试通过 | 执行1条用例，发现bug1个，验收通过 |
 
 ## 4.1.9  后续测试建议
 
-1.通过用户自主开发应用组件，测试应用组件和cmrestapi-xxx.jar组件的兼容性
+1.通过用户自主开发应用组件，测试应用组件和cmrestapi-3.1.0-RELEASE.jar组件的兼容性
 
 ## 4.2   测试执行统计数据
 
