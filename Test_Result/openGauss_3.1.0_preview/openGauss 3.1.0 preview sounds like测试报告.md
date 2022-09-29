@@ -33,11 +33,11 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL的sounds 
 | openGauss 3.1.0 build ece73c7d | 2022-08-02 | 2022-09-14 |
 | dolphin 1.0 | 2022-08-02 | 2022-09-14 |
 
-环境信息
+特性测试的环境信息
 
 | 环境信息 | 配置信息 | 备注 |
 | -------- | ------------ | ---- |
-| Linux mogdb-dev-0004 4.19.90-2003.4.0.0036.oe1.aarch64 #1 SMP Mon Mar 23 19:06:43 UTC 2020 aarch64 aarch64 aarch64 GNU/Linux |系统版本:openEuler 20.03 (LTS)<br />CPU:aarch64 64-bit Little Endian 8 Kunpeng-920<br />Mem:30Gi ||
+| 虚拟机 |系统版本:openEuler 20.03 (LTS)<br />CPU:aarch64 64-bit Little Endian 8 Kunpeng-920<br />Mem:30Gi ||
 
 # 3     测试结论概述
 
@@ -105,7 +105,7 @@ openGauss dolphin插件MySQL兼容sounds like函数，共执行33个用例，主
 
 | 测试步骤 | 测试结果 |
 | -------- | -------- |
-| 1. 将合法字符串、非法字符串以及合法非法混合字符串作为输入<br />2. 将合法字符串、非法字符串以及合法非法混合字符串设置为变量作为输入<br />| 执行22条用例，发现6个问题，其中6个已修复且验收通过 |
+| 1. 将合法字符串、非法字符串以及合法非法混合字符串作为输入<br />2. 将合法字符串、非法字符串以及合法非法混合字符串设置为变量作为输入<br />| 执行22条用例，发现6个问题，其中5个已解决且回归通过，1个已取消|
 
 #### 4.1.1.3 sounds like的多值查询测试
 
@@ -145,9 +145,9 @@ openGauss dolphin插件MySQL兼容sounds like函数，共执行33个用例，主
 | -------- | ---------- | ------------ | ------------ |
 | openGauss 3.1.0 build ece73c7d | 33 | Passed: 33<br />Failed: 0 | 6 |
 
-## 4.2   后续测试建议
+## 4.3   后续测试建议
 
-在og中select soundex('dao')=soundex('wo')返回的一定是bool值，因为他是做函数值比较操作，必然是返回bool类型的结果(true或者false),而mysql的返回值是有自己的处理，所以返回值不同这是两种数据库的差异造成的，不属于soundex的bug。
+已取消问题[I5PDI4](https://gitee.com/opengauss/Plugin/issues/I5PDI4?from=project-issue)：在og中select soundex('dao')=soundex('wo')返回的一定是bool值，因为他是做函数值比较操作，必然是返回bool类型的结果(true或者false),而mysql的返回值是有自己的处理，所以返回值不同这是两种数据库的差异造成的，不属于soundex的bug。
 
 # 5     附件
 
