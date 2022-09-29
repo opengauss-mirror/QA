@@ -13,7 +13,7 @@
 
  关键词： 
 
-cmrestapi、远程查询
+cmrestapi、远程查询、推送
 
  摘要：
 
