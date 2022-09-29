@@ -9,6 +9,7 @@
 | ---------- | ----------- | ------------------------ | --------- |
 | 2022-09-21 | 1.0         | 特性测试报告初稿完成     | zhanghang |
 | 2022-09-22 | 1.1         | 修改问题单状态及相关表述 | zhanghang |
+| 2022-09-29 | 1.2         | 修改问题单汇总及相关表述 | zhanghang |
 
  关键词： 
 
@@ -61,7 +62,7 @@ int；bigint；tinyint；smallint；unsigned
 
 8.验证是否为关键字
 
-资料测试覆盖资料描述是否准确、约束覆盖是否全面以及示例是否正确。累计发现缺陷单5个，5个问题单已修复且回归通过，无遗留风险，整体质量良好。
+资料测试覆盖资料描述是否准确、约束覆盖是否全面以及示例是否正确。累计发现缺陷单6个，6个问题单已修复且回归通过，无遗留风险，整体质量良好。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -94,7 +95,7 @@ int；bigint；tinyint；smallint；unsigned
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   | 5        | 0    | 0    | 5    | 0      |
+| 数目   | 6        | 0    | 0    | 6    | 0      |
 | 百分比 | 100%     | 0    | 0    | 100% | 0      |
 
 ### 3.3.3 问题单汇总
@@ -106,6 +107,7 @@ int；bigint；tinyint；smallint；unsigned
 | 3    | [I5RSK0](https://gitee.com/opengauss/Plugin/issues/I5RSK0?from=project-issue) | 次要     | 将负数显式转换为text类型后插入UNSIGNED类型列，结果和预期不符 | 已验收   |
 | 4    | [I5RTAI](https://gitee.com/opengauss/Plugin/issues/I5RTAI?from=project-issue) | 次要     | 将不同超过最大位数的负数显式转换为float类型后再转换为BIGINT UNSIGNED（uint8）类型，结果不一致 | 已验收   |
 | 5    | [I5RVPO](https://gitee.com/opengauss/Plugin/issues/I5RVPO?from=project-issue) | 次要     | 使用ignore参数将超范围的数显式转换为text类型后插入BIGINT UNSIGNED类型列，结果和预期不符 | 已验收   |
+| 6    | [I5SH77](https://gitee.com/opengauss/Plugin/issues/I5SH77?from=project-issue) | 次要     | 创建range分区表时分区使用start/end形式，分区表创建失败       | 已验收   |
 
 
 
@@ -127,9 +129,9 @@ int；bigint；tinyint；smallint；unsigned
 
 #### 4.1.3 在表、视图、存储过程、自定义函数中使用tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned类型
 
-| 测试步骤：                                                   | 测试结果                              |
-| ------------------------------------------------------------ | ------------------------------------- |
-| 1.在表、视图、存储过程、自定义函数中使用tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned类型 | 执行10条用例，未发现bug，结果符合预期 |
+| 测试步骤：                                                   | 测试结果                                      |
+| ------------------------------------------------------------ | --------------------------------------------- |
+| 1.在表、视图、存储过程、自定义函数中使用tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned类型 | 执行10条用例，发现1个bug，1个已修复且验收通过 |
 
 #### 4.1.4 在tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned类型上创建索引
 
@@ -171,13 +173,13 @@ int；bigint；tinyint；smallint；unsigned
 
 | 版本名称                       | 测试用例数 | 用例执行结果              | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------- | ------------ |
-| openGauss 3.1.0 build 0b50eccc | 30         | Passed：24<br />Failed：6 | 5            |
+| openGauss 3.1.0 build 0b50eccc | 30         | Passed：24<br />Failed：6 | 6            |
 | openGauss 3.1.0 build 075791e0 | 30         | Passed：30<br />Failed：0 | 0            |
 
 数据说明
 
-1.  测试过程中共发现5个bug，5个问题单均已修复且回归通过
-2.  缺陷密度：5个（缺陷个数）/35.103kloc（代码行数）=0.1个/kloc
+1.  测试过程中共发现6个bug，6个问题单均已修复且回归通过
+2.  缺陷密度：6个（缺陷个数）/35.103kloc（代码行数）=0.2个/kloc
 
 ## 4.4 后续测试建议
 
