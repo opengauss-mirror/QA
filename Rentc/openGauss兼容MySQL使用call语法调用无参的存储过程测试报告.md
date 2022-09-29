@@ -1,6 +1,7 @@
 ![](../../images/openGauss.png#crop=0&crop=0&crop=1&crop=1&id=n6KaE&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
-版权所有 © 2022  openGauss社区<br />您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
+版权所有 © 2022  openGauss社区
+您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
 
 修订记录
 
@@ -97,7 +98,8 @@ openGauss兼容mysql共计执行用例15条，主要覆盖了功能测试。功�
 | 测试步骤 | 测试结果 |
 | --- | --- |
 | 1. 编译安装openGauss数据库
-2. 编译dolphin插件<br />3. 创建兼容B库并安装dolphin插件 
+2. 编译dolphin插件
+3. 创建兼容B库并安装dolphin插件 
 4. 执行用例 | 编译库及插件成功，共执行15条用例
 未发现bug |
 
