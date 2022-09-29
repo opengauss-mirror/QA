@@ -60,7 +60,7 @@ datacheck全量校验MySQL与openGauss数据的一致性满足校验速度30MB/s
 
 1、MySQL 5.7.27数据存储分盘，my.cnf配置文件使用高性能配置
 
-2、openGauss所在环境数据盘，openGauss使用高性能配置部署，pg_xlog分盘，openGauss侧的目标库为兼容B库，除初始用户外的数据库用户均有复制权。
+2、openGauss使用高性能配置部署，pg_xlog分盘，openGauss侧的目标库为兼容B库。
 
 3、表须含主键
 
@@ -80,13 +80,13 @@ datacheck全量校验MySQL与openGauss数据的一致性满足校验速度30MB/s
 chameleon init_replica --config default --source mysql --debug
 ```
 
-4、查看openGauss侧迁移后的表的数据量
+4、查看openGauss侧迁移后的表的数据总量
 
 5、启动MySQL、openGauss抽取服务及数据校验服务
 
-6、发起数据校验服务请求
+6、发起全量数据校验服务请求
 
-迁移速度 = 总Size / 校验耗时，其中总Size是openGauss侧查询迁移后所有表的Size之和，校验耗时是取值抽取服务日志起始时间与校验服务日志终止时间。
+迁移速度 = 总Size / 校验耗时，其中总Size是使用chameleon工具迁移后，openGauss侧查询所有表的Size之和。校验耗时是取值MySQL抽取服务日志起始时间与校验服务日志终止时间差。
 
 ## 4.2   测试数据统计
 
@@ -181,7 +181,7 @@ chameleon init_replica --config default --source mysql --debug
 
 根据测试数据，分析可得：
 
-除上述场景外，本次测试中的其他场景下，MySQL数据全量迁移性能满足30MB/s。
+当被校验的数据总量较小（小于1GB），校验速度不满足30M/S。其他场景下，MySQL数据全量迁移性能满足30MB/s。
 
 ### 4.3.2 测试数据统计
 
