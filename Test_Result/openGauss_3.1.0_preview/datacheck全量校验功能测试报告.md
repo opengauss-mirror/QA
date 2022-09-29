@@ -100,7 +100,7 @@ datachecker数据校验工具（全量）共计执行43条用例，主要覆盖�
 
 | 测试步骤：                                                   | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1. 源端、宿端数据库正常启动<br />2. kafka、datachecker-extract-0.0.1.jar、datachecker-check-0.0.1.jar服务正常启动<br />3.通过全量校验接口发起校验请求<http://ip:port/start/check?checkMode=FULL> | 共执行43条用例，<br />共发现10个bug，6个现已修复且验收通过，1个转需求 |
+| 1. 源端、宿端数据库正常启动<br />2. kafka、datachecker-extract-0.0.1.jar、datachecker-check-0.0.1.jar服务正常启动<br />3.通过全量校验接口发起校验请求<curl -X 'POST' 'http://localhost:9000/start/check?checkMode=FULL' -H 'accept: */*' -d ''> | 共执行43条用例，<br />共发现10个bug，6个现已修复且验收通过，1个转需求 |
 
 #### 4.1.1.1 数据一致性测试
 
