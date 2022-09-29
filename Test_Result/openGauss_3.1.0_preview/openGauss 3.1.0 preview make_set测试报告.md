@@ -34,11 +34,11 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL的make_se
 | openGauss 3.1.0 build ece73c7d | 2022-08-02 | 2022-09-14 |
 | dolphin 1.0 | 2022-08-02 | 2022-09-14 |
 
-环境信息
+特性测试的环境信息
 
 | 环境信息 | 配置信息 | 备注 |
 | -------- | ------------ | ---- |
-| Linux mogdb-dev-0004 4.19.90-2003.4.0.0036.oe1.aarch64 #1 SMP Mon Mar 23 19:06:43 UTC 2020 aarch64 aarch64 aarch64 GNU/Linux |系统版本:openEuler 20.03 (LTS)<br />CPU:aarch64 64-bit Little Endian 8 Kunpeng-920<br />Mem:30Gi ||
+| 虚拟机 |系统版本:openEuler 20.03 (LTS)<br />CPU:aarch64 64-bit Little Endian 8 Kunpeng-920<br />MEM:30Gi ||
 
 # 3     测试结论概述
 
@@ -137,9 +137,9 @@ openGauss dolphin插件MySQL兼容make_set函数，共计执行21个用例，主
 | -------- | ---------- | ------------ | ------------ |
 | openGauss 3.1.0 build ece73c7d | 21 | Passed: 21<br />Failed: 0 | 4 |
 
-## 4.2   后续测试建议
+## 4.3   后续测试建议
 
-1.已取消问题1:此问题属于opengauss与MySQL机制不同导致，当在make_set里边出现除数为0则会出现错误，应避免使用除数为0的操作；已取消问题2:此问题属于opengauss与MySQL机制不同导致，在make_set里边出现除不尽的数，则会出现较多的小数点后位数，不出现错误可正常使用
+1.已取消问题1:此问题属于opengauss与MySQL机制不同导致，在opengauss中make_set里边出现除数为0则会出现错误，应避免使用除数为0的操作；已取消问题2:此问题属于opengauss与MySQL机制不同导致，在opengauss中make_set里边出现除不尽的数，则会出现较多的小数点后位数，不出现错误可正常使用。
 # 5     附件
 
 无
