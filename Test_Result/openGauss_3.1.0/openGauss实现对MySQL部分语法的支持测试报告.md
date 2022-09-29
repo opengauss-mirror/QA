@@ -131,7 +131,7 @@ openGauss实现对MYSQL部分语法的支持特性测试中，共计执行用例
 | 版本名称                      | 测试用例数 | 用例执行结果            | 发现问题单数 |
 | :----------------------------- | :---------- | :----------------------- | :------------ |
 | openGauss3.1.0 build b4215eeb | 96      | Passed:96<br />Failed:1 | 1           |
-| openGauss3.1.0 build 1068fe6d | 96 | Passed:96<br />Failed:1 | 0 |
+| openGauss3.1.0 build 1068fe6d | 1 | Passed1<br />Failed:0 | 0 |
 
 累计发现缺陷单1个，1个问题但已验收。
 
