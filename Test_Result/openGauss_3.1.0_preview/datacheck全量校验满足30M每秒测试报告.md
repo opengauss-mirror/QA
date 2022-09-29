@@ -8,7 +8,7 @@
 | 日期       | 修订   版本 | 修改描述 | 作者     |
 | ---------- | ----------- | -------- | -------- |
 | 2022.09.21 | V1.0        | 初稿     | lihongji |
-|            |             |          |          |
+| 2022.09.29 | V1.0        | 根据评审意见修改| lihongji |
 
  关键词： 
 
@@ -47,8 +47,7 @@ MySQL、chameleon、openGauss、datacheck、kafka、全量校验性能、30MB/s
 | ------------------------ | ------------------------------------------------------------ | ------------------------------ |
 | TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 <br />内存：1021GB<br />硬盘：7.3TB<br />OS：openEuler release 20.03 (LTS) | openGauss 3.1.0 build b30defda |
 | TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 <br />内存：765GB<br />硬盘：3.0TB<br />OS：openEuler release 20.03 (LTS-SP1) | MySQL 5.7.27                   |
-| TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 7260<br />内存：765GB<br />硬盘：7.3TB<br />OS：openEuler release 20.03 (LTS-SP1) | kafka 2.13-2.8.11              |
-| TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 7260<br />内存：765GB<br />硬盘：7.3TB<br />OS：openEuler release 20.03 (LTS-SP1) | datacheck                      |
+| TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 7260<br />内存：765GB<br />硬盘：7.3TB<br />OS：openEuler release 20.03 (LTS-SP1) | kafka 2.13-2.8.11、datacheck             |
 
 # 3     测试结论概述
 
@@ -86,7 +85,7 @@ datacheck全量校验MySQL与openGauss数据的一致性满足校验速度30MB/s
 | 序号 | issue号                                                      | 级别 | 问题简述                        | 状态   |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------- | ------ |
 | 1    | [I5PP11](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PP11?from=project-issue) | 主要 | 15G数据源端抽取服务报错         | 已验收 |
-| 2    | [I5PVER](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PVER?from=project-issue) | 主要 | 错误率超出50%，校验日志包空指针 | 已验收 |
+| 2    | [I5PVER](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PVER?from=project-issue) | 次要 | 错误率超出50%，校验日志报空指针 | 已验收 |
 
 # 4     测试执行
 
