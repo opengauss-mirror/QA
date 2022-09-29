@@ -37,7 +37,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL的INSERT(
 
 特性测试的环境信息
 
-| 硬件型号 | 硬件配置信息 | 备注 |
+| 环境信息 |  配置信息    | 备注 |
 | -------- | ------------ | ---- |
 | 虚拟机 | CPU: Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz <br /> MEM: 32GB <br /> DISK: 200GB <br /> OS: CentOS Linux release 7.6.1810 (Core) |      |
 
