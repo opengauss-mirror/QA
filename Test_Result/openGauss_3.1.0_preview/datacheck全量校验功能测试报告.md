@@ -89,7 +89,7 @@ datachecker数据校验工具（全量）共计执行43条用例，主要覆盖�
 | 8    | [I5Q3B7](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5Q3B7?from=project-issue) | 次要 | 无法校验表结构一致性                                         | 转需求 |
 | 9    | [I5Q3PG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5Q3PG?from=project-issue) | 次要 | 源端与宿端同名表，数据条数有差异，校验结果提示通过           | 已验收 |
 | 10   | [I5RNFM](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5RNFM?from=project-issue) | 次要 | 源端或宿端表缺失后，无缺失表对应的结果文件                   | 已验收 |
-| 11   | [I5TQHE](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5TQHE?from=project-issue) | 次要 | bit类型校验结果不准确                   | 待办 |
+| 11   | [I5TQHE](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5TQHE?from=project-issue) | 次要 | bit类型校验结果不准确                   | 待  办 |
 
 
 # 4     测试执行
