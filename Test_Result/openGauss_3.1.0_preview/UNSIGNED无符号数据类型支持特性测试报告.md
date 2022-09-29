@@ -5,11 +5,11 @@
 
 修订记录
 
-| 日期       | 修订   版本 | 修改描述                 | 作者      |
-| ---------- | ----------- | ------------------------ | --------- |
-| 2022-09-21 | 1.0         | 特性测试报告初稿完成     | zhanghang |
-| 2022-09-22 | 1.1         | 修改问题单状态及相关表述 | zhanghang |
-| 2022-09-29 | 1.2         | 修改问题单汇总及相关表述 | zhanghang |
+| 日期       | 修订   版本 | 修改描述                               | 作者      |
+| ---------- | ----------- | -------------------------------------- | --------- |
+| 2022-09-21 | 1.0         | 特性测试报告初稿完成                   | zhanghang |
+| 2022-09-22 | 1.1         | 修改问题单状态及相关表述               | zhanghang |
+| 2022-09-29 | 1.2         | 修改问题单汇总及相关表述，修改评审意见 | zhanghang |
 
  关键词： 
 
@@ -78,7 +78,8 @@ int；bigint；tinyint；smallint；unsigned
 
 ## 3.2 约束说明
 
-- 需要在兼容B库下加载dolphin插件才能使用
+- MySQL使用5.7版本
+- openGauss需要在兼容B库下加载dolphin插件才能使用
 - tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned类型仅支持行存模式，不支持列存模式和MOT
 - openGauss插入null值时显示为空，可以通过is null判断是否为null
 - tinyint unsigned、smallint unsigned、int unsigned、bigint unsigned类型仅支持btree、hash索引
