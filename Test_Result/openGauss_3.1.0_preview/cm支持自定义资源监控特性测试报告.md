@@ -78,7 +78,7 @@ CM实现自定义资源管理，共计执行77条用例，主要覆盖了功能�
 | 3    | [I5FE4G](https://gitee.com/opengauss/CM/issues/I5FE4G?from=project-issue) | 次要     | CM执行cm_ctl stop -n NODEID停止cms备节点实例和资源后，query查询显示资源状态为online | 已验收   |
 | 4    | [I5FG8U](https://gitee.com/opengauss/CM/issues/I5FG8U?from=project-issue) | 次要     | CM执行cm_ctl stop -n NODEID停止某节点后，-I 单独启动资源，提示启动资源成功，实际query查询显示资状态Unknown | 已验收   |
 | 5    | [I5H53F](https://gitee.com/opengauss/CM/issues/I5H53F?from=project-issue) | 次要     | interval设置超过2时cm_ctl 查询资源状态显示unknown            | 已验收   |
-| 6    | [I5H5FF](https://gitee.com/opengauss/CM/issues/I5H5FF?from=project-issue) | 次要     | CM1主2备扩容为1主3备,扩容失败                                | 已完成   |
+| 6    | [I5H5FF](https://gitee.com/opengauss/CM/issues/I5H5FF?from=project-issue) | 次要     | CM1主2备扩容为1主3备,扩容失败                                | 已验收   |
 
 # 4     测试执行
 

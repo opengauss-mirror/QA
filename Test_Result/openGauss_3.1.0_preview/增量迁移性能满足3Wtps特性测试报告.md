@@ -12,11 +12,11 @@
 
  关键词： 
 
-online在线迁移、增量迁移、性能、3Wtps
+online在线迁移、增量迁移、性能、3w tps
 
  摘要：
 
-本文档内容为验证在特定场景下借助online在线迁移工具把Mysql的DML操作迁移到openGauss数据库，迁移性能满足3Wtps。
+本文档内容为验证在特定场景下借助online在线迁移工具把Mysql的DML操作迁移到openGauss数据库，迁移性能满足3w tps。
 
 缩略语清单：
 
@@ -26,9 +26,9 @@ online在线迁移、增量迁移、性能、3Wtps
 
 # 1     特性概述
 
-在特定场景下借助online在线迁移工具把Mysql的DML操作迁移到openGauss数据库，insert和混合迁移性能满足3Wtps。
+在特定场景下借助online在线迁移工具把Mysql的DML操作迁移到openGauss数据库，insert和混合迁移性能满足3w tps。
 
-特定场景如下：使用sysbench向mysql压测数据，当oltp-table-size = 1000、oltp-tables-count =10、oltp-tables-count=30、使用insert模型时，MySQL数据在线迁移性能满足3Wtps。
+特定场景如下：使用sysbench向Mysql压测数据，当oltp-table-size = 1000、oltp-tables-count =10、oltp-tables-count=30、使用insert模型时，MySQL数据在线迁移性能满足3w tps。
 
 # 2     特性测试信息
 
@@ -40,13 +40,13 @@ online在线迁移、增量迁移、性能、3Wtps
 | MySQL 5.7.27                            | 2022-09-07   | 2022-9-22    |
 | chameleon 3.0.0                         | 2022-09-07   | 2022-9-22    |
 | sysbench 1.0.20                         | 2022-09-07   | 2022-9-22    |
-| online-migration-mysql-1.0-SNAPSHOT.jar | 2022-09-07   | 2022-9-22    |
+| online-migration-mysql-3.1.0-SNAPSHOT.jar | 2022-09-07   | 2022-9-22    |
 
 硬件环境信息：
 
 | 硬件型号                 | 硬件配置信息                                                 | 备注                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 7260 2p 128核<br />内存：32 * 32GB<br />硬盘：3 * 2.9TB<br />OS：openEuler release 20.03 (LTS-SP1) | openGauss 3.1.0 build 4c9602a1<br />online-migration-mysql-1.0-SNAPSHOT.jar |
+| TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 7260 2p 128核<br />内存：32 * 32GB<br />硬盘：3 * 2.9TB<br />OS：openEuler release 20.03 (LTS-SP1) | openGauss 3.1.0 build 4c9602a1<br />online-migration-mysql-3.1.0-SNAPSHOT.jar |
 | TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 7260 2p 128核<br />内存：24 * 32GB<br />硬盘：3 * 2.9TB<br />OS：openEuler release 20.03 (LTS-SP1) | MySQL 5.7.27<br/>chameleon 3.0.0                             |
 | TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 7260 2p 128核<br />内存：24 * 32GB<br />硬盘：3 * 2.9TB<br />OS：openEuler release 20.03 (LTS-SP1) | sysbench 1.0.20                                              |
 
@@ -54,9 +54,9 @@ online在线迁移、增量迁移、性能、3Wtps
 
 ## 3.1   测试整体结论
 
-openGauss 数据增量迁移性能满足3W tps特性，共执行用例12个，无问题单，无遗留风险，整体质量良好。
+openGauss 数据增量迁移性能满足3w tps特性，共执行用例12个，无问题单，无遗留风险，整体质量良好。
 
-根据测试数据，得出结论：当oltp-table-size = 1000、oltp-tables-count =10、oltp-tables-count=30、使用insert模型时，MySQL数据在线迁移性能满足3Wtps。
+根据测试数据，得出结论：当oltp-table-size = 1000、oltp-tables-count =10、oltp-tables-count=30、使用insert模型时，MySQL数据在线迁移性能满足3w tps。
 
 ## 3.2   约束说明
 
@@ -72,7 +72,7 @@ MySQL参数设置： log_bin=ON, binlog_format=ROW, binlog_row_image=FULL, gtid_
 
 5、online在线迁移工具已编译jar包
 
-6、update和delete场景下，迁移性能无法满足3Wtps
+6、update和delete场景下，迁移性能无法满足3w tps
 
 7、仅支持从MySQL迁移至openGauss，支持DML迁移，不支持DDL迁移
 
@@ -97,7 +97,7 @@ chameleon init_replica --config default --source mysql --debug
 3、开启online在线迁移
 
 ```
-numactl -C 0-31 -m 0 java -Xms10G -Xmx15G -jar ./target/online-migration-mysql-0809-1.0-SNAPSHOT.jar
+numactl -C 0-31 -m 0 java -Xms10G -Xmx15G -jar ./target/online-migration-mysql-0809-3.1.0-SNAPSHOT.jar
 ```
 
 4、sysbench执行run命令，给mysql压测数据(insert模型，30个线程，10张表,1000行数据)
@@ -146,7 +146,7 @@ numactl -C cpu_num1-cpu_num2 sysbench --db-driver=mysql --debug=off --test=[path
 
 ### 4.2.1   sysbench使用不同参数配置，online所测得的平均迁移速度
 
-| lua模型                                         | num-threads | oltp-tables-count | oltp-table-size | max-time | 迁移速度(W/pts) |
+| lua模型                                         | num-threads | oltp-tables-count | oltp-table-size | max-time | 平均迁移速度(w/tps) |
 | ----------------------------------------------- | ----------- | ----------------- | --------------- | -------- | --------------- |
 | insert.lua带主键                                | 30          | 10                | 1000            | 50       | 3.447           |
 | insert.lua带主键                                | 50          | 10                | 1000            | 50       | 3.934           |
@@ -163,7 +163,7 @@ numactl -C cpu_num1-cpu_num2 sysbench --db-driver=mysql --debug=off --test=[path
 
 根据测试数据，分析可得：
 
-除update和delete由于内核的限制，性能测试结果达不到3W tps外，其他性能测试场景下，数据增量迁移性能满足3W tps。
+除update和delete由于内核的限制，性能测试结果达不到3w tps外，其他性能测试场景下，数据增量迁移性能满足3w tps。
 
 ## 4.4   后续测试建议
 

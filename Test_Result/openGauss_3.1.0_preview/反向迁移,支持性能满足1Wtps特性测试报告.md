@@ -16,7 +16,7 @@
 
  摘要：
 
-本文档内容为验证mysql在线迁移到openGauss之后，支持反向迁移，把数据从openGauss侧迁移到mysql侧，insert反向迁移性能达到3W tps。
+本文档内容为验证mysql在线迁移到openGauss之后，支持反向迁移，把数据从openGauss侧迁移到MySQL侧，insert反向迁移性能达到3w tps。
 
 缩略语清单：
 
@@ -26,9 +26,9 @@
 
 # 1     特性概述
 
-mysql在线迁移到openGauss之后，支持反向迁移，把数据从openGauss侧迁移到mysql侧，insert反向迁移性能达到3W tps。
+MySQL在线迁移到openGauss之后，支持反向迁移，把数据从openGauss侧迁移到MySQL侧，insert反向迁移性能达到3w tps。
 
-insert场景如下：使用sysbench向mysql压测数据，当oltp-table-size = 10000、oltp-tables-count =100、oltp-tables-count=100、使用insert模型时，反向迁移性能满足3Wtps。
+insert场景如下：使用sysbench向mysql压测数据，当oltp-table-size = 10000、oltp-tables-count =100、oltp-tables-count=100、使用insert模型时，反向迁移性能满足3w tps。
 
 # 2     特性测试信息
 
@@ -54,7 +54,7 @@ insert场景如下：使用sysbench向mysql压测数据，当oltp-table-size = 1
 
 ## 3.1   测试整体结论
 
-openGauss侧的增量数据反向迁移到mysql，且性能满足3W tps特性，共执行用例12个，主要覆盖了功能测试、性能测试和资料测试。功能测试覆盖在opengauss数据库分别执行增删改操作，使用反向迁移工具迁移上述DML操作到mysql，保证迁移前后数据的一致性、有序性和完整性。资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单2个，1个缺陷已解决，回归通过，剩余1个缺陷暂未解决，整体质量良好。
+openGauss侧的增量数据反向迁移到MySQL，且性能满足3w tps特性，共执行用例12个，主要覆盖了功能测试、性能测试和资料测试。功能测试覆盖在opengauss数据库分别执行增删改操作，使用反向迁移工具迁移上述DML操作到MySQL，保证迁移前后数据的一致性、有序性和完整性。资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单2个，1个缺陷已解决，回归通过，剩余1个缺陷暂未解决，整体质量良好。
 
 ## 3.2   约束说明
 
@@ -72,7 +72,7 @@ MySQL参数设置： log_bin=ON, binlog_format=ROW, binlog_row_image=FULL, gtid_
 
 5、反向迁移工具已编译jar包
 
-6、仅insert迁移性能达到3W tps
+6、仅insert迁移性能达到3w tps
 
 7、仅支持从openGauss迁移至MySQL，支持DML迁移，不支持DDL迁移
 
@@ -167,14 +167,14 @@ select sum(table_rows) from information_schema.tables where table_schema='onlint
 
 ### 4.2.1   sysbench使用不同参数配置，所测得的平均迁移速度
 
-| lua模型    | num-threads | oltp-tables-count | oltp-table-size | max-time | 迁移速度(W/pts) |
+| lua模型    | num-threads | oltp-tables-count | oltp-table-size | max-time | 平均迁移速度(w/tps) |
 | ---------- | ----------- | ----------------- | --------------- | -------- | --------------- |
 | insert.lua | 100         | 100               | 10000           | 50       | 3.551043        |
 | insert.lua | 150         | 100               | 10000           | 50       | 3.529478        |
 | insert.lua | 100         | 150               | 10000           | 50       | 3.457414        |
 | delete.lua | 100         | 100               | 10000           | 50       | 1.8847          |
 
-根据测试数据，分析可得：insert反向迁移性能测试结果达到3W tps以上。
+根据测试数据，分析可得：insert反向迁移性能测试结果达到3w tps以上。
 
 ## 4.4   后续测试建议
 
@@ -236,7 +236,7 @@ Threads fairness:
     execution time (avg/stddev):   49.9861/0.00
 ```
 
-反向迁移效率：每秒查询一次表的总行数，计算前后差的平均值(3.55W tps)
+反向迁移效率：每秒查询一次表的总行数，计算前后差的平均值(3.55w tps)
 
 ```
 2022/9/22 19:28:47.2847.	1414851
