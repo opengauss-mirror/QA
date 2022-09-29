@@ -26,15 +26,16 @@ MYSQL、dolphin插件、兼容B库、IS_IPV4_COMPAT()/IS_IPV4_MAPPED()
 
 # 1     特性概述
 
-基于插件dolphin，实现openGauss对MYSQL IS_IPV4_COMPAT()/IS_IPV4_MAPPED()函数的兼容，包括函数的功能、参数类型、参数个数、返回值、函数名称大小写等。由于是在openGauss中支持IS_IPV4_COMPAT()/IS_IPV4_MAPPED()函数，且openGauss与MYSQL数据类型存在差异，因此函数处理逻辑会发生一些改变，部分类型参数的输入格式等和MYSQL侧不完全一致。
+基于插件dolphin，实现openGauss对MYSQL IS_IPV4_COMPAT()/IS_IPV4_MAPPED()函数的兼容，包括函数的功能、参数类型、参数个数、返回值、函数名称大小写等。由于是在openGauss中支持IS_IPV4_COMPAT()/IS_IPV4_MAPPED()函数，且openGauss与MYSQL数据类型存在差异，因此函数入参部分类型的输入格式等和MYSQL侧不完全一致。
 
 # 2     特性测试信息
 
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
 | ------------------------------ | ------------ | ------------ |
-| openGauss 3.1.0 build 0b50eccc | 2022-9-10    | 2022-9-28   |
-| dolphin 1.0                    | 2022-9-10    | 2022-9-28   |
-| mysql5.7                    | 2022-9-10    | 2022-9-28   |
+| openGauss 3.1.0 build 0b50eccc | 2022-9-10    | 2022-9-22 |
+| openGauss 3.1.0 build 73e83d99 | 2022-9-27    | 2022-9-28    |
+| dolphin 1.0                    | 2022-9-10    | 2022-9-28    |
+| mysql5.7 | 2022-9-10 | 2022-9-28 |
 
 | 环境信息 | 配置信息                                                     | 备注 |
 | -------- | ------------------------------------------------------------ | ---- |
@@ -136,18 +137,17 @@ MYSQL、dolphin插件、兼容B库、IS_IPV4_COMPAT()/IS_IPV4_MAPPED()
 
 | 版本名称                                                     | 测试用例数 | 用例执行结果             | 发现问题单数 |
 | ------------------------------------------------------------ | ---------- | ------------------------ | ------------ |
-| openGauss 3.1.0 build 0b50eccc | 38        | Passed：38<br>Failed：0 |         1          |
+| openGauss 3.1.0 build 0b50eccc | 38        | Passed：36<br>Failed：2 |         1          |
+| openGauss 3.1.0 build 73e83d99 | 38 | Passed：38<br/>Failed：0 | 0 |
 
 *数据项说明：*
 
 * 累计发现缺陷单1个
-* 失败用例待验收
 * 缺陷密度：1(缺陷个数)/0.035kloc(代码行数)=28.57(个/kloc)
 
 ## 4.3  后续测试建议
 
 -  支持十六进制的0x表示
--  支持openGauss网络地址类型
 
 # 5     附件
 
