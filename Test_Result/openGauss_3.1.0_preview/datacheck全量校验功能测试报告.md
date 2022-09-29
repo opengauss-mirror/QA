@@ -40,7 +40,7 @@ datachecker校验工具由MySQL(源端)，kafka，datachecker、openGauss(宿端
 
 | 硬件型号       | 硬件配置信息                                                 | 备注 |
 | -------------- | ------------------------------------------------------------ | ---- |
-| OpenStack Nova | CPU:  Intel(R) Xeon(R) Gold 6278C CPU @ 2.60GHz<br>内存：31GB<br>硬盘：523G<br>OS：CentOS Linux release 7.6.1810 (Core)<br> |      |
+| 虚拟机 | CPU:  Intel(R) Xeon(R) Gold 6278C CPU @ 2.60GHz<br>内存：31GB<br>硬盘：523G<br>OS：CentOS Linux release 7.6.1810 (Core)<br> |      |
 
 # 3     测试结论概述
 
