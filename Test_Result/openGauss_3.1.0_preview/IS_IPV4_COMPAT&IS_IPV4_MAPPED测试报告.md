@@ -69,9 +69,9 @@ MYSQL、dolphin插件、兼容B库、IS_IPV4_COMPAT()/IS_IPV4_MAPPED()
 
 ### 3.3.1 遗留问题影响以及规避措施
 
-| 问题单号 | 问题描述 |
-| -------- | -------- |
-| #I5RYHT       |    openGauss中二进制/十六进制不支持0x      |
+| 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
+| -------- | -------- | -------- | -------- | -------- |
+| NA       |          |          |                    |          |
 
 ### 3.3.2 问题统计
 
@@ -85,6 +85,7 @@ MYSQL、dolphin插件、兼容B库、IS_IPV4_COMPAT()/IS_IPV4_MAPPED()
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                     | 问题状态 |
 | ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
 | 1    | [I5RZCQ](https://e.gitee.com/opengaussorg/dashboard?issue=I5RZCQ) | 次要     | IS_IPV4_COMPAT()/IS_IPV4_MAPPED()函数参数为null时，函数返回值为空 | 已验收   |
+| 2    | [I5RYHT](https://e.gitee.com/opengaussorg/dashboard?issue=I5RYHT) | 次要     | 二进制/十六进制不支持0x                                      | 已转需求 |
 
 
 # 4     测试执行
