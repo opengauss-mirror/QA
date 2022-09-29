@@ -224,9 +224,9 @@ chameleon init_replica --config default --source mysql --debug
 
 ## 5.1 数据总量递增平均迁移速度折线图
 
-![](./images/datacheck全量校验速率折线图.jpg)
+![](./images/datachecker全量校验速率折线图.jpg)
 
 ## 5.2  全量数据校验流程图
 
-![](./images/全量数据校验流程图.png)
+![](./images/datachecker全量数据校验流程图.png)
 
