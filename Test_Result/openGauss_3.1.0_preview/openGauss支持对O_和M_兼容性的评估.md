@@ -162,7 +162,7 @@ EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'TABLE
 | 1. 准备SQL文件，文件中SQL语句间使用`;`分隔<br />2. cd到../contrib/assessment目录下，执行命令：<br />`assessment_database -p xxx -x A -U xxx -W xxx -f xx/xx.sql -o xx/xx.html`<br />3. 查看评估结果报告，测试评估报告UI显示及各字段值显示正确，与预期是否一致<br />4. 清理环境 | 执行10条用例，发现1个bug，现已修复且验收通过 |
 
 评估报告样式如下图：
-![report](../../images/assessment评估报告.png)
+![report](images/assessment评估报告.png)
 
 ## 4.2  测试执行统计数据
 
@@ -183,6 +183,5 @@ EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'TABLE
 # **5     附件**
 
 无
-
 
 ****
