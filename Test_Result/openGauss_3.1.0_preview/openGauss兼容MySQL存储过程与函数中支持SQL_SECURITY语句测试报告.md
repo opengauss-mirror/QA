@@ -59,6 +59,7 @@ openGauss兼容mysql，在函数和存储过程中支持SQL SECURITY语句，测
 
 ## 3.2   约束说明
 1.openGauss需使用兼容B库且有dolphin插件
+2.mysql使用5.7版本
 ## 3.3   遗留问题分析
 
 ### 3.3.1  遗留问题影响以及规避措施
