@@ -86,11 +86,11 @@ datachecker数据校验工具（全量）共计执行43条用例，主要覆盖�
 | 4    | [I5P71L](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5P71L?from=project-issue) | 次要 | 源、宿端表仅含一条数据时，无法生成校验结果                   | 已验收 |
 | 5    | [I5PCAO](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PCAO?from=project-issue) | 次要 | 修复语句语法replace into，openGauss暂不支持。源、宿端时间类型未到毫秒级，校验工具进行了毫秒级校验，导致不通过 | 已验收 |
 | 6    | [I5PNZL](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PNZL?from=project-issue) | 次要 | char类型字符串两侧数据一致，校验结果为失败                   | 已验收 |
-| 7    | [I5PSUV](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PSUV?from=project-issue) | 次要 | 二进制类型数据，源、宿端数据无差异，校验结果提示失败         | 进行中 |
-| 8    | [I5Q3B7](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5Q3B7?from=project-issue) | 次要 | 无法校验表结构一致性                                         | 转需求 |
+| 7    | [I5PSUV](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5PSUV?from=project-issue) | 次要 | 二进制类型数据，源、宿端数据无差异，校验结果提示失败         | 已确认 |
+| 8    | [I5Q3B7](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5Q3B7?from=project-issue) | 次要 | 无法校验表结构一致性                                         | 已确认 |
 | 9    | [I5Q3PG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5Q3PG?from=project-issue) | 次要 | 源端与宿端同名表，数据条数有差异，校验结果提示通过           | 已验收 |
 | 10   | [I5RNFM](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5RNFM?from=project-issue) | 次要 | 源端或宿端表缺失后，无缺失表对应的结果文件                   | 已验收 |
-| 11   | [I5TQHE](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5TQHE?from=project-issue) | 次要 | bit类型校验结果不准确                   | 待确认 |
+| 11   | [I5TQHE](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I5TQHE?from=project-issue) | 次要 | bit类型校验结果不准确                   | 已确认 |
 
 
 # 4     测试执行
