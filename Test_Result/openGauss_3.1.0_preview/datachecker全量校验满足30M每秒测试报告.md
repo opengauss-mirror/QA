@@ -53,7 +53,7 @@ MySQL、chameleon、openGauss、datachecker、kafka、全量校验性能、30MB/
 
 ## 3.1   测试整体结论
 
-datachecker全量校验MySQL与openGauss数据的一致性满足校验速度30MB/s特性，共执行用例10个，合计提2个问题单，无遗留风险，整体质量一般。
+datachecker全量校验MySQL与openGauss数据的一致性满足校验速度30MB/S特性，共执行用例10个，合计提2个问题单，无遗留风险，整体质量一般。
 
 ## 3.2   约束说明
 
@@ -114,7 +114,7 @@ chameleon init_replica --config default --source mysql --debug
 <center> 表1  单表数据总量递增平均校验速度
 </center>
 
-| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/s） |
+| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/S） |
 | :----------: | :------------: | :--------: | :------------------: |
 |      1       |      16.3      |    300     |          30          |
 |      1       |       33       |    600     |        46.15         |
@@ -129,7 +129,7 @@ chameleon init_replica --config default --source mysql --debug
 <center>表2  三张表数据总量递增平均校验速度
 </center>
 
-| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/s） |
+| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/S） |
 | :----------: | :------------: | :--------: | :------------------: |
 |      3       |     28.71      |    300     |        21.43         |
 |      3       |     57.42      |    600     |          40          |
@@ -144,7 +144,7 @@ chameleon init_replica --config default --source mysql --debug
 <center>表3  六张表数据总量递增平均校验速度
 </center>
 
-| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/s） |
+| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/S） |
 | :----------: | :------------: | :--------: | :------------------: |
 |      6       |     51.13      |    300     |        13.04         |
 |      6       |     102.26     |    300     |        26.09         |
@@ -159,7 +159,7 @@ chameleon init_replica --config default --source mysql --debug
 <center> 表4  八张表数据总量递增平均校验速度
 </center>
 
-| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/s） |
+| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/S） |
 | :----------: | :------------: | :--------: | :------------------: |
 |      8       |     36.21      |    300     |        11.11         |
 |      8       |     72.42      |    600     |        21.43         |
@@ -175,7 +175,7 @@ chameleon init_replica --config default --source mysql --debug
 <center> 表5  十张表数据总量递增平均校验速度
 </center>
 
-| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/s） |
+| 数据表（个） | 数据总数(万条) | 总size(MB) | 平均校验速度（MB/S） |
 | :----------: | :------------: | :--------: | :------------------: |
 |      10      |     43.82      |    300     |         9.38         |
 |      10      |     87.64      |    600     |        18.18         |
@@ -198,11 +198,11 @@ chameleon init_replica --config default --source mysql --debug
 
 | 约束条件        | 校验速度 |
 | :-------------- | :------: |
-| 数据总量小于1GB | <=30M/S  |
+| 数据总量小于1GB | <=30MB/S  |
 
 根据测试数据，分析可得：
 
-除上述场景外，本次测试中的其他场景下，MySQL数据全量校验性能满足30MB/s。
+除上述场景外，本次测试中的其他场景下，MySQL数据全量校验性能满足30MB/S。
 
 ### 4.3.2 测试数据统计
 
@@ -212,7 +212,7 @@ chameleon init_replica --config default --source mysql --debug
 
 数据说明：
 
-1、datacheck全量校验满足30M/S测试共计10条用例，执行通过10条，共计发现2个bug
+1、datacheck全量校验满足30MB/S测试共计10条用例，执行通过10条，共计发现2个bug
 
 2、缺陷密度为2(缺陷个数)/6.51k(代码行数)=0.31(个/kloc)
 
