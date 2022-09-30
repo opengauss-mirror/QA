@@ -12,11 +12,11 @@
 
  关键词： 
 
-MySQL、chameleon、openGauss、datachecker、kafka、全量校验性能、30MB/s
+MySQL、chameleon、openGauss、datachecker、kafka、全量校验性能、30MB/S
 
  摘要：
 
-本文档内容为验证在使用chameleon工具从MySQL数据库向openGauss数据库进行全量迁移后，使用datachecker校验工具进行全量数据校验，校验速率满足30MB/s。
+本文档内容为验证在使用chameleon工具从MySQL数据库向openGauss数据库进行全量迁移后，使用datachecker校验工具进行全量数据校验，校验速率满足30MB/S。
 
 缩略语清单：
 
@@ -26,7 +26,7 @@ MySQL、chameleon、openGauss、datachecker、kafka、全量校验性能、30MB/
 
 # 1     特性概述
 
-使用chameleon工具从MySQL数据库向openGauss数据库进行全量数据迁移，迁移后使用datachecker校验工具进行数据校验，校验速率满足30MB/s。
+使用chameleon工具从MySQL数据库向openGauss数据库进行全量数据迁移，迁移后使用datachecker校验工具进行数据校验，校验速率满足30MB/S。
 
 # 2     特性测试信息
 
