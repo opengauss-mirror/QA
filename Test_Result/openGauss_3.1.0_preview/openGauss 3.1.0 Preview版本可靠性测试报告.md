@@ -53,7 +53,7 @@
 
 openGauss 3.1.0 Preview版本提供调用栈和日志记录的故障定位手段，故障引起进程Panic清理故障后可手动恢复进程运行；故障恢复后进程能正常运行、主备状态正常、能正常处理SQL、主备数据同步且数据一致；本次测试发现gs_probackup restore恢复的实例无法正常stop，但是可以通过规避措施解决，基本满足可靠可用。
 
-openGauss 3.1.0 Preview版本可靠性测试共计测试6个版本，在x86+Centos，x86openEuler环境下共计执行692个用例，测试用例累计执行率100%，测试发现2个问题，其中1个问题CCB裁决非问题，需修改测试用例，1个问题遗留处理。
+openGauss 3.1.0 Preview版本可靠性测试共计测试6个版本，在x86+Centos，x86openEuler环境下共计执行692个用例，测试用例累计执行率100%，测试发现2个问题，其中1个问题CCB裁决非问题已取消，需修改测试用例，1个问题遗留处理。
 
 ## 3.2   约束说明
 
@@ -65,7 +65,7 @@ openGauss 3.1.0 Preview版本可靠性测试共计测试6个版本，在x86+Cent
 
 | 问题单号                                                     | 问题描述                                                     | 问题级别 | 问题影响和规避措施                                           | 当前状态 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| [I5KS0Y](https://e.gitee.com/opengaussorg/issues/table?issue=I5KS0Y) | gs_probackup restore恢复的tmpdn1使用gs_ctl start后gs_ctl stop失败 | 次要     | 备份后的实例启动后没有办法正常stop。可以指定-immediate 立即停止或者kill强制停止 | 打开     |
+| [I5KS0Y](https://e.gitee.com/opengaussorg/issues/table?issue=I5KS0Y) | gs_probackup restore恢复的tmpdn1使用gs_ctl start后gs_ctl stop失败 | 次要     | 备份后的实例启动后没有办法正常stop。可以指定-immediate 立即停止或者kill强制停止 | 待办的   |
 
 ### 3.3.2 问题统计
 
@@ -78,8 +78,8 @@ openGauss 3.1.0 Preview版本可靠性测试共计测试6个版本，在x86+Cent
 
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                     | 问题状态 |
 | ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| 1    | [I5DZTN](https://e.gitee.com/opengaussorg/issues/table?issue=I5DZTN) | 次要     | recovery_min_apply_delay设置为1，备1降为级联备，多次连跑tpcc，第18次连跑结束查询tpcc表数据时报错；经CCB同意非问题关闭。 | 关闭     |
-| 2    | [I5KS0Y](https://e.gitee.com/opengaussorg/issues/table?issue=I5KS0Y) | 次要     | gs_probackup restore恢复的tmpdn1使用gs_ctl start后gs_ctl stop失败。 | 关闭     |
+| 1    | [I5DZTN](https://e.gitee.com/opengaussorg/issues/table?issue=I5DZTN) | 次要     | recovery_min_apply_delay设置为1，备1降为级联备，多次连跑tpcc，第18次连跑结束查询tpcc表数据时报错；经CCB同意非问题关闭。 | 已取消   |
+| 2    | [I5KS0Y](https://e.gitee.com/opengaussorg/issues/table?issue=I5KS0Y) | 次要     | gs_probackup restore恢复的tmpdn1使用gs_ctl start后gs_ctl stop失败。 | 待办的   |
 
 
 
