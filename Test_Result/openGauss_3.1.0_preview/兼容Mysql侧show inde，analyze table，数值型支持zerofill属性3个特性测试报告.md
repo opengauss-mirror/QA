@@ -190,7 +190,7 @@ ANALYZE TABLE语法测试，共计执行10条用例，主要覆盖了功能测�
 
 | 版本名称                       | 测试用例数 | 用例执行结果            | 发现问题单数 |
 | ------------------------------ | ---------- | ----------------------- | ------------ |
-| openGauss 3.0.0 build b07c959b | 51         | Passed：51<br>Failed：0 | 1            |
+| openGauss 3.0.0 build b07c959b | 51         | Passed：50<br>Failed：1 | 1            |
 | openGauss 3.0.0 build cad66d01 | 1          | Passed：1<br/>Failed：0 | 0            |
 
 *数据项说明：*
@@ -244,7 +244,7 @@ db_replica=# SHOW INDEX from t_grammar0001;
  t_grammar0001 | f          | id_grammar0001 |            1 | id          | A         |             |          |        |      | btree      |         | 唯一索引
 (1 row)
 --使用SHOW INDEXes语句查询
-db_replica=# SHOW INDEXes from t_grammar0001;
+db_replica=# SHOW INDEXES from t_grammar0001;
      table     | non_unique |    key_name    | seq_in_index | column_name | collation | cardinality | sub_part | packed | null | index_type | comment | index_comment
 ---------------+------------+----------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------
  t_grammar0001 | f          | id_grammar0001 |            1 | id          | A         |             |          |        |      | btree      |         | 唯一索引
