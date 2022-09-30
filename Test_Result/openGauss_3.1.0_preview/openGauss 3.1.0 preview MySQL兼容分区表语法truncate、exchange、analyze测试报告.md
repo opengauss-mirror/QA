@@ -9,7 +9,7 @@
 | ---- | ----------- | -------- | ---- |
 | 2022-09-05 | 1.0 | 报告初稿 | zhanbiao.chen |
 | 2022-09-16 | 1.1 | 完善问题状态、测试结论 | zhanbiao.chen |
-| 2022-09-22 | 1.2 | 根据检视意见修改 | zhanbiao.chen |
+| 2022-09-30 | 1.2 | 根据检视意见修改 | zhanbiao.chen |
 
 关键词：兼容B库，dolphin插件，truncate，exchange，analyze
 
@@ -66,7 +66,8 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL分区表�
 | 版本名称 | 测试起始时间 | 测试结束时间 |
 | -------- | ------------ | ------------ |
 | MySQL 5.7 | 2022-09-01 | 2022-09-16  |
-| openGauss 3.1.0 build 0b50eccc |  2022-09-01 | 2022-09-16  |
+| openGauss 3.1.0 build 491cbee | 2022-09-01 | 2022-09-09  |
+| openGauss 3.1.0 build  0b50eccc |  2022-09-10 | 2022-09-15  |
 | dolphin 1.0 | 2022-09-01 | 2022-09-16  |
 
 特性测试的环境信息
@@ -88,11 +89,13 @@ openGauss dolphin插件MySQL兼容分区表truncate、exchange、analyze语法�
 | 功能测试 | EXCHANGE语法测试，执行结果符合预期，通过 |
 | 功能测试 | ANALYZE语法测试，执行结果符合预期，通过 |
 | 约束测试 | 所有测试用例在非兼容"B"库下运行，不通过用例正常返回错误，数据库稳定性不受影响，执行结果符合预期，通过 |
+| 备份恢复测试 | 逻辑备份逻辑恢复、物理备份以及物理恢复，符合预期，通过 |
 | 资料测试 | 资料描述准确，示例的执行结果正确，整体质量良好，符合预期，通过 |
 
 ## 3.2   约束说明
 
 1. 兼容MySQL分区truncate、exchange、analyze语法需在openGauss兼容B库下安装dolphin插件验证。
+2. 使用MySQL 5.7版本。
 
 ## 3.3   遗留问题分析
 
@@ -107,7 +110,7 @@ openGauss dolphin插件MySQL兼容分区表truncate、exchange、analyze语法�
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
 | 数目   | 5        | 1    | 0    | 4    | 0      |
-| 百分比 |          | 20%  | 0    | 80%  | 0      |
+| 百分比 | 100%     | 20%  | 0    | 80%  | 0      |
 
 ### 3.3.3 问题列表
 
@@ -173,7 +176,8 @@ openGauss dolphin插件MySQL兼容分区表truncate、exchange、analyze语法�
 
 | 版本名称 | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | -------- | ---------- | ------------ | ------------ |
-| openGauss 3.1.0 build 0b50eccc | 165 | Passed: 165<br />Failed: 0 | 5 |
+| openGauss 3.1.0 build 491cbee | 165 | Passed: 165<br />Failed: 5 | 5 |
+| openGauss 3.1.0 build 0b50eccc | 165 | Passed: 165<br />Failed: 0 | 0 |
 
 
 ## 4.2   后续测试建议
