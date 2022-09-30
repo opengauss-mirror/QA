@@ -66,10 +66,10 @@
 
 Docker版本信息：
 
-| OS系统                        | Docker版本            |
-| ----------------------------- | --------------------- |
-| CentOS-7.6                    | 18.09.0 build 62eb848 |
-| OpenEuler release20.03（LTS） | 18.09.0 build 62eb848 |
+| OS系统                        | Docker版本               |
+| ----------------------------- | ------------------------ |
+| CentOS-7.6                    | 18.06.1-ce build e68fc7a |
+| OpenEuler release20.03（LTS） | 18.09.0 build 4f81b51   |
 
 
 
