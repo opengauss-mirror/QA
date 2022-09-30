@@ -1,4 +1,4 @@
-![](../../images/openGauss.png#crop=0&crop=0&crop=1&crop=1&id=d4u0Z&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=#crop=0&crop=0&crop=1&crop=1&id=GVRIo&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![输入图片说明](images/sqlsecuritytitle.png)
 
 版权所有 © 2022  openGauss社区
 您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
@@ -8,7 +8,7 @@
 | 日期 | 修订   版本 | 修改描述 | 作者 |
 | --- | --- | --- | --- |
 | 2022-09-23 | 1.0 | 测试报告初稿完成 | wangrururu |
-|  |  |  |  |
+| 2022-09-30 |2.0  |测试报告修订版  |wangrururu  |
 |  |  |  |  |
 |  |  |  |  |
 
@@ -33,6 +33,7 @@ openGauss在兼容B库情形下，安装dolphin插件，可以实现实现兼容
 | --- | --- | --- |
 | opengauss 3.1.0 build a100917c | 2022-09-19 | 2022-09-19 |
 | dolphin 1.0 | 2022-09-19 | 2022-09-19 |
+| mysql 5.7 | 2022-09-19 | 2022-09-19 |
 
 
 描述特性测试的环境信息
@@ -45,7 +46,7 @@ openGauss在兼容B库情形下，安装dolphin插件，可以实现实现兼容
 # 3     测试结论概述
 
 ## 3.1   测试整体结论
-openGauss兼容mysql，在函数和存储过程中支持SQL SECURITY语句，测试用例20条，主要覆盖了功能测试及资料测试。功能测试覆盖：自定义模式以及public模式下，SQL SECURITY INVOKER、SQL SECURITY DEFINER以及没有SQL SECURITY语句时超户、普通用户调用函数和存储过程的情况，校验输出结果。资料测试覆盖校验资料的描述及示例的执行结果。累计发现问题单2个，2个非本需求问题取消。
+openGauss兼容mysql，在函数和存储过程中支持SQL SECURITY语句，测试用例20条，主要覆盖了功能测试及资料测试。功能测试覆盖：自定义模式以及public模式下，SQL SECURITY INVOKER、SQL SECURITY DEFINER以及没有SQL SECURITY语句时超户、普通用户调用函数和存储过程的情况，校验输出结果。资料测试覆盖校验资料的描述及示例的执行结果。累计发现问题单2个，2个非本需求问题，已提在opengauss-server上，特性质量良好。
 
 | **测试活动** | **活动评价** |
 | --- | --- |
@@ -69,15 +70,15 @@ openGauss兼容mysql，在函数和存储过程中支持SQL SECURITY语句，测
 ### 3.3.2  问题统计
 |  | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | --- | --- | --- | --- | --- | --- |
-| 数目 | 2 |  | 2 |  |  |
-| 百分比 | 100% |  | 100% |  |  |
+| 数目 | 2 | 0 | 2 | 0 | 0 |
+| 百分比 | 100% | 0% | 100% | 0% | 0% |
 
 
 ### 3.3.3  问题单汇总
 | **序号** | **issue号** | **问题级别** | **问题简述** | **问题状态** |
 | --- | --- | --- | --- | --- |
-| 1 | [I5RUCT](https://gitee.com/opengauss/Plugin/issues/I5RUCT?from=project-issue) | 主要 | 没有给普通用户函数的调用权限，但其能调用 | 已取消 |
-| 2 | [I5RUGZ](https://gitee.com/opengauss/Plugin/issues/I5RUGZ?from=project-issue) | 主要 | 无法剥夺普通用户调用函数的权限 | 已取消 |
+| 1 | [I5T5P1](https://gitee.com/opengauss/Plugin/issues/I5RUCT?from=project-issue) | 主要 | 没有给普通用户函数的调用权限，但其能调用 | 在opengauss-server开启的|
+| 2 | [I5T5M4](https://gitee.com/opengauss/Plugin/issues/I5RUGZ?from=project-issue) | 主要 | 无法剥夺普通用户调用函数的权限 |  在opengauss-server开启的 |
 
 # 4     测试执行
 
@@ -86,7 +87,7 @@ openGauss兼容mysql，在函数和存储过程中支持SQL SECURITY语句，测
 ### 4.1.1 编译库及插件执行测试
 | **测试步骤** | **测试结果** |
 | --- | --- |
-| 1. 编译安装openGauss数据库 <br />2. 编译dolphin插件 <br />3. 创建兼容B库并安装dolphin插件 <br />4. 执行用例 | 编译库及插件成功，共执行20条用例，共发现2个bug，2条非本需求问题已取消 |
+| 1. 编译安装openGauss数据库 <br />2. 编译dolphin插件 <br />3. 创建兼容B库并安装dolphin插件 <br />4. 执行用例 | 编译库及插件成功，共执行20条用例，共发现2个bug，2条非本需求问题，已在opengauss-server提了问题单 |
 
 #### 4.1.1.1 public模式下，SQL SECURITY语句的执行情况
 | **测试步骤** | **测试结果** |
@@ -111,7 +112,7 @@ openGauss兼容mysql，在函数和存储过程中支持SQL SECURITY语句，测
 
 数据说明
 
-1. 累计发现问题单2个，2个非本需求产生的问题，取消
+1. 累计发现问题单2个，2个非本需求产生的问题，已在opengauss-server提了问题单
 ## 4.3   后续测试建议
 在opengauss上：  
 1.在普通用户初始理应没有超户创建的函数的调用权限  
