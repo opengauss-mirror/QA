@@ -7,9 +7,10 @@
 
 修订记录
 
-| 日期      | 修订版本 | 修改章节 | 修改描述 | 作者        |
-| --------- | -------- | -------- | -------- | ----------- |
-| 2022.4.21 | 1.0      | 初稿撰写 |          | yansong_lee |
+| 日期      | 修订版本 | 修改章节               | 修改描述         | 作者        |
+| --------- | -------- | ---------------------- | ---------------- | ----------- |
+| 2022.4.21 | 1.0      | 初稿撰写               |                  | yansong_lee |
+| 2022.11.2 | 1.1      | 内容-缺陷issue撤销原则 | 补充异常场景处理 | yansong_lee |
 
 
 
@@ -43,7 +44,7 @@
 
 ### 2、提单要求
 
-+ 在openGauss的版本周期内（Release版本3.5年，Preview版本0.5年），所有问题都必须提缺陷issue处理
++ 在openGauss的版本周期内（Release版本3年，Preview版本0.5年），所有问题都必须提缺陷issue处理
 + 提交缺陷issue要按照填写信息，描述清楚环境信息、数据库版本、问题现象和复现步骤等，否则QA sig组审核不通过，会退回给提单人
 
 ### 3、缺陷issue状态
@@ -67,11 +68,13 @@
 
 + 问题现象、问题根因相同的重复问题单可撤销
 
-+ 已确认为非问题的issue可撤销
++ 与提单人确认为非问题的issue可撤销；若联系不到提单人，需要通过[社区邮件](https://opengauss.org/zh/community/onlineCommunication.html)向community、问题所属sig组和QA sig组公示7天，且通过CCB裁决非问题，允许以非问题撤销
+
++ 对于联系不到提单人，且按照issue中描述的操作步骤无法复现问题（至少复现20次）的场景，通过[社区邮件](https://opengauss.org/zh/community/onlineCommunication.html)向community、问题所属sig组和QA sig组公示7天，允许撤销此问题。之后提单人如有异议，可以重新打开此issue，并在issue中补充可复现的测试步骤、可供定位的堆栈日志等详细信息
 
 ### 6、缺陷issue降级原则
 
-+ 降级问题提交到对应特性sig 组[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)评审裁决，满足1个月不复现或者3000次不复现的要求，对于不复现的问题单需要提供影响分析
++ 降级问题提交到对应特性sig 组[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)评审裁决，在可以联系到环境和提单人的前提下，满足1个月不复现或者3000次不复现的要求，对于不复现的问题单需要提供影响分析
 
 ### 7、缺陷issue挂起原则
 
