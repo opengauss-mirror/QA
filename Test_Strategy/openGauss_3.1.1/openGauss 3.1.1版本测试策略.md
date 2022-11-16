@@ -366,6 +366,10 @@ openGauss社区开源版本需要满足安全基本要求，以达到安全合�
 |              | 分布式OLTP，2P（Taishan 200 2280 7260）15节点 1H             | 1300万     | 此即为release基线                     |
 |              | 分布式OLTP，2P（Taishan 200 2280 7260）32节点 1H             | 2600万     | 此即为release基线                     |
 | RTO          | 一主两同步备failover                                         | 10s        | 与Release基线数据差异小于5%以内可接受 |
+| 工具链       | 全量迁移                                                     | 300MB/s    | 此即为release基线                     |
+|              | 增量迁移                                                     | 3w tps     | 此即为release基线                     |
+|              | 反向迁移                                                     | 1w tps     | 此即为release基线                     |
+|              | 全量数据校验                                                 | 70 MB/s    | 此即为release基线                     |
 
 ### 兼容性测试
 
