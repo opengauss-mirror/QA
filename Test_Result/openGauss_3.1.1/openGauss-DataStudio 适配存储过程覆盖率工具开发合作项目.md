@@ -17,7 +17,7 @@ DataStudio、存储过程、覆盖率
 
  摘要：
 
-本工具实现了DataStudio 适配dbe_pldebugger存储过程的覆盖率工具，满足DataStudio对存储赶火车覆盖率统计分析的需求。
+本工具实现了DataStudio适配dbe_pldebugger存储过程的覆盖率工具，满足DataStudio对存储赶火车覆盖率统计分析的需求。
 
 缩略语清单：
 
