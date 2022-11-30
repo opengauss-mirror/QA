@@ -13,11 +13,11 @@
 
  关键词： 
 
-Data Studio、存储过程、覆盖率
+DataStudio、存储过程、覆盖率
 
  摘要：
 
-本工具实现了 DataStudio 适配 dbe_pldebugger存储过程的覆盖率工具，满足 DataStudio 对存储赶火车覆盖率统计分析的需求。
+本工具实现了DataStudio 适配dbe_pldebugger存储过程的覆盖率工具，满足DataStudio对存储赶火车覆盖率统计分析的需求。
 
 缩略语清单：
 
@@ -27,7 +27,7 @@ Data Studio、存储过程、覆盖率
 
 # 1     特性概述
 
-基于 DataStudio 开源项目不能适配最新版本 openGauss3.0.0 调试组件 dbe_pldebugger，该项目适配openGauss3.0.0 调试组件 dbe_pldebugger，增加 DataStudio 对 openGauss存储过程的覆盖率工具，并实现Data Studio 对存储过程覆盖率统计分析的需求。
+基于DataStudio开源项目不能适配最新版本openGauss3.0.0调试组件dbe_pldebugger，该项目适配openGauss3.0.0调试组件dbe_pldebugger，增加DataStudio对openGauss存储过程的覆盖率工具，并实现DataStudio对存储过程覆盖率统计分析的需求。
 
 # 2     特性测试信息
 
@@ -54,7 +54,7 @@ Data Studio、存储过程、覆盖率
 
 ## 3.1   测试整体结论
 
-openGauss存储过程的覆盖率工具，实现Data Studio 对存储过程覆盖率统计分析的需求，共执行用例30个，提交问题单13个，无遗留风险，整体质量良好。
+openGauss存储过程的覆盖率工具，实现DataStudio对存储过程覆盖率统计分析的需求，共执行用例36个，提交问题单13个，无遗留风险，整体质量良好。
 
 | 测试活动     | 活动评价                                                     |
 | ------------ | ------------------------------------------------------------ |
