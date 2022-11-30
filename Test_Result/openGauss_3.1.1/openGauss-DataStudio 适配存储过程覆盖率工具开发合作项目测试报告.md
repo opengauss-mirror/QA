@@ -104,9 +104,9 @@ openGauss存储过程的覆盖率工具，实现DataStudio对存储过程覆盖�
 | 8    | [I5YX6S](https://gitee.com/opengauss/DataStudio/issues/I5YX6S?from=project-issue) | 次要     | DS中存储过程覆盖率的相关资料未添加到用户手册                 | 已验收   |
 | 9    | [I5ZVBM](https://gitee.com/opengauss/DataStudio/issues/I5ZVBM?from=project-issue) | 次要     | 对存储过程进行调试时，未执行的代码首行没有红点               | 已验收   |
 | 10   | [I61B6L](https://gitee.com/opengauss/DataStudio/issues/I61B6L?from=project-issue) | 次要     | 调试时，调用堆栈中的函数信息需显示为函数名                   | 已验收   |
-| 12   | [I61P8L](https://gitee.com/opengauss/DataStudio/issues/I61P8L?from=project-issue) | 次要     | 调试函数，红绿点标记有误                                     | 已验收   |
-| 13   | [I60IP7](https://gitee.com/opengauss/DataStudio/issues/I60IP7?from=project-issue) | 次要     | DS用户手册关于覆盖率统计章节描述不规范                       | 已验收   |
-| 11   | [I61O9J](https://gitee.com/opengauss/DataStudio/issues/I61O9J?from=project-issue) | 不重要   | 函数无入参时，调试结束，返回debug result结果不合理           | 已验收   |
+| 11   | [I61P8L](https://gitee.com/opengauss/DataStudio/issues/I61P8L?from=project-issue) | 次要     | 调试函数，红绿点标记有误                                     | 已验收   |
+| 12   | [I60IP7](https://gitee.com/opengauss/DataStudio/issues/I60IP7?from=project-issue) | 次要     | DS用户手册关于覆盖率统计章节描述不规范                       | 已验收   |
+| 13   | [I61O9J](https://gitee.com/opengauss/DataStudio/issues/I61O9J?from=project-issue) | 不重要   | 函数无入参时，调试结束，返回debug result结果不合理           | 已验收   |
 
 # 4     测试执行
 
