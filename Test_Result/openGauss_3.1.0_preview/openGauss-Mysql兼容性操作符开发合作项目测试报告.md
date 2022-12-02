@@ -16,7 +16,7 @@
 
 摘要：
 
-本文档主要对openGauss实现兼容MySQL中的操作符^、&&、||、like、not like进行测试，并给出测试结论。
+本文档主要对openGauss实现兼容M*中的操作符^、&&、||、like、not like进行测试，并给出测试结论。
 
 缩略语清单：
 
@@ -26,7 +26,7 @@
 
 # 1 特性概述
 
-本次特性实现对兼容MySQL中的操作符^、&&、||、like、not like，^表示异或运算，&&表示逻辑与运算，||表示逻辑或运算，like表示简单的模式匹配，not like表示否定简单模式匹配，用户在兼容B库下加载dolphin插件时可以使用以上特性。
+本次特性实现对兼容M*中的操作符^、&&、||、like、not like，^表示异或运算，&&表示逻辑与运算，||表示逻辑或运算，like表示简单的模式匹配，not like表示否定简单模式匹配，用户在兼容B库下加载dolphin插件时可以使用以上特性。
 
 # 2 特性测试信息
 
@@ -35,7 +35,7 @@
 | openGauss 3.1.0 build 55a4ea7f | 2022-09-23   | 2022-10-14   |
 | openGauss 3.1.0 build f2e18e3c | 2022-11-09   | 2022-11-11   |
 | openGauss 3.1.0 build 448e8551 | 2022-11-28   | 2022-11-29   |
-| MySQL 5.7.36                   | 2022-09-23   | 2022-11-29   |
+| M* 5.7.36                   | 2022-09-23   | 2022-11-29   |
 
 | 环境信息 | 配置信息                                                     | 备注 |
 | -------- | ------------------------------------------------------------ | ---- |
@@ -45,11 +45,11 @@
 
 ## 3.1 测试整体结论
 
-openGauss-Mysql兼容性操作符开发合作项目共计执行用例69条，主要覆盖了功能测试、性能测试和资料测试。功能测试主要覆盖以下方面：
+openGauss-M*兼容性操作符开发合作项目共计执行用例69条，主要覆盖了功能测试、性能测试和资料测试。功能测试主要覆盖以下方面：
 
 1.验证^操作符的功能
 
-2.验证sql_mode取不同参数值时||操作符的功能
+2.验证dolphin.sql_mode取不同参数值时||操作符的功能
 
 3.验证b_compatibility_mode取不同参数值时&&操作符的功能
 
@@ -67,34 +67,34 @@ openGauss-Mysql兼容性操作符开发合作项目共计执行用例69条，主
 
 10.验证lower_case_table_names参数是否影响like、not like操作符区分大小写
 
-性能测试对比相同环境、同等条件下openGauss中操作符的性能不差于MySQL，资料测试覆盖资料描述是否准确、约束覆盖是否全面以及示例是否正确。
+性能测试对比相同环境、同等条件下openGauss中操作符的性能不差于M*，资料测试覆盖资料描述是否准确、约束覆盖是否全面以及示例是否正确。
 
-累计发现缺陷单12个（其中3个同类问题合并为1个问题单，其余2个已取消），1个问题单经plugin/sig会议确认非问题后已取消，9个问题单已修复且回归通过（其中[I5VQRL](https://gitee.com/opengauss/Plugin/issues/I5VQRL?from=project-issue)问题单回归不通过一次），整体质量良好。
+累计发现缺陷单12个（其中3个同类问题合并为1个问题单，其余2个已取消），1个问题单经plugin/sig会议确认非问题后已取消，9个问题单已修复且回归通过（其中[I5VQRL](https://gitee.com/opengauss/Plugin/issues/I5VQRL?from=project-issue)问题单回归不通过一次），整体质量一般。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | ------------------------------------------------------------ |
 | 功能测试 | 验证^操作符的功能，通过                                      |
-| 功能测试 | 验证sql_mode取不同参数值时\|\|操作符的功能，通过             |
-| 功能测试 | 验证b_compatibility_mode取不同参数值时&&操作符的功能，通过   |
-| 功能测试 | 验证b_compatibility_mode取不同参数值时like、not like是否区分大小写，通过 |
+| 功能测试 | 验证dolphin.sql_mode取不同参数值时\|\|操作符的功能，通过             |
+| 功能测试 | 验证dolphin.b_compatibility_mode取不同参数值时&&操作符的功能，通过   |
+| 功能测试 | 验证dolphin.b_compatibility_mode取不同参数值时like、not like是否区分大小写，通过 |
 | 功能测试 | 在表、视图、存储过程、自定义函数中使用^、&&、\|\|、like、not like操作符，通过 |
 | 功能测试 | 隐式转换时使用^、&&、\|\|、like、not like操作符，通过        |
 | 功能测试 | 和数字操作符的交互，通过                                     |
 | 功能测试 | 和ignore参数的交互，通过                                     |
 | 功能测试 | 和查询语句的交互，通过                                       |
 | 功能测试 | 验证lower_case_table_names参数是否影响like、not like操作符区分大小写，通过 |
-| 性能测试 | 对比相同环境、同等条件下openGauss中操作符的性能不差于MySQL，通过 |
+| 性能测试 | 对比相同环境、同等条件下openGauss中操作符的性能不差于M*，通过 |
 | 资料测试 | 资料描述是否准确、约束覆盖是否全面以及示例是否正确，通过     |
 
 ## 3.2 约束说明
 
-- 兼容MySQL 5.7版本。
+- 兼容M* 5.7版本。
 - openGauss需要在兼容B库下加载dolphin插件才能使用。
-- b_compatibility_mode参数的值为true时，&&操作符实现逻辑与功能。
-- sql_mode参数的值不含pipes_as_concat，||操作符实现逻辑或功能。
-- 当b_compatibility_mode参数的值为true时，like和not like模式匹配时大小写不敏感，当b_compatibility_mode参数的值为false时，大小写敏感。
+- dolphin.b_compatibility_mode参数的值为true时，&&操作符实现逻辑与功能。
+- dolphin.sql_mode参数的值不含pipes_as_concat，||操作符实现逻辑或功能。
+- 当dolphin.b_compatibility_mode参数的值为true时，like和not like模式匹配时大小写不敏感，当dolphin.b_compatibility_mode参数的值为false时，大小写敏感。
 - like binary、not like binary采用大小写敏感模式匹配。
-- blob类型在MySQL和openGauss中是不同类型，且MySQL中无bytea类型、raw类型，故在openGauss中like和not like模式匹配blob类型、bytea类型、raw类型时，按照openGauss当前处理方式运算。
+- blob类型在`M*`和openGauss中是不同类型，且`M*`中无bytea类型、raw类型，故在openGauss中like和not like模式匹配blob类型、bytea类型、raw类型时，按照openGauss当前处理方式运算。
 
 ## 3.3  遗留问题分析
 
@@ -140,23 +140,23 @@ openGauss-Mysql兼容性操作符开发合作项目共计执行用例69条，主
 | ------------------- | ------------------------------------------------------------ |
 | 1.验证^操作符的功能 | 执行8条用例，发现7个bug（3个问题单由于是同类问题合并为1个问题单），5个已修复且验收通过 |
 
-### 4.1.2 验证sql_mode取不同参数值时||操作符的功能
+### 4.1.2 验证dolphin.sql_mode取不同参数值时||操作符的功能
 
 | 测试步骤                                                     | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1.sql_mode为sql_mode_strict，验证\|\|操作符<br />2.sql_mode为sql_mode_full_group，验证\|\|操作符<br />3.sql_mode为''，验证\|\|操作符<br />4.sql_mode为default，验证\|\|操作符<br />5.sql_mode为pipes_as_concat，验证\|\|操作符 | 执行7条用例，发现2个bug，1个已修复且验收通过，1个经plugin/sig会议确认非问题后已取消 |
+| 1.dolphin.sql_mode为sql_mode_strict，验证\|\|操作符<br />2.sql_mode为sql_mode_full_group，验证\|\|操作符<br />3.sql_mode为''，验证\|\|操作符<br />4.sql_mode为default，验证\|\|操作符<br />5.sql_mode为pipes_as_concat，验证\|\|操作符 | 执行7条用例，发现2个bug，1个已修复且验收通过，1个经plugin/sig会议确认非问题后已取消 |
 
-### 4.1.3 验证b_compatibility_mode取不同参数值时&&操作符的功能
+### 4.1.3 验证dolphin.b_compatibility_mode取不同参数值时&&操作符的功能
 
 | 测试步骤：                                                   | 测试结果                                     |
 | ------------------------------------------------------------ | -------------------------------------------- |
-| 1.b_compatibility_mode为布尔真值时，验证&&操作符<br />2.b_compatibility_mode为布尔假值时，验证&&操作符 | 执行7条用例，发现1个bug，1个已修复且验收通过 |
+| 1.dolphin.b_compatibility_mode为布尔真值时，验证&&操作符<br />2.dolphin.b_compatibility_mode为布尔假值时，验证&&操作符 | 执行7条用例，发现1个bug，1个已修复且验收通过 |
 
-### 4.1.4 验证b_compatibility_mode取不同参数值时like、not like是否区分大小写
+### 4.1.4 验证dolphin.b_compatibility_mode取不同参数值时like、not like是否区分大小写
 
 | 测试步骤：                                                   | 测试结果                                      |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| 1.b_compatibility_mode为布尔真值时，验证like、not like是否区分大小写<br />2.b_compatibility_mode为布尔假值时，验证like、not like是否区分大小写 | 执行13条用例，发现2个bug，2个已修复且验收通过 |
+| 1.dolphin.b_compatibility_mode为布尔真值时，验证like、not like是否区分大小写<br />2.dolphin.b_compatibility_mode为布尔假值时，验证like、not like是否区分大小写 | 执行13条用例，发现2个bug，2个已修复且验收通过 |
 
 ### 4.1.5 在表、视图、存储过程、自定义函数中使用^、&&、||、like、not like操作符
 
@@ -198,7 +198,7 @@ openGauss-Mysql兼容性操作符开发合作项目共计执行用例69条，主
 
 | 测试步骤：                                                   | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1.^操作符在MySQL侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能<br />2.&&操作符在MySQL侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能<br />3.\|\|操作符在MySQL侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能<br />4.like操作符在MySQL侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能<br />5.not like操作符在MySQL侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能 | 执行5条用例，结论如下：<br />1.操作符执行次数较少(50000次)时，^、&&、\|\|、like、not like操作符在MySQL中的性能优于openGauss<br />2.操作符执行次数较多(500000次、5000000次)时，^、&&、\|\|、like、not like操作符在openGauss中的性能优于MySQL<br />3.openGauss中^、&&、\|\|、like、not like操作符不查表时约33000次/s，查表时约18000次/s |
+| 1.^操作符在`M*`侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能<br />2.&&操作符在`M*`侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能<br />3.\|\|操作符在`M*`侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能<br />4.like操作符在`M*`侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能<br />5.not like操作符在`M*`侧和openGauss侧分别执行50000次、500000次、5000000次，计算平均性能 | 执行5条用例，结论如下：<br />1.操作符执行次数较少(50000次)时，^、&&、\|\|、like、not like操作符在`M*`中的性能优于openGauss<br />2.操作符执行次数较多(500000次、5000000次)时，^、&&、\|\|、like、not like操作符在openGauss中的性能优于`M*`<br />3.openGauss中^、&&、\|\|、like、not like操作符不查表时约33000次/s，查表时约18000次/s |
 
 ## 4.3  资料测试
 
@@ -221,7 +221,7 @@ openGauss-Mysql兼容性操作符开发合作项目共计执行用例69条，主
 
 ## 4.4 后续测试建议
 
-1.使用Jmeter工具测试操作符性能，对比openGauss和MySQL中不同操作符的性能
+1.使用Jmeter工具测试操作符性能，对比openGauss和M*中不同操作符的性能
 
 # 5 附件
 
@@ -326,7 +326,7 @@ dbtest=# select '000'::bit^'000'::bit;
       <th align="center" colspan="2">50,000次</th> <th align="center" colspan="2">500,000次</th><th align="center" colspan="2">5,000,000次</th>
      </tr>
     <tr>
-    <th>openGauss</th><th>Msyql5.7</th><th>openGauss</th><th>Msyql5.7</th><th>openGauss</th><th>Msyql5.7</th>
+    <th>openGauss</th><th>M*5.7</th><th>openGauss</th><th>M*5.7</th><th>openGauss</th><th>M*5.7</th>
     </tr>
      <tr>
        <td>^</td><td>1.20</td><td>0.67</td><td>12.59</td><td>32.39</td><td>129.96</td><td>429.15</td>
@@ -355,7 +355,7 @@ dbtest=# select '000'::bit^'000'::bit;
       <th align="center" colspan="2">50,000次</th> <th align="center" colspan="2">500,000次</th><th align="center" colspan="2">5,000,000次</th>
      </tr>
     <tr>
-    <th>openGauss</th><th>Msyql5.7</th><th>openGauss</th><th>Msyql5.7</th><th>openGauss</th><th>Msyql5.7</th>
+    <th>openGauss</th><th>M*5.7</th><th>openGauss</th><th>M*5.7</th><th>openGauss</th><th>M*5.7</th>
     </tr>
      <tr>
        <td>^</td><td>2.36</td><td>0.97</td><td>23.20</td><td>35.16</td><td>233.63</td><td>451.57</td>
@@ -376,4 +376,5 @@ dbtest=# select '000'::bit^'000'::bit;
 
 ### 5.2.3 操作符性能对比图
 
-![image-20221010162122709](./images/不查表时操作符性能.png)![image-20221010162136227](./images/查表时操作符性能.png)
+![输入图片说明](images/%E4%B8%8D%E6%9F%A5%E8%A1%A8%E6%97%B6%E6%93%8D%E4%BD%9C%E7%AC%A6%E6%80%A7%E8%83%BD.png)
+![输入图片说明](images/%E6%9F%A5%E8%A1%A8%E6%97%B6%E6%93%8D%E4%BD%9C%E7%AC%A6%E6%80%A7%E8%83%BD.png)
