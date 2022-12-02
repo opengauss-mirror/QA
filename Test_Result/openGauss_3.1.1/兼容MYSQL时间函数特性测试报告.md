@@ -192,10 +192,10 @@ openGauss在兼容B库下，加载dolphin插件，实现对mysql的时间函数�
 
 | 版本名称                       | 测试用例数 | 用例执行结果              | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------- | ------------ |
-| openGauss 3.1.0 build la8d2288 | 70         | Passed：70<br>Failed：9   | 9            |
+| openGauss 3.1.0 build la8d2288 | 70         | Passed：60<br>Failed：10   | 9            |
 | openGauss 3.1.0 build 6c83a22a | 89         | Passed：80<br/>Failed：9  | 7            |
-| openGauss 3.1.0 build 0e2086be | 30         | Passed：30<br/>Failed：2  | 2            |
-| openGauss 3.1.0 build 78779a1b | 20         | Passed：20<br/>Failed：19 | 1            |
+| openGauss 3.1.0 build 0e2086be | 30         | Passed：28<br/>Failed：2  | 2            |
+| openGauss 3.1.0 build 78779a1b | 20         | Passed：19<br/>Failed：1 | 1            |
 | openGauss 3.1.0 build f23a81e7 | 5          | Passed：5<br/>Failed：0   | 0            |
 
 *数据项说明：*
