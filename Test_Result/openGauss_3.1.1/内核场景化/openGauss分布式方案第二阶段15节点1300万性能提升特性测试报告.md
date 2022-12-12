@@ -199,6 +199,7 @@ ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本执行3次测试，取平均
 | ShardingSphere 5.2.0 + Opengauss 3.0.0 Release | 3          | 通过         | 0            |
 
 *数据项说明：*
+新增代码量： 3.795 kloc。
 
 测试用例数 4个；3个性能测试用例分别在ShardingSphere 5.2.0 + Opengauss 3.1.0 Release、ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本上执行，长稳测试在ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本上执行。通过用例 4个。
 
