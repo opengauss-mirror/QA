@@ -23,7 +23,7 @@
 | 缩略语   | 英文全名                                   | 中文解释                                                     |
 | -------- | ------------------------------------------ | ------------------------------------------------------------ |
 | TPC      | Transaction Processing Performance Council | 事务处理性能委员会。                                         |
-| TPC-C    | Trade Promotion Coordination Committee     | 在线事务处理（OLTP）的基准程序                               |
+| TPC-C    | Trade Promotion Coordination Committee     | 在线事务处理（OLTP）的基准程序。                               |
 | tpmC     | transaction per minute                     | TPC-C的吞吐量，按有效TPC-C配置期间每分钟处理的平均交易次数测试 |
 | ss-jdbc  | shardingsphere-JDBC                        | 定位为轻量级 Java 框架，在 Java 的 JDBC 层提供的额外服务。 它使用客户端直连数据库，以 jar 包形式提供服务，无需额外部署和依赖，可理解为增强版的 JDBC 驱动，完全兼容 JDBC 和各种 ORM 框架。 |
 | ss-proxy | shardingsphere-Proxy                       | 定位为透明化的数据库代理端，提供封装了数据库二进制协议的服务端版本，用于完成对异构语言的支持。 目前提供 MySQL 和 PostgreSQL（兼容 openGauss 等基于 PostgreSQL 的数据库）版本，它可以使用任何兼容 MySQL/PostgreSQL 协议的访问客户端（如：MySQL Command Client, MySQL Workbench, Navicat 等）操作数据，对 DBA 更加友好。 |
