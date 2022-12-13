@@ -14,7 +14,7 @@
 
  
 
-摘要：本文验证ShardingSphere5.20 &OpenGauss 3.1.0 Release继续深化合作，针对15节点性能优化达到1300WtpmC的测试。
+摘要：本文验证ShardingSphere&OpenGauss数据库继续深化合作，针对15节点性能优化达到1200WtpmC的测试。
 
  
 
@@ -30,24 +30,24 @@
 
 # 1     特性概述
 
-openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。本阶段ShardingSphere&OpenGauss继续深化合作，提升15节点性能水平至1300WtpmC。
+openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。本阶段ShardingSphere&OpenGauss继续深化合作，提升15节点性能水平至1200WtpmC。
 
 # 2     特性测试信息
 
 本节描述被测对象的版本信息和测试的时间及测试轮次，包括依赖的硬件。
 
-| 版本名称                | 测试起始时间 | 测试结束时间 |
-| ----------------------- | ------------ | ------------ |
-| ShardingSphere 5.2.0    | 2022.11.30   | 2022.12.07   |
-| Opengauss 3.1.0 Release | 2022.11.30   | 2022.12.05   |
-| Opengauss 3.0.0 Release | 2022.12.05   | 2022.12.07   |
+| 版本名称                                                     | 测试起始时间 | 测试结束时间 |
+| ------------------------------------------------------------ | ------------ | ------------ |
+| ShardingSphere 5.2.0<br/>Commit ID: 8f9e1858e29c33398f2ea95f6b1b50ef9cf03cfd | 2022.11.30   | 2022.12.07   |
+| Opengauss 3.1.0 Preview                                      | 2022.11.30   | 2022.12.05   |
+| Opengauss 3.0.0 Release                                      | 2022.12.05   | 2022.12.07   |
 
 描述特性测试的硬件环境信息
 
 | 硬件型号                                       | 硬件配置信息                                                 | 备注                  |
 | ---------------------------------------------- | ------------------------------------------------------------ | --------------------- |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | openGauss数据库节点*9 |
-| ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc 、tpcc节点*6  |
+| ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*6  |
 
 | 软件名称     | 软件版本                                                     | 备注 |
 | ------------ | ------------------------------------------------------------ | ---- |
@@ -100,16 +100,16 @@ openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。
 
 根据第一阶段性能测试的历史数据，15 节点性能测试组网方案考虑以下配置：
 
-- 搭建9节点 openGauss 3.1.0
+- 搭建9节点 openGauss数据库
 - 搭建6节点 ShardingSphere-JDBC
 
 
 
 ### 4.1.2 数据初始化
 
-![](../images/15节点1300WtpmC_数据初始化组网图.png)
+![](../images/15节点1200WtpmC_数据初始化组网图.png)
 
-按照单机 openGauss 使用 1000 仓数据的规则，在 15 节点的组网中，使用 9 节点 openGauss 3.1.0 作为存储节点，因此数据初始化仓数设置 9000 仓，总数据量占用约 1 TB 空间。
+按照单机 openGauss 使用 1000 仓数据的规则，在 15 节点的组网中，使用 9 节点 openGauss作为存储节点，因此数据初始化仓数设置 9000 仓，总数据量占用约 1 TB 空间。
 
 使用 ShardingSphere-Proxy 进行数据初始化，可以将数据生成与数据分片的开销分布在不同的机器上。
 
@@ -117,11 +117,11 @@ openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。
 
 **2节点测试组网：1 节点 ShardingSphere-JDBC + 1 节点 openGauss**
 
-![](../images/15节点1300WtpmC_2节点测试组网.png)
+![](../images/15节点1200WtpmC_2节点测试组网.png)
 
 **测试步骤：**
 
-(1)  配置ss-jdbc config文件、jar包等信息；ss-jdbc节点配置tpcc参数（800并发,benchWarehousesRange 1-1000）；
+(1)  配置ss-jdbc config文件、jar包等信息；ss-jdbc节点配置tpcc参数（800并发，benchWarehousesRange 1-1000）；
 
 (2)  运行 1 节点使用 ShardingSphere-JDBC 的 BenchmarkSQL 程序，向 1 节点 openGauss 存储节点发压，预热5分钟；
 
@@ -131,13 +131,13 @@ openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。
 
 ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本执行3次测试，取平均值：tpmC =141万
 
-ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本执行3次测试，取平均值：tpmC =136万
+ShardingSphere 5.2.0 + Opengauss 3.1.0 Preview版本执行3次测试，取平均值：tpmC =136万
 
 ### 4.1.3 3节点测试 1 小时tpcc性能测试
 
 **3节点测试组网：1 节点 ShardingSphere-JDBC + 2节点 openGauss**
 
-![](../images/15节点1300WtpmC_3节点测试组网.png)
+![](../images/15节点1200WtpmC_3节点测试组网.png)
 
 **测试步骤：**
 
@@ -151,13 +151,13 @@ ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本执行3次测试，取平均
 
 ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本执行3次测试，取平均值：tpmC =234万
 
-ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本执行3次测试，取平均值：tpmC = 220万
+ShardingSphere 5.2.0 + Opengauss 3.1.0 Preview版本执行3次测试，取平均值：tpmC = 220万
 
 ### 4.1.3 15节点测试 1 小时tpcc性能测试
 
 **15节点测试组网：6节点 ShardingSphere-JDBC + 9节点 openGauss**
 
-![](../images/15节点1300WtpmC_15节点测试组网.png)
+![](../images/15节点1200WtpmC_15节点测试组网.png)
 
 **测试步骤：**
 
@@ -171,7 +171,7 @@ ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本执行3次测试，取平均
 
 ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本执行3次测试，取平均值：tpmC =1246万
 
-ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本执行3次测试，取平均值：tpmC = 1208万
+ShardingSphere 5.2.0 + Opengauss 3.1.0 Preview版本执行3次测试，取平均值：tpmC = 1208万
 
 ### 4.1.4  2节点测试 24 小时tpcc长稳测试
 
@@ -179,9 +179,9 @@ ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本执行3次测试，取平均
 
 测试步骤：
 
-(1)  配置ss-jdbc config文件、jar包等信息；ss-jdbc节点配置tpcc参数（10并发,benchWarehousesRange 1-1000）；
+(1)  配置ss-jdbc config文件、jar包等信息；ss-jdbc节点配置tpcc参数（10并发，benchWarehousesRange 1-1000）；
 
-(2)  登陆数据库执行sql：alter table bmsql_warehouse MODIFY w_ytd decimal(48,2);
+(2)  登陆数据库执行sql：alter table bmsql_warehouse MODIFY w_ytd decimal(48, 2);
 
 (3)  运行 1 节点使用 ShardingSphere-JDBC 的 BenchmarkSQL 程序，向 1节点 openGauss 存储节点发压，执行24小时性能测试。
 
@@ -200,7 +200,7 @@ ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本执行3次测试，取平均
 
 新增代码量： 3.795 kloc。
 
-测试用例数 4个；3个性能测试用例分别在ShardingSphere 5.2.0 + Opengauss 3.1.0 Release、ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本上执行，长稳测试在ShardingSphere 5.2.0 + Opengauss 3.1.0 Release版本上执行。通过用例 4个。
+测试用例数 4个；3个性能测试用例分别在ShardingSphere 5.2.0 + Opengauss 3.1.0 Preview、ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本上执行，长稳测试在ShardingSphere 5.2.0 + Opengauss 3.1.0 Preview版本上执行。通过用例 4个。
 
 发现问题单数 0个。
 
