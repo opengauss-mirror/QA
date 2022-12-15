@@ -13,7 +13,7 @@
 
 摘要：
 
-本文对openGauss实现对支持create user带if bot exists语法特性测试，并给出最终测试结论。
+本文对openGauss实现对支持create user带if not exists语法特性测试，并给出最终测试结论。
 
 缩略语清单：
 
