@@ -126,7 +126,7 @@ openGauss dolphin插件MySQL兼容反引号，共计执行144个用例，主要�
 | openGauss 3.1.0 build ece73c7d | 144 | Passed: 144<br />Failed: 0 | 0 | 0% |
 
 ## 4.3   后续测试建议
-无
+1:创建表名时避免使用单引号或双引号的半包围情况
 # 5     附件
 
 无
