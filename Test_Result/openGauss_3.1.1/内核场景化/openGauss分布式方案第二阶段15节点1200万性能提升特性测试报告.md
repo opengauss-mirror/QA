@@ -198,7 +198,7 @@ ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，取平均
 
 数据项说明：
 
-新增代码量： 3.795 kloc。
+新增代码量 3.795 kloc，新增配置文件脚本 4.413 kloc，共计 8.208 kloc。
 
 测试用例数 4个；3个性能测试用例分别在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview、ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本上执行，长稳测试在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本上执行。通过用例 4个。
 
