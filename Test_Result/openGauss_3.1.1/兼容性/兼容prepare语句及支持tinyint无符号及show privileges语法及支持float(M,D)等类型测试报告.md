@@ -37,7 +37,7 @@ M*、dolphin插件、prepare/execute、tinyint、show privileges
 | dolphin 1.0                          | 2022-10-28   | 2022-11-2    |
 | openGauss 3.1.0 build 6c83a22a       | 2022-8-22    | 2022-8-26    |
 | openGauss 3.1.0 build cd1244c5       | 2022-11-7    | 2022-11-9    |
-| openGauss 3.1.0 build 78779a1b--show | 2022-11-24   | 2022-11-24   |
+| openGauss 3.1.0 build 78779a1b       | 2022-11-24   | 2022-11-24   |
 | dolphin 1.0                          | 2022-11-7    | 2022-11-9    |
 | openGauss 3.1.0 build 78779a1b       | 2022-11-19   | 2022-11-20   |
 | openGauss 3.1.0 build 54c43934       | 2022-12-14   | 2022-12-21   |
