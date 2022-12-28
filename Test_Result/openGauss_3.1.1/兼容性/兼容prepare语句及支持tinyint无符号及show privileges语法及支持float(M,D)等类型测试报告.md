@@ -93,7 +93,7 @@ M*、dolphin插件、prepare/execute、tinyint、show privileges
 
 ## 3.2   约束说明
 
-#####        特性1 兼容prepare/execute语法
+#####        特性1，兼容prepare/execute语法
 
 - 兼容M*5.7版本
 - openGauss需使用兼容B库且含dolphin插件
@@ -225,7 +225,7 @@ M*、dolphin插件、prepare/execute、tinyint、show privileges
 | -------------------------------- | ------------------------------- |
 | 1.使用::或者cast函数验证类型转换 | 执行4个用例，发现1个bug，已验收 |
 
-### 4.1.8 double(M,D)、float(M,D)、real(M,D)、double precision(M,D)类型结合索引，约束验证
+### 4.1.10 double(M,D)、float(M,D)、real(M,D)、double precision(M,D)类型结合索引，约束验证
 
 | 测试步骤                                                 | 测试结果                          |
 | -------------------------------------------------------- | --------------------------------- |
