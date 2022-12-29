@@ -58,7 +58,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 ## 3.2   约束说明
 
 1. MySQL 5.7.27数据存储分盘
-2. openGauss所在环境数据盘，openGauss使用默认安装配置，openGauss侧的目标库为兼容B库，除初始用户外的数据库用户均有复制权。
+2. openGauss所在环境数据盘，openGauss使用默认安装配置，openGauss侧的目标库为兼容B库，除初始用户外的数据库用户均有复制权
 3. 表须含主键
 4. 仅对数据的差异性及表字段名称的差异性进行数据校验，不对表结构及字段类型的差异性做校验
 
@@ -157,7 +157,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 根据测试数据，分析可得：
 
-除上述场景外，本次测试中的基线场景，datachecker数据全量校验性能满足70MB/s。
+除上述场景外，本次测试中的基准场景，datachecker数据全量校验性能满足70MB/s。
 
 ### 4.3.2 测试数据统计
 
