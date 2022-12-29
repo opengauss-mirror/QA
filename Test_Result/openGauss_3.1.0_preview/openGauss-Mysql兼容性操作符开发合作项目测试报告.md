@@ -10,6 +10,7 @@
 | 2022-11-29 | 1.0         | 特性测试报告初稿完成 | zhanghang |
 | 2022-11-29 | 1.1         | 修改部分表述         | zhanghang |
 | 2022-12-02 | 1.2         | 根据评审意见修改报告 | zhanghang |
+| 2022-12-29 | 1.3         | 更新测试报告         | zhanghang |
 
  关键词： 
 
@@ -36,7 +37,9 @@
 | openGauss 3.1.0 build 55a4ea7f | 2022-09-23   | 2022-10-14   |
 | openGauss 3.1.0 build f2e18e3c | 2022-11-09   | 2022-11-11   |
 | openGauss 3.1.0 build 448e8551 | 2022-11-28   | 2022-11-29   |
-| M* 5.7.36                   | 2022-09-23   | 2022-11-29   |
+| openGauss 3.1.0 build 0d771b43 | 2022-12-04   | 2022-12-05   |
+| openGauss 3.1.0 build c72e49f5 | 2022-12-26   | 2022-12-28   |
+| M* 5.7.36                      | 2022-09-23   | 2022-12-28   |
 
 | 环境信息 | 配置信息                                                     | 备注 |
 | -------- | ------------------------------------------------------------ | ---- |
@@ -70,13 +73,13 @@ openGauss-M*兼容性操作符开发合作项目共计执行用例69条，主要
 
 性能测试对比相同环境、同等条件下openGauss中操作符的性能不差于M*，资料测试覆盖资料描述是否准确、约束覆盖是否全面以及示例是否正确。
 
-累计发现缺陷单12个（其中3个同类问题合并为1个问题单，其余2个已取消），1个问题单经plugin/sig会议确认非问题后已取消，9个问题单已修复且回归通过（其中[I5VQRL](https://gitee.com/opengauss/Plugin/issues/I5VQRL?from=project-issue)问题单回归不通过一次），整体质量一般。
+累计发现缺陷单16个（其中3个同类问题合并为1个问题单，其余2个已取消），1个问题单遗留，13个问题单已修复且回归通过（其中[I5VQRL](https://gitee.com/opengauss/Plugin/issues/I5VQRL?from=project-issue)问题单回归不通过一次），整体质量一般。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | ------------------------------------------------------------ |
 | 功能测试 | 验证^操作符的功能，通过                                      |
-| 功能测试 | 验证dolphin.sql_mode取不同参数值时\|\|操作符的功能，通过             |
-| 功能测试 | 验证dolphin.b_compatibility_mode取不同参数值时&&操作符的功能，通过   |
+| 功能测试 | 验证dolphin.sql_mode取不同参数值时\|\|操作符的功能，通过     |
+| 功能测试 | 验证dolphin.b_compatibility_mode取不同参数值时&&操作符的功能，通过 |
 | 功能测试 | 验证dolphin.b_compatibility_mode取不同参数值时like、not like是否区分大小写，通过 |
 | 功能测试 | 在表、视图、存储过程、自定义函数中使用^、&&、\|\|、like、not like操作符，通过 |
 | 功能测试 | 隐式转换时使用^、&&、\|\|、like、not like操作符，通过        |
@@ -101,15 +104,15 @@ openGauss-M*兼容性操作符开发合作项目共计执行用例69条，主要
 
 ### 3.3.1 遗留问题影响以及规避措施
 
-| 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
-| -------- | -------- | -------- | ------------------ | -------- |
-| N/A      |          |          |                    |          |
+| 问题单号                                                     | 问题描述                           | 问题级别 | 问题影响和规避措施                                           | 当前状态 |
+| ------------------------------------------------------------ | ---------------------------------- | -------- | ------------------------------------------------------------ | -------- |
+| [I67TJ7 ](https://gitee.com/opengauss/Plugin/issues/I67TJ7?from=project-issue) | 部分time类型异或运算结果与预期不符 | 次要     | 问题影响：部分time类型异或运算与M*的结果有差异，time类型和date类型异或运算报错<br />规避措施：暂无 | 待办的   |
 
 ### 3.3.2 问题统计
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   | 9        | 0    | 0    | 9    | 0      |
+| 数目   | 14       | 0    | 0    | 14   | 0      |
 | 百分比 | 100%     | 0    | 0    | 100% | 0      |
 
 ### 3.3.3 问题单汇总
@@ -122,12 +125,16 @@ openGauss-M*兼容性操作符开发合作项目共计执行用例69条，主要
 | 4    | [I5T6IX](https://gitee.com/opengauss/Plugin/issues/I5T6IX?from=project-issue) | 次要     | 整数类型异或操作，numeric、int16两种数据类型的返回结果和预期结果不符 | 已验收   |
 | 5    | [I5TGSB](https://gitee.com/opengauss/Plugin/issues/I5TGSB?from=project-issue) | 次要     | 二进制类型异或操作时，不支持blob形式                         | 已验收   |
 | 6    | [I5TGW0](https://gitee.com/opengauss/Plugin/issues/I5TGW0?from=project-issue) | 次要     | 布尔类型异或时，部分返回结果和预期结果不一致                 | 已验收   |
-| 7    | [I5URF0](https://gitee.com/opengauss/Plugin/issues/I5URF0?from=project-issue) | 次要     | 部分数值类型字符串逻辑与、逻辑或运算报错                     | 已取消   |
+| 7    | [I5URF0](https://gitee.com/opengauss/Plugin/issues/I5URF0?from=project-issue) | 次要     | 部分数值类型字符串逻辑与、逻辑或运算报错                     | 已验收   |
 | 8    | [I5URJ4](https://gitee.com/opengauss/Plugin/issues/I5URJ4?from=project-issue) | 次要     | not like binary返回结果错误，和like binary返回结果一致       | 已验收   |
 | 9    | [I5URVU](https://gitee.com/opengauss/Plugin/issues/I5URVU?from=project-issue) | 次要     | 部分浮点型逻辑与、逻辑或运算结果与预期不符                   | 已验收   |
 | 10   | [I5VR2S](https://gitee.com/opengauss/Plugin/issues/I5VR2S?from=project-issue) | 次要     | char类型like、not like模式匹配，部分结果错误                 | 已验收   |
 | 11   | [I5VQRL](https://gitee.com/opengauss/Plugin/issues/I5VQRL?from=project-issue) | 次要     | 部分类型异或，结果与预期不符                                 | 已验收   |
 | 12   | [I60ITD](https://gitee.com/opengauss/Plugin/issues/I60ITD?from=project-issue) | 次要     | bit类型like、not like模式匹配，部分结果错误；blob类型like、not like模式匹配，报错 | 已验收   |
+| 13   | [I64FY8](https://gitee.com/opengauss/Plugin/issues/I64FY8?from=project-issue) | 次要     | \|\|操作符不支持字符串                                       | 已验收   |
+| 14   | [I64KRW](https://gitee.com/opengauss/Plugin/issues/I64KRW?from=project-issue) | 次要     | 部分bit类型和null逻辑与运算报错                              | 已验收   |
+| 15   | [I67TJ7 ](https://gitee.com/opengauss/Plugin/issues/I67TJ7?from=project-issue) | 次要     | 部分time类型异或运算结果与预期不符                           | 待办的   |
+| 16   | [I66BFY](https://gitee.com/opengauss/docs/issues/I66BFY?from=project-issue) | 次要     | 兼容MySQL特定操作符的资料未更新                              | 已验收   |
 
 
 
@@ -145,13 +152,13 @@ openGauss-M*兼容性操作符开发合作项目共计执行用例69条，主要
 
 | 测试步骤                                                     | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1.dolphin.sql_mode为sql_mode_strict，验证\|\|操作符<br />2.sql_mode为sql_mode_full_group，验证\|\|操作符<br />3.sql_mode为''，验证\|\|操作符<br />4.sql_mode为default，验证\|\|操作符<br />5.sql_mode为pipes_as_concat，验证\|\|操作符 | 执行7条用例，发现2个bug，1个已修复且验收通过，1个经plugin/sig会议确认非问题后已取消 |
+| 1.dolphin.sql_mode为sql_mode_strict，验证\|\|操作符<br />2.sql_mode为sql_mode_full_group，验证\|\|操作符<br />3.sql_mode为''，验证\|\|操作符<br />4.sql_mode为default，验证\|\|操作符<br />5.sql_mode为pipes_as_concat，验证\|\|操作符 | 执行7条用例，发现3个bug，1个已修复且验收通过，1个经plugin/sig会议确认非问题后已取消 |
 
 ### 4.1.3 验证dolphin.b_compatibility_mode取不同参数值时&&操作符的功能
 
 | 测试步骤：                                                   | 测试结果                                     |
 | ------------------------------------------------------------ | -------------------------------------------- |
-| 1.dolphin.b_compatibility_mode为布尔真值时，验证&&操作符<br />2.dolphin.b_compatibility_mode为布尔假值时，验证&&操作符 | 执行7条用例，发现1个bug，1个已修复且验收通过 |
+| 1.dolphin.b_compatibility_mode为布尔真值时，验证&&操作符<br />2.dolphin.b_compatibility_mode为布尔假值时，验证&&操作符 | 执行7条用例，发现2个bug，1个已修复且验收通过 |
 
 ### 4.1.4 验证dolphin.b_compatibility_mode取不同参数值时like、not like是否区分大小写
 
@@ -161,9 +168,9 @@ openGauss-M*兼容性操作符开发合作项目共计执行用例69条，主要
 
 ### 4.1.5 在表、视图、存储过程、自定义函数中使用^、&&、||、like、not like操作符
 
-| 测试步骤：                                                   | 测试结果                              |
-| ------------------------------------------------------------ | ------------------------------------- |
-| 1.在表、视图、存储过程、自定义函数中使用^、&&、\|\|、like、not like操作符 | 执行24条用例，未发现bug，结果符合预期 |
+| 测试步骤：                                                   | 测试结果                               |
+| ------------------------------------------------------------ | -------------------------------------- |
+| 1.在表、视图、存储过程、自定义函数中使用^、&&、\|\|、like、not like操作符 | 执行24条用例，发现1个bug，状态为待办的 |
 
 ### 4.1.6 隐式转换时使用^、&&、||、like、not like操作符
 
@@ -203,24 +210,26 @@ openGauss-M*兼容性操作符开发合作项目共计执行用例69条，主要
 
 ## 4.3  资料测试
 
-| 测试步骤：                                           | 测试结果        |
-| ---------------------------------------------------- | --------------- |
-| 1.资料描述是否准确、约束覆盖是否全面以及示例是否正确 | 未发现bug，通过 |
+| 测试步骤：                                           | 测试结果                        |
+| ---------------------------------------------------- | ------------------------------- |
+| 1.资料描述是否准确、约束覆盖是否全面以及示例是否正确 | 发现1个bug，1个已修复且验收通过 |
 
-## 4.3 测试执行统计数据
+## 4.4 测试执行统计数据
 
 | 版本名称                       | 测试用例数 | 用例执行结果               | 发现问题单数 |
 | ------------------------------ | ---------- | -------------------------- | ------------ |
 | openGauss 3.1.0 build 55a4ea7f | 69         | Passed：55<br />Failed：14 | 11           |
 | openGauss 3.1.0 build f2e18e3c | 69         | Passed：65<br />Failed：4  | 1            |
 | openGauss 3.1.0 build 448e8551 | 69         | Passed：69<br />Failed：0  | 0            |
+| openGauss 3.1.0 build 0d771b43 | 64         | Passed：59<br />Failed：5  | 3            |
+| openGauss 3.1.0 build c72e49f5 | 64         | Passed：60<br />Failed：4  | 1            |
 
 数据说明
 
-1.  累计发现缺陷单12个（其中3个同类问题合并为1个问题单，其余2个已取消），1个问题单经plugin/sig会议确认非问题后已取消，9个问题单已修复且回归通过（其中[I5VQRL](https://gitee.com/opengauss/Plugin/issues/I5VQRL?from=project-issue)问题单回归不通过一次）
-2.  缺陷密度：9个（缺陷个数）/6.353kloc（代码行数）=1.4个/kloc
+1.  累计发现缺陷单16个（其中3个同类问题合并为1个问题单，其余2个已取消），1个问题单遗留，13个问题单已修复且回归通过（其中[I5VQRL](https://gitee.com/opengauss/Plugin/issues/I5VQRL?from=project-issue)问题单回归不通过一次），整体质量一般。
+2.  缺陷密度：14个（缺陷个数）/6.353kloc（代码行数）=2.2个/kloc
 
-## 4.4 后续测试建议
+## 4.5 后续测试建议
 
 1.使用Jmeter工具测试操作符性能，对比openGauss和M*中不同操作符的性能
 
