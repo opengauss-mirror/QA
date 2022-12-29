@@ -74,8 +74,8 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
 | 序号 | issue号                                                      | 级      别 | 问题简述                                                     | 状态   |
 | ---- | ------------------------------------------------------------ | :--------- | ------------------------------------------------------------ | ------ |
 | 1    | [I62VZY](https://gitee.com/opengauss/openGauss-OM/issues/I62VZY?from=project-issue) | 次要       | xml文件中设置同步备，实际设置的节点名与配置的个数不符，在gs_guc校验前没有合理报错，给出提示 | 已验收 |
-| 2    | [I62BSS](https://gitee.com/opengauss/openGauss-OM/issues/I62BSS?from=project-issue) | 主要       | xml文件中删除某个节点的name="syncNode_{hostname}"及主机名为空，没有合理报错 | 已验收 |
-| 3    | [I61YJX](https://gitee.com/opengauss/openGauss-OM/issues/I61YJX?from=project-issue) | 主要       | xml文件中FIRST与ANY 都存在，进行gs_install安装时，未合理报错给出提示 | 已验收 |
+| 2    | [I62BSS](https://gitee.com/opengauss/openGauss-OM/issues/I62BSS?from=project-issue) | 次要       | xml文件中删除某个节点的name="syncNode_{hostname}"及主机名为空，没有合理报错 | 已验收 |
+| 3    | [I61YJX](https://gitee.com/opengauss/openGauss-OM/issues/I61YJX?from=project-issue) | 次要       | xml文件中FIRST与ANY 都存在，进行gs_install安装时，未合理报错给出提示 | 已验收 |
 | 4    | [I61XCT](https://gitee.com/opengauss/openGauss-OM/issues/I61XCT?from=project-issue) | 次要       | 备机节点配置同步备，备节点主机名与同步备主机名相同，没有合理报错 | 已验收 |
 | 5    | [I60XKH](https://gitee.com/opengauss/openGauss-OM/issues/I60XKH?from=project-issue) | 次要       | 使用om安装方式，在xml文件配置中，各节点通过ANY的方式指定同步备，预安装成功。gs_install安装失败 | 已验收 |
 | 6    | [I64G9Q](https://gitee.com/opengauss/docs/issues/I64G9Q?from=project-issue) | 次要       | xml文件中指定同步备FIRST存在组合配置                         | 已验收 |
