@@ -10,6 +10,7 @@
 | 2022-11-1  | 1.0         | 特性测试报告初稿完成 | zhanghuan96 |
 | 2022-12-21 | 1.1         | 补充特性测试         | zhanghuan96 |
 | 2022-12-28 | 1.2         | 修改检视意见         | zhanghuan96 |
+| 2022-12-30 | 1.3         | 修改评审意见         | zhanghuan96 |
 
  关键词： 
 
@@ -97,8 +98,8 @@ M*、dolphin插件、prepare/execute、tinyint、show privileges
 
 - 兼容M*5.7版本
 - openGauss需使用兼容B库且含dolphin插件
-- prepare中的绑定参数支持使用`?`，需要先将参数`b_compatibility_mode`设置为`on`，且不能同时在一个语句中同时使用`$`和`?`占位符
-- 参数`b_compatibility_mode`设置为`on`后，`?`将不能作为操作符使用
+- prepare中的绑定参数支持使用`?`，需要先将参数`dolphin.b_compatibility_mode`设置为`on`，且不能同时在一个语句中同时使用`$`和`?`占位符
+- 参数`dolphin.b_compatibility_mode`设置为`on`后，`?`将不能作为操作符使用
 - preapre stmt from后的语句带单引号的场景只能是一个query，不支持多个query
 -  preapre stmt from的query，如果给的是非SELECT/INSERT等语句，和在不带引号的场景下，报错提示不一样    
 
@@ -242,9 +243,9 @@ M*、dolphin插件、prepare/execute、tinyint、show privileges
 
 *数据项说明：*
 
-* 累计发现缺陷单1个，已验收通过
+* 累计发现缺陷单1个，已验收通过，缺陷为资料单
 * 失败用例已在后续问题修复后，回归issue执行通过
-* 缺陷密度：1(缺陷个数)/1.182kloc(代码行数)=0.84(个/kloc)
+* 缺陷密度：0(缺陷个数)/1.182kloc(代码行数)=0(个/kloc)
 
 #### 特性2 tinyint支持有符号，同时支持unsigned tinyint
 
@@ -281,9 +282,9 @@ M*、dolphin插件、prepare/execute、tinyint、show privileges
 
 *数据项说明：*
 
-* 累计发现缺陷单2个，已验收通过
+* 累计发现缺陷单2个，已验收通过，一个为资料单，一个为其他特性引入的缺陷
 * 失败用例已在后续问题修复后，回归issue执行通过
-* 缺陷密度：2(缺陷个数)/0.197kloc(代码行数)=10.15(个/kloc)
+* 缺陷密度：0(缺陷个数)/0.197kloc(代码行数)=0(个/kloc)
 
 ## 4.3  后续测试建议
 
