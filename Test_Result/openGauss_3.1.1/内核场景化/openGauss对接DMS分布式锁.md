@@ -1,4 +1,4 @@
-![avatar](../../images/openGauss.png)
+![输入图片说明](../../../image.png)
 
 版权所有 © 2022  openGauss社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
@@ -8,6 +8,7 @@
 | 日期       | 修订   版本 | 修改描述             | 作者       |
 | :--------- | ----------- | -------------------- | ---------- |
 | 2022-12-23 | 1.0         | 特性测试报告初稿完成 | chengyao25 |
+| 2022-12-30 | 1.1         | 依据检视意见修改     | chengyao25 | 
 
  关键词： 
 
@@ -66,7 +67,7 @@ openGauss适配DMS分布式锁共计执行用例77条，主要覆盖功能测试
 
 | 问题单号 | 问题描述 | 问题级别 | 问题影响及规避措施 | 当前状态 |
 | -------- | -------- | -------- | :----------------- | -------- |
-| NA       |          |          |                    |          |
+| [I63P6E](https://gitee.com/opengauss/openGauss-server/issues/I63P6E?from=project-issue)       | dms分布式锁下进行X锁与S锁超时验证时，产生core         | 主要        | 避免在锁超时等待过程中cancle阻塞事务                  | 已完成         |
 
 ### 3.3.2 问题统计
 
@@ -127,8 +128,8 @@ openGauss适配DMS分布式锁共计执行用例77条，主要覆盖功能测试
 
 | 版本名称                       | 测试用例数 | 用例执行结果             | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------ | ------------ |
-| openGauss 3.1.0 build 448e8551 | 66         | Passed：65  Failed : 2   | 2            |
-| openGauss 3.1.0 build f23a81e7 | 10         | Passed : 10   Failed : 1 | 1            |
+| openGauss 3.1.0 build 448e8551 | 66         | Passed：64  Failed : 2   | 2            |
+| openGauss 3.1.0 build f23a81e7 | 10         | Passed : 9   Failed : 1 | 1            |
 | openGauss 3.1.0 build 41c3b97d | 76         | passed：76 Failed：0     | 0            |
 
 *数据项说明：*
@@ -137,7 +138,7 @@ openGauss适配DMS分布式锁共计执行用例77条，主要覆盖功能测试
 
 2.openGauss 3.1.0 build f23a81e7版本测试时发现1个问题。
 
-3.openGauss 3.1.0 build 41c3b97d版本回归两个问题单，回归通过，1个问题单非问题，已取消。
+3.openGauss 3.1.0 build 41c3b97d版本回归1个问题单，回归通过，1个问题单非问题，已取消。
 
 3.缺陷密度为 2(缺陷个数)/0.137k(代码行数)=14.59(个/kloc)。
 
@@ -152,11 +153,3 @@ openGauss适配DMS分布式锁共计执行用例77条，主要覆盖功能测试
 # 5     附件
 
 无
-
- 
-
-
-
- 
-
- 
