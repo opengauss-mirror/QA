@@ -127,8 +127,8 @@ openGauss适配DMS分布式锁共计执行用例77条，主要覆盖功能测试
 
 | 版本名称                       | 测试用例数 | 用例执行结果             | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------ | ------------ |
-| openGauss 3.1.0 build 448e8551 | 66         | Passed：65  Failed : 1   | 2            |
-| openGauss 3.1.0 build f23a81e7 | 10         | Passed : 10   Failed : 2 | 1            |
+| openGauss 3.1.0 build 448e8551 | 66         | Passed：65  Failed : 2   | 2            |
+| openGauss 3.1.0 build f23a81e7 | 10         | Passed : 10   Failed : 1 | 1            |
 | openGauss 3.1.0 build 41c3b97d | 76         | passed：76 Failed：0     | 0            |
 
 *数据项说明：*
@@ -139,7 +139,7 @@ openGauss适配DMS分布式锁共计执行用例77条，主要覆盖功能测试
 
 3.openGauss 3.1.0 build 41c3b97d版本回归两个问题单，回归通过，1个问题单非问题，已取消。
 
-3.缺陷密度为 1(缺陷个数)/0.137k(代码行数)=7.3(个/kloc)。
+3.缺陷密度为 2(缺陷个数)/0.137k(代码行数)=14.59(个/kloc)。
 
 ## 4.3   后续测试建议
 
