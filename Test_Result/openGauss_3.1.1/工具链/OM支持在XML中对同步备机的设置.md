@@ -90,13 +90,13 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
 
 | 测试步骤：                                                   | 测试结果                                                  |
 | ------------------------------------------------------------ | --------------------------------------------------------- |
-| 1.  在XML文件中通过ANY、FIRST方式设定同步备<br />2 . 编译openGauss-OM仓库，生成openGauss-3.1.0-openEuler-64bit-om.sha256、openGauss-3.1.0-openEuler-64bit-om.tar.gz<br />3. ./gs_preinstall -U omm -G dbgrp -X /opt/software/openGauss/cluster_config.xml预安装<br />4. gs_install -X /opt/software/openGauss/clusterconfig.xml安装<br />5. 查看指定的同步备生效 | 共执行19条用例，<br />共发现6个bug，6个现已修复且验收通过 |
+| 1.  在XML文件中通过ANY、FIRST方式设定同步备<br />2 . 编译openGauss-OM仓库，生成openGauss-3.1.0-openEuler-64bit-om.sha256、openGauss-3.1.0-openEuler-64bit-om.tar.gz<br />3. ./gs_preinstall -U omm -G dbgrp -X /opt/software/openGauss/cluster_config.xml预安装<br />4. gs_install -X /opt/software/openGauss/clusterconfig.xml安装<br />5. 查看指定的同步备生效 | 共执行19条用例，<br />共发现5个bug，其中3个转为资料，均已修复且验收通过 |
 
 ### 4.1.2 资料测试
 
 | 测试步骤：                     | 测试结果                            |
 | ------------------------------ | ----------------------------------- |
-| 1. 使用方法描述<br>2. 示例测试 | 共发现6个bug，6个现已修复且验收通过 |
+| 1. 使用方法描述<br>2. 示例测试 | 共发现1个bug，1个现已修复且验收通过 |
 
 ## 4.2   测试执行统计数据
 
@@ -106,7 +106,7 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
 
 数据说明
 
-2. 缺陷密度为6(缺陷个数)/0.212k(代码行数)=28.30(个/kloc)
+2. 缺陷密度为2(缺陷个数)/0.212k(代码行数)=9.43(个/kloc)
 
 ## 4.3   后续测试建议
 
