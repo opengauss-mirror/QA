@@ -73,8 +73,8 @@ M*、dolphin插件、prepare/execute、tinyint、show privileges
 | 功能测试 | prepare stmt from不带引号，测试select/insert/update/delete/merge场景，功能正常，通过 |
 | 功能测试 | prepare stmt from带引号，测试引号中包括多个sql，报错是否正常，通过 |
 | 功能测试 | prepare stmt from带引号，测试非select/insert/update/delete/merge场景，报错是否正常，通过 |
-| 功能测试 | 测试b_compatibility_mode参数打开与关闭时，prepare绑定参数支持```?```，正常执行与合理报错，通过 |
-| 功能测试 | 测试b_compatibility_mode参数打开与关闭时,含```?```的操作符验证，通过 |
+| 功能测试 | 测试dolphin.b_compatibility_mode参数打开与关闭时，prepare绑定参数支持```?```，正常执行与合理报错，通过 |
+| 功能测试 | 测试dolphin.b_compatibility_mode参数打开与关闭时,含```?```的操作符验证，通过 |
 | 功能测试 | prepare绑定参数支持```?```，对比将```?```换成```$n```结果是否一致，通过 |
 | 功能测试 | prepare语句结合验证单引号和```?```场景，通过                 |
 | 功能测试 | prepare stmt 语句嵌套验证，通过                              |
