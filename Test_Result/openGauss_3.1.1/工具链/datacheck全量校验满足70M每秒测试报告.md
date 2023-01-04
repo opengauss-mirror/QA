@@ -1,4 +1,4 @@
-![avatar](D:/images/openGauss.png)
+![avatar](../../../images/openGauss.png)
 
 版权所有 © 2022  openGauss社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
@@ -58,7 +58,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 ## 3.2   约束说明
 
 1. MySQL 5.7.27数据存储分盘
-2. openGauss所在环境数据盘，openGauss使用默认安装配置，openGauss侧的目标库为兼容B库，除初始用户外的数据库用户均有复制权
+2. openGauss使用默认安装配置，openGauss侧的目标库为兼容B库，除初始用户外的数据库用户均有复制权
 3. 表须含主键
 4. 仅对数据的差异性及表字段名称的差异性进行数据校验，不对表结构及字段类型的差异性做校验
 
@@ -93,11 +93,11 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 ## 4.1   测试执行步骤
 
-1. sysbench批量创造数据，表结构含15个字段
+1. sysbench批量创造数据至MySQL，表结构含15个字段
 
 2. 配置chameleon（详见[chameleon使用指南.md](https://gitee.com/opengauss/openGauss-tools-chameleon/blob/master/chameleon%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.md)）
 
-3. 使用chameleon工具进行全量数据迁移
+3. 使用chameleon工具将MySQL数据迁移至openGauss
 
    ```shell
    chameleon drop_replica_schema --config default --debug
@@ -106,11 +106,11 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
    chameleon init_replica --config default --source mysql --debug
    ```
 
-4. 查看MySQL待校验的表数据总量
+4. 查看MySQL待校验的数据库大小
 
 5. 启动MySQL、openGauss抽取服务及数据校验服务
 
-6. 迁移速度 = 总Size / 校验耗时，其中总Size是MySQL待校验的所有表Size之和，校验耗时取自校验服务的cost time时间
+6. 迁移速度 = 总Size / 时间，其中总Size是MySQL待校验的数据库大小，时间取自校验服务的cost time
 
 7. 查看生成的结果文件准确性
 
@@ -138,7 +138,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 | 场景 |                  场景描述                  | 平均校验速度(MB/S) |       校验结果        |
 | :--: | :----------------------------------------: | :----------------: | :-------------------: |
-|  1   | 3张表，每张表数据条数1亿，数据总量132.96GB |      <10MB/S       | 只输出了表3的校验结果 |
+|  1   | 3张表，每张表数据条数1亿，数据总量132.96GB |      <5MB/S       | 只输出了表3的校验结果 |
 |  2   | 1000张表，每张表数据条数10w，数据总量46GB  |   元数据加载失败   |      无结果输出       |
 
 <center>
@@ -147,7 +147,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 ### 4.2.3  资料测试
 | 测试步骤                     | 测试结果                            |
 | ------------------------------ | ----------------------------------- |
-| 1. 使用方法描述<br>2. 示例测试 | 共发现1个bug，现已修复且验收通过 ||
+| 1. 使用方法描述<br>2. 示例测试 | 共发现2个bug，现已修复且验收通过 ||
 
 ## 4.3   测试结果
 
