@@ -35,7 +35,7 @@ OM支持在XML中对同步备机设置，在安装前用户可以指定数据库
 
 | 硬件型号 | 硬件配置信息                                                 | 备注 |
 | -------- | ------------------------------------------------------------ | ---- |
-| 虚拟机   | CPU:  Intel(R) Xeon(R) Gold 6161 CPU @ 2.20GHz<br>内存：30GB<br>硬盘：261GB<br>OS：openEuler  release 20.03 (LTS)<br> |      |
+| 虚拟机   | CPU:  Intel(R) Xeon(R) Gold 6161 CPU @ 2.20GHz<br>内存：30GB<br>硬盘：261GB<br>OS：openEuler  release 20.03 (LTS)<br> |  一主三备    |
 | 虚拟机   | CPU:  Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz<br/>内存：15GB<br/>硬盘：20GB<br/>OS：openEuler  release 20.03 (LTS-SP1)<br/> |      |
 | 虚拟机   | CPU:  Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz<br/>内存：15GB<br/>硬盘：17GB<br/>OS：openEuler  release 20.03 (LTS-SP1)<br/> |      |
 | 虚拟机   | CPU:  Intel(R) Xeon(R) Gold 6287C CPU @ 2.60GHz<br/>内存：7GB<br/>硬盘：30GB<br/>OS：openEuler  release 20.03 (LTS)<br/> |      |
