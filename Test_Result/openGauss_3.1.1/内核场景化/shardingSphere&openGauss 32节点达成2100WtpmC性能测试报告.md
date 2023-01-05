@@ -43,7 +43,7 @@ openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第
 
 描述特性测试的硬件环境信息
 
-**32 节点组⽹⽅案 **
+ **32 节点组⽹⽅案** 
 
 根据第⼀、⼆阶段性能测试的历史数据，32 节点性能测试组⽹⽅案原计划为以下配置：
 
@@ -62,7 +62,7 @@ openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | openGauss数据库节点*19 |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*6   |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 4826 2p 96核<br />内存：24*32GB<br />硬盘：NVME 3T * 1<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*1   |
-| ARM+openEuler 4P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 4p 256核<br />内存：31*32GB<br />硬盘：NVME 3T * 1，1.4T*3<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*1   |
+| ARM+openEuler 4P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 4p 256核<br />内存：31*32GB<br />硬盘：NVME 3T * 1，1.4T * 3<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*1   |
 | x86+CentOS<br />RH2288H V3                     | CPU：Kunpeng 920 7260 4p 256核<br />内存：24*32GB<br />OS：CentOS Linux release 7.9.2009 (Core)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*5   |
 
 | 软件名称     | 软件版本                                                     | 备注 |
