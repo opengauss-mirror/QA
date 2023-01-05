@@ -82,7 +82,7 @@ openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第
 | ------------------------------ | ------------------------------------------------------------ |
 | 2 节点测试 1 小时tpcc性能测试  | 1 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到140万，使用benchmarksql工具，在800并发下对1000仓数据进行测试。<br/>ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：142万。<br/>ShardingSphere 5.2.0 + Opengauss 3.1.0 Master 执行3次测试，tpmC取平均值为：133万。 |
 | 3 节点测试 1 小时tpcc性能测试  | 2 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到260万，使用benchmarksql工具，在1000并发下对2000仓数据进行测试。<br/>ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：250万。<br/>ShardingSphere 5.2.0 + Opengauss 3.1.0 Master 执行3次测试，tpmC取平均值为：237万。 |
-| 15 节点测试 1 小时tpcc性能测试 | 19 节点 openGauss + 13节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到2100万，使用benchmarksql工具，在1200并发下对19000仓数据进行测试。<br/>ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：2478万。<br/>ShardingSphere 5.2.0 + Opengauss 3.1.0 Master 执行3次测试，tpmC取平均值为：2316万 |
+| 15 节点测试 1 小时tpcc性能测试 | 19 节点 openGauss + 13节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到2100万，使用benchmarksql工具，对19000仓数据进行测试。<br/>ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：2478万。<br/>ShardingSphere 5.2.0 + Opengauss 3.1.0 Master 执行3次测试，tpmC取平均值为：2316万 |
 | 2 节点测试 24 小时tpcc长稳测试 | 1 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,执行24小时tpcc测试。<br/>ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本功能正常，无异常日志。 |
 
 ## 3.2   约束说明
@@ -177,7 +177,7 @@ ShardingSphere 5.2.0 + Opengauss 3.1.0 Master 执行3次测试，取平均值：
 
 **测试步骤：**
 
-(1)  配置ss-jdbc config文件、jar包等信息；ss-jdbc节点配置tpcc参数*6（1200并发，benchWarehousesRange 置空）；
+(1)  配置ss-jdbc config文件、jar包等信息；ss-jdbc节点配置tpcc参数*6（benchWarehousesRange 置空）；
 
 (2)  运行 13节点使用 ShardingSphere-JDBC 的 BenchmarkSQL 程序，向1 9 节点 openGauss 存储节点发压，预热5分钟；
 
@@ -214,7 +214,7 @@ ShardingSphere 5.2.0 + Opengauss 3.1.0 Master 执行3次测试，取平均值：
 
 数据项说明：
 
- 新增代码量 3.795 kloc，新增配置文件脚本 4.413 kloc，共计 8.208 kloc。 
+ 新增配置文件脚本 1.852 kloc，测试工具 0.022 kloc，共计 1.874 kloc。 
 
  测试用例数 4个；3个性能测试用例分别在ShardingSphere 5.2.0 + openGauss 3.1.0 Master、ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本上执行，长稳测试在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本上执行。通过用例 4个。 
 
