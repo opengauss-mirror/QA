@@ -46,14 +46,14 @@ M*、chameleon、openGauss、datachecker、kafka、全量校验性能、70MB/s
 | 硬件型号                 | 硬件配置信息                                                 | 备注                     |
 | ------------------------ | ------------------------------------------------------------ | ------------------------ |
 | TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 2600MHz <br />内存：1021GB<br />硬盘：7.3TB<br />OS：openEuler release 20.03 (LTS) | openGauss 及宿端抽取服务 |
-| TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920  2600MHz<br />内存：765GB<br />硬盘：3.0TB<br />OS：openEuler release 20.03 (LTS-SP1) | MySQL 及源端抽取服务     |
+| TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920  2600MHz<br />内存：765GB<br />硬盘：3.0TB<br />OS：openEuler release 20.03 (LTS-SP1) | M* 及源端抽取服务     |
 | TaiShan 200 (Model 2280) | Architecture：aarch64<br />CPU：kunpeng-920 2600MHz<br />内存：765GB<br />硬盘：7.3TB<br />OS：openEuler release 20.03 (LTS-SP1) | kafka及数据校验服务      |
 
 # 3     测试结论概述
 
 ## 3.1   测试整体结论
 
-datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB/s特性，共执行用例16个，合计提6个问题单，大数据量（表个数1000以上或数据条数1亿以上）存在瓶颈，整体质量一般。
+datachecker全量校验M*与openGauss数据的一致性满足校验速度70MB/s特性，共执行用例16个，合计提6个问题单，大数据量（表个数3000以上或数据条数1亿以上）存在瓶颈，整体质量一般。
 
 ## 3.2   约束说明
 
@@ -97,7 +97,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 2. 配置chameleon（详见[chameleon使用指南.md](https://gitee.com/opengauss/openGauss-tools-chameleon/blob/master/chameleon%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.md)）
 
-3. 使用chameleon工具将MySQL数据迁移至openGauss
+3. 使用chameleon工具将M*数据迁移至openGauss
 
    ```shell
    chameleon drop_replica_schema --config default --debug
@@ -139,7 +139,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 | 场景 |                  场景描述                  | 平均校验速度(MB/S) |       校验结果        |
 | :--: | :----------------------------------------: | :----------------: | :-------------------: |
 |  1   | 3张表，每张表1亿数据，数据总量约130G|      校验服务卡停       | 校验结果输出不完整 |
-|  2   | 场景二：3000张表，每张表10w数据，数据总量约130G   |   校验服务卡停   |      校验结果输出不完整       |
+|  2   | 3000张表，每张表10w数据，数据总量约130G   |   校验服务卡停   |      校验结果输出不完整       |
 
 <center>
 </center>
