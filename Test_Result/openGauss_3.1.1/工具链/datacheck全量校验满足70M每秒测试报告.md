@@ -87,7 +87,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 | 3    | [I66ODF](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I66ODF?from=project-issue) | 主要 | 数据基线测试，存在部分场景数据校验速度达不到70M/S            | 已验收 |
 | 4    | [I67TBG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I67TBG?from=project-issue) | 主要 | mysql侧存在3个以上的库，每个库表个数大于1000个，元数据加载会报错。openGauss抽取服务偶现存在元数据加载报错 | 已完成 |
 | 5    | [I67SOG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I67SOG?from=project-issue) | 主要 | 瓶颈测试。场景一：3张表，每张表1亿数据，生成了1张表的校验结果。场景二：3000张表，每张表10w数据，生成校验结果不完整（应生成3000个结果文件，实际生成1765个）             | 已确认 |
-| 6    | [I646UY](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I646UY?from=project-issue) | 主要 | 全量校验满足70M/S没有对应的资料文件，需要说明什么场景下能达到指标，包括硬件、操作系统、数据库配置等 | 已完成 |
+| 6    | [I646UY](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I646UY?from=project-issue) | 主要 | 全量校验满足70M/S没有对应的资料文件，需要说明什么场景下能达到指标，包括硬件、操作系统、数据库配置等 | 已验收 |
 
 # 4     测试执行
 
