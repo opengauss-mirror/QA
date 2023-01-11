@@ -202,7 +202,7 @@ ShardingSphere 5.2.0 + openGauss 3.1.0 Master 执行3次测试，tpmC取平均�
 | ---------------------------------------------- | ---------- | ------------ | ------------ |
 | ShardingSphere 5.2.0 + openGauss 3.1.0 Preview | 4          | 通过         | 0            |
 | ShardingSphere 5.2.0 + openGauss 3.0.0 Release | 3          | 通过         | 0            |
-| ShardingSphere 5.2.0 + Opengauss 3.0.0 Master  | 3          | 通过         | 0            |
+| ShardingSphere 5.2.0 + Opengauss 3.1.0 Master  | 3          | 通过         | 0            |
 
 数据项说明：
 
