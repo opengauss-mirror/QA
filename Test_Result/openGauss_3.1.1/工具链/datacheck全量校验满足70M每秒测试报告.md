@@ -12,11 +12,11 @@
 
  关键词： 
 
-MySQL、chameleon、openGauss、datachecker、kafka、全量校验性能、70MB/s
+M*、chameleon、openGauss、datachecker、kafka、全量校验性能、70MB/s
 
  摘要：
 
-本文档内容为验证在使用chameleon工具从MySQL数据库向openGauss数据库进行全量迁移后，使用datacheck校验工具进行全量数据校验，校验速率满足70MB/s。
+本文档内容为验证在使用chameleon工具从M*数据库向openGauss数据库进行全量迁移后，使用datacheck校验工具进行全量数据校验，校验速率满足70MB/s。
 
 缩略语清单：
 
@@ -26,7 +26,7 @@ MySQL、chameleon、openGauss、datachecker、kafka、全量校验性能、70MB/
 
 # 1     特性概述
 
-使用chameleon工具从MySQL数据库向openGauss数据库进行全量数据迁移，迁移后使用datachecker校验工具进行数据校验，校验速率满足70MB/s。
+使用chameleon工具从M*数据库向openGauss数据库进行全量数据迁移，迁移后使用datachecker校验工具进行数据校验，校验速率满足70MB/s。
 
 # 2     特性测试信息
 
@@ -35,7 +35,7 @@ MySQL、chameleon、openGauss、datachecker、kafka、全量校验性能、70MB/
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
 | ------------------------------ | :----------- | ------------ |
 | openGauss 3.1.0 build 4e931f9a | 2022-11-28   | 2022-12-29   |
-| MySQL 5.7.27                   | 2022-11-28   | 2022-12-29   |
+| M* 5.7.27                   | 2022-11-28   | 2022-12-29   |
 | chameleon 3.0.0                | 2022-11-28   | 2022-12-29   |
 | jdk 11.0.16                    | 2022-11-28   | 2022-12-29   |
 | kafka 2.13-2.8.11              | 2022-11-28   | 2022-12-29   |
@@ -57,7 +57,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 ## 3.2   约束说明
 
-1. MySQL 5.7.27数据存储分盘
+1. M* 5.7.27数据存储分盘
 2. openGauss使用默认安装配置，openGauss侧的目标库为兼容B库，除初始用户外的数据库用户均有复制权
 3. 表须含主键
 4. 仅对数据的差异性及表字段名称的差异性进行数据校验，不对表结构及字段类型的差异性做校验
@@ -85,7 +85,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 | 1    | [I64UMD](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I64UMD?from=project-issue) | 主要 | 性能基线数据测试，表个数1张，数据条数500w,数据总量约1GB,查看校验结果，数据校验结果不准确 | 已验收 |
 | 2    | [I64FX4](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I64FX4?from=project-issue) | 主要 | 表个数511个，每张表数据条数10w个，数据总量14.16G，校验服务卡停 | 已验收 |
 | 3    | [I66ODF](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I66ODF?from=project-issue) | 主要 | 数据基线测试，存在部分场景数据校验速度达不到70M/S            | 已验收 |
-| 4    | [I67TBG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I67TBG?from=project-issue) | 主要 | mysql侧存在3个以上的库，每个库表个数大于1000个，元数据加载会报错。openGauss抽取服务偶现存在元数据加载报错 | 已完成 |
+| 4    | [I67TBG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I67TBG?from=project-issue) | 主要 | M*侧存在3个以上的库，每个库表个数大于1000个，元数据加载会报错。openGauss抽取服务偶现存在元数据加载报错 | 已完成 |
 | 5    | [I67SOG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I67SOG?from=project-issue) | 主要 | 瓶颈测试。场景一：3张表，每张表1亿数据，生成了1张表的校验结果。场景二：3000张表，每张表10w数据，生成校验结果不完整（应生成3000个结果文件，实际生成1765个）             | 已确认 |
 | 6    | [I646UY](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I646UY?from=project-issue) | 主要 | 全量校验满足70M/S没有对应的资料文件，需要说明什么场景下能达到指标，包括硬件、操作系统、数据库配置等 | 已验收 |
 
@@ -93,7 +93,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 ## 4.1   测试执行步骤
 
-1. sysbench批量创造数据至MySQL，表结构含15个字段
+1. sysbench批量创造数据至M*，表结构含15个字段
 
 2. 配置chameleon（详见[chameleon使用指南.md](https://gitee.com/opengauss/openGauss-tools-chameleon/blob/master/chameleon%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.md)）
 
@@ -102,15 +102,15 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
    ```shell
    chameleon drop_replica_schema --config default --debug
    chameleon create_replica_schema --config default --debug
-   chameleon add_source --config default --source mysql --debug
-   chameleon init_replica --config default --source mysql --debug
+   chameleon add_source --config default --source M* --debug
+   chameleon init_replica --config default --source M* --debug
    ```
 
-4. 查看MySQL待校验的数据库大小
+4. 查看M*待校验的数据库大小
 
-5. 启动MySQL、openGauss抽取服务及数据校验服务
+5. 启动M*、openGauss抽取服务及数据校验服务
 
-6. 迁移速度 = 总Size / 时间，其中总Size是MySQL待校验的数据库大小，时间取自校验服务的cost time
+6. 迁移速度 = 总Size / 时间，其中总Size是M*待校验的数据库大小，时间取自校验服务的cost time
 
 7. 查看生成的结果文件准确性
 
@@ -184,7 +184,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 ## 5.1 校验速率计算
 
-校验速率 =  源端(MySQL)数据库大小 / 校验时间
+校验速率 =  源端(M*)数据库大小 / 校验时间
 
 源端数据库大小：select concat(round(sum(data_length/1024/1024),2),'MB') as data from information_schema.tables where table_schema='databasename';
 
