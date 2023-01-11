@@ -5,9 +5,10 @@
 
 修订记录
 
-| 日期       | 修订   版本 | 修改描述             | 作者       |
-| ---------- | ----------- | -------------------- | ---------- |
-| 2022-10-12 | 1.0         | 特性测试报告初稿完成 | peilinqian |
+| 日期       | 修订   版本 | 修改描述                                | 作者       |
+| ---------- | ----------- | --------------------------------------- | ---------- |
+| 2022-10-12 | 1.0         | 特性测试报告初稿完成                    | peilinqian |
+| 2023-1-6   | 1.1         | 3.1章节新增主备数据一致性及性能测试结论 | peilinqian |
 
 关键词： 
 
@@ -39,9 +40,9 @@ openGauss 分布式、ShardingSphere-Proxy、ShardingSphere-JDBC、事务内读�
 | ShardingSphere-5.1.3-SNAPSHOT Commit ID: <br />9dd0d3990c849d50c17c6dc7c92ec2d4ce0ad7e5 | 2022/8/3     | 2022/8/3     |
 | ShardingSphere-5.2.1-SNAPSHOT Commit ID: <br />4114e7ee4cbe5923c2b403a3e86d1f23355cadf3 | 2022/9/26    | 2022/9/26    |
 | ShardingSphere-5.2.1-SNAPSHOT Commit ID: <br />bcde6f374c4a3a025173fbc9f6d0e66ed686a042 | 2022/11/10   | 2022/11/10   |
-| ShardingSphere-5.2.2-SNAPSHOT Commit ID: <br />753c0cee8ee6fd3db00536da55b64bc5198a3758 | 2022/11/22   | 2022/11/22   |
+| ShardingSphere-5.2.2-SNAPSHOT Commit ID: <br />753c0cee8ee6fd3db00536da55b64bc5198a3758 | 2022/12/14   | 2022/1/6     |
 
-| 硬件型号   | 硬件配置信息                                                 | 备注                                                         |
+| 环境信息   | 配置信息                                                     | 备注                                                         |
 | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | x86+centOS | Intel(R) Xeon(R) Gold 6161 CPU @ 2.20GHz 8核<br />内存：32GB<br/>硬盘：100G<br/>OS：CentOS Linux release 7.6.1810 (Core) | 3台主机组合配置部署<br />至少2分片opengauss（一主两备）、1ss-proxy、1zookeeper |
 
@@ -49,7 +50,7 @@ openGauss 分布式、ShardingSphere-Proxy、ShardingSphere-JDBC、事务内读�
 | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | shardingsphere-Proxy<br />shardingsphere-JDBC | ShardingSphere-5.1.3-SNAPSHOT Commit ID: 7c67365b394d2e3ac562329b550c135c31ea764d<br />9dd0d3990c849d50c17c6dc7c92ec2d4ce0ad7e5<br />ShardingSphere-5.2.1-SNAPSHOT Commit ID: 4114e7ee4cbe5923c2b403a3e86d1f23355cadf3<br />bcde6f374c4a3a025173fbc9f6d0e66ed686a042<br />ShardingSphere-5.2.2-SNAPSHOT Commit ID: 753c0cee8ee6fd3db00536da55b64bc5198a3758 | ShardingSphere官网源码包github地址：<br />https://github.com/apache/shardingsphere |
 | zookeeper                                     | 3.8.0                                                        |                                                              |
-| openGauss                                     | openGauss 3.1.0<br />8198a77b                                |                                                              |
+| openGauss                                     | openGauss 3.1.0<br />8198a77b<br />02f5afd2  资源池化版本    |                                                              |
 
 # 3     测试结论概述
 
@@ -73,7 +74,7 @@ openGauss 分布式、ShardingSphere-Proxy、ShardingSphere-JDBC、事务内读�
 
 | 问题单号                                                     | 问题描述                                                     | 问题级别 | 问题影响和规避措施 | 当前状态 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ------------------ | -------- |
-| [21237](https://github.com/apache/shardingsphere/issues/21237) | sharding-proxy XA事务场景下，事务内读写分离验证，commit时报错。原因：XA事务以两阶段方式在opengauss的备库代开事务，备库无法commit。 | 严重     | 无法保证数据一致性 | 打开     |
+| [21237](https://github.com/apache/shardingsphere/issues/21237) | sharding-proxy XA事务场景下，事务内读写分离验证，commit时报错。原因：XA事务以两阶段方式在opengauss的备库打开事务，备库无法commit。 | 严重     | 无法保证数据一致性 | 打开     |
 
 ### 3.3.2 问题统计
 

@@ -8,6 +8,7 @@
 | 日期       | 修订   版本 | 修改描述             | 作者       |
 | ---------- | ----------- | -------------------- | ---------- |
 | 2022-12-17 | 1.0         | 特性测试报告初稿完成 | peilinqian |
+| 2022-1-11  | 1.1         | 修改检视意见         | peilinqian |
 
 关键词： 
 
@@ -41,7 +42,7 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 | ShardingSphere-5.3.1-SNAPSHOT Commit ID: 0cbb5fb100de531e7e27382904197c1249baf2d6 | 2022/12/16   | 2022/12/16   |
 | ShardingSphere-5.3.1-SNAPSHOT Commit ID: fcb0e1ea635accbf34cf491ae3f5ad463a4cfbb9 | 2022/1/5     | 2022/1/5     |
 
-| 硬件型号   | 硬件配置信息                                                 | 备注                                                         |
+| 环境信息   | 配置信息                                                     | 备注                                                         |
 | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | x86+centOS | Intel(R) Xeon(R) Gold 6161 CPU @ 2.20GHz 8核<br />内存：32GB<br/>硬盘：100G<br/>OS：CentOS Linux release 7.6.1810 (Core) | 3台主机组合配置部署<br />至少2分片opengauss（一主两备）、1 ss-proxy、1 zookeeper |
 
@@ -55,7 +56,7 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 
 ## 3.1   测试整体结论
 
-共计设计28个用例，主要覆盖了功能测试和可靠性测试，发现问题19个（本需求相关缺陷11个，非本需求的select语法缺陷8个），已解决11个（本需求相关缺陷8个，非本需求的select语法缺陷3个），待解决8个（本需求相关缺陷3个，非本需求的select语法缺陷5个），整体需求目标达成。目前存在部分待解决问题中由于sharding内核本身不支持的语法场景，遗留8个问题后续解决优化。
+共设计28个用例，主要覆盖了功能测试和可靠性测试，发现问题19个（本需求相关缺陷11个，非本需求的select语法缺陷8个），已解决11个（本需求相关缺陷8个，非本需求的select语法缺陷3个），待解决8个（本需求相关缺陷3个，非本需求的select语法缺陷5个），整体需求目标达成。目前存在部分待解决问题中由于sharding内核本身不支持的语法场景，遗留8个问题后续解决优化。
 
 | 测试活动   | 活动评价                                                     |
 | ---------- | ------------------------------------------------------------ |
@@ -70,7 +71,7 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 
 （3）目前federation仅支持select语法，insert、update涉及跨库关联查询不支持。
 
-（4）目前打开关闭federation开关、创建修改视图操作会异步刷新Zookeeper元数据，需要等待刷新后进行相应select操作，或者通过强制刷新DistSQL命令`refresh database metadata from governance center`强制刷新。
+（4）目前打开关闭federation开关、创建修改视图操作会异步刷新Zookeeper元数据，需要等待刷新后进行相应select操作，或者通过执行强制刷新DistSQL命令`refresh database metadata from governance center`强制刷新后进行相应select操作。
 
 ## 3.3   遗留问题分析
 
@@ -133,18 +134,18 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 
 ## 4.2   测试执行统计数据
 
-| 版本名称                                                     | 测试用例数     | 用例执行结果         | 发现问题单数 |
-| ------------------------------------------------------------ | -------------- | -------------------- | ------------ |
-| ShardingSphere-5.2.1-SNAPSHOT Commit ID: 20bf595dfeced4dd8ffee2f6d95de52fdf3e569d | 2              | Passed：0 Failed：2  | 2            |
-| ShardingSphere-5.2.2-SNAPSHOT Commit ID: 753c0cee8ee6fd3db00536da55b64bc5198a3758 | 28             | Passed：22 Failed：6 | 13           |
-| ShardingSphere-5.2.2-SNAPSHOT Commit ID: 631fdf40f87223e176abe5c851a51b3287b4d6de | 回归issue：7个 | Passed：7            | 4            |
-| ShardingSphere-5.3.1-SNAPSHOT Commit ID: 0cbb5fb100de531e7e27382904197c1249baf2d6 | 回归issue：2个 | Passed：2            | 0            |
-| ShardingSphere-5.3.1-SNAPSHOT Commit ID: fcb0e1ea635accbf34cf491ae3f5ad463a4cfbb9 | 回归issue：1个 | Passed：1            | 0            |
+| 版本名称                                                     | 测试用例数             | 用例执行结果                              | 发现问题单数 |
+| ------------------------------------------------------------ | ---------------------- | ----------------------------------------- | ------------ |
+| ShardingSphere-5.2.1-SNAPSHOT Commit ID: 20bf595dfeced4dd8ffee2f6d95de52fdf3e569d | 2                      | Passed：0 Failed：2                       | 2            |
+| ShardingSphere-5.2.2-SNAPSHOT Commit ID: 753c0cee8ee6fd3db00536da55b64bc5198a3758 | 28<br />回归issue：2个 | Passed：22 Failed：6<br />issue Passed：2 | 13           |
+| ShardingSphere-5.2.2-SNAPSHOT Commit ID: 631fdf40f87223e176abe5c851a51b3287b4d6de | 回归issue：6个         | issue Passed：6                           | 4            |
+| ShardingSphere-5.3.1-SNAPSHOT Commit ID: 0cbb5fb100de531e7e27382904197c1249baf2d6 | 回归issue：2个         | issue Passed：2                           | 0            |
+| ShardingSphere-5.3.1-SNAPSHOT Commit ID: fcb0e1ea635accbf34cf491ae3f5ad463a4cfbb9 | 回归issue：1个         | issue Passed：1                           | 0            |
 
 *数据项说明：*
 
 - 首轮版本测试冒烟测试，第二轮全量用例执行，第三至五轮回归问题单。
-- 最终测试用例执行通过28个，不通过6个，缺陷见全部记录遗留问题单；
+- 最终测试用例执行28个，不通过6个，缺陷见全部记录遗留问题单；
 - 本需求缺陷密度为11(缺陷个数)/62.74k(代码行数)=0.175(个/kloc)。
 
 ## 4.3   后续测试建议
