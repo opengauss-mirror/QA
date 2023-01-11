@@ -125,11 +125,11 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
         <PARAM name="clusterName" value="Cluster_template" /> 
         <PARAM name="nodeNames" value="node1_hostname,node2_hostname,node3_hostname,node4_hostname" /> 
     
-        <PARAM name="gaussdbAppPath" value="/opt/huawei/install/app" /> 
+        <PARAM name="gaussdbAppPath" value="/opt/test/install/app" /> 
         <PARAM name="gaussdbLogPath" value="/var/log/omm" /> 
-        <PARAM name="tmpMppdbPath" value="/opt/huawei/tmp"/> 
-        <PARAM name="gaussdbToolPath" value="/opt/huawei/install/om" /> 
-        <PARAM name="corePath" value="/opt/huawei/corefile"/> 
+        <PARAM name="tmpMppdbPath" value="/opt/test/tmp"/> 
+        <PARAM name="gaussdbToolPath" value="/opt/test/install/om" /> 
+        <PARAM name="corePath" value="/opt/test/corefile"/> 
         <PARAM name="backIp1s" value="192.168.0.1,192.168.0.2,192.168.0.3,192.168.0.4"/> 
          
     </CLUSTER> 
@@ -150,11 +150,11 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
             <PARAM name="cmServerHaIp1" value="192.168.0.1,192.168.0.2,192.168.0.3,192.168.0.4"/> 
             <PARAM name="cmServerlevel" value="1"/> 
             <PARAM name="cmServerRelation" value="node1_hostname,node2_hostname,node3_hostname,node4_hostname"/> 
-            <PARAM name="cmDir" value="/opt/huawei/data/cmserver"/> 
+            <PARAM name="cmDir" value="/opt/test/data/cmserver"/> 
 	    <!--dn--> 
             <PARAM name="dataNum" value="1"/> 
 	    <PARAM name="dataPortBase" value="15400"/> 
-	    <PARAM name="dataNode1" value="/opt/huawei/install/data/dn,node2_hostname,/opt/huawei/install/data/dn,node3_hostname,/opt/huawei/install/data/dn,node4_hostname,/opt/huawei/install/data/dn ,/opt/huawei/install/data/dn"/> 
+	    <PARAM name="dataNode1" value="/opt/test/install/data/dn,node2_hostname,/opt/test/install/data/dn,node3_hostname,/opt/test/install/data/dn,node4_hostname,/opt/test/install/data/dn ,/opt/test/install/data/dn"/> 
             <!-- syncNode_hostname中的hostname替换为自己的主机名称 -->
             <PARAM name="syncNode_node1_hostname" value="ANY 2(node2_hostname, node4_hostname), ANY 1(node3_hostname, node2_hostname)"/> 
         </DEVICE> 
@@ -171,7 +171,7 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
             <PARAM name="syncNode_node2_hostname" value="ANY 2(node1_hostname, node3_hostname), ANY 1(node1_hostname, node4_hostname)"/>
             <!-- cm --> 
             <PARAM name="cmServerPortStandby" value="15000"/> 
-            <PARAM name="cmDir" value="/opt/huawei/data/cmserver"/> 
+            <PARAM name="cmDir" value="/opt/test/data/cmserver"/> 
 	</DEVICE> 
  
         <!-- node3上的节点部署信息，其中“name”的值配置为主机名称 --> 
@@ -186,7 +186,7 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
             <PARAM name="syncNode_node3_hostname" value="FIRST 3(node2_hostname, node1_hostname, node4_hostname)"/>
             <!-- cm --> 
             <PARAM name="cmServerPortStandby" value="15000"/> 
-            <PARAM name="cmDir" value="/opt/huawei/data/cmserver"/> 
+            <PARAM name="cmDir" value="/opt/test/data/cmserver"/> 
 	</DEVICE> 
  
         <!-- node4上的节点部署信息，其中“name”的值配置为主机名称 --> 
@@ -201,7 +201,7 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
             <PARAM name="syncNode_node4_hostname" value="ANY 2(node2_hostname, node1_hostname, node1_hostname, node3_hostname)"/>
             <!-- cm --> 
             <PARAM name="cmServerPortStandby" value="15000"/> 
-            <PARAM name="cmDir" value="/opt/huawei/data/cmserver"/> 
+            <PARAM name="cmDir" value="/opt/test/data/cmserver"/> 
 	</DEVICE> 
     </DEVICELIST> 
 </ROOT>
