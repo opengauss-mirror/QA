@@ -54,7 +54,7 @@ LRU算法，dbe_perf.file_iostat
 
 ## 3.2 约束说明
 
-1. 此需求验证需打印debug级别日志，设置参数log_min_messages='debug1', logging_module='on(INSTR)'
+1. 设置参数log_min_messages='debug1', logging_module='on(INSTR)'
 
 
 
