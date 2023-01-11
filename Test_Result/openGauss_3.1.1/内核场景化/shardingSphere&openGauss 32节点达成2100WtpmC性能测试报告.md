@@ -210,7 +210,7 @@ ShardingSphere 5.2.0 + Opengauss 3.1.0 Master 执行3次测试，取平均值：
 | 版本名称                                       | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | ---------------------------------------------- | ---------- | ------------ | ------------ |
 | ShardingSphere 5.2.0 + Opengauss 3.0.0 Release | 4          | 通过         | 0            |
-| ShardingSphere 5.2.0 + Opengauss 3.0.0 Master  | 3          | 通过         | 0            |
+| ShardingSphere 5.2.0 + Opengauss 3.1.0 Master  | 3          | 通过         | 0            |
 
 数据项说明：
 
