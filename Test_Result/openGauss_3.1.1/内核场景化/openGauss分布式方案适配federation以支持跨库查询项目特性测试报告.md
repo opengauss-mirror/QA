@@ -60,7 +60,7 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 
 | 测试活动   | 活动评价                                                     |
 | ---------- | ------------------------------------------------------------ |
-| 功能测试   | （1）通过yaml、DistSQL两种方式进行验证federation开关功能。<br />（2）查询语法覆盖；主要验证federation场景下绑定表不带分片键、非绑定表且分片规则不同等场景下多表关联（join）查询、子查询、分组聚合查询、UNION/INTERSECT/EXCEPT/MINUS查询等语法。<br />（3）视图语法覆盖；主要验证federation场景下视图创建包含绑定表不带分片键、非绑定表且分片规则不同等场景下多表关联（join）查询、子查询、分组聚合查询、UNION/INTERSECT/EXCEPT/MINUS查询等语法。<br />（4）视图及表组合场景覆盖；主要验证视图及表关联查询、子查询、分组聚合查询、UNION/INTERSECT/EXCEPT/MINUS查询等场景。<br />（5）federation打开关闭场景下tpcc功能验证。由于目前federation场景仅支持select 语法，导致tpcc非完美sharding场景无法支持。目前仅验证完美sharding场景。<br />（6）事务场景验证，验证LOCAL及XA事务基本功能正常。<br />（7）读写分离场景下，验证select查询以上所有场景脚本，查询结果正确一致<br />结论：federation场景下，跨库关联查询功能正常，整体需求功能达成，验证通过。 |
+| 功能测试   | （1）通过yaml、DistSQL两种方式进行验证federation开关功能。<br />（2）查询语法覆盖；主要验证federation场景下绑定表不带分片键、非绑定表且分片规则不同等场景下多表关联（join）查询、子查询、分组聚合查询、UNION/INTERSECT/EXCEPT/MINUS查询等语法。<br />（3）视图语法覆盖；主要验证federation场景下视图创建包含绑定表不带分片键、非绑定表且分片规则不同等场景下多表关联（join）查询、子查询、分组聚合查询、UNION/INTERSECT/EXCEPT/MINUS查询等语法。<br />（4）视图及表组合场景覆盖；主要验证视图及表关联查询、子查询、分组聚合查询、UNION/INTERSECT/EXCEPT/MINUS查询等场景。<br />（5）federation打开关闭场景下tpcc功能验证。由于目前federation场景仅支持select 语法，导致tpcc非完美sharding场景无法支持。目前仅验证完美sharding场景。<br />（6）事务场景验证，验证LOCAL及XA事务基本功能正常。<br />（7）读写分离场景下，验证select查询以上所有场景脚本，查询结果正确一致。<br />结论：federation场景下，跨库关联查询功能正常，整体需求功能达成，验证通过。 |
 | 可靠性测试 | 一个session循环进行federation跨库关联查询，一个session循环进行federation开关修改，开关打开查询正常，开关关闭后正常报错。<br />结论：验收通过 |
 
 ## 3.2   约束说明
@@ -79,14 +79,14 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 
 | 问题单号                                                     | 问题描述                                                     | 问题级别 | 问题影响和规避措施                                           | 当前状态 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| [22375](https://github.com/apache/shardingsphere/issues/22375) | group by 语法，查询字段不能包含除groupby列以外的其他列       | 次要     | group by以外的其他列查询会受影响                             | 打开     |
-| [22388](https://github.com/apache/shardingsphere/issues/22388) | GROUPING SETS、ROLLUP、CUBE语法不支持                        | 次要     | GROUPING SETS、ROLLUP、CUBE SQL无法执行                      | 打开     |
+| [22375](https://github.com/apache/shardingsphere/issues/22375) | group by 语法，查询字段不能包含除groupby列以外的其他列。     | 次要     | group by以外的其他列查询会受影响。                           | 打开     |
+| [22388](https://github.com/apache/shardingsphere/issues/22388) | GROUPING SETS、ROLLUP、CUBE语法不支持。                      | 次要     | GROUPING SETS、ROLLUP、CUBE SQL无法执行。                    | 打开     |
 | [22412](https://github.com/apache/shardingsphere/issues/22412) | sharding-proxy使用未适配过sharding的tpcc执行tpcc异常，主键冲突；目前涉及的insert、update跨库操作不支持。 | 次要     | 会影响涉及跨库select的insert、update操作。                   | 打开     |
-| [22514](https://github.com/apache/shardingsphere/issues/22514) | 使用distinct on语法查询结果不正确，未进行去重                | 主要     | distinct on 查询结果不正确                                   | 打开     |
-| [22553](https://github.com/apache/shardingsphere/issues/22553) | 创建视图完成后，查询视图的结果概率性是数据源单个库的结果，而非所有数据源的查询结果；目前仅yat框架执行自动化SQL脚本存在问题。 | 次要     | 进行视图创建需要刷新元数据，创建视图后，可能会导致短暂查询视图不存在或者结果不正确。可以通过sleep等待1s左右再进行查询。后续优化 | 打开     |
-| [22569](https://github.com/apache/shardingsphere/issues/22569) | 创建视图完成后，查询视图的结果概率性报错视图不存在，目前仅yat框架执行自动化SQL脚本存在问题。 | 次要     | 进行视图创建需要刷新元数据，创建视图后，可能会导致短暂查询视图不存在或者结果不正确。可以通过sleep等待1s左右再进行查询。后续优化 | 打开     |
-| [22823](https://github.com/apache/shardingsphere/issues/22823) | 不区分大小写排序（order by nlssort）功能不支持，相关视图创建成功，查询报错。 | 次要     | 不区分大小写排序语法不支持                                   | 打开     |
-| [22841](https://github.com/apache/shardingsphere/issues/22841) | 在federation场景下，视图与表关联查询，group by场景下，如果where条件有视图相关字段，sql语句执行异常 | 主要     | group by场景下，视图关联查询时，where条件不能包含视图字段    | 打开     |
+| [22514](https://github.com/apache/shardingsphere/issues/22514) | 使用distinct on语法查询结果不正确，未进行去重。              | 主要     | distinct on 查询结果不正确。                                 | 打开     |
+| [22553](https://github.com/apache/shardingsphere/issues/22553) | 创建视图完成后，查询视图的结果概率性是数据源单个库的结果，而非所有数据源的查询结果；目前仅yat框架执行自动化SQL脚本存在问题。 | 次要     | 进行视图创建需要刷新元数据，创建视图后，可能会导致短暂查询视图不存在或者结果不正确。可以通过sleep等待1s左右再进行查询。后续优化。 | 打开     |
+| [22569](https://github.com/apache/shardingsphere/issues/22569) | 创建视图完成后，查询视图的结果概率性报错视图不存在，目前仅yat框架执行自动化SQL脚本存在问题。 | 次要     | 进行视图创建需要刷新元数据，创建视图后，可能会导致短暂查询视图不存在或者结果不正确。可以通过sleep等待1s左右再进行查询。后续优化。 | 打开     |
+| [22823](https://github.com/apache/shardingsphere/issues/22823) | 不区分大小写排序（order by nlssort）功能不支持，相关视图创建成功，查询报错。 | 次要     | 不区分大小写排序语法不支持。                                 | 打开     |
+| [22841](https://github.com/apache/shardingsphere/issues/22841) | 在federation场景下，视图与表关联查询，group by场景下，如果where条件有视图相关字段，sql语句执行异常。 | 主要     | group by场景下，视图关联查询时，where条件不能包含视图字段。  | 打开     |
 
 ### 3.3.2 问题统计
 
@@ -106,25 +106,25 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                     | 是否需求缺陷 | 问题状态 |
 | ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------ | -------- |
-| 1    | [22173](https://github.com/apache/shardingsphere/issues/22173) | 主要     | sql-federation-type未进行有效值校验，每次执行sql都会进行初始化federation引擎 | 是           | 关闭     |
-| 2    | [22170](https://github.com/apache/shardingsphere/issues/22170) | 主要     | select group by非分片键（列存在空值）查询结果不正确          | 是           | 关闭     |
+| 1    | [22173](https://github.com/apache/shardingsphere/issues/22173) | 主要     | sql-federation-type未进行有效值校验，每次执行sql都会进行初始化federation引擎。 | 是           | 关闭     |
+| 2    | [22170](https://github.com/apache/shardingsphere/issues/22170) | 主要     | select group by非分片键（列存在空值）查询结果不正确。        | 是           | 关闭     |
 | 3    | [22355](https://github.com/apache/shardingsphere/issues/22355) | 主要     | join with USING(column)' 的查询结果存在问题；列名称和值不匹配。 | 是           | 关闭     |
-| 4    | [22359](https://github.com/apache/shardingsphere/issues/22359) | 主要     | select关联查询场景‘natural join’语法不支持，报错ERROR: The column index is out of range: 10, number of columns: 9. | 是           | 关闭     |
-| 5    | [22375](https://github.com/apache/shardingsphere/issues/22375) | 次要     | group by 语法，查询字段不能包含除groupby列以外的其他列       | 否           | 打开     |
-| 6    | [22388](https://github.com/apache/shardingsphere/issues/22388) | 次要     | GROUPING SETS、ROLLUP、CUBE语法不支持                        | 否           | 打开     |
+| 4    | [22359](https://github.com/apache/shardingsphere/issues/22359) | 主要     | select关联查询场景‘natural join’语法不支持，报错ERROR: The column index is out of range: 10, number of columns: 9。 | 是           | 关闭     |
+| 5    | [22375](https://github.com/apache/shardingsphere/issues/22375) | 次要     | group by 语法，查询字段不能包含除groupby列以外的其他列。     | 否           | 打开     |
+| 6    | [22388](https://github.com/apache/shardingsphere/issues/22388) | 次要     | GROUPING SETS、ROLLUP、CUBE语法不支持。                      | 否           | 打开     |
 | 7    | [22412](https://github.com/apache/shardingsphere/issues/22412) | 次要     | sharding-proxy使用未适配过sharding的tpcc执行tpcc异常，主键冲突；目前涉及的insert、update跨库操作不支持。 | 否           | 打开     |
-| 8    | [22432](https://github.com/apache/shardingsphere/issues/22432) | 主要     | sharding-proxy使用适配过sharding的tpcc（完美sharding的场景）进行建仓成功，runBenchmark失败； | 是           | 关闭     |
-| 9    | [22438](https://github.com/apache/shardingsphere/issues/22438) | 主要     | select语法fetch offset等场景异常‘java.lang.NullPointerException’ | 否           | 关闭     |
-| 10   | [22480](https://github.com/apache/shardingsphere/issues/22480) | 主要     | 使用orderby的视图进行查询使用使用limit 5,3或者limit 3 offset 5，查询结果顺序不正确 | 是           | 关闭     |
-| 11   | [22514](https://github.com/apache/shardingsphere/issues/22514) | 主要     | 使用distinct on语法查询结果不正确，未进行去重                | 否           | 打开     |
+| 8    | [22432](https://github.com/apache/shardingsphere/issues/22432) | 主要     | sharding-proxy使用适配过sharding的tpcc（完美sharding的场景）进行建仓成功，runBenchmark失败。 | 是           | 关闭     |
+| 9    | [22438](https://github.com/apache/shardingsphere/issues/22438) | 主要     | select语法fetch offset等场景异常‘java.lang.NullPointerException’。 | 否           | 关闭     |
+| 10   | [22480](https://github.com/apache/shardingsphere/issues/22480) | 主要     | 使用orderby的视图进行查询使用使用limit 5,3或者limit 3 offset 5，查询结果顺序不正确。 | 是           | 关闭     |
+| 11   | [22514](https://github.com/apache/shardingsphere/issues/22514) | 主要     | 使用distinct on语法查询结果不正确，未进行去重。              | 否           | 打开     |
 | 12   | [22553](https://github.com/apache/shardingsphere/issues/22553) | 次要     | 创建视图完成后，查询视图的结果概率性是数据源单个库的结果，而非所有数据源的查询结果；目前仅yat框架执行自动化SQL脚本存在问题。 | 是           | 打开     |
 | 13   | [22569](https://github.com/apache/shardingsphere/issues/22569) | 次要     | 创建视图完成后，查询视图的结果概率性报错视图不存在，目前仅yat框架执行自动化SQL脚本存在问题。 | 是           | 打开     |
 | 14   | [22576](https://github.com/apache/shardingsphere/issues/22576) | 次要     | 在federation场景下，‘UNION/EXCEPT/INTERSECT’的优先级不正确。 | 是           | 关闭     |
 | 15   | [22823](https://github.com/apache/shardingsphere/issues/22823) | 次要     | 不区分大小写排序（order by nlssort）功能不支持，相关视图创建成功，查询报错。 | 否           | 打开     |
-| 16   | [22820](https://github.com/apache/shardingsphere/issues/22820) | 主要     | 在federation场景下，视图创建子句为多个分片表进行union/intersect/except/minus，创建视图报错“ERROR: String index out of range: -7” | 是           | 关闭     |
+| 16   | [22820](https://github.com/apache/shardingsphere/issues/22820) | 主要     | 在federation场景下，视图创建子句为多个分片表进行union/intersect/except/minus，创建视图报错“ERROR: String index out of range: -7”。 | 是           | 关闭     |
 | 17   | [22822](https://github.com/apache/shardingsphere/issues/22822) | 主要     | fetch子句查询结果不正确。Fetch count预期应该为fetch count，实际结果为偏移count。 | 否           | 关闭     |
 | 18   | [22826](https://github.com/apache/shardingsphere/issues/22826) | 次要     | “select order by null first/last”或者“create view order by null first/last”结果不正确；并未按空值先序。 | 否           | 关闭     |
-| 19   | [22841](https://github.com/apache/shardingsphere/issues/22841) | 主要     | 在federation场景下，视图与表关联查询，group by场景下，如果where条件有视图相关字段，sql语句执行异常 | 是           | 打开     |
+| 19   | [22841](https://github.com/apache/shardingsphere/issues/22841) | 主要     | 在federation场景下，视图与表关联查询，group by场景下，如果where条件有视图相关字段，sql语句执行异常。 | 是           | 打开     |
 
 # 4     测试执行
 
@@ -144,7 +144,7 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 
 *数据项说明：*
 
-- 首轮版本测试冒烟测试，第二轮全量用例执行，第三至五轮回归问题单。
+- 首轮版本测试冒烟测试，第二轮全量用例执行，第三至五轮回归问题单；
 - 最终测试用例执行28个，不通过6个，缺陷见全部记录遗留问题单；
 - 本需求缺陷密度为11(缺陷个数)/62.74k(代码行数)=0.175(个/kloc)。
 
