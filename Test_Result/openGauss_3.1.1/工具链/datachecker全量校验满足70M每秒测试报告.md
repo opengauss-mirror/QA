@@ -16,7 +16,7 @@ M*、chameleon、openGauss、datachecker、kafka、全量校验性能、70MB/s
 
  摘要：
 
-本文档内容为验证在使用chameleon工具从M*数据库向openGauss数据库进行全量迁移后，使用datacheck校验工具进行全量数据校验，校验速率满足70MB/s。
+本文档内容为验证在使用chameleon工具从M*数据库向openGauss数据库进行全量迁移后，使用datachecker校验工具进行全量数据校验，校验速率满足70MB/s。
 
 缩略语清单：
 
@@ -173,7 +173,7 @@ datachecker全量校验M*与openGauss数据的一致性满足校验速度70MB/s�
 
 数据说明：
 
-1. datacheck全量校验满足70M/S测试共计16条用例，执行通过14条，共计发现6个bug
+1. datachecker全量校验满足70M/S测试共计16条用例，执行通过14条，共计发现6个bug
 2. 以上缺陷2个为资料单，不计入代码缺陷密度。缺陷密度为：4(缺陷个数)/2.969k(代码行数)=1.34(个/kloc)
 
 ## 4.4   后续测试建议
