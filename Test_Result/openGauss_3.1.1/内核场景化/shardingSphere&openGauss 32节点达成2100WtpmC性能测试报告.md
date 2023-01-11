@@ -29,7 +29,7 @@
 
 # 1     特性概述
 
-openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第二阶段提升15节点性能水平至1200WtpmC；第三阶段ShardingSphere&OpenGauss继续深化合作，提高32节点性能水平至2100万 tpmC。 
+openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第二阶段提升15节点性能水平至1200WtpmC；第三阶段ShardingSphere&OpenGauss继续深化合作，挑战32节点性能水平至2100万 tpmC。 
 
 # 2     特性测试信息
 
