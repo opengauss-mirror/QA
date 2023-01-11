@@ -77,7 +77,7 @@ LRU算法，dbe_perf.file_iostat
 
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                    | 问题状态 |
 | ---- | ------------------------------------------------------------ | -------- | ----------------------------------------------------------- | -------- |
-| 1    | [I68219](https://gitee.com/opengauss/openGauss-server/issues/I68219) | 次要     | 需求《支持对dbe_perf.file_iostat统计的LRU淘汰算法》代码补充 | 已验收   |
+| 1    | [I68219](https://gitee.com/opengauss/openGauss-server/issues/I68219) | 次要     | 需求《支持对dbe_perf.file_iostat统计的LRU淘汰算法》缺少关键日志打印 | 已验收   |
 
 # 4 测试执行
 
