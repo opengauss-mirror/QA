@@ -86,7 +86,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 | 2    | [I64FX4](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I64FX4?from=project-issue) | 主要 | 表个数511个，每张表数据条数10w个，数据总量14.16G，校验服务卡停 | 已验收 |
 | 3    | [I66ODF](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I66ODF?from=project-issue) | 主要 | 数据基线测试，存在部分场景数据校验速度达不到70M/S            | 已验收 |
 | 4    | [I67TBG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I67TBG?from=project-issue) | 主要 | mysql侧存在3个以上的库，每个库表个数大于1000个，元数据加载会报错。openGauss抽取服务偶现存在元数据加载报错 | 已完成 |
-| 5    | [I67SOG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I67SOG?from=project-issue) | 主要 | 瓶颈测试，3张表，每张表1亿数据，无法生成校验结果             | 待办的 |
+| 5    | [I67SOG](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I67SOG?from=project-issue) | 主要 | 瓶颈测试。场景一：3张表，每张表1亿数据，生成了1张表的校验结果。场景二：3000张表，每张表10w数据，生成校验结果不完整（应生成3000个结果文件，实际生成1765个）             | 已确认 |
 | 6    | [I646UY](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I646UY?from=project-issue) | 主要 | 全量校验满足70M/S没有对应的资料文件，需要说明什么场景下能达到指标，包括硬件、操作系统、数据库配置等 | 已完成 |
 
 # 4     测试执行
@@ -138,8 +138,8 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 | 场景 |                  场景描述                  | 平均校验速度(MB/S) |       校验结果        |
 | :--: | :----------------------------------------: | :----------------: | :-------------------: |
-|  1   | 3张表，每张表数据条数1亿，数据总量132.96GB |      <5MB/S       | 只输出了表3的校验结果 |
-|  2   | 1000张表，每张表数据条数10w，数据总量46GB  |   元数据加载失败   |      无结果输出       |
+|  1   | 3张表，每张表1亿数据，数据总量约130G|      校验服务卡停       | 校验结果输出不完整 |
+|  2   | 场景二：3000张表，每张表10w数据，数据总量约130G   |   校验服务卡停   |      校验结果输出不完整       |
 
 <center>
 </center>
@@ -157,8 +157,8 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 | 约束条件                    |      校验速度      |
 | :-------------------------- | :----------------: |
-| 3张表，表数据行记录>=1亿    |      <10MB/S       |
-| 1000张表，每张表数据条数10w | 偶现元数据加载失败 |
+| 3张表，表数据行记录>=1亿    |      校验服务卡停       |
+| 3000张表，每张表数据条数10w | 校验服务卡停 |
 
 根据测试数据，分析可得：
 
@@ -178,7 +178,7 @@ datachecker全量校验MySQL与openGauss数据的一致性满足校验速度70MB
 
 ## 4.4   后续测试建议
 
-1. 待瓶颈修复后构造大数据量场景测试，构造上增加表个数与每张表的数据条数，如表个数大于1000，数据条数大于50w
+1. 待瓶颈修复后构造大数据量场景测试，构造上增加每张表的数据条数，如数据条数大于50w
 
 # 5     附件
 
