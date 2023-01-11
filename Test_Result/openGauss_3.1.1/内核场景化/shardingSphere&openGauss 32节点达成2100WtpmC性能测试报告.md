@@ -57,7 +57,7 @@ openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第
 
 具体机器配置如下表：
 
-| 硬件型号                                       | 硬件配置信息                                                 | 备注                   |
+| 环境信息                                       | 配置信息                                                 | 备注                   |
 | ---------------------------------------------- | ------------------------------------------------------------ | ---------------------- |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | openGauss数据库节点*19 |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*6   |
