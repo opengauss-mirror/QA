@@ -87,7 +87,7 @@ LRU算法，dbe_perf.file_iostat
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1.构造数据，使视图dbe_perf.file_iostat数据量达到2000（如建表并插，查数据）<br>2.开启参数log_min_messages='debug1', logging_module='on(INSTR)'<br>3.再次构造数据，使视图dbe_perf.file_iostat数据量超过2000<br>4.观察pg_log日志，确保日志中打印视图原始数据对应filenum被新插入数据对应filenum替换的时间点呈递增 | 执行1条用例，执行结果符合预期 |
+| 1.新建数据库1,库内构造数据，使视图dbe_perf.file_iostat数据量达到2000(如建表并插，查数据),查询视图dbe_perf.file_iostat数据<br>2.开启参数log_min_messages='debug1', logging_module='on(INSTR)'<br>3.新建数据库2,再次构造数据，使视图dbe_perf.file_iostat数据量超过2000,再次查询视图dbe_perf.file_iostat数据<br>4.分析2次查询到的dbe_perf.file_iostat数据,由视图字段dbid判断视图中库2的dbid对应表被库1dbid对应的原始表替换| 执行1条用例，执行结果符合预期 |
 
 ## 4.2 测试执行统计数据
 
