@@ -55,7 +55,7 @@ LRU算法，dbe_perf.file_iostat
 
 ## 3.2 约束说明
 
-1. 设置参数log_min_messages='debug1', logging_module='on(INSTR)'
+无
 
 
 
@@ -88,7 +88,7 @@ LRU算法，dbe_perf.file_iostat
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1.新建数据库1，库内构造数据，使视图dbe_perf.file_iostat数据量达到2000(如建表并插，查数据)，查询视图dbe_perf.file_iostat数据<br>2.开启参数log_min_messages='debug1', logging_module='on(INSTR)'<br>3.新建数据库2，再次构造数据，使视图dbe_perf.file_iostat数据量超过2000，再次查询视图dbe_perf.file_iostat数据<br>4.分析2次查询到的dbe_perf.file_iostat数据，由视图字段dbid判断视图中库2的dbid对应表被库1dbid对应的原始表替换| 执行1条用例，执行结果符合预期 |
+| 1.新建数据库1，库内构造数据，使视图dbe_perf.file_iostat数据量达到2000(如建表并插，查数据)，查询视图dbe_perf.file_iostat数据<br>2.新建数据库2，再次构造数据，使视图dbe_perf.file_iostat数据量超过2000，再次查询视图dbe_perf.file_iostat数据<br>4.分析2次查询到的dbe_perf.file_iostat数据，由视图中字段filenum对应的dbid判断此时视图中库1dbid对应表被库2dbid新建表替换| 执行1条用例，执行结果符合预期 |
 
 ## 4.2 测试执行统计数据
 
