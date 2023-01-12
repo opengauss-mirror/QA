@@ -5,13 +5,12 @@
 
 修订记录
 
-| 日期       | 修订   版本 | 修改描述             | 作者     |
-| ---------- | ----------- | -------------------- | -------- |
-| 2022-12-25 | 1.0         | 特性测试报告初稿完成 | songjing |
+| 日期       | 修订版本 | 修改描述                 | 作者     |
+| ---------- | -------- | ------------------------ | -------- |
+| 2022-12-25 | 1.0      | 特性测试报告初稿完成     | songjing |
+| 2023-01-11 | 1.1      | 根据评审意见修改测试报告 | songjing |
 
- 关键词： 
-
-autocommit；
+ 关键词： autocommit
 
 摘要：
 
@@ -42,21 +41,29 @@ autocommit；
 
 ## 3.1 测试整体结论
 
-openGauss支持关闭自动提交特性，共计执行用例51条，主要覆盖了功能测试和资料测试。功能测试主要覆盖设置autocommit参数值的方式，验证关闭自动提交后手动提交和回滚数据，结合设置事务特性、保存点、两阶段事务进行测试，验证关闭自动提交后原先在事务中不支持的语句不能执行，autocommit的值由false置为true会提交之前的事务和自身；资料测试覆盖资料描述是否准确以及示例是否正确执行。累计发现缺陷2个，已修复且回归通过，无遗留风险，整体质量良好。
+openGauss支持关闭自动提交特性，共计执行用例52条，主要覆盖了功能测试、升级测试和资料测试。功能测试主要覆盖设置autocommit参数值的方式，验证关闭自动提交后手动提交和回滚数据，结合设置事务特性、保存点、两阶段事务进行测试，验证关闭自动提交后原先在事务中不支持的语句不能执行，autocommit的值由false置为true会提交之前的事务和自身；升级测试主要验证升级后支持该特性且功能正常；资料测试覆盖资料描述是否准确及示例是否正确执行。累计发现缺陷2个，均已修复且回归通过，无遗留风险，整体质量良好。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | ------------------------------------------------------------ |
-| 功能测试 | 仅在B兼容模式下能修改autocommit为false，GUC参数设置方式三设置utocommit参数成功 |
+| 功能测试 | 仅在B兼容模式下能修改autocommit为false，GUC参数设置方式三设置autocommit参数成功 |
 | 功能测试 | 关闭自动提交后手动提交和回滚事务成功                         |
 | 功能测试 | 关闭自动提交结合事务特性、保存点、两阶段事务进行测试，通过   |
 | 功能测试 | 关闭自动提交后，基本语句功能正常，原先事务中不支持的语句不能执行，通过 |
 | 功能测试 | autocommit由false置为true会提交前面的事务和自身，通过        |
+| 升级测试 | 升级后支持该特性且功能正常，通过                             |
 | 资料测试 | 资料描述是否准确、约束覆盖是否全面以及示例是否正确，通过     |
 
 ## 3.2 约束说明
 
-- openGauss需要在兼容B库下加载dolphin插件才能设置关闭自动提交
-- autocommit参数只能使用GUC参数设置中的方式三设置为false
+1.  仅在B兼容模式下能够修改为false 
+
+2.  autocommit为userset类型参数，使用GUC参数设置中的方式三设置：
+
+```sql
+  set autocommit to value;
+  alter database dbname set autocommit to value;
+  alter user username set autocommit to value;
+```
 
 ## 3.3  遗留问题分析
 
@@ -110,32 +117,118 @@ openGauss支持关闭自动提交特性，共计执行用例51条，主要覆盖
 
 ### 4.1.5 autocommit由false设置为true，提交前面事务和自身
 
+| 测试步骤：                                                | 测试结果                             |
+| --------------------------------------------------------- | ------------------------------------ |
+| 1.关闭自动提交，执行事务，set autocommit = 1;开启自动提交 | 执行2条用例，未发现bug，结果符合预期 |
+
+## 4.2  升级测试
+
 | 测试步骤：                                                   | 测试结果                             |
 | ------------------------------------------------------------ | ------------------------------------ |
-| 1.关闭自动提交，执行事务，set autocommit to true;开启自动提交 | 执行2条用例，未发现bug，结果符合预期 |
+| 1.安装3.0.0版本数据库（无本特性）<br/>2.升级数据库到包含本特性的数据库版本，提交升级<br/>3.设置autocommit=0，执行语句，提交/回滚，新开会话查询 | 执行1条用例，未发现bug，结果符合预期 |
 
-## 4.2  资料测试
+## 4.3  资料测试
 
-| 测试步骤：                                           | 测试结果        |
-| ---------------------------------------------------- | --------------- |
-| 1.资料描述是否准确、约束覆盖是否全面以及示例是否正确 | 未发现bug，通过 |
+| 测试步骤：                                           | 测试结果                |
+| ---------------------------------------------------- | ----------------------- |
+| 1.资料描述是否准确、约束覆盖是否全面以及示例是否正确 | 未发现bug，结果符合预期 |
 
-## 4.3 测试执行统计数据
+## 4.4 测试执行统计数据
 
 | 版本名称                       | 测试用例数 | 用例执行结果             | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------ | ------------ |
-| openGauss 3.1.0 build e3e241a6 | 51         | Passed：49<br/>Failed：2 | 2            |
+| openGauss 3.1.0 build e3e241a6 | 52         | Passed：50<br/>Failed：2 | 2            |
 | openGauss 3.1.0 build c72e49f5 | 8          | Passed：8<br/>Failed：0  | 0            |
 
 数据说明
 
 1.  测试过程中共发现2个bug，2个问题单均已修复且回归通过
-2.  缺陷密度：2个（缺陷个数）/0.420kloc（代码行数）=4.76个/kloc
+2.  缺陷密度：2个(缺陷个数)/0.420kloc(代码行数)=4.76(个/kloc)
 
-## 4.4 后续测试建议
-
-无
-
-# 5 附件
+## 4.5 后续测试建议
 
 无
+
+# 5 附件 
+
+## 5.1 示例
+
+```sql
+--开启会话1，创建兼容B库，切换到B库
+openGauss=# create database testdb dbcompatibility 'B';
+CREATE DATABASE
+openGauss=# \c testdb
+
+--查询autocommit
+testdb=# show autocommit;
+ autocommit
+------------
+ on
+(1 row)
+
+--关闭自动提交
+testdb=# set autocommit = 0;
+SET
+testdb=# show autocommit;
+ autocommit
+------------
+ off
+(1 row)
+
+--建表插入1条数据
+testdb=# create table t_test(c_int int, c_varchar varchar(20));
+CREATE TABLE
+testdb=# insert into t_test values(190, 'test');
+INSERT 0 1
+
+--开启会话2查询
+testdb=# select * from t_test;
+ERROR:  relation "t_test" does not exist on dn_6001
+LINE 1: select * from t_test;
+                      ^
+--会话1提交
+testdb=# commit;
+COMMIT
+
+--会话2再次查询
+testdb=# select * from t_test;
+ c_int | c_varchar
+-------+-----------
+   190 | test
+(1 row)
+
+--会话1更新表中数据，回滚
+testdb=# update t_test set c_varchar = 'new' where c_int = 190;
+UPDATE 1
+testdb=# select * from t_test;
+ c_int | c_varchar
+-------+-----------
+   190 | new
+(1 row)
+
+testdb=# rollback;
+ROLLBACK
+testdb=# select * from t_test;
+ c_int | c_varchar
+-------+-----------
+   190 | test
+(1 row)
+
+--删除表，开启自动提交
+testdb=# drop table t_test;
+DROP TABLE
+testdb=# set autocommit to on;
+SET
+testdb=# show autocommit;
+ autocommit
+------------
+ on
+(1 row)
+
+--会话2查询系统表，t_test表已被删除，autocommit由false置为true提交前面语句和自身
+testdb=# select schemaname, tablename from pg_tables where tablename = 't_test';
+ schemaname | tablename
+------------+-----------
+(0 rows)
+```
+
