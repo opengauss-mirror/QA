@@ -5,11 +5,11 @@
 
 修订记录
 
-| 日期       | 修订版本 | 修改章节 | 修改描述 | 作者        |
-| ---------- | -------- | -------- | -------- | ----------- |
-| 2022.12.23 | 1.0      | 初稿撰写 |          | yansong_lee |
-|            |          |          |          |             |
-|            |          |          |          |             |
+| 日期       | 修订版本 | 修改章节         | 修改描述             | 作者                                            |
+| ---------- | -------- | ---------------- | -------------------- | ----------------------------------------------- |
+| 2022.12.23 | 1.0      | 初稿撰写         |                      | yansong_lee                                     |
+| 2023.1.12  | 1.1      | 版本详细测试结论 | 补充新特性测试结论等 | yansong_lee<br/>JusticeArbiter<br/>liao-shiting |
+|            |          |                  |                      |                                                 |
 
 目 录
 
@@ -103,7 +103,7 @@ OS版本说明如下：
 
 openGauss 3.1.1版本是openGauss社区继续联合多方力量推出的版本，本次发布的需求列表如下：
 
-1.**内核场景化**：涉及15个新特性，发布共享存储新特性，增强分布式能力，推出算子卸载、多节点写入等其他内核新特性
+1.**内核场景化**：涉及15个新特性，发布共享存储新特性，增强分布式能力，推出多节点写入等其他内核新特性
 
 |  no  | feature                                                      | status         | sig           | owner                |
 | :--: | ------------------------------------------------------------ | -------------- | ------------- | -------------------- |
@@ -145,7 +145,7 @@ openGauss 3.1.1版本是openGauss社区继续联合多方力量推出的版本�
 | 16   | 【openGauss 3.1.1】gstrace工具新增特性，支持数据库运行中追踪 | 代码检视       | Tools         | Enmotech |
 | 17   | 【openGauss 3.1.1】openGauss周边工具适配DMS&DSS              | 已完成         | StorageEngine |          |
 
-3.**兼容性**：涉及47个新特性，从数据类型兼容、系统函数兼容、DDL兼容、DML兼容、PL/SQL兼容、SHOW语法兼容和其他语法兼容方面提升openGauss对openGauss对M*的兼容率
+3.**兼容性**：涉及48个新特性，从数据类型兼容、系统函数兼容、DDL兼容、DML兼容、PL/SQL兼容、SHOW语法兼容和其他语法兼容方面提升openGauss对openGauss对M*的兼容率
 
 | no   | feature                                  | combination                                                  | status   | sig    | owner    |
 | ---- | ---------------------------------------- | ------------------------------------------------------------ | -------- | ------ | -------- |
@@ -160,12 +160,13 @@ openGauss 3.1.1版本是openGauss社区继续联合多方力量推出的版本�
 |      |                                          | CAST语法的类型补全                                           | 已完成   | Plugin | Enmotech |
 |      |                                          | 支持default函数用于SQL语句                                   | 已完成   | Plugin | Enmotech |
 |      |                                          | 支持found_rows特性                                           | 已完成   | Plugin | Enmotech |
-| 3    | 【openGauss 3.1.1】DDL兼容 **6个**       | 支持指定FOREIGN DATA WRAPPER为M\*                            | 已完成   | Plugin |          |
+| 3    | 【openGauss 3.1.1】DDL兼容 **7个**       | 支持指定FOREIGN DATA WRAPPER为M\*                            | 已完成   | Plugin |          |
 |      |                                          | 支持CREATE USER带if not exists选项                           | 已完成   | Plugin |          |
 |      |                                          | 支持分区语法值指定 less than maxvalue时候，无需 less than maxvalue()如此指定括号 | 已完成   | Plugin | Enmotech |
 |      |                                          | 支持分区表使用函数作为分区条件                               | 已完成   | Plugin | Enmotech |
 |      |                                          | drop trigger支持不指定表名的级联删除                         | 已完成   | Plugin | Vastdata |
 |      |                                          | 兼容MySQL创建存储过程的语法格式                              | 已完成   | Plugin | Vastdata |
+|      |                                          | 支持trigger兼容mysql形式语法                                 | 已完成   | Plugin | Vastdata |
 | 4    | 【openGauss 3.1.1】DML兼容 **5个**       | 视图支持插入、删除和更新                                     | 已完成   | Plugin |          |
 |      |                                          | insert支持set后面的表达式右值带字段名                        | 已完成   | Plugin |          |
 |      |                                          | prepare、execute语法兼容                                     | 已完成   | Plugin |          |
@@ -214,7 +215,7 @@ openGauss 3.1.1版本测试活动分工如下：
 | 11   | 【openGauss 3.1.1】支持数据库物理读写块大小的配置功能        | StorageEngine | QA                                   | 1.可修改的物理块大小的尺寸标准<br/>2.不同物理块大小的适配对象<br/>3.验证物理块的大小对数据库读取速度的影响 |
 | 12   | 【openGauss 3.1.1】postgresql_fdw执行性能提升，支持聚合和条件下推到远端执行功能 | SQLEngine     | QA                                   | 1.验证Join下推路径搜索与生成<br/>2.验证Non-spj算子(仅agg、sort、limit、lockrows) 下推路径搜索与生成<br/>3.验证Fdw 计划生成与执行<br/>4.验证Explain适配，增加支持下推的表达式检查 |
 | 13   | 【openGauss 3.1.1】提升特定情况下sort的性能                  | SQLEngine     | QA-Enmotech                          | 1. 验证char、varchar、date、timestamp、int、uuid类型在单列查询的场景下排序的性能有提升<br/>2. 验证符合增量排序触发条件时可以使用增量排序算子执行并有性能提升 |
-| 14   | 【openGauss 3.1.1】支持垂直分区                              | SQLEngine     | QA-Vastdata                          |                                                              |
+| 14   | 【openGauss 3.1.1】支持垂直分区                              | SQLEngine     | QA-Vastdata                          | /                                                            |
 | 15   | 【openGauss 3.1.1】强制访问控制                              | SQLEngine     | QA-Vastdata                          | 1.验证敏感标记的创建<br />2.验证表和表列强制访问控制策略的正确性，测试增删查改的场景<br />3.验证存储过程和触发器强制访问控制策略的正确性，测试调用存储过程和触发器的场景 |
 | 16   | 【openGauss 3.1.1】支持CM的部署和数据库部署解耦              | CM            | QA                                   | 1.验证支持在OM集群中部署CM<br/>2.验证支持在CM集群中解耦CM<br/>3.关注CM部署和解耦后数据库能否正常使用 |
 | 17   | 【openGauss 3.1.1】OM支持在XML中对同步备机的设置             | OM            | QA                                   | 1.测试ANY、FIRST方式在XML文件中设置同步备可以成功安装并对异常场景进行验证，例如错误的主机名等<br/>2.安装成功后测试同步备是否生效，通过查看系统表、gs_ctl等方式验证<br/>3.测试XML文件中指定同步备安装成功后，可以通过gs_guc参数修改同步备 |
@@ -230,7 +231,7 @@ openGauss 3.1.1版本测试活动分工如下：
 | 27   | 【openGauss 3.1.1】openGauss-DataStudio 适配存储过程覆盖率工具开发合作项目 | Tools         | QA                                   | 1.从用户体验方面验证工具菜单命名是否合理，排列是否整齐，功能是否生效。<br/>2.验证调试过程中覆盖语句是否合理<br/>3.验证调试结束覆盖率报告是否完整合理，导出后格式是否正<br/>4.检查资料可操作性和完整性 |
 | 28   | 【openGauss 3.1.1】openGauss数据建模项目                     | Tools         | QA                                   | 1.验证系统本身的易用性，能否一键部署<br/>2.验证建模过程中关键点可以算子化，并支持编辑与可视化预<br/>3.验证链接数据库、导入、导出、写入数据库等基础算子支<br/>4.验证产品界面与UI原型图一致 |
 | 29   | 【openGauss 3.1.1】openGauss工具一体化平台                   | Tools         | QA                                   | 1.从用户体验方面验证页面布局是否合理，操作是否方便<br/>2.验证基于可视化运维平台集成openGauss的工具链的功能 |
-| 30   | 【openGauss 3.1.1】支持CM两节点特性                          | Tools         | QA-Enmotech                          |                                                              |
+| 30   | 【openGauss 3.1.1】支持CM两节点特性                          | Tools         | QA-Enmotech                          | 1. 验证新增参数修改的支持<br/>2. 验证CM集群故障切换功能、数据库集群脑裂故障恢复功能<br/>3. 验证原有CM基本功能不被破坏 |
 | 31   | 【openGauss 3.1.1】gstrace工具新增特性，支持数据库运行中追踪 | Tools         | QA-Enmotech                          | 1. 通过解析出来的结果文件验证是否包含应有的模块信息<br/>2. 验证给定非法指令时可以识别并做相应错误处理 |
 | 32   | 【openGauss 3.1.1】openGauss周边工具适配DMS&DSS              | StorageEngine | QA                                   | 1.验证在DMS&DSS中opengauss周边工具( gs_probackup、xlogdump、pagehack、gs_install、gs_restore 等)的功能是否正常 |
 | 33   | 【openGauss 3.1.1】数据类型兼容                              | Plugin        | QA                                   | 1.验证tinyint数据类型取值范围，精度，对无效值的处理<br/>2.验证类型转换功能是否正常<br/>3.验证类型和函数、操作符之间的交互使用<br/>4.tinyint类型列上创建索引、约束是否正常 |
@@ -336,97 +337,98 @@ openGauss 3.1.1版本详细测试内容包括：
 
 1、内核&场景化
 
-| 序号 | 特性名称                                                     | 测试情况说明 | 约束依赖说明 | 遗留问题单 | 特性质量评估 | 备注 |
-| :--: | ------------------------------------------------------------ | ------------ | ------------ | ---------- | ------------ | ---- |
-|  1   | 【openGauss 3.1.1】支持全局逻辑时钟组件GLT，满足分布式事务管理要求 |              |              |            |              |      |
-|  2   | 【openGauss 3.1.1】对shardingSphere+openLookeng+openGauss统一的安装部署能力 |              |              |            |              |      |
-|  3   | 【openGauss 3.1.1】shardingSphere&openGauss 32节点挑战2100W tpmC |              |              |            |              |      |
-|  4   | 【openGauss 3.1.1】openGauss-分布式数据库支持事务下多种模式读写分离 |              |              |            |              |      |
-|  5   | 【openGauss 3.1.1】openGauss分布式方案适配federation以支持跨库查询 |              |              |            |              |      |
-|  6   | 【openGauss 3.1.1】openGauss分布式方案第二阶段15节点1200万性能提升 |              |              |            |              |      |
-|  7   | 【openGauss 3.1.1】DMS适配OCK分布式锁                        |              |              |            |              |      |
-|  8   | 【openGauss 3.1.1】存储层实现算子卸载，SMP查询性能提升20%    |              |              |            |              |      |
-|  9   | 【openGauss 3.1.1】支持对dbe_perf.file_iostat统计的LRU淘汰算法 |              |              |            |              |      |
-|  10  | 【openGauss 3.1.1】支持多节点写入                            |              |              |            |              |      |
-|  11  | 【openGauss 3.1.1】支持数据库物理读写块大小的配置功能        |              |              |            |              |      |
-|  12  | 【openGauss 3.1.1】postgresql_fdw执行性能提升，支持聚合和条件下推到远端执行功能 |              |              |            |              |      |
-|  13  | 【openGauss 3.1.1】提升特定情况下sort的性能                  |              |              |            |              |      |
-|  14  | 【openGauss 3.1.1】支持垂直分区                              |              |              |            |              |      |
-|  15  | 【openGauss 3.1.1】强制访问控制                              |              |              |            |              |      |
+| 序号 | 特性名称                                                     | 测试情况说明                                                 | 约束依赖说明                                                 | 遗留问题单 | 特性质量评估               | 备注 |
+| :--: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- | -------------------------- | ---- |
+|  1   | 【openGauss 3.1.1】支持全局逻辑时钟组件GLT，满足分布式事务管理要求 | /                                                            | /                                                            | /          | /                          | /    |
+|  22  | 【openGauss 3.1.1】对shardingSphere+openLookeng+openGauss统一的安装部署能力【openGauss 3.1.1】对shardingSphere+openLookeng+openGauss统一的安装部署能力 | /                                                            | /                                                            | /          | /                          | /    |
+|  3   | 【openGauss 3.1.1】shardingSphere&openGauss 32节点挑战2100W tpmC | 共执行用例4个，执行通过，性能达到预期目标；3个性能测试用例分别在ShardingSphere 5.2.0 + openGauss Master、ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本上执行，长稳测试在ShardingSphere 5.2.0 + openGauss Preview版本上执行。 | 无                                                           | 无         | <font color=green>▮</font> |      |
+|  4   | 【openGauss 3.1.1】openGauss-分布式数据库支持事务下多种模式读写分离 | 目前该需求功能存在缺陷，共享存储数据库集群无法保证事务内主备数据一致。验收测试不通过。 | 无                                                           | 无         | <font color=red>●</font>   |      |
+|  5   | 【openGauss 3.1.1】openGauss分布式方案适配federation以支持跨库查询 | 共设计28个用例，主要覆盖了功能测试和可靠性测试，整体需求目标达成。 | 1.需要打开federation开关才能使用federation跨库查询功能；<br />2.目前cursor语法未进行改造，不支持federation；<br />3.目前federation仅支持select语法，insert、update涉及跨库关联查询不支持；<br />4.目前打开关闭federation开关、创建修改视图操作会异步刷新Zookeeper元数据，需要等待自动刷新或者通过DistSQL强制进行刷新。 | 无         | <font color=green>▮</font> |      |
+|  6   | 【openGauss 3.1.1】openGauss分布式方案第二阶段15节点1200万性能提升 | 共执行用例 4个，用例执行通过，性能达到预期目标；3个性能测试用例分别在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本、ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本以及ShardingSphere 5.2.0 + openGauss Master上执行，长稳测试在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本上执行。 | 无                                                           | 无         | <font color=green>▮</font> |      |
+|  7   | 【openGauss 3.1.1】DMS适配OCK分布式锁                        | 共计执行用例77条，主要覆盖功能测试，节点故障测试，性能测试。功能测试包含关闭DMS分布式锁状态下本地锁机制正常；开启DMS分布式锁，主机获取X锁，备机获取S锁，X锁与S锁互斥，X锁与X锁产生互斥；对主备节点互换、备升主、主备故障、主备故障后重启等，主机获取X锁，备机获取S锁成功，X锁与S锁互斥功能正常；在关闭与开启DMS下进行TPCC测试正常；关于DMS分布式锁相关资料描述无异常 | 1.DMS分布式锁只有在资源池化参数 ss_enable_dms=on时，该特性才能生效；<br />2.DMS分布式锁当前不支持死锁检测。 | 无         | <font color=green>▮</font> |      |
+|  8   | 【openGauss 3.1.1】存储层实现算子卸载，SMP查询性能提升20%    | /                                                            | /                                                            | /          | /                          | /    |
+|  9   | 【openGauss 3.1.1】支持对dbe_perf.file_iostat统计的LRU淘汰算法 | 针对视图dbe_perf.file_iostat用于记录对数据文件IO活动的统计设计的LRU淘汰算法共计执行用例1条，主要覆盖功能测试，验证LRU淘汰算法是否成功淘汰最久不用条目。测试过程发现次要问题1个，已验收通过，无遗留风险 | 此需求验证需打印debug级别日志，设置参数log_min_messages='debug1', logging_module='on(INSTR)' | 无         | <font color=green>▮</font> |      |
+|  10  | 【openGauss 3.1.1】支持多节点写入                            | 共计执行用例67条，主要覆盖功能测试，可靠性测试，稳定性测试和资料测试。功能测试包含guc参数测试，包含简单查询、简单写入及异常写入、批量插入、扩展查询、扩展写入、事务执行、set语句、copy命令和预备语句执行等场景测试；可靠性测试包含磁盘故障和网络故障测试；备机进行1小时TPCC稳定性测试；关于多节点写入相关资料描述无异常。测试过程中发现问题2个，均已回归通过。 | 1.只有在参数 enable_remote_excute=on时，该特性才能生效；<br />2.应用端使用官方驱动或gsql访问数据库，非标准的驱动可能导致连接异常；<br />3.本特性使用replication通道连接主备通信，并复用了连接相关的超时配置参数，永不超时可能导致连接阻塞和泄露；<br />4.本特性不支持两阶段事务。 | 无         | <font color=green>▮</font> |      |
+|  11  | 【openGauss 3.1.1】支持数据库物理读写块大小的配置功能        | /                                                            | /                                                            | /          | /                          | /    |
+|  12  | 【openGauss 3.1.1】postgresql_fdw执行性能提升，支持聚合和条件下推到远端执行功能 | postgres_fdw支持聚合，join可以下推至远端执行共计执行用例43条，主要覆盖功能测试，资料测试。功能测试覆盖对不同类型数据表进行下推验证、对不同join类型进行下推验证，对外表和基表用户权限的校验，对join连接使用where条件的下推校验，对join连接不支持下推的DML类型的反向验证，对含NON-SPJ(agg，sort，limit，lockrows)算子的下推验证，对不支持下推算子类型的反向验证，对表达式的下推验证，对带where/having条件的NON-SPJ算子的下推验证，对参数show_foreign_remote_plan功能的验证以及对prepare中使用join/NON-SPJ算子的下推验证。资料测试主要确保资料描述合理，约束点覆盖全面以及示例正确。累计发现缺陷单1个，回归通过，无遗留风险 | 目前仅支持下推的类型有join，NON-SPJ(agg，sort，limit，lockrows)算子； 针对NON-SPJ算子，目前不支持下推的类型有Windows函数，distinct，含grouping set的agg算子，setup集合以及不支持query_dop=2时的下推； join连接的下推含where条件时，如果where条件中包含不满足下推要求的本地条件（如含易变函数random(),含limit算子），整体下推失败； join连接必须是外表之间的连接，基表和基表或者基表和外表连接均无法下推； 是否下推是通过比较计算两种方式的代价值决定的，针对列存表和分区表，由于它们执行下推后的估算的代价值要远大于本地执行的代价值，因此列存表和分区表不会自动执行下推操作，可通过设置参数enable_hashjoin=off，enable_mergejoin=off，enable_nestloop=off使其实现强制下推； join连接不支持对含update，delete，for update的sql语句进行下推。 | 无         | <font color=green>▮</font> |      |
+|  13  | 【openGauss 3.1.1】提升特定情况下sort的性能                  | /                                                            | /                                                            | /          | /                          | /    |
+|  14  | 【openGauss 3.1.1】支持垂直分区                              | /                                                            | /                                                            | /          | /                          | /    |
+|  15  | 【openGauss 3.1.1】强制访问控制                              | /                                                            | /                                                            | /          | /                          | /    |
 
 2、工具链
 
-| 序号 | 特性名称                                                     | 测试情况说明 | 约束依赖说明 | 遗留问题单 | 特性质量评估 | 备注 |
-| :--: | ------------------------------------------------------------ | ------------ | ------------ | ---------- | ------------ | ---- |
-|  1   | 【openGauss 3.1.1】支持CM的部署和数据库部署解耦              |              |              |            |              |      |
-|  2   | 【openGauss 3.1.1】OM支持在XML中对同步备机的设置             |              |              |            |              |      |
-|  3   | 【openGauss 3.1.1】支持openEuler 22.03 LTS系统               |              |              |            |              |      |
-|  4   | 【openGauss 3.1.1】提升数据校验性能，满足数据校验性能达到70MB/s |              |              |            |              |      |
-|  5   | 【openGauss 3.1.1】数据校验支持行级、列级和全量比较规则      |              |              |            |              |      |
-|  6   | 【openGauss 3.1.1】debezium全量迁移支持对M\*对象的迁移       |              |              |            |              |      |
-|  7   | 【openGauss 3.1.1】M\*数据迁移完整方案打通                   |              |              |            |              |      |
-|  8   | 【openGauss 3.1.1】增量、反向迁移支持断点续传                |              |              |            |              |      |
-|  9   | 【openGauss 3.1.1】迁移工具可调试性增强、可靠性增强          |              |              |            |              |      |
-|  10  | 【openGauss 3.1.1】支持一站式迁移平台                        |              |              |            |              |      |
-|  11  | 【openGauss 3.1.1】openGauss可视化运维项目                   |              |              |            |              |      |
-|  12  | 【openGauss 3.1.1】openGauss-DataStudio 适配存储过程覆盖率工具开发合作项目 |              |              |            |              |      |
-|  13  | 【openGauss 3.1.1】openGauss数据建模项目                     |              |              |            |              |      |
-|  14  | 【openGauss 3.1.1】openGauss工具一体化平台                   |              |              |            |              |      |
-|  15  | 【openGauss 3.1.1】支持CM两节点特性                          |              |              |            |              |      |
-|  16  | 【openGauss 3.1.1】gstrace工具新增特性，支持数据库运行中追踪 |              |              |            |              |      |
-|  17  | 【openGauss 3.1.1】openGauss周边工具适配DMS&DSS              |              |              |            |              |      |
+| 序号 | 特性名称                                                     | 测试情况说明                                                 | 约束依赖说明                                                 | 遗留问题单 | 特性质量评估                                          | 备注 |
+| :--: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- | ----------------------------------------------------- | ---- |
+|  1   | 【openGauss 3.1.1】支持CM的部署和数据库部署解耦              | 共执行3轮测试，共执行用例75条，测试覆盖基本功能（CM部署、部署解耦，参数配置）和可靠性方面。通过故障注入等手段保证CM部署后功能的稳定性。累计发现issue10个，10个已验收，基本功能可用。 | 1.openGauss集群需要有OM工具<br/>2.openGauss集群的版本号与待安装的CM的版本号相同<br/>3.集群停止之前的主应该为xml配置的初始主<br/>4.部署CM前集群状态需要为正常或停止，并且主机的term必须为非0值且为集群中最大 | 无         | <font color=green>▮</font>                            |      |
+|  2   | 【openGauss 3.1.1】OM支持在XML中对同步备机的设置             | 共执行2轮测试，issue回归1轮测试，共执行19个用例。主要覆盖了功能测试、资料测试。发现问题6个，已验收6个。功能可用，资料准确。重点验证在xml中配置同步备后安装生效。 | 需按资料模板正确配置                                         | 无         | <font color=green>▮</font>                            |      |
+|  3   | 【openGauss 3.1.1】支持openEuler 22.03 LTS系统               | /                                                            | /                                                            | /          | /                                                     | /    |
+|  4   | 【openGauss 3.1.1】提升数据校验性能，满足数据校验性能达到70MB/s | 共执行2轮测试，issue回归1轮测试，共执行16个用例。主要覆盖了性能测试、资料测试。发现问题6个，已验收4个，性能基线达标，资料准确。重点验证基线数据达到70M/S。 | 1.datachecker工具仅支持对含主键表的校验，不支持表结构校验<br/>2.JDK版本要求JDK11+<br/>3.需满足程序运行时所需的CPU、内存资源 | 无         | <font color=yellow><font color=yellow>▲</font></font> |      |
+|  5   | 【openGauss 3.1.1】数据校验支持行级、列级和全量比较规则      | /                                                            | /                                                            | /          | /                                                     | /    |
+|  6   | 【openGauss 3.1.1】debezium全量迁移支持对M\*对象的迁移       | /                                                            | /                                                            | /          | /                                                     | /    |
+|  7   | 【openGauss 3.1.1】M\*数据迁移完整方案打通                   | /                                                            | /                                                            | /          | /                                                     | /    |
+|  8   | 【openGauss 3.1.1】增量、反向迁移支持断点续传                | /                                                            | /                                                            | /          | /                                                     | /    |
+|  9   | 【openGauss 3.1.1】迁移工具可调试性增强、可靠性增强          | /                                                            | /                                                            | /          | /                                                     | /    |
+|  10  | 【openGauss 3.1.1】支持一站式迁移平台                        | /                                                            | /                                                            | /          | /                                                     | /    |
+|  11  | 【openGauss 3.1.1】openGauss可视化运维项目                   | /                                                            | /                                                            | /          | /                                                     | /    |
+|  12  | 【openGauss 3.1.1】openGauss-DataStudio 适配存储过程覆盖率工具开发合作项目 | 共进行四轮测试，全量覆盖两轮测试，issue回归3轮测试，共执行36个用例。主要覆盖了功能测试、易操作性测试、兼容性测试。发现问题13个，关闭13个，无遗留风险，整体质量良好。 | 1.Java/Jdk需要版本为11及其以上版本<br/>2.建立远程连接的数据库需配置白名单，且连接的用户不能为初始用户<br/>3.数据库需要使用3.0.0及其以上版本 | 无         | <font color=green>▮</font>                            |      |
+|  13  | 【openGauss 3.1.1】openGauss数据建模项目                     | /                                                            | /                                                            | /          | /                                                     | /    |
+|  14  | 【openGauss 3.1.1】openGauss工具一体化平台                   | /                                                            | /                                                            | /          | /                                                     | /    |
+|  15  | 【openGauss 3.1.1】支持CM两节点特性                          | /                                                            | /                                                            | /          | /                                                     | /    |
+|  16  | 【openGauss 3.1.1】gstrace工具新增特性，支持数据库运行中追踪 | /                                                            | /                                                            | /          | /                                                     | /    |
+|  17  | 【openGauss 3.1.1】openGauss周边工具适配DMS&DSS              | /                                                            | /                                                            | /          | /                                                     | /    |
 
 3、兼容性
 
-| 序号 | 特性名称                                                     | 测试情况说明 | 约束依赖说明 | 遗留问题单 | 特性质量评估 | 备注 |
-| :--: | ------------------------------------------------------------ | ------------ | ------------ | ---------- | ------------ | ---- |
-|  1   | 【openGauss 3.1.1】支持用户在M\*兼容性下对bool类型的输出统一转成tinyint |              |              |            |              |      |
-|  2   | 【openGauss 3.1.1】tinyint支持有符号，同时支持unsigned tinyint |              |              |            |              |      |
-|  3   | 【openGauss 3.1.1】openGauss兼容M\*日期处理函数              |              |              |            |              |      |
-|  4   | 【openGauss 3.1.1】兼容性时间类型相关函数                    |              |              |            |              |      |
-|  5   | 【openGauss 3.1.1】兼容性JSON类型相关函数及操作符            |              |              |            |              |      |
-|  6   | 【openGauss 3.1.1】any_value聚合函数                         |              |              |            |              |      |
-|  7   | 【openGauss 3.1.1】支持row_count函数                         |              |              |            |              |      |
-|  8   | 【openGauss 3.1.1】支持database()函数                        |              |              |            |              |      |
-|  9   | 【openGauss 3.1.1】CAST语法的类型补全                        |              |              |            |              |      |
-|  10  | 【openGauss 3.1.1】支持default函数用于SQL语句                |              |              |            |              |      |
-|  11  | 【openGauss 3.1.1】支持found_rows特性                        |              |              |            |              |      |
-|  12  | 【openGauss 3.1.1】支持指定FOREIGN DATA WRAPPER为M\*         |              |              |            |              |      |
-|  13  | 【openGauss 3.1.1】支持CREATE USER带if not exists选项        |              |              |            |              |      |
-|  14  | 【openGauss 3.1.1】支持分区语法值指定 less than maxvalue时候，无需 less than maxvalue()如此指定括号 |              |              |            |              |      |
-|  15  | 【openGauss 3.1.1】支持分区表使用函数作为分区条件            |              |              |            |              |      |
-|  16  | 【openGauss 3.1.1】drop trigger支持不指定表名的级联删除      |              |              |            |              |      |
-|  17  | 【openGauss 3.1.1】兼容MySQL创建存储过程的语法格式           |              |              |            |              |      |
-|  18  | 【openGauss 3.1.1】视图支持插入、删除和更新                  |              |              |            |              |      |
-|  19  | 【openGauss 3.1.1】insert支持set后面的表达式右值带字段名     |              |              |            |              |      |
-|  20  | 【openGauss 3.1.1】prepare、execute语法兼容                  |              |              |            |              |      |
-|  21  | 【openGauss 3.1.1】实现prepare stmt、rename user、alter function...SQL SECURITY等M\*兼容性 |              |              |            |              |      |
-|  22  | 【openGauss 3.1.1】二级分区支持reorginze                     |              |              |            |              |      |
-|  23  | 【openGauss 3.1.1】存储过程支持RETURN                        |              |              |            |              |      |
-|  24  | 【openGauss 3.1.1】支持create procedure select语法           |              |              |            |              |      |
-|  25  | 【openGauss 3.1.1】存储过程支持REPEAT                        |              |              |            |              |      |
-|  26  | 【openGauss 3.1.1】存储过程condition处理                     |              |              |            |              |      |
-|  27  | 【openGauss 3.1.1】支持IF_THEN控制语法                       |              |              |            |              |      |
-|  28  | 【openGauss 3.1.1】支持CASE WHEN condition控制语法           |              |              |            |              |      |
-|  29  | 【openGauss 3.1.1】支持WHILE循环带标签                       |              |              |            |              |      |
-|  30  | 【openGauss 3.1.1】支持对M\*列类型的映射                     |              |              |            |              |      |
-|  31  | 【openGauss 3.1.1】兼容SHOW PRIVILEGES语法                   |              |              |            |              |      |
-|  32  | 【openGauss 3.1.1】兼容SHOW TABLE STATUS语法                 |              |              |            |              |      |
-|  33  | 【openGauss 3.1.1】支持show warnings，show errors语法        |              |              |            |              |      |
-|  34  | 【openGauss 3.1.1】实现对Load DATA语法的兼容，支持使用load语句导入数据 |              |              |            |              |      |
-|  35  | 【openGauss 3.1.1】支持对M\*部分语法的转换                   |              |              |            |              |      |
-|  36  | 【openGauss 3.1.1】支持查看系统可支持的字符集和字符序        |              |              |            |              |      |
-|  37  | 【openGauss 3.1.1】支持使用双引号表示字符串                  |              |              |            |              |      |
-|  38  | 【openGauss 3.1.1】支持explain和desc保持一致，互为同义词     |              |              |            |              |      |
-|  39  | 【openGauss 3.1.1】指定多个分区查询数据                      |              |              |            |              |      |
-|  40  | 【openGauss 3.1.1】支持autocommit=0模式                      |              |              |            |              |      |
-|  41  | 【openGauss 3.1.1】支持!操作符                               |              |              |            |              |      |
-|  42  | 【openGauss 3.1.1】对M*数据库参数适配                        |              |              |            |              |      |
-|  43  | 【openGauss 3.1.1】兼容FLUSH BINARY LOGS语法                 |              |              |            |              |      |
-|  44  | 【openGauss 3.1.1】兼容M*协议                                |              |              |            |              |      |
-|  45  | 【openGauss 3.1.1】支持DO statement语法                      |              |              |            |              |      |
-|  46  | 【openGauss 3.1.1】支持cursor相关语法                        |              |              |            |              |      |
-|  47  | 【openGauss 3.1.1】支持反引号作为标识符                      |              |              |            |              |      |
+| 序号 | 特性名称                                                     | 测试情况说明                                                 | 约束依赖说明                                                 | 遗留问题单 | 特性质量评估                | 备注 |
+| :--: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- | --------------------------- | ---- |
+|  1   | 【openGauss 3.1.1】支持用户在M*兼容性下对bool类型的输出统一转成tinyint | 共执行1轮测试，执行用例41个，未发现bug。主要覆盖结合表类型、三类运算符、数据库函数的bool值输出；验证select查询语句及结合where、having子句的bool值输出以及客户端和服务端工具基本功能测试，覆盖资料测试 | 1. 兼容M\*5.7版本<br/>2. openGauss需使用兼容B库且含dolphin插件<br/>3. bool类型输出转为tinyint输出时需使用M\*的JDBC连接包含dolphin插件的兼容B类型数据库<br/>4. M* Connector的版本要求5.1.47 | 无         | <font color=green>▮</font>  |      |
+|  2   | 【openGauss 3.1.1】tinyint支持有符号，同时支持unsigned tinyint | 共执行2轮测试，共执行35个用例，发现问题1个，已验收。主要覆盖了功能测试、资料测试。重点验证tinyint有符号和无符号取值测试；结合操作符、聚集函数、索引测试；tinyint类型结合unsigned、zerofill属性测试；数据类型转换测试 | 1.兼容M\*5.7版本<br>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  3   | 【openGauss 3.1.1】openGauss兼容M*日期处理函数               | 共执行3轮测试，执行用例513条。共发现问题17个，14个已验收通过，2个已完成，1个修复中。主要覆盖了功能测试、资料测试。功能测试主要覆盖函数不同入参值返回表现、入参边界值、函数嵌套等测试 | 1.兼容M\*5.7版本<br>2.兼容B类型数据库且含dolphin插件<br>3.last_day()、timestampdiff()、extract()函数需设置dolphin.b_compatibility_mode = True<br>4.datediff()、timestampdiff()函数涉及两运算日期区间包含'0000-02-28'时运算结果会比M*侧运算结果多一天或少一天<br>5.adddate()、date_add()、date_sub()、函数运算结果小于'0000-01-01 00:00:00'时在严格模式下报错，非严格模式下返回null并报warning<br>6.INTERVAL后不支持算数运算表达式 | 无         | <font color=green>▮</font>  |      |
+|  4   | 【openGauss 3.1.1】兼容性时间类型相关函数                    | 共执行7轮测试，全量覆盖2轮测试，issues回归5轮测试，共计执行用例177条，发现缺陷单19个，其中2个经plugin sig组评审不予修改，添加资料说明即可。主要覆盖了功能测试、性能测试及资料测试。功能测试覆盖不同入参类型、参数取值范围测试、不同时间日期输入格式测试、结合其他函数及运算符、各种类型的表及存储过程等进行测试，与mysql侧执行结果进行比对。性能测试每个函数执行十万条select语句，获取执行时间，执行5次，取平均时间。因环境存在差异，函数执行时间和mysql基本持平或比mysql更优 | 1.兼容mysql5.7版本<br>2. openGauss需使用兼容B库且含dolphin插件<br>3.本函数中支持的interval单位与openGauss支持的interval单位保持一致，mysql侧的interval不兼容<br>4.本函数中异常入参报错同mysql侧insert行为表现一致<br>5.返回时间表达式涉及到小数位，最多保留6位小数且小数末尾的0不会显示 | 无         | <font color=green>▮</font>  |      |
+|  5   | 【openGauss 3.1.1】兼容性JSON类型相关函数及操作符            | /                                                            | /                                                            | /          | /                           | /    |
+|  6   | 【openGauss 3.1.1】any_value聚合函数                         | 共执行2轮测试，共执行用例40条，测试覆盖基本功能（功能测试、约束测试、资料测试）。累计发现issue1个，1个已回归，基本功能可用 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  7   | 【openGauss 3.1.1】支持row_count函数                         | 共执行2轮测试，共执行用例94条，测试覆盖基本功能（功能测试、约束测试、资料测试）。累计发现issue2个，2个已取消，基本功能可用 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  8   | 【openGauss 3.1.1】支持database()函数                        | 执行1轮测试，共执行用例30条，测试覆盖基本功能（功能测试、约束测试、资料测试）。累计发现issue0个，基本功能可用。 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  9   | 【openGauss 3.1.1】CAST语法的类型补全                        | 共执行1轮测试，共执行用例51条，测试覆盖基本功能（功能测试、约束测试、资料测试）。累计发现issue0个，基本功能可用。 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  10  | 【openGauss 3.1.1】支持default函数用于SQL语句                | 共执行2轮测试，共执行用例60条，测试覆盖基本功能（功能测试、约束测试、资料测试）。累计发现issue2个，2个已验收，基本功能可用。 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  11  | 【openGauss 3.1.1】支持found_rows特性                        | /                                                            | /                                                            | /          | /                           | /    |
+|  12  | 【openGauss 3.1.1】支持指定FOREIGN DATA WRAPPER为M*          | 共执行2轮测试，执行用例37个，未发现bug。主要覆盖`create/alter server`指定不同的`wrapper_name`及修改option； `create/alter server`提供正确/错误的option或缺少option及指定option动作(add/set/drop)测试； `create/alter server`结合`pg_user_mapping`系统表测试，覆盖资料测试 | 1. 兼容M\*5.7版本<br/>2. openGauss需使用兼容B库且包含dolphin插件<br/>3. 当且仅当`create server`指定`wrapper_name`为M\*时，`create/alter server`语句可兼容M\*语法的option | 无         | <font color=green>▮</font>  |      |
+|  13  | 【openGauss 3.1.1】支持CREATE USER带if not exists选项        | 共执行2轮测试，执行用例15条，发现问题1个，已验收通过。主要覆盖创建不同权限用户、用户是否存在创建用户、配置用户生效日期、失效日期及资料等方面测试 | 1.兼容M* 5.7<br>2.此功能合入内核仓                           | 无         | <font color=green>▮</font>  |      |
+|  14  | 【openGauss 3.1.1】支持分区语法值指定 less than maxvalue时候，无需 less than maxvalue()如此指定括号 | 共执行2轮测试，共执行用例116条，测试覆盖基本功能（功能测试、约束测试、资料测试）。累计发现issue2个，2个已验收，基本功能可用。 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  15  | 【openGauss 3.1.1】支持分区表使用函数作为分区条件            | 共执行2轮测试，共执行用例68条，测试覆盖基本功能（功能测试、约束测试、资料测试）。累计发现issue8个，4个已验收，4个待解决。 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=red>●</font>    |      |
+|  16  | 【openGauss 3.1.1】drop trigger支持不指定表名的级联删除      | 共执行1轮测试，共执行用例28条，测试覆盖基本功能（级联删除测试、结合创建各类型触发器后级联删除测试、结合原有触发器删除语法测试、不同兼容模式测试、异常测试）。累计发现issue1个，0个已验收，基本功能可用。 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件   | 无         | <font color=yellow>▲</font> |      |
+|  17  | 【openGauss 3.1.1】兼容MySQL创建存储过程的语法格式           | 共执行1轮测试，共执行用例25条，测试覆盖基本功能（创建存储过程与其他语法测试、使用plpgsql调用测试、不同兼容模式测试、异常测试）。累计发现issue0个，0个已验收，基本功能可用。 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件   | 无         | <font color=green>▮</font>  |      |
+|  18  | 【openGauss 3.1.1】视图支持插入、删除和更新                  | 共执行1轮测试，执行用例41条，未发现问题。主要覆盖了功能测试、性能测试、升级测试、安全测试、资料测试。功能测试覆盖支持以及不支持的插入、更新、删除视图的场景。同时对视图上插入数据的三种方式进行性能对比。升级测试覆盖升级前后该功能是否支持。通过修改执行用户对基表和视图的相应权限进行安全测试 | 1.只有直接引用基表用户列的列可自动更新<br>2.对于插入和更新操作，视图必须至少包含一个可自动更新列；对于删除操作，可以没有<br>3.不支持包含with，distinct，group by ，having，limit，offset子句的视图进行插入、更新、删除操作<br>4.不支持包含集合运算的视图进行插入、更新、删除操作<br>5.不支持包含聚集函数，窗口函数，返回集合函数的视图进行插入、更新、删除操作<br>6..check option选项只能定义在可自动更新的视图上<br>7.如果一个可自动更新的视图拥有instead触发器和规则，则使用check option不会检查该视图上的条件<br>8.如果一个可自动更新的视图是定义在另一个拥有instead触发器的视图上，那么使用check option会检查该自动更新视图上的条件，但不会检查带有触发器的底层视图上的条件<br>9.此功能合入内核仓 | 无         | <font color=green>▮</font>  |      |
+|  19  | 【openGauss 3.1.1】insert支持set后面的表达式右值带字段名     | 共执行2轮测试，共执行用例30条，发现问题1个，回归通过。主要覆盖功能测试和资料测试。其中，功能测试主要覆盖对包含不同数据类型字段的数据表的验证，语法右侧引用不同类型的字段（包括表字段，序列，可变函数等）的验证，非兼容B库中语法的反向验证，对不同类型数据表的验证以及对字段引用时sql执行先后顺序的验证 | 兼容B类型数据库                                              | 无         | <font color=green>▮</font>  |      |
+|  20  | 【openGauss 3.1.1】prepare、execute语法兼容                  | 共执行2轮测试，共执行32条用例，发现问题1个，已验收。主要覆盖了功能测试和资料测试。功能测试主要验证prepare stmt from 语句带引号测试；prepare绑定参数支持`?`测试；execute支持using执行预备语句测试 | 1.prepare中的绑定参数支持使用`?`，需要先将参数`dolphin.b_compatibility_mode`设置为`on`，且不能同时在一个语句中同时使用`$`和`?`占位符<br>2.参数`dolphin.b_compatibility_mode`设置为`on`后，`?`将不能作为操作符使用<br>3.preapre stmt from后的语句带单引号的场景只能是一个query，不支持多个query<br>4.preapre stmt from的query，如果给的是非SELECT/INSERT等语句，和在不带引号的场景下，报错提示不一样<br>5.兼容M*5.7版本<br>6.兼容B类型数据库且含dolphin插件 | 无         | <font color=green>▮</font>  |      |
+|  21  | 【openGauss 3.1.1】实现prepare stmt、rename user、alter function...SQL SECURITY等M\*兼容性 | /                                                            | /                                                            | /          | /                           | /    |
+|  22  | 【openGauss 3.1.1】二级分区支持reorginze                     | 共执行2轮测试，共执行用例68条，测试覆盖基本功能（功能测试、约束测试、资料测试）。累计发现issue8个，8个已验收，基本功能可用。 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  23  | 【openGauss 3.1.1】存储过程支持RETURN                        | /                                                            | /                                                            | /          | /                           | /    |
+|  24  | 【openGauss 3.1.1】支持create procedure select语法           | 共执行1轮测试，共执行用例18条，测试覆盖基本功能（语法测试、复杂查询测试、不同兼容模式测试、异常测试）。累计发现issue2个，0个已验收，基本功能可用。 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件   | 无         | <font color=yellow>▲</font> |      |
+|  25  | 【openGauss 3.1.1】存储过程支持REPEAT                        | 共执行1轮测试，共执行用例12条，测试覆盖基本功能（单独使用repeat循环测试、与其他形式循环语法混合使用测试、不同兼容模式测试、异常测试）。累计发现issue0个，0个已验收，基本功能可用。 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件   | 无         | <font color=green>▮</font>  |      |
+|  26  | 【openGauss 3.1.1】存储过程condition处理                     | 共执行1轮测试，共执行用例22条，测试覆盖基本功能（结合各结构begin内部声明游标调用测试、结合游标不同调用方法测试、结合游标声明select各类查询语句测试、结合游标声明带部分关键字测试、结合原有游标声明语法进行测试、不同兼容模式测试、异常测试）。累计发现issue0个，0个已验收，基本功能可用。 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件   | 无         | <font color=green>▮</font>  |      |
+|  27  | 【openGauss 3.1.1】支持IF_THEN控制语法                       | /                                                            | /                                                            | /          | /                           | /    |
+|  28  | 【openGauss 3.1.1】支持CASE WHEN condition控制语法           | /                                                            | /                                                            | /          | /                           | /    |
+|  29  | 【openGauss 3.1.1】支持WHILE循环带标签                       | 共执行1轮测试，共执行用例22条，测试覆盖基本功能（while循环带标签/不带标签测试、while循环与其他循环混合使用测试、不同兼容模式测试、异常测试）。累计发现issue1个，0个已验收，基本功能可用 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件<br/> | 无         | <font color=yellow>▲</font> |      |
+|  30  | 【openGauss 3.1.1】支持对M*列类型的映射                      | 共执行1轮测试，共执行用例2条，主要覆盖功能测试。其中，功能测试主要覆盖对M*侧支持的openGauss数据类型的映射以及对M\*侧不支持的openGauss数据类型的映射。测试过程未发现问题 | 1.目前只考虑数据类型的成功映射，不考虑数据的正确性<br>2.针对varchar类型，M\*侧映射返回为text类型；nvarchar类型M\*侧映射返回varchar类型<br>3.目前支持的JDBC版本为5.1.47，下载地址[http://dev/mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.47.tar.gz](https://gitee.com/link?target=http%3A%2F%2Fdev%2Fmysql.com%2Fget%2FDownloads%2FConnector-J%2Fmysql-connector-java-5.1.47.tar.gz)<br>4.执行Java脚本前，要先做以下操作：<br>4.1 创建兼容B库<br>4.2 配置postgresql.conf文件，添加参数enable_dolphin_proto=on,为dolphin_server_port指定一个未被占用的端口<br>4.3 创建用户并赋予全部权限<br>4.4 在创建的B库下创建schema，模拟M\*侧的数据库，在Java脚本连接中使用<br>4.5 通过set_native_password为创建用户设置密码，由于M*对密码的加解密方式和og不同，因此对M\*的密码需要单独存储<br>5.对M\*侧不支持的openGauss数据类型的映射，返回的是openGauss侧代码中对相应数据类型设置的默认值 | 无         | <font color=green>▮</font>  |      |
+|  31  | 【openGauss 3.1.1】兼容SHOW PRIVILEGES语法                   | 共执行2轮测试，共执行7条用例，发现问题1个，已验收。功能测试包括不同用户执行show privileges权限测试；show privileges显示结果测试 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  32  | 【openGauss 3.1.1】兼容SHOW TABLE STATUS语法                 | 共执行2轮测试，执行用例30个，发现2个问题，已验收通过。主要覆盖`show table status`展示所有表的信息、11个结果字段信息是否匹配、like及where子句结合通配符及条件筛选、结合列的comment及视图、用户权限测试，覆盖资料测试 | 1. 兼容M*5.7版本<br/>2. openGauss需使用兼容B库且包含dolphin插件<br/>3. `show table status`语法实际上展示的是`schema`下的表信息 | 无         | <font color=green>▮</font>  |      |
+|  33  | 【openGauss 3.1.1】支持show warnings，show errors语法        | 共执行2轮测试，共执行用例65条，测试覆盖基本功能（功能测试、约束测试、资料测试）。累计发现issue1个，1个已验收，基本功能可用。 | 1.兼容M*5.7版本<br/>2.兼容B类型数据库且含dolphin插件         | 无         | <font color=green>▮</font>  |      |
+|  34  | 【openGauss 3.1.1】实现对Load DATA语法的兼容，支持使用load语句导入数据 | 共执行2轮测试，执行用例88条，共发现问题5个。主要覆盖了功能测试和资料测试，功能测试覆盖对load语句的replace、设置字符集、分隔符等参数有效性进行验证，对行存表、分区表、行存临时表、触发器等场景进行验证，对导入的数据类型、导入数据文件的路径合法性、用户类型及权限、文件格式等进行验证。资料测试覆盖校验资料的描述是否正确，示例的执行结果是否成功。 | 1.兼容M* 5.7版本<br>2.openGauss需使用兼容B库且有dolphin插件<br>3.只能用于表，不能用于视图<br>4.不支持列存表和外表<br>5.需要插入的表的insert权限, replace选项还需要表的delete权限<br>6. 声明的数据源文件，服务器必须可以访问该文件<br>7. 如果数据文件的任意行包含比预期多或者少的字段，dolphin.sql_mode为严格模式时将抛出一个错误，宽松模式时缺少的字段将插入NULL，如果字段有NOT NULL约束则会插入类型基础值<br>8. `\N`为NULL，如果要输入实际数据值`\N` ，使用`\\N` | 无         | <font color=green>▮</font>  |      |
+|  35  | 【openGauss 3.1.1】支持对M*部分语法的转换                    | 共执行2轮测试，执行用例45条，共发现问题3个。主要覆盖了功能测试和资料测试。功能测试主要覆盖验证NATIONAL VARCHAR(M)与其他数据类型转换；验证create table like语法，不加参数，感知源表为分区表；验证insert into table() values(...)语法等价于table不带括号的语法；在表、视图、存储过程、自定义函数中使用NATIONAL VARCHAR(M)类型；在存储过程、自定义函数中验证create table like语法和insert into table() values(...)语法 | 1.兼容M* 5.7版本<br>2.openGauss需要在兼容B库下加载dolphin插件才能使用<br>3.like后不能添加普通建表的额外可选语句<br>4.create table like语法不支持外表、mot表<br>5. 默认复制源表的索引，若不希望复制索引，需要手动指定EXCLUDING INDEXES。 默认复制源分区表的分区，若不希望复制分区，需要手动指定EXCLUDING PARTITION<br>6. 如果源表是本地临时表，则新表也必须是本地临时表，否则会报错<br>7. ATUO_INCREMENT列需要为主键或唯一约束的第一个字段，若复制包含AUTO_INCREAMENT列的表时指定EXCLUDING INDEX，将会报错 | 无         | <font color=green>▮</font>  |      |
+|  36  | 【openGauss 3.1.1】支持查看系统可支持的字符集和字符序        | 共执行2轮测试，执行用例52条，共发现问题3个。已验收通过。主要覆盖功能测试和资料测试，功能测试验证通过show参数名的方法或查询系统表的方法查询；结合like/where参数查询；不同权限用户执行该语法 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件<br/>3.使用show cahracter set语法时，Default Collation结果集为空<br/>4.show collation语法中，Sortlen字段显示为0<br/>5.openGauss中的排序集在不同的操作系统中，返回字段的ID值不一定相同，在相同的操作系统中，返回的ID依赖插入顺序 | 无         | <font color=green>▮</font>  |      |
+|  37  | 【openGauss 3.1.1】支持使用双引号表示字符串                  | 共执行2轮测试，执行用例14条，发现2个问题，已验收。主要覆盖了ansi_quotes开启/ 关闭时，双引号功能测试、资料测试 | 1.仅在dolphin插件支持使用<br>2.需要通过dolphin.sql_mode参数选择是否关闭双引号引用<br>3.在ansi_quotes关闭之后，双引号不能再作为引用进行使用 | 无         | <font color=green>▮</font>  |      |
+|  38  | 【openGauss 3.1.1】支持explain和desc保持一致，互为同义词     | 共执行2轮测试，执行用例74条，发现问题1个，已验收。主要覆盖使用explain查看不同表的结构信息，使用desc查看执行计划，测试使用extended选项、format=json/traditional的语法格式 | 仅在兼容B库下explain与desc保持一致，互为同义词               | 无         | <font color=green>▮</font>  |      |
+|  39  | 【openGauss 3.1.1】指定多个分区查询数据                      | 共执行2轮测试，执行用例23条，发现问题1个。主要覆盖了功能测试和资料测试。功能测试主要覆盖验证一个一级分区、二级分区查询数据；验证按多个一级分区、二级分区、一级分区和二级分区混合查询数据；验证opengauss原语法查询单个一级分区或二级分区功能是否正常；在表、视图、存储过程、自定义函数中按多个分区查询数据 | 1.兼容M* 5.7版本<br>2.openGauss需要在兼容B库下加载dolphin插件才能使用<br>3. 指定分区仅适用于分区表 | 无         | <font color=green>▮</font>  |      |
+|  40  | 【openGauss 3.1.1】支持autocommit=0模式                      | 共执行2轮测试，执行用例51条，发现问题2个，已验收。覆盖功能测试和资料测试，主要对设置autocommit=0后手动提交和回滚数据、结合事务特性进行测试 | 1.openGauss需要在兼容B库下加载dolphin插件才能设置关闭自动提交<br>2.autocommit参数只能使用GUC参数设置中的方式三设置为false | 无         | <font color=green>▮</font>  |      |
+|  41  | 【openGauss 3.1.1】支持!操作符                               | 共执行2轮测试，执行用例27个，发现1个问题，已验收通过。主要覆盖参数控制`!`操作符功能输出； `!`操作符入参类型、数据类型及结合表类型、三类运算符、select语句及其子查询测试； `!`操作符结合其他兼容性语法及与NOT运算结果对比测试，覆盖资料测试 | 1. 兼容M*5.7版本<br/>2. openGauss需使用兼容B库且包含dolphin插件<br/>3. 设置`dolphin.b_compatibility_mode=on`后，可在表达式前使用`!`操作符，同时阶乘符号`!!`与多个`!`操作符的使用会报错；设置`dolphin.b_compatibility_mode=off`后，`!`操作符不能使用，同时阶乘符号`!!`可以使用<br/>4. `!+表达式`的类型组合与openGauss原有的`NOT+表达式`的类型组合一致，需要该类型可以转换为boolean类型，具体可参考系统表pg_cast | 无         | <font color=green>▮</font>  |      |
+|  42  | 【openGauss 3.1.1】对M*数据库参数适配                        | 共执行2轮测试，执行用例46条。发现问题2个，1个已回归并验收通过，1个非问题取消。主要覆盖通过show参数名的方法或查询pg_settings系统表的方法查询；参数值修改及修改参数后的提示信息是否正确；不同权限用户执行该语法等方面验证 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件<br/>3.除dolphin.sql_mode、dolphin.lower_case_table_names、transaction_isolation三个参数支持修改，其余参数只读，无法修改，且不涉及参数所指具体功能 | 无         | <font color=green>▮</font>  |      |
+|  43  | 【openGauss 3.1.1】兼容FLUSH BINARY LOGS语法                 | 共执行1轮测试，执行用例6条。未发现问题。主要覆盖不同权限用户归档，修改归档路径归档、配置archive_command归档等功能验证 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件<br/>3.需设置archive_mode=on | 无         | <font color=green>▮</font>  |      |
+|  44  | 【openGauss 3.1.1】兼容M*协议                                | /                                                            | /                                                            | /          | /                           | /    |
+|  45  | 【openGauss 3.1.1】支持DO statement语法                      | 共执行1轮测试，共执行用例22条，测试覆盖基本功能（do调用单个或多个表达式、在存储过程或者函数中使用、权限、异常测试）。累计发现issue2个，2个已验收，基本功能可用。 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件   | 无         | <font color=green>▮</font>  |      |
+|  46  | 【openGauss 3.1.1】支持cursor相关语法                        | 共执行1轮测试，共执行用例37条，测试覆盖基本功能（结合各结构begin内部声明condition调用测试、结合异常处理块调用测试、结合变量名和condition命名进行测试、结合condition程序声明可选项进行测试、不同兼容模式测试、异常测试）。累计发现issue3个，0个已验收，基本功能可用。 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件   | 无         | <font color=yellow>▲</font> |      |
+|  47  | 【openGauss 3.1.1】支持反引号作为标识符                      | 共执行2轮测试，共执行用例144条，测试覆盖基本功能（功能测试、约束测试、资料测试以及备份恢复测试）。累计发现issue6个，5个已验收，1个挂起，基本功能可用。 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件   | 无         | <font color=yellow>▲</font> |      |
+|  48  | 【openGauss 3.1.1】支持trigger兼容mysql形式语法              | 共执行1轮测试，共执行用例36条，测试覆盖基本功能（trigger_order关联触发器测试、其他参数测试、不同兼容模式测试、异常测试）。累计发现issue1个，0个已验收，基本功能可用 | 1.兼容M\*5.7<br/>2.openGauss需要使用兼容B库且含dolphin插件   | 无         | <font color=yellow>▲</font> |      |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -507,15 +509,15 @@ openGauss 3.1.1版本所有适用的安全扫描和安全测试均已执行，�
 
 | Domain       | 测试活动                                                     | 测试结论 |
 | ------------ | ------------------------------------------------------------ | -------- |
-| 服务器兼容   | 在X86（Intel(R) Xeon(R) Gold）/鲲鹏（Kunpeng 920）服务器上安装部署openGauss 3.1.0数据库 | 测试通过 |
-| 存储设备兼容 | 在本地盘（SAS、SATA和SSD）及云盘上安装部署openGauss 3.1.0数据库 | 测试通过 |
+| 服务器兼容   | 在X86（Intel(R) Xeon(R) Gold）/鲲鹏（Kunpeng 920）服务器上安装部署openGauss 3.1.1数据库 | 测试通过 |
+| 存储设备兼容 | 在本地盘（SAS、SATA和SSD）及云盘上安装部署openGauss 3.1.1数据库 | 测试通过 |
 
 #### 软件兼容
 
 | Domain       | 测试活动                                                     | 测试结论 |
 | ------------ | ------------------------------------------------------------ | -------- |
-| 支持云化部署 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS环境下，通过Docker（18.06.1-ce/18.09.0）安装部署openGauss 3.1.0数据库 | 测试通过 |
-| 操作系统兼容 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/ARM+Kylin V10环境下，安装部署openGauss 3.1.0数据库 | 测试通过 |
+| 支持云化部署 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS环境下，通过Docker（18.06.1-ce/18.09.0）安装部署openGauss 3.1.1数据库 | 测试通过 |
+| 操作系统兼容 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/ARM+Kylin V10环境下，安装部署openGauss 3.1.1数据库 | 测试通过 |
 
 ### 资料测试
 
