@@ -1,4 +1,4 @@
-![avatar](../../images/openGauss.png)
+![avatar](../../../images/openGauss.png)
 
 版权所有 © 2022  openGauss社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
@@ -76,7 +76,7 @@ openGauss 3.1.1 版本可靠性测试共计测试4个版本，在x86+Centos，x8
 
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                     | 问题状态 |
 | ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| 1    | [I62YDK](https://gitee.com/opengauss/openGauss-server/issues/I62YDK) | 次要     | 次要更改表空间目录权限为000后，删除表空间虽然提示权限受限，但实际删除成功 | 已验收   |
+| 1    | [I62YDK](https://gitee.com/opengauss/openGauss-server/issues/I62YDK) | 次要     | 次要更改表空间目录权限为000后，删除表空间虽然提示权限受限，但实际删除成功。 | 已验收   |
 
 # 4     测试执行
 
