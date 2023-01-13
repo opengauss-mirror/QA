@@ -158,7 +158,7 @@ openGauss dolphin插件MySQL兼容分区表重组织分区语法，共计执行�
 | openGauss 3.1.0 build 152c968e | 68 | Passed: 52<br />Failed: 16 | 8 |
 | openGauss 3.1.0 build 7924440a | 68 | Passed: 68<br />Failed: 0 | 0 |
 
-## 4.2   后续测试建议
+## 4.3   后续测试建议
 
 无
 

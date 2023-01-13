@@ -167,7 +167,7 @@ openGauss dolphin插件MySQL兼容分区表语法MAXVALUE关键字可不加括�
 | openGauss 3.1.0 build 152c968e | 116 | Passed: 110<br />Failed: 6 | 2 |
 | openGauss 3.1.0 build c950de5f | 116 | Passed: 116<br />Failed: 0 | 0 |
 
-## 4.2   后续测试建议
+## 4.3   后续测试建议
 
 无
 
