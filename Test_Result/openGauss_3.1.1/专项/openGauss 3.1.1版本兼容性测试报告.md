@@ -1,4 +1,4 @@
-![avatar](../../images/openGauss.png)
+![avatar](../../../images/openGauss.png)
 
 版权所有 © 2022  openGauss社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
@@ -100,8 +100,8 @@ openGauss 3.1.1版本兼容性测试共计测试1轮，在X86+CentOS 7.6，ARM+o
 | openGauss2.0.0/openGauss2.0.1/openGauss3.0.0就地升级到openGauss3.1.1后回滚 | 测试通过 |
 | openGauss2.0.0/openGauss2.0.1/openGauss3.0.0灰度升级到openGauss3.1.1后强制回滚 | 测试通过 |
 | openGauss2.0.0/openGauss2.0.1/openGauss3.0.0就地升级到openGauss3.1.1后强制回滚 | 测试通过 |
-| openGauss2.0.0/openGauss2.0.1/openGauss3.0.0不带cm灰度升级到openGauss3.1.1带cm | 测试通过 |
-| openGauss2.0.0/openGauss2.0.1/openGauss3.0.0不带cm灰度升级到openGauss3.1.1带cm后回滚 | 测试通过 |
+| openGauss2.0.0/openGauss2.0.1/openGauss3.0.0不带cm灰度升级到openGauss3.1.1带cm | 测试不通过 |
+| openGauss2.0.0/openGauss2.0.1/openGauss3.0.0不带cm灰度升级到openGauss3.1.1带cm后回滚 | 测试不通过 |
 | openGauss3.0.0带cm灰度升级到openGauss3.1.1带cm               | 测试通过 |
 | openGauss3.0.0带cm灰度升级到openGauss3.1.1带cm后回滚         | 测试通过 |
 | openGauss2.0.0灰度升级到openGauss2.0.1再灰度升级到openGauss3.1.1 | 测试通过 |
@@ -110,7 +110,7 @@ openGauss 3.1.1版本兼容性测试共计测试1轮，在X86+CentOS 7.6，ARM+o
 | openGauss2.0.0就地到openGauss2.0.1再就地升级到openGauss3.1.1 | 测试通过 |
 | openGauss2.0.0就地到openGauss2.0.1再就地升级到openGauss3.1.1后回滚到openGauss2.0.1 | 测试通过 |
 | openGauss2.0.0就地升级到openGauss2.0.1再就地升级到openGauss3.1.1后强制回滚到openGauss2.0.1 | 测试通过 |
-| openGauss2.0.0不带cm灰度升级到openGauss2.0.1不带cm再灰度升级到openGauss3.1.1带cm | 测试通过 |
+| openGauss2.0.0不带cm灰度升级到openGauss2.0.1不带cm再灰度升级到openGauss3.1.1带cm | 测试不通过 |
 | openGauss2.0.0灰度升级到openGauss3.0.0再灰度升级到openGauss3.1.1 | 测试通过 |
 | openGauss2.0.0灰度升级到openGauss3.0.0再灰度升级到openGauss3.1.1后回滚到openGauss3.0.0 | 测试通过 |
 | openGauss2.0.0灰度升级到openGauss3.0.0再灰度升级到openGauss3.1.1后强制回滚到openGauss3.0.0 | 测试通过 |
@@ -180,7 +180,7 @@ openGauss 3.1.1版本兼容性测试共计测试1轮，在X86+CentOS 7.6，ARM+o
 | 版本名称             | 测试用例数 | 用例执行结果        | 发现问题单数 |
 | -------------------- | ---------- | ------------------- | ------------ |
 | openGauss 3.1.1 B011 | 47         | Passed:40  Failed:7 | 1            |
-| openGauss 3.1.1 B013 | 33         | Passed:28  Failed:5 | 1            |
+| openGauss 3.1.1 B013 | 33         | Passed:30  Failed:3 | 1            |
 
 *数据项说明：*
 
