@@ -177,6 +177,7 @@ ShardingSphere 5.2.0 + openGauss Master 执行3次测试，取平均值为：219
 ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，取平均值：tpmC =1246万
 
 ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，取平均值：tpmC = 1208万
+
 ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：1202万
 
 
