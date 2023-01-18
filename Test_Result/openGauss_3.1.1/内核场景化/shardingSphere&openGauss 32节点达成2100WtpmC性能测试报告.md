@@ -39,7 +39,7 @@ openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第
 | ------------------------------------------------------------ | ------------ | ------------ |
 | ShardingSphere 5.2.0<br/>Commit ID: 8f9e1858e29c33398f2ea95f6b1b50ef9cf03cfd | 2022.12.14   | 2022.12.17   |
 | Opengauss 3.0.0 Release                                      | 2022.12.14   | 2022.12.17   |
-| Opengauss 3.1.0<br/>Commit ID：ef6a5318               | 2022.12.29   | 2022.12.30   |
+| Opengauss Master<br/>Commit ID：ef6a5318               | 2022.12.29   | 2022.12.30   |
 
 描述特性测试的硬件环境信息
 
@@ -216,7 +216,7 @@ ShardingSphere 5.2.0 + Opengauss Master 执行3次测试，取平均值：tpmC =
 
  新增配置文件脚本 1.852 kloc，测试工具 0.022 kloc，共计 1.874 kloc。 
 
- 测试用例数 4个；3个性能测试用例分别在ShardingSphere 5.2.0 + openGauss Master、ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本上执行，长稳测试在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本上执行。通过用例 4个。 
+ 测试用例数 4个；3个性能测试用例分别在ShardingSphere 5.2.0 + openGauss Master、ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本上执行，长稳测试在ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本上执行。通过用例 4个。 
 
 发现问题单数 0个。
 
