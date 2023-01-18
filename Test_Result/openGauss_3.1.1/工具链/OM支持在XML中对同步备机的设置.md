@@ -79,6 +79,7 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
 | 4    | [I61XCT](https://gitee.com/opengauss/openGauss-OM/issues/I61XCT?from=project-issue) | 次要       | 备机节点配置同步备，备节点主机名与同步备主机名相同，没有合理报错 | 已验收 |
 | 5    | [I60XKH](https://gitee.com/opengauss/openGauss-OM/issues/I60XKH?from=project-issue) | 次要       | 使用om安装方式，在xml文件配置中，各节点通过ANY的方式指定同步备，预安装成功。gs_install安装失败 | 已验收 |
 | 6    | [I64G9Q](https://gitee.com/opengauss/docs/issues/I64G9Q?from=project-issue) | 次要       | xml文件中指定同步备FIRST存在组合配置                         | 已验收 |
+| 7    | [I6AENE](https://gitee.com/opengauss/openGauss-server/issues/I6AENE?from=project-issue) | 次要       | 主机的同步备存在两个分组，将一个分组的同步备机停掉，主机事务未被阻塞                         | 待办的 |
 
 
 
