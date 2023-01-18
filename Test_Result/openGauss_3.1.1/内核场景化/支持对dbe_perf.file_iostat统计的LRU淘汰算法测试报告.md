@@ -109,7 +109,7 @@ LRU算法，dbe_perf.file_iostat
 
 数据说明
 
-1.  openGauss 3.1.0 build  fc654ee8 版本测试过程中共发现1个次要bug，在openGauss 3.1.0 build aef96219版本回归通过。缺陷密度为1（缺陷个数）/0.017k（代码行数）=58.9（个/kloc）,在openGauss 3.1.0 build b658f54c版本中补充一跳用例进行测试，测试结果无问题。
+1.  openGauss 3.1.0 build  fc654ee8 版本测试过程中共发现1个次要bug，在openGauss 3.1.0 build aef96219版本回归通过。缺陷密度为1（缺陷个数）/0.017k（代码行数）=58.9（个/kloc），在openGauss 3.1.0 build b658f54c版本中补充一条用例进行测试，测试结果无问题。
 
 ## 4.3 后续测试建议
 
