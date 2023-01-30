@@ -206,5 +206,4 @@ OM支持在XML中对同步备机的设置共计执行19条用例，主要覆盖�
 	</DEVICE> 
     </DEVICELIST> 
 </ROOT>
-
 ```
