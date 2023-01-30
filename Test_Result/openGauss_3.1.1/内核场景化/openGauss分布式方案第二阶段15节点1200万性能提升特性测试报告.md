@@ -1,6 +1,6 @@
 ![avatar](../../../images/openGauss.png)
 
-版权所有 © 2021  openGauss社区
+版权所有 © 2022  openGauss社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
 
 修订记录
@@ -41,10 +41,11 @@ openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。
 | ShardingSphere 5.2.0<br/>Commit ID: 8f9e1858e29c33398f2ea95f6b1b50ef9cf03cfd | 2022.11.30   | 2022.12.07   |
 | openGauss 3.1.0 Preview                                      | 2022.11.30   | 2022.12.05   |
 | openGauss 3.0.0 Release                                      | 2022.12.05   | 2022.12.07   |
+| Opengauss Master<br/>Commit ID：ef6a5318               | 2022.12.29   | 2022.12.30   |
 
 描述特性测试的硬件环境信息
 
-| 硬件型号                                       | 硬件配置信息                                                 | 备注                  |
+| 环境信息                                       | 配置信息                                                 | 备注                  |
 | ---------------------------------------------- | ------------------------------------------------------------ | --------------------- |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | openGauss数据库节点*9 |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*6  |
@@ -64,9 +65,9 @@ openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。
 
 | 测试活动                       | 活动评价                                                     |
 | ------------------------------ | ------------------------------------------------------------ |
-| 2 节点测试 1 小时tpcc性能测试  | 1 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到140万，使用benchmarksql工具，在800并发下对1000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：136万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：141万。 |
-| 3 节点测试 1 小时tpcc性能测试  | 2 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到260万，使用benchmarksql工具，在1200并发下对2000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：220万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：234万。 |
-| 15 节点测试 1 小时tpcc性能测试 | 9 节点 openGauss + 6 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到1200万，使用benchmarksql工具，在1200并发下对9000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：1208万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：1246万。 |
+| 2 节点测试 1 小时tpcc性能测试  | 1 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到140万，使用benchmarksql工具，在800并发下对1000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：136万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：141万；<br/> ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：138万。|
+| 3 节点测试 1 小时tpcc性能测试  | 2 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到260万，使用benchmarksql工具，在1200并发下对2000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：220万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：234万；<br/> ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：222万。 |
+| 15 节点测试 1 小时tpcc性能测试 | 9 节点 openGauss + 6 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到1200万，使用benchmarksql工具，在1200并发下对9000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：1208万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：1246万；<br/> ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：1202万。 |
 | 2 节点测试 24 小时tpcc长稳测试 | 1 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,执行24小时tpcc测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本功能正常，无异常日志。 |
 
 ## 3.2   约束说明
@@ -133,6 +134,8 @@ ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，取平均
 
 ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，取平均值：tpmC =136万
 
+ShardingSphere 5.2.0 + openGauss Master 执行3次测试，取平均值为：138万
+
 ### 4.1.3 3节点测试 1 小时tpcc性能测试
 
 **3节点测试组网：1 节点 ShardingSphere-JDBC + 2节点 openGauss**
@@ -153,6 +156,8 @@ ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，取平均
 
 ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，取平均值：tpmC = 220万
 
+ShardingSphere 5.2.0 + openGauss Master 执行3次测试，取平均值为：219万
+
 ### 4.1.3 15节点测试 1 小时tpcc性能测试
 
 **15节点测试组网：6节点 ShardingSphere-JDBC + 9节点 openGauss**
@@ -172,6 +177,9 @@ ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，取平均
 ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，取平均值：tpmC =1246万
 
 ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，取平均值：tpmC = 1208万
+
+ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：1202万
+
 
 ### 4.1.4  2节点测试 24 小时tpcc长稳测试
 
@@ -195,12 +203,13 @@ ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，取平均
 | ---------------------------------------------- | ---------- | ------------ | ------------ |
 | ShardingSphere 5.2.0 + openGauss 3.1.0 Preview | 4          | 通过         | 0            |
 | ShardingSphere 5.2.0 + openGauss 3.0.0 Release | 3          | 通过         | 0            |
+| ShardingSphere 5.2.0 + Opengauss  Master Commit ID：ef6a5318  | 3          | 通过         | 0            |
 
 数据项说明：
 
 新增代码量 3.795 kloc，新增配置文件脚本 4.413 kloc，共计 8.208 kloc。
 
-测试用例数 4个；3个性能测试用例分别在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview、ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本上执行，长稳测试在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本上执行。通过用例 4个。
+测试用例数 4个；3个性能测试用例分别在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本、ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本以及ShardingSphere 5.2.0 + openGauss Master上执行，长稳测试在ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本上执行。通过用例 4个。
 
 发现问题单数 0个。
 
