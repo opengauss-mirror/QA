@@ -57,13 +57,13 @@ openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第
 
 具体机器配置如下表：
 
-| 环境信息                                       | 配置信息                                                 | 备注                   |
+| 环境信息                                       | 配置信息                                                     | 备注                   |
 | ---------------------------------------------- | ------------------------------------------------------------ | ---------------------- |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | openGauss数据库节点*19 |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 2p 128核<br />内存：24*32GB<br />硬盘：NVME 3T * 4<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*6   |
 | ARM+openEuler 2P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 4826 2p 96核<br />内存：24*32GB<br />硬盘：NVME 3T * 1<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*1   |
 | ARM+openEuler 4P<br />TaiShan 200 (Model 2280) | CPU：Kunpeng 920 7260 4p 256核<br />内存：31*32GB<br />硬盘：NVME 3T * 1，1.4T * 3<br />OS：openEuler release 20.03 (LTS)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*1   |
-| x86+CentOS<br />RH2288H V3                     | CPU：Kunpeng 920 7260 4p 256核<br />内存：24*32GB<br />OS：CentOS Linux release 7.9.2009 (Core)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*5   |
+| x86+CentOS<br />RH2288H V3                     | CPU：Intel(R) Xeon(R) CPU E5-2680 v4 56核<br />内存：24*32GB<br />OS：CentOS Linux release 7.9.2009 (Core)<br />文件系统：XFS<br />网卡：10GE | ss-jdbc + tpcc节点*5   |
 
 | 软件名称     | 软件版本                                                     | 备注 |
 | ------------ | ------------------------------------------------------------ | ---- |
@@ -76,6 +76,8 @@ openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第
 
 ## 3.1   测试整体结论
 
+### 3.1.1 测试结论
+
 共设计4个测试用例，分别覆盖了2节点、3节点和32节点tpcc性能测试，以及2节点24长稳测试。
 
 | 测试活动                       | 活动评价                                                     |
@@ -84,6 +86,28 @@ openGauss分布式方案中，第一阶段达成1000万tpmc的性能目标；第
 | 3 节点测试 1 小时tpcc性能测试  | 2 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到260万，使用benchmarksql工具，在1000并发下对2000仓数据进行测试。<br/>ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：250万。<br/>ShardingSphere 5.2.0 + Opengauss Master 执行3次测试，tpmC取平均值为：237万。 |
 | 32 节点测试 1 小时tpcc性能测试 | 19 节点 openGauss + 13节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到2100万，使用benchmarksql工具，对19000仓数据进行测试。<br/>ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：2478万。<br/>ShardingSphere 5.2.0 + Opengauss Master 执行3次测试，tpmC取平均值为：2316万 |
 | 2 节点测试 24 小时tpcc长稳测试 | 1 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,执行24小时tpcc测试。<br/>ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本功能正常，无异常日志。 |
+
+### 3.1.2 实际折算数据
+
+ 由于实际 32 节点服务器与原计划有差异，需要根据CPU指标和机器峰值性能进行折算。
+
+- **折算公式**
+
+ 按照 CPU 性能：预期到位 32 台鲲鹏 920，实际到位 27 台 和 5 台 x86，(27 * 34775 + 5 * 17075) / (32 * 34775) = 0.92。
+
+- **32 节点测试 1 小时tpcc性能折算结果**
+
+ShardingSphere 5.2.0 + Opengauss 3.0.0 Release版本，tpmC值约为：2478万/0.92 = 2693万
+
+ShardingSphere 5.2.0 + Opengauss Master tpmC值约为：2316万/0.92 = 2517万
+
+- **参考资料**
+
+128 核鲲鹏 920 的 CPU 测试参考结果，分数约 34000：https://browser.geekbench.com/v5/cpu/19517946
+
+E5-2680 v4 的 CPU 测试参考结果，分数约 17000：https://browser.geekbench.com/v5/cpu/20471637
+
+E5-2680 v4 CPU 官方指标：https://ark.intel.com/content/www/cn/zh/ark/products/91754/intel-xeon-processor-e52680-v4-35m-cache-2-40-ghz.html
 
 ## 3.2   约束说明
 
