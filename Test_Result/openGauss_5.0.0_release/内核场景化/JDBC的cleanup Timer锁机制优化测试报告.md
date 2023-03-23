@@ -151,7 +151,7 @@
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建多个statement，分别设置setQueryTimeout>0，setQueryTimeout=0，不设置setQueryTimeout<br>2. 分别多次执行3种setQueryTimeout创建下的java脚本，<br>对比sql平均执行时间和sql语句平均峰值执行时间，验证setQueryTimeout>0与setQueryTimeout=0，不设置setQueryTimeout相比JDBC性能是否提升 | 共执行1条用例，3种setQueryTimeout取值下分别执行5次脚本，得出setQueryTimeout>0时JDBC性能较setQueryTimeout=0和不设置setQueryTimeout相比，SQL语句平均执行时间和SQL语句平均峰值执行时间性能均有提升，SQL语句平均执行时间分别提升8.3%和10.8%，SQL语句平均峰<br>值执行时间分别提升12.3%和16.8% |
+| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建多个statement，分别设置setQueryTimeout>0，setQueryTimeout=0，不设置setQueryTimeout<br>2. 分别多次执行3种setQueryTimeout创建下的java脚本，<br>对比sql平均执行时间和sql语句平均峰值执行时间，验证setQueryTimeout>0与setQueryTimeout=0，不设置setQueryTimeout相比JDBC性能是否提升 | 共执行1条用例，3种setQueryTimeout取值下分别执行5次脚本，得出setQueryTimeout>0时JDBC性能较setQueryTimeout=0和不设置setQueryTimeout相比，SQL语句平均执行时间和SQL语句平均峰值执行时间性能均有提升，SQL语句平均执行时间分别提升8.3%和10.8%，SQL语句平均峰值执行时间分别提升12.3%和16.8% |
 
 #### 4.2.6 执行TPC-C，通过对比优化前后tpmc值，验证优化后JDBC性能是否提升
 
