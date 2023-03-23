@@ -35,14 +35,12 @@
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
 | ------------------------------ | :----------- | ------------ |
 | openGauss 5.0.0 build c323237f | 2023-2-23    | 2023-3-8     |
-| openGauss 5.0.0 build 5a69c469 | 2023-3-8     | 2023-3-9     |
-| openGauss 5.0.0 build e94d3b43 | 2023-3-9     | 2023-3-10    |
-| openGauss 5.0.0 build 78f2bb65 | 2023-3-16    | 2023-3-16    |
-| openGauss 5.0.0 build eacf1d20 | 2023-3-19    | 2023-3-19    |
-| MySQL 5.7.27                   | 2023-2-23    | 2023-3-19    |
-| chameleon 3.1.1                | 2023-2-23    | 2023-3-19    |
-| sysbench 1.0.20                | 2023-2-23    | 2023-3-19    |
-| Debezium v1.8.1.Final          | 2023-2-23    | 2023-3-19    |
+| openGauss 5.0.0 build 5a69c469 | 2023-3-10     | 2023-3-15     |
+| openGauss 5.0.0 build e94d3b43 | 2023-3-22     | 2023-3-23    |
+| MySQL 5.7.27                   | 2023-2-23    | 2023-3-23    |
+| chameleon 3.1.1                | 2023-2-23    | 2023-3-23    |
+| sysbench 1.0.20                | 2023-2-23    | 2023-3-23    |
+| Debezium v1.8.1.Final          | 2023-2-23    | 2023-3-23    |
 
 硬件环境信息：
 
@@ -57,7 +55,7 @@
 
 ## 3.1   测试整体结论
 
-MySQL数据迁移完整方案打通_反向迁移，且性能满足1w tps特性，共执行用例100个，主要覆盖了功能测试、性能测试、安全测试、资料测试。功能测试覆盖开启反向迁移，在openGauss数据库分别执行增删改操作，反向迁移工具迁移将上述DML操作迁移到MySQL，保证迁移前后数据的一致性、有序性和完整性。性能测试，在高性能机器下，开启反向迁移，通过sysbench工具给openGauss压测数据，待数据回放完成，计算迁移效率。安全测试关注迁移日志中密码是否加密。资料测试覆盖校验资料的描述是否完整。累计发现缺陷单11个，11个缺陷均已解决且回归通过，整体质量良好。
+MySQL数据迁移完整方案打通_反向迁移，且性能满足1w tps特性，共执行用例100个，主要覆盖了功能测试、性能测试、安全测试、资料测试。功能测试覆盖开启反向迁移，在openGauss数据库分别执行增删改操作，反向迁移工具迁移将上述DML操作迁移到MySQL，保证迁移前后数据的一致性、有序性和完整性。性能测试，在高性能机器下，开启反向迁移，通过sysbench工具给openGauss压测数据，待数据回放完成，计算迁移效率。安全测试关注迁移日志中密码是否加密。资料测试覆盖校验资料的描述是否完整。累计发现缺陷单11个，8个缺陷均已解决且回归通过，2个缺陷已解决，1个问题单修复中，整体质量良好。
 
 
 
@@ -113,7 +111,7 @@ MySQL参数设置： log_bin=ON, binlog_format=ROW, binlog_row_image=FULL, gtid_
 | 3    | [I6EFP2](https://gitee.com/opengauss/debezium/issues/I6EFP2?from=project-issue) | 次要 | 【测试类型：工具功能】【测试版本：5.0.0】 debezium+kafka反向迁移成功，回显信息应提示replayed多少条事务 | 已验收 |
 | 4 | [I6EFV4](https://gitee.com/opengauss/debezium/issues/I6EFV4?from=project-issue) | 主要 | 【测试类型：安全】【测试版本：5.0.0】 debezium+kafka反向迁移开启后，回显和日志中存在明文密码 | 已验收 |
 | 5 | [I6FUJC](https://gitee.com/opengauss/debezium/issues/I6FUJC?from=project-issue) | 次要 | 【测试类型：工具功能】【测试版本：5.0.0】：Debezium+kafka反向迁移blob类型，insert,update和delete操作后迁移结果不一致 | 已验收 |
-| 6 | [I6FUYL](https://gitee.com/opengauss/debezium/issues/I6FUYL?from=project-issue) | 次要 | 【测试类型：工具功能】【测试版本：5.0.0】：Debezium+kafka反向迁移bit/set/几何类型，insert,update和delete操作迁移失败 | 修复中 |
+| 6 | [I6FUYL](https://gitee.com/opengauss/debezium/issues/I6FUYL?from=project-issue) | 次要 | 【测试类型：工具功能】【测试版本：5.0.0】：Debezium+kafka反向迁移bit/set/几何类型，insert,update和delete操作迁移失败 | 已验收 |
 | 7 | [I6FV5D](https://gitee.com/opengauss/debezium/issues/I6FV5D?from=project-issue) | 主要 | 【测试类型：资料】【测试版本：5.0.0】 缺少反向迁移资料，补充无主键时的约束说明 | 已验收 |
 | 8 | [I6G1YY](https://gitee.com/opengauss/debezium/issues/I6G1YY?from=project-issue) | 次要 | 【测试类型：工具功能】【测试版本：5.0.0】：Debezium+kafka反向迁移json类型，update和delete后，迁移结果显示已回放，实际M*库数据未更新 | 已验收 |
 | 9 | [I6H1WT](https://gitee.com/opengauss/debezium/issues/I6H1WT?from=project-issue) | 次要 | 【测试类型：工具功能】【测试版本：5.0.0】：Debezium+kafka反向迁移，用户没有指定数据库下所有schema的权限，修改连接器名称name，启动迁移报错 | 已完成 |
@@ -126,7 +124,7 @@ MySQL参数设置： log_bin=ON, binlog_format=ROW, binlog_row_image=FULL, gtid_
 
 | 测试步骤                                                     | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1. 开启反向迁移，在opengauss执行DML语句<br/>2. opengauss端查看数据一致性，有序性，准确性 | 执行50条用例，执行结果符合预期，测试通过，发现7个bug，已解决并回归通过 |
+| 1. 开启反向迁移，在opengauss执行DML语句<br/>2. opengauss端查看数据一致性，有序性，准确性 | 执行94条用例，执行结果符合预期，测试通过，发现7个bug，已解决并回归通过 |
 
 ### 4.1.1   功能测试实现步骤
 
@@ -218,12 +216,10 @@ cd confluent-5.5.1
 | openGauss 5.0.0 build c323237f | 100         | Passed:85 Failed:15  | 11           |
 | openGauss 5.0.0 build 5a69c469 | 30         | Passed:20 Failed: 10 | 0            |
 | openGauss 5.0.0 build e94d3b43 | 3          | Passed:3 Failed:0    | 0            |
-| openGauss 5.0.0 build eacf1d20 | 3          | Passed:3 Failed:0    | 0            |
-|                                |            |                      |              |
 
 *数据项说明：*
 
-* 累计发现缺陷单11个，11个缺陷已解决且回归通过，其中属于迁移工具问题的缺陷为7个，其中3个为资料单
+* 累计发现缺陷单11个，8个缺陷均已解决且回归通过，2个缺陷已解决，1个问题单修复中，其中属于迁移工具问题的缺陷为7个
 * 失败用例已在后续问题修复后，回归issue执行通过
 * 缺陷密度：7(缺陷个数)/18.766kloc(代码行数)=0.37(个/kloc)
 
