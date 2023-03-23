@@ -251,15 +251,15 @@ openGauss 5.0.0 版本可靠性测试共计测试8个版本，在x86+openEuler�
 
 问题单趋势分布
 
-![image-20230322100351922](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230322100351922.png)
+![avatar](../images/资源池化问题单个数趋势.png)
 
 DI分布
 
-![image-20230322095301087](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230322095301087.png)
+![avatar](../images/资源池化问题单DI趋势.png)
 
 各项测试缺陷分布
 
-![image-20230322114940791](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230322114940791.png)
+![avatar](../images/资源池化问题单缺陷分布.png)
 
 # 6   附件
 
