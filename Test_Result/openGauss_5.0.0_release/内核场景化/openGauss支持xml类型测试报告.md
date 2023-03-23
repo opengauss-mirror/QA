@@ -9,11 +9,11 @@
 | ---------- | -------- | -------------------- | -------- |
 | 2023-03-17 | 1.0      | 特性测试报告初稿完成 | songjing |
 
- 关键词： xml
+ 关键词： xml类型
 
 摘要：
 
-本文档主要介绍openGauss默认支持xml类型行的测试，并给出测试结论。
+本文档主要介绍对openGauss默认支持xml类型进行的测试，并给出测试结论。
 
 缩略语清单：
 
@@ -149,7 +149,7 @@ openGauss支持xml类型特性，共计执行用例58条，主要覆盖了功能
 ## 5.1 示例
 
 ```sql
---创建表，字段类型为xml，插入数据并查询
+--创建表，字段数据类型为xml，插入数据并查询
 openGauss=# create table testtb(c_xml xml);
 CREATE TABLE
 openGauss=# insert into testtb values('test xml');
@@ -163,7 +163,7 @@ openGauss=# select * from testtb;
  <foo bar="2023-03-23">content</foo>
 (2 rows)
 
---更新字段值，在为非文档格式的值后串接123
+--更新字段值，在非文档格式的值后串接123
 openGauss=# update testtb set c_xml = xmlconcat(c_xml, '123') where c_xml is not document;
 UPDATE 1
 openGauss=# select * from testtb;
