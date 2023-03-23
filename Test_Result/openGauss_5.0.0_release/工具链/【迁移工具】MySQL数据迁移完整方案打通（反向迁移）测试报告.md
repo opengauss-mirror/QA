@@ -1,6 +1,6 @@
-![avatar](../../images/openGauss.png)
+![avatar](../../../images/openGauss.png)
 
-版权所有 © 2022  openGauss社区
+版权所有 © 2023  openGauss社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
 
 修订记录
@@ -126,7 +126,7 @@ MySQL参数设置： log_bin=ON, binlog_format=ROW, binlog_row_image=FULL, gtid_
 
 | 测试步骤                                                     | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1. 开启反向迁移，在opengauss执行DML语句<br/>2. opengauss端查看数据一致性，有序性，准确性 | 执行17条用例，执行结果符合预期，测试通过，发现2个bug，1个问题已解决回归通过，1个暂未解决 |
+| 1. 开启反向迁移，在opengauss执行DML语句<br/>2. opengauss端查看数据一致性，有序性，准确性 | 执行50条用例，执行结果符合预期，测试通过，发现7个bug，已解决并回归通过 |
 
 ### 4.1.1   功能测试实现步骤
 
@@ -215,7 +215,7 @@ cd confluent-5.5.1
 
 | 版本名称                       | 测试用例数 | 用例执行结果         | 发现问题单数 |
 | ------------------------------ | ---------- | -------------------- | ------------ |
-| openGauss 5.0.0 build c323237f | 50         | Passed:35 Failed:15  | 11           |
+| openGauss 5.0.0 build c323237f | 100         | Passed:85 Failed:15  | 11           |
 | openGauss 5.0.0 build 5a69c469 | 30         | Passed:20 Failed: 10 | 0            |
 | openGauss 5.0.0 build e94d3b43 | 3          | Passed:3 Failed:0    | 0            |
 | openGauss 5.0.0 build eacf1d20 | 3          | Passed:3 Failed:0    | 0            |
