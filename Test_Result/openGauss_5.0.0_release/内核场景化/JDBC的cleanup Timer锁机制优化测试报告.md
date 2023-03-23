@@ -11,7 +11,7 @@
 
  关键词： 
 
-  JDBC，cleanup Timer锁
+  JDBC，cleanup Timer锁，TPC-C，tpmc
 
 摘要：
 
