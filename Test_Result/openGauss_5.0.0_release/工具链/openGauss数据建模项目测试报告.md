@@ -142,8 +142,8 @@ openGauss数据建模项目测试报告，共执行用例272个，提交问题�
 | 45   | [I6IKTS](https://e.gitee.com/opengaussorg/issues/table?issue=I6IKTS) | 次要     | 插入算子针对int类型插入null值会识别为字符串，插入失败        | 已验收   |
 | 46   | [I6I8Z4](https://e.gitee.com/opengaussorg/issues/table?issue=I6I8Z4) | 次要     | 配置算子时，字段配置不会自动展开                             | 已验收   |
 | 47   | [I6I8C2](https://e.gitee.com/opengaussorg/issues/table?issue=I6I8C2) | 次要     | 没有删除报表选项                                             | 已验收   |
-| 48   | [I6N0HL](https://e.gitee.com/opengaussorg/issues/table?issue=I6N0HL) | 次要     | base-ops插件，升级后插件图标显示异常                         | 已完成   |
-| 49   | [I6NQFE](https://gitee.com/opengauss/openGauss-workbench/issues/I6NQFE?from=project-issue) | 次要     | 折线图纵坐标起点范围不合理                                   | 已完成   |
+| 48   | [I6N0HL](https://e.gitee.com/opengaussorg/issues/table?issue=I6N0HL) | 次要     | base-ops插件，升级后插件图标显示异常                         | 已验收   |
+| 49   | [I6NQFE](https://gitee.com/opengauss/openGauss-workbench/issues/I6NQFE?from=project-issue) | 次要     | 折线图纵坐标起点范围不合理                                   | 已验收   |
 | 50   | [I6DZ70](https://e.gitee.com/opengaussorg/issues/table?issue=I6DZ70) | 不重要   | 数据流设计页面，按键名称和点击按键弹框后名称不一致           | 已验收   |
 
 
