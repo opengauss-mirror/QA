@@ -81,7 +81,7 @@ dblink支持i通过加载异构数据库的ODBC链接远程数据库，实现对
 | ---- | ------------------------------------------------------------ | ---- | -------------------------------------------- | ------ |
 | 1    | [I6LJ3K](https://gitee.com/opengauss/openGauss-server/issues/I6LJ3K?from=project-issue) | 主要 | 【测试类型：工具功能】【测试版本：5.0.0】 dblink_get_notify函数参数为空时，执行导致数据库core | 已验收 |
 | 2 | [I6ML3Y](https://gitee.com/opengauss/openGauss-server/issues/I6ML3Y?from=project-issue) | 次要 | 【测试类型：工具功能】【测试版本：5.0.0】dblink通过odbc连接oracle，执行sql语句返回的报错信息含乱码 | 已验收 |
-| 3 | [I6KOY9](https://gitee.com/opengauss/openGauss-server/issues/I6LRP5?from=project-issue) | 次要 | 【测试类型：工具功能】【测试版本：5.0.0】 退出会话/删除dblink，远程被连接数据库仍能查到连接存在 | 已验收 |
+| 3 | [I6LSRY](https://gitee.com/opengauss/docs/issues/I6LSRY?from=project-issue) | 不重要 | 【测试类型：资料】【测试版本：5.0.0】 dblink支持odbc连接异构数据库资料待补充问题汇总 | 已验收 |
 | 4 | [I6KOY9](https://gitee.com/opengauss/openGauss-server/issues/I6KOY9?from=project-issue) | 不重要 | 【测试类型：工具功能】【测试版本：5.0.0】 dblink连接opengauss超过最大连接数后，报错信息不明确 | 已验收 |
 
 # 4     测试执行
@@ -92,7 +92,7 @@ dblink支持i通过加载异构数据库的ODBC链接远程数据库，实现对
 
 | 测试步骤                                                     | 测试结果                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1. 验证dblink连接不指定drivername参数时，通过libpq连接至远程openGauss数据库，并执行增删改查等操作<br />2. 查看执行结果与预期一致<br />3. 清理环境 | 执行3条用例，1条用例执行失败，其余执行通过，发现1个bug，已修复且验证回归通过 |
+| 1. 验证dblink连接不指定drivername参数时，通过libpq连接至远程openGauss数据库，并执行增删改查等操作<br />2. 查看执行结果与预期一致<br />3. 清理环境 | 执行3条用例，均执行通过，未发现bug |
 
 ### 4.1.2 验证dblink通过odbc连接至远程openGauss数据库
 
@@ -122,7 +122,7 @@ dblink支持i通过加载异构数据库的ODBC链接远程数据库，实现对
 *数据项说明：*
 
 * 累计发现缺陷单4个，均已解决且回归通过
-* 代码缺陷密度为4(缺陷个数)/1.7k(代码行数)=2.35(个/kloc)
+* 以上问题单包含一个资料单，不计入缺陷密度，代码缺陷密度为3(缺陷个数)/1.7k(代码行数)=1.76(个/kloc)
 
 ## 4.3   后续测试建议
 
