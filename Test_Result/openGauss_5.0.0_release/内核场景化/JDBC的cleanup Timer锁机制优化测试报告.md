@@ -107,19 +107,19 @@
 
 | 测试步骤                                                     | 测试结果                         |
 | ------------------------------------------------------------ | -------------------------------- |
-| 1. 使用优化后opengauss-jdbc-5.0.0-jar执行现有功<br>能JDBC用例 | 执行66条用例，执行结果符合预期。 |
+| 1. 使用优化后opengauss-jdbc-5.0.0-jar执行现有功<br>能JDBC用例 | 共执行66条用例，执行结果符合预期。 |
 
 #### 4.1.2 验证新增多线程下创建多connection，每个connection下创建多个statement执行SQL语句是否成功
 
 | 测试步骤                                                     | 测试结果                        |
 | ------------------------------------------------------------ | ------------------------------- |
-| 1. 编写java脚本，在多线程下创建多connection，每个<br>connection下创建多个statement执行SQL语句<br>2. 使用优化后opengauss-jdbc-5.0.0-jar执行脚本<br>3. 根据java脚本日志返回结果判断执行是否成功 | 执行1条用例，执行结果符合预期。 |
+| 1. 编写java脚本，在多线程下创建多connection，每个<br>connection下创建多个statement执行SQL语句<br>2. 使用优化后opengauss-jdbc-5.0.0-jar执行脚本<br>3. 根据java脚本日志返回结果判断执行是否成功 | 共执行1条用例，执行结果符合预期。 |
 
 #### 4.1.3 验证设置setQueryTimeout小于SQL语句实际执行时间时执行结果是否合理
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 编写java脚本，设置setQueryTimeout小于SQL语句实际执行时间<br>2. 使用优化后opengauss-jdbc5.0.0-jar执行脚本<br>3. 根据java脚本日志返回结果判断执行是否合理报错，<br>是否陷入死锁 | 执行1条用例，执行结果符合预期 |
+| 1. 编写java脚本，设置setQueryTimeout小于SQL语句实际执行时间<br>2. 使用优化后opengauss-jdbc-5.0.0-jar执行脚本<br>3. 根据java脚本日志返回结果判断执行结果是否正确，<br>是否陷入死锁 | 共执行1条用例，执行结果符合预期 |
 
 ## 4.2 性能测试
 
@@ -127,37 +127,37 @@
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建多个statement，执行SQL<br>(select,update,insert,delete)语句<br/>2. 分别使用优化前后opengauss-jdbc-5.0.0-jar多次执行脚本，<br>通过对比优化前后SQL语句执行时间以及SQL语句峰值执行<br>时间，验证优化后JDBC性能是否提升 | 共计执行4条用例，分别使用优化前后jdbc执行5次脚本，取sql平均执行时间和sql语句平均峰值执行时间，得出执行select语句优化后较优化前针对sql平均执行时间性能提升4.4%，sql语句平均峰值执行时间性能提升8.1%。insert，delete和update语句性能优化前后未提升或下降。|
+| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建多个statement，执行SQL<br>(select,update,insert,delete)语句<br/>2. 分别使用优化前后opengauss-jdbc-5.0.0-jar多次执行脚本，<br>通过对比优化前后SQL语句执行时间以及SQL语句峰值执行<br>时间，验证优化后JDBC性能是否提升 | 共计执行4条用例，分别使用优化前后jdbc执行5次脚本，得出执行select语句优化后较优化前针对sql平均执行时间性能提升4.4%，sql语句平均峰值执行时间性能提升8.1%。insert语句优化后较优化前针对sql平均执行时间性能提升13%，sql语句平均峰值执行时间性能未提升。delete和update语句性能优化前后未提升。|
 
 #### 4.2.2 开启多线程创建多个connection，每个connection下创建单个statement，执行SQL语句，验证优化后JDBC性能是否提升
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建单个statement，执行SQL<br>(select,update,insert,delete)语句<br/>2. 分别使用优化前后opengauss-jdbc-5.0.0-jar多次执行脚本，<br>通过对比优化前后SQL语句执行时间以及SQL语句峰值执<br>行时间，验证优化后JDBC性能是否提升 | 共执行4条用例，分别使用优化前后jdbc执行5次脚本，取sql平均执行时间，得出执行select语句优化后较优化前针对sql平均执行时间性能提升13%，执行select语句优化后较优化前针对sql平均执行时间性能提升17.6%，delete和update语句性能优化前后未提升或下降。|
+| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建单个statement，执行SQL<br>(select,update,insert,delete)语句<br/>2. 分别使用优化前后opengauss-jdbc-5.0.0-jar多次执行脚本，<br>通过对比优化前后SQL语句执行时间<br>验证优化后JDBC性能是否提升 | 共执行4条用例，分别使用优化前后jdbc执行5次脚本，得出执行select语句优化后较优化前针对sql平均执行时间性能提升13%。insert语句优化后较优化前针对sql平均执行时间性能提升17.6%。delete和update语句性能优化前后未提升。|
 
 #### 4.2.3 验证优化后在理想场景下JDBC性能是否提升
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建多个statement，执行不涉及<br>对数据表的操作，仅连接数据库获取当前时间<br>2. 分别使用优化前后opengauss-jdbc-5.0.0-jar多次执行脚本，<br>通过对比优化前后SQL语句执行时间以及SQL语句<br>峰值执行时间，验证优化后JDBC性能是否提升 | 共执行1条用例，分别使用优化前后jdbc执行5次脚本，取sql平均执行时间，优化后较优化前sql平均执行时间性能提升3.6% |
+| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建多个statement，执行不涉及<br>对数据表的操作，仅连接数据库获取当前时间<br>2. 分别使用优化前后opengauss-jdbc-5.0.0-jar多次执行脚本，<br>通过对比优化前后SQL语句执行时间<br>验证优化后JDBC性能是否提升 | 共执行1条用例，分别使用优化前后jdbc执行5次脚本，得出优化后较优化前理想场景下sql平均执行时间性能提升3.6% |
 
 #### 4.2.4 prestatement预编译语句执行单次/多次批量插入，验证优化后JDBC性能是否提升
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建prestatement执行单次/多次批量插入<br>2. 分别使用优化前后opengauss-jdbc-5.0.0-jar多次执行脚本，<br>通过对比优化前后SQL语句执行时间以及SQL语句<br>峰值执行时间，验证优化后JDBC性能是否提升 | 共执行2条用例，分别使用优化前后jdbc执行5次脚本，取sql平均执行时间和sql语句平均峰值执行时间，得出优化后较优化前针对sql平均执行时间和sql语句平均峰值执行时间性能未提升或下降 |
+| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建prestatement执行单次/多次批量插入<br>2. 分别使用优化前后opengauss-jdbc-5.0.0-jar多次执行脚本，<br>通过对比优化前后SQL语句执行时间以及SQL语句<br>峰值执行时间，验证优化后JDBC性能是否提升 | 共执行2条用例，分别使用优化前后jdbc执行5次脚本，得出优化后较优化前sql平均执行时间和sql语句平均峰值执行时间性能未提升 |
 
 #### 4.2.5 设置setQueryTimeout3种场景(>0，=0，不设置)，验证setQueryTimeout>0时与setQueryTimeout=0，setQueryTimeout不设置相比性能是否提升
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建多个statement，分别设置setQueryTimeout>0，setQueryTimeout=0，不设置setQueryTimeout<br>2. 分别多次执行3种setQueryTimeout创建下的java脚本，<br>对比setQueryTimeout>0与setQueryTimeout=0，不设置<br>setQueryTimeout相比JDBC性能是否提升 | 共执行1条用例，3种setQueryTimeout取值下分别执行5次脚本，取sql平均执行时间和sql语句平均峰值执行时间，得出setQueryTimeout>0时JDBC性能较setQueryTimeout=0和不设置setQueryTimeout相比，sql语句平均执行时间和sql语句平均峰值执行时间性能均有提升，sql语句平均执行时间分别提升8.3%和10.8%，sql语句平均峰值执行时间分别提升12.3%和16.8% |
+| 1. 编写java脚本，开启多线程创建多个connection，<br>每个connection下创建多个statement，分别设置setQueryTimeout>0，setQueryTimeout=0，不设置setQueryTimeout<br>2. 分别多次执行3种setQueryTimeout创建下的java脚本，<br>对比sql平均执行时间和sql语句平均峰值执行时间，验证setQueryTimeout>0与setQueryTimeout=0，不设置<br>setQueryTimeout相比JDBC性能是否提升 | 共执行1条用例，3种setQueryTimeout取值下分别执行5次脚本，得出setQueryTimeout>0时JDBC性能较setQueryTimeout=0和不设置setQueryTimeout相比，sql语句平均执行时间和sql语句平均峰值执行时间性能均有提升，sql语句平均执行时间分别提升8.3%和10.8%，sql语句平均峰值执行时间分别提升12.3%和16.8% |
 
 #### 4.2.6 执行TPC-C，通过对比优化前后tpmc值，验证优化后JDBC性能是否提升
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 下载定制版本benchmarksql并编译，配置pros.pg<br>2. 使用原始版本benchmarksql连接优化前后数据库构造数据<br>3. 切换至定制版本benchmarksql，分别使用优化前后opengauss-jdbc-5.0.0-jar跑TPC-C<br>4. 获取多次执行的tpmc平均值，验证优化后JDBC性能是否提升 | 共执行1条用例，分别在优化前后数据库中执行TPC-C5次，取tpmc平均值，得出优化后tpmc较优化前提升0.7% |
+| 1. 下载定制版本benchmarksql并编译，配置pros.pg<br>2. 使用原始版本benchmarksql连接优化前后数据库构造数据<br>3. 切换至定制版本benchmarksql，分别使用优化前后opengauss-jdbc-5.0.0-jar跑TPC-C<br>4. 获取多次执行的tpmc平均值，验证优化后JDBC性能是否提升 | 共执行1条用例，分别在优化前后数据库中执行TPC-C5次，得出优化后tpmc较优化前提升0.7% |
 
 ### 4.3 可靠性测试
 
@@ -165,13 +165,13 @@
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 使用优化后opengauss-jdbc-5.0.0-jar连接数据库执行SQL命令<br>2. step1执行过程中kill -9 数据库进程<br>3. 观察java程序是否正常报错，是否陷入死锁 | 执行1条用例，执行结果符合预期 |
+| 1. 使用优化后opengauss-jdbc-5.0.0-jar连接数据库执行SQL命令<br>2. step1执行过程中kill -9 数据库进程<br>3. 观察java程序是否正常报错，是否陷入死锁 | 共执行1条用例，执行结果符合预期 |
 
 #### 4.3.2 JDBC连接数据库执行SQL语句过程中kill -19数据库进程，验证程序是否合理报错，是否陷入死锁，kill -18重新拉起进程后程序是否继续执行
 
 | 测试步骤                                                     | 测试结果                      |
 | ------------------------------------------------------------ | ----------------------------- |
-| 1. 使用优化后opengauss-jdbc-5.0.0-jar连接数据库执行SQL命令<br>2. step1执行过程中kill -19 数据库进程<br>3. 观察java程序是否正常报错，是否陷入死锁<br>4. 程序持续运行一段时间后kill -18重新拉起数据库进程，观察<br>程序是否继续执行 | 执行1条用例，执行结果符合预期 |
+| 1. 使用优化后opengauss-jdbc-5.0.0-jar连接数据库执行SQL命令<br>2. step1执行过程中kill -19 数据库进程<br>3. 观察java程序是否正常报错，是否陷入死锁<br>4. 程序持续运行一段时间后kill -18重新拉起数据库进程，观察<br>程序是否继续执行 | 共执行1条用例，执行结果符合预期 |
 
 ### 4.4 测试执行统计数据
 
