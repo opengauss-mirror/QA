@@ -5,11 +5,11 @@
 
 修订记录
 
-| 日期      | 修订版本 | 修改章节 | 修改描述 | 作者        |
-| --------- | -------- | -------- | -------- | ----------- |
-| 2023.3.16 | 1.0      | 初稿撰写 |          | yansong_lee |
-|           |          |          |          |             |
-|           |          |          |          |             |
+| 日期      | 修订版本 | 修改章节         | 修改描述 | 作者        |
+| --------- | -------- | ---------------- | -------- | ----------- |
+| 2023.3.16 | 1.0      | 初稿撰写         |          | yansong_lee |
+| 2022.2.23 | 2.0      | 根据评审意见修改 |          | yansong_lee |
+|           |          |                  |          |             |
 
 目 录
 
@@ -50,7 +50,7 @@
  
 
 ***
-\***
+
 
 # 概述
 
@@ -98,8 +98,8 @@ OS版本说明如下：
 | --------- | ---------------- | ------------------------------------------------------------ |
 | OpenEuler | 20.03 (LTS)      | openEuler 20.03 (LTS)，aarch版本ISO<br />SHA256:3e7cb72d746c5385b02b7a4bf18360925145d13f06bbd41c1a137e545b651d40 |
 | OpenEuler | 20.03 (LTS)      | openEuler 20.03 (LTS)，x86-64版本ISO<br />SHA256:419592be9cba55a2b800e761d865550f28133875920e7bb9c2d5cdaad90a9cbf |
-| OpenEuler | 22.03（LTS）     | openEuler 20.03 (LTS)，aarch版本ISO<br />SHA256:8ee6e6ea6fe3af075846efb28196aac6edd50c99b663b0fc4651fa71195a68e6 |
-| OpenEuler | 22.03（LTS）     | openEuler 20.03 (LTS)，x86-64版本ISO<br />SHA256:a07952feb2f9f0239143daf6cc061a396e09bbb3e26d8fbf38eeb21d0251bde0 |
+| OpenEuler | 22.03（LTS）     | openEuler 22.03 (LTS)，aarch版本ISO<br />SHA256:8ee6e6ea6fe3af075846efb28196aac6edd50c99b663b0fc4651fa71195a68e6 |
+| OpenEuler | 22.03（LTS）     | openEuler 22.03 (LTS)，x86-64版本ISO<br />SHA256:a07952feb2f9f0239143daf6cc061a396e09bbb3e26d8fbf38eeb21d0251bde0 |
 | Kylin     | V10 SP1          | Kylin V10 SP1，aarch版本ISO<br />SHA256:e6fffdb9dec030920a33ad4c57b68cce8cd7d0496b4bd04a7b85f8cc5494cf41 |
 | CentOS    | 7.6.1810（Core） | CentOS Linux release 7.6.1810（Core），x86-64版本ISO<br />SHA256:6d44331cc4f6c506c7bbe9feb8468fad6c51a88ca1393ca6b8b486ea04bec3c1 |
 
@@ -107,62 +107,62 @@ openGauss 5.0.0 Release版本是openGauss社区继续联合多方力量推出的
 
 1.**内核场景化**：涉及9个新特性，发布资源池化新特性
 
-|  no  | feature                                                      | status   | sig           | owner |
-| :--: | ------------------------------------------------------------ | -------- | ------------- | ----- |
-|  1   | 【openGauss 5.0.0 Release】支持XML类型                       | 资料验收 | StorageEngine |       |
-|  2   | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | 已完成   | Connectors    |       |
-|  3   | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | 资料验收 | Connectors    |       |
-|  4   | 【openGauss 5.0.0 Release】JDBC高可用优化                    | 资料验收 | Connectors    |       |
-|  5   | 【openGauss 5.0.0 Release】JDBC实现集群状态发生变化后，快速实现负载均衡效果 | 资料验收 | Connectors    |       |
-|  6   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | 资料验收 | StorageEngine |       |
-|  7   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | 资料验收 | StorageEngine |       |
-|  8   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | 资料验收 | StorageEngine |       |
-|  9   | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | 资料验收 | StorageEngine |       |
+|  no  | feature                                                      | status | sig           | owner |
+| :--: | ------------------------------------------------------------ | ------ | ------------- | ----- |
+|  1   | 【openGauss 5.0.0 Release】支持XML类型                       | 已完成 | StorageEngine |       |
+|  2   | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | 已完成 | Connectors    |       |
+|  3   | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | 已完成 | Connectors    |       |
+|  4   | 【openGauss 5.0.0 Release】JDBC高可用优化                    | 已完成 | Connectors    |       |
+|  5   | 【openGauss 5.0.0 Release】JDBC实现集群状态发生变化后，快速实现负载均衡效果 | 已完成 | Connectors    |       |
+|  6   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | 已完成 | StorageEngine |       |
+|  7   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | 已完成 | StorageEngine |       |
+|  8   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | 已完成 | StorageEngine |       |
+|  9   | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | 已完成 | StorageEngine |       |
 
 2.**工具链**：涉及12个新特性，主要是迁移工具、校验工具以及CM等工具增强
 
-| no   | feature                                                      | status   | sig           | owner |
-| ---- | ------------------------------------------------------------ | -------- | ------------- | ----- |
-| 1    | 【openGauss 5.0.0 Release】【迁移工具】支持一站式迁移工具portal | 资料验收 | Tools         |       |
-| 2    | 【openGauss 5.0.0 Release】【迁移工具】数据校验支持行级、列级和全量比较规则 | 已完成   | Tools         |       |
-| 3    | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（增量迁移） | 资料验收 | Tools         |       |
-| 4    | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（反向迁移） | 资料验收 | Tools         |       |
-| 5    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（全量迁移） | 资料验收 | Tools         |       |
-| 6    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（数据校验） | 资料验收 | Tools         |       |
-| 7    | 【openGauss 5.0.0 Release】支持一键式关闭CM集群服务          | 资料验收 | CM            |       |
-| 8    | 【openGauss 5.0.0 Release】CM支持事件结束后调用用户自定义脚本 | 资料验收 | CM            |       |
-| 9    | 【openGauss 5.0.0 Release】CM支持容器化部署                  | 资料验收 | CM            |       |
-| 10   | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统       | 已完成   | StorageEngine |       |
-| 11   | 【openGauss 5.0.0 Release】openGauss工具一体化平台           | 资料验收 | Tools         |       |
-| 12   | 【openGauss 5.0.0 Release】openGauss数据建模项目             | 资料验收 | Tools         |       |
+| no   | feature                                                      | status | sig           | owner |
+| ---- | ------------------------------------------------------------ | ------ | ------------- | ----- |
+| 1    | 【openGauss 5.0.0 Release】【迁移工具】支持一站式迁移工具portal | 已完成 | Tools         |       |
+| 2    | 【openGauss 5.0.0 Release】【迁移工具】数据校验支持行级、列级和全量比较规则 | 已完成 | Tools         |       |
+| 3    | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（增量迁移） | 已完成 | Tools         |       |
+| 4    | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（反向迁移） | 已完成 | Tools         |       |
+| 5    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（全量迁移） | 已完成 | Tools         |       |
+| 6    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（数据校验） | 已完成 | Tools         |       |
+| 7    | 【openGauss 5.0.0 Release】支持一键式关闭CM集群服务          | 已完成 | CM            |       |
+| 8    | 【openGauss 5.0.0 Release】CM支持事件结束后调用用户自定义脚本 | 已完成 | CM            |       |
+| 9    | 【openGauss 5.0.0 Release】CM支持容器化部署                  | 已完成 | CM            |       |
+| 10   | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统       | 已完成 | StorageEngine |       |
+| 11   | 【openGauss 5.0.0 Release】openGauss工具一体化平台           | 已完成 | Tools         |       |
+| 12   | 【openGauss 5.0.0 Release】openGauss数据建模项目             | 已完成 | Tools         |       |
 
 3.**兼容性**：涉及23个新特性，从数据类型兼容、系统函数兼容、DDL兼容、DML兼容、PL/SQL兼容、SHOW语法兼容和其他语法兼容方面提升openGauss对openGauss对M*的兼容率
 
 | no   | feature                                                      | combination | sig    | ownver   |
 | ---- | ------------------------------------------------------------ | ----------- | ------ | -------- |
 | 1    | 【openGauss 5.0.0 Release】【M兼容性】支持隐藏索引           | 已完成      | Plugin |          |
-| 2    | 【openGauss 5.0.0 Release】【M兼容性】支持union查询关联不同类型的字段 | 资料验收    | Plugin |          |
+| 2    | 【openGauss 5.0.0 Release】【M兼容性】支持union查询关联不同类型的字段 | 已完成      | Plugin |          |
 | 3    | 【openGauss 5.0.0 Release】【M兼容性】支持建表语句中不常见选项语法兼容 | 已完成      | Plugin |          |
-| 4    | 【openGauss 5.0.0 Release】【M兼容性】create function语法兼容 | 资料验收    | Plugin |          |
+| 4    | 【openGauss 5.0.0 Release】【M兼容性】create function语法兼容 | 已完成      | Plugin |          |
 | 5    | 【openGauss 5.0.0 Release】【M兼容性】支持操作符行为和M兼容  | 已完成      | Plugin |          |
 | 6    | 【openGauss 5.0.0 Release】【M兼容性】distinct支持order by带表达式 | 已完成      | Plugin |          |
-| 7    | 【openGauss 5.0.0 Release】【M兼容性】支持视图、索引等语法带ALGORITHM选项 | 资料验收    | Plugin |          |
-| 8    | 【openGauss 5.0.0 Release】M兼容性 full text全文索引         | 资料验收    | Plugin | Enmotech |
-| 9    | 【openGauss 5.0.0 Release】M兼容性 'user'@'host' 用户        | 资料验收    | Plugin | Enmotech |
-| 10   | 【openGauss 5.0.0 Release】lock table相关特性                | 资料验收    | Plugin | Enmotech |
-| 11   | 【openGauss 5.0.0 Release】外键支持关联到普通索引            | 资料验收    | Plugin | Enmotech |
-| 12   | 【openGauss 5.0.0 Release】M兼容性 show status语法           | 资料验收    | Plugin | Enmotech |
-| 13   | 【openGauss 5.0.0 Release】支持binary数据类型及运算符        | 资料验收    | Plugin | Vastdata |
-| 14   | 【openGauss 5.0.0 Release】支持create table select方式建表时指定字段 | 资料验收    | Plugin | Vastdata |
-| 15   | 【openGauss 5.0.0 Release】支持字段大小写敏感                | 资料验收    | Plugin | Vastdata |
+| 7    | 【openGauss 5.0.0 Release】【M兼容性】支持视图、索引等语法带ALGORITHM选项 | 已完成      | Plugin |          |
+| 8    | 【openGauss 5.0.0 Release】M兼容性 full text全文索引         | 已完成      | Plugin | Enmotech |
+| 9    | 【openGauss 5.0.0 Release】M兼容性 'user'@'host' 用户        | 已完成      | Plugin | Enmotech |
+| 10   | 【openGauss 5.0.0 Release】lock table相关特性                | 已完成      | Plugin | Enmotech |
+| 11   | 【openGauss 5.0.0 Release】外键支持关联到普通索引            | 已完成      | Plugin | Enmotech |
+| 12   | 【openGauss 5.0.0 Release】M兼容性 show status语法           | 已完成      | Plugin | Enmotech |
+| 13   | 【openGauss 5.0.0 Release】支持binary数据类型及运算符        | 已完成      | Plugin | Vastdata |
+| 14   | 【openGauss 5.0.0 Release】支持create table select方式建表时指定字段 | 已完成      | Plugin | Vastdata |
+| 15   | 【openGauss 5.0.0 Release】支持字段大小写敏感                | 已完成      | Plugin | Vastdata |
 | 16   | 【openGauss 5.0.0 Release】支持dual表                        | 已完成      | Plugin | Vastdata |
 | 17   | 【openGauss 5.0.0 Release】select支持force关键字强制走索引   | 已完成      | Plugin | Vastdata |
 | 18   | 【openGauss 5.0.0 Release】支持authid作为列名                | 已完成      | Plugin | Vastdata |
 | 19   | 【openGauss 5.0.0 Release】set语法增强                       | 已完成      | Plugin | Vastdata |
-| 20   | 【openGauss 5.0.0 Release】支持declare handler               | 资料验收    | Plugin | Vastdata |
-| 21   | 【openGauss 5.0.0 Release】create trigger 语法增强           | 资料验收    | Plugin | Vastdata |
-| 22   | 【openGauss 5.0.0 Release】select语句支持用户自定义变量设置  | 资料验收    | Plugin | Vastdata |
-| 23   | 【openGauss 5.0.0 Release】支持事件触发器                    | 资料验收    | Plugin | Vastdata |
+| 20   | 【openGauss 5.0.0 Release】支持declare handler               | 已完成      | Plugin | Vastdata |
+| 21   | 【openGauss 5.0.0 Release】create trigger 语法增强           | 已完成      | Plugin | Vastdata |
+| 22   | 【openGauss 5.0.0 Release】select语句支持用户自定义变量设置  | 已完成      | Plugin | Vastdata |
+| 23   | 【openGauss 5.0.0 Release】支持事件触发器                    | 已完成      | Plugin | Vastdata |
 
 openGauss 5.0.0 Release版本测试活动分工如下：
 
@@ -308,17 +308,17 @@ openGauss 5.0.0 Release版本详细测试内容包括：
 
 1、内核&场景化
 
-| 序号 | 特性名称                                                     | 测试情况说明                                                 | 约束依赖说明                                                 | 遗留问题单 | 特性质量评估                | 备注                                                         |
-| :--: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- | --------------------------- | ------------------------------------------------------------ |
-|  1   | 【openGauss 5.0.0 Release】支持XML类型                       | 共执行1轮测试，执行用例58条，覆盖功能测试、升级和资料测试，主要验证xml类型取值合法性，xml类型和其他数据类型相互转换，作为表字段类型进行增删改查、创建索引、约束等操作，结合函数、存储过程入参、出参测试，测试在自定义类型中使用。 | /                                                            | 无         | <font color=green>▮</font>  | /                                                            |
-|  2   | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | 共设计测试用例37个功能用例，主要包含dblink通过libpq连接远程openGauss数据库、通过ODBC连接远程openGauss数据库、通过ODBC连接异构数据库，及dblink常用函数功能的验证。共计发现4个问题，均已修复且回归验证通过，整体质量良好。 | 预先安装好ODBC应用程序，并配置好需要的odbc.ini和odbcinst.ini | 无         | <font color=green>▮</font>  | /                                                            |
-|  3   | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | 执行1轮测试，执行66条功能用例，主要包含执行目前jdbc已有功能用例不受影响； 新增开启多线程，线程中创建多connection，connection中创建多statement执行sql语句场景，验证功能是否正常； 新增脚本中设置超时时间小于sql语句实际执行时间，验证能否正常报错，是否陷入死锁。 执行性能用例13条，主要包含编写java脚本，验证在不同sql语句执行场景下，优化后jdbc在开启多线程，线程中创建多connection，connection中创建多statement执行sql语句，即执行并发度很高的场景下，性能对比优化前有提升；多次跑tpcc，对比tpmc值，验证优化后是否有提升。 执行可靠性用例2条，主要包含在jdbc连接数据库执行执行的过程中kill -9数据库进程，验证脚本能否正常报错退出，是否会陷入死锁；在jdbc连接数据库执行执行的过程中kill -19数据库进程，验证脚本能否正常报错，是否会陷入死锁，重新kill -18拉起数据库进程后脚本能否继续执行。 测试过程未发现问题，整体质量良好。 | 仅是提升高并发场景的SQL执行的并发度，不影响JDBC使用功能；必须设置参数setQueryTimeout>0才能触发锁。 | 无         | <font color=green>▮</font>  | 1.优化后JDBC性能的优化只体现在select语句，对dml语句（insert，delete，update）会出现性能不提升或性能劣化的情况，与开发讨论后确认是数据库端对并发修改表数据存在排它锁的影响，非本次需求关注点，建议后续关注此方面。 2.性能提升未提供具体提升指标，建议后续关注是否补充。 |
-|  4   | 【openGauss 5.0.0 Release】JDBC高可用优化                    | 共设计17个功能用例，主要覆盖了功能、性能、可靠性，17个皆执行通过，执行率100%。共计发现问题2个，均已解决，整体质量良好。 | 1.配置参数必须为：targetServerType=master&heartbeatPeriod<br />2.链接方式必须为链接主备集群方式 | 无         | <font color=green>▮</font>  | /                                                            |
-|  5   | 【openGauss 5.0.0 Release】JDBC实现集群状态发生变化后，快速实现负载均衡效果 | 共设计36个用例，全部测试通过。主要覆盖功能、可靠性、性能场景；发现问题单4个，全部解决，验收通过。 | JDBC连接参数需要配置：autoBalance=leastconn&enableQuickAutoBalance=true，打开快速负载均衡 | 无         | <font color=green>▮</font>  | /                                                            |
-|  6   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | 非512字节整数倍读与写执行2轮测试，执行用例10条，主要测试非512字节整数倍写入数据成功，并且读取数据无异常，测试后功能符合预期。 | max_prepared_transactions参数数值大于0                       | 无         | <font color=green>▮</font>  | /                                                            |
-|  7   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | 共享存储HA场景加固特性测试共执行32个用例，主要覆盖功能测试和可靠性测试，功能测试主要包含一定业务压力下将主机主机踢出集群触发failover，以及在failover过程中kill新主的gaussdb、dss、cm等主要进程；可靠性测试主要覆盖在failover过程中注入网络故障、IO故障、磁盘故障等。共发现12个问题，1个遗留，9个已完成，2个已验收，整体质量一般。 | /                                                            | 无         | <font color=yellow>▲</font> | [I6NQ6U](https://e.gitee.com/opengaussorg/issues/table?issue=I6NQ6U) |
-|  8   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | openGauss共享存储DFX增强特性，共计执行40个用例，主要覆盖了构造不同前提（比如利用dfx脚本和tpcc工具构造业务压力）和reform场景结合测试，累计发现缺陷单16个，7个已验收，8个已完成，1个遗留，整体质量一般。 | /                                                            | 无         | <font color=yellow>▲</font> | [I6CC6J](https://e.gitee.com/opengaussorg/dashboard?issue=I6CC6J) |
-|  9   | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | openGauss共享存储方案支持升级共计执行用例38条，只要为覆盖功能测试和资料测试。功能测试主要覆盖就地升级，就地升级能够正常升级或回滚，会滚后能再入升级；灰度升级在业务进行中可以正常的升级或回滚；指定节点升级可以指定单节点与多节点进行升级或回滚，已升级节点不能再次升级。资料测试主要关注关于共享存储模式下关于升级的描述是否合理。本次测试发现问题2个，均已解决，并且回归通过，无遗留风险，整体质量一般。 | 1. 共享存储升级与非共享存储升级方式保持一致；<br />2. 共享存储升级基线为5.0.0版本；<br />3. 共享存储的rdma模式不支持升级。 | 无         | <font color=green>▮</font>  | /                                                            |
+| 序号 | 特性名称                                                     | 测试情况说明                                                 | 约束依赖说明                                                 | 遗留问题单                                                   | 特性质量评估                | 备注 |
+| :--: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------- | ---- |
+|  1   | 【openGauss 5.0.0 Release】支持XML类型                       | 共执行1轮测试，执行用例58条，覆盖功能测试、升级和资料测试，主要验证xml类型取值合法性，xml类型和其他数据类型相互转换，作为表字段类型进行增删改查、创建索引、约束等操作，结合函数、存储过程入参、出参测试，测试在自定义类型中使用。 | /                                                            | 无                                                           | <font color=green>▮</font>  | /    |
+|  2   | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | 共设计测试用例37个功能用例，主要包含dblink通过libpq连接远程openGauss数据库、通过ODBC连接远程openGauss数据库、通过ODBC连接异构数据库，及dblink常用函数功能的验证。共计发现4个问题，均已修复且回归验证通过，整体质量良好。 | 预先安装好ODBC应用程序，并配置好需要的odbc.ini和odbcinst.ini | 无                                                           | <font color=green>▮</font>  | /    |
+|  3   | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | 执行1轮测试，执行66条功能用例，主要包含执行目前jdbc已有功能用例不受影响； 新增开启多线程，线程中创建多connection，connection中创建多statement执行sql语句场景，验证功能是否正常； 新增脚本中设置超时时间小于sql语句实际执行时间，验证能否正常报错，是否陷入死锁。 执行性能用例13条，主要包含编写java脚本，验证在不同sql语句执行场景下，优化后jdbc在开启多线程，线程中创建多connection，connection中创建多statement执行sql语句，即执行并发度很高的场景下，性能对比优化前有提升；多次跑tpcc，对比tpmc值，验证优化后是否有提升。 执行可靠性用例2条，主要包含在jdbc连接数据库执行执行的过程中kill -9数据库进程，验证脚本能否正常报错退出，是否会陷入死锁；在jdbc连接数据库执行执行的过程中kill -19数据库进程，验证脚本能否正常报错，是否会陷入死锁，重新kill -18拉起数据库进程后脚本能否继续执行。 测试过程未发现问题，整体质量良好。 | 仅提升高并发场景的SQL执行的并发度，不影响JDBC使用功能；必须设置参数setQueryTimeout>0才能触发锁。 | 无                                                           | <font color=green>▮</font>  | /    |
+|  4   | 【openGauss 5.0.0 Release】JDBC高可用优化                    | 共设计17个功能用例，主要覆盖了功能、性能、可靠性，17个皆执行通过，执行率100%。共计发现问题2个，均已解决，整体质量良好。 | 1.配置参数必须为：targetServerType=master&heartbeatPeriod<br />2.链接方式必须为链接主备集群方式 | 无                                                           | <font color=green>▮</font>  | /    |
+|  5   | 【openGauss 5.0.0 Release】JDBC实现集群状态发生变化后，快速实现负载均衡效果 | 共设计36个用例，全部测试通过。主要覆盖功能、可靠性、性能场景；发现问题单5个，全部解决，验收通过。 | JDBC连接参数需要配置：autoBalance=leastconn&enableQuickAutoBalance=true，打开快速负载均衡 | 无                                                           | <font color=green>▮</font>  | /    |
+|  6   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | 非512字节整数倍读与写执行2轮测试，执行用例10条，主要测试非512字节整数倍写入数据成功，并且读取数据无异常，测试后功能符合预期。 | max_prepared_transactions参数数值大于0                       | 无                                                           | <font color=green>▮</font>  | /    |
+|  7   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | 共享存储HA场景加固特性测试共执行32个用例，主要覆盖功能测试和可靠性测试，功能测试主要包含一定业务压力下将主机主机踢出集群触发failover，以及在failover过程中kill新主的gaussdb、dss、cm等主要进程；可靠性测试主要覆盖在failover过程中注入网络故障、IO故障、磁盘故障等。共发现12个问题，1个遗留，9个已完成，2个已验收，整体质量一般。 | /                                                            | [I6NQ6U](https://e.gitee.com/opengaussorg/issues/table?issue=I6NQ6U) | <font color=yellow>▲</font> | /    |
+|  8   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | openGauss共享存储DFX增强特性，共计执行40个用例，主要覆盖了构造不同前提（比如利用dfx脚本和tpcc工具构造业务压力）和reform场景结合测试，累计发现缺陷单16个，7个已验收，8个已完成，1个遗留，整体质量一般。 | /                                                            | [I6CC6J](https://e.gitee.com/opengaussorg/dashboard?issue=I6CC6J) | <font color=yellow>▲</font> | /    |
+|  9   | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | openGauss共享存储方案支持升级共计执行用例38条，只要为覆盖功能测试和资料测试。功能测试主要覆盖就地升级，就地升级能够正常升级或回滚，会滚后能再入升级；灰度升级在业务进行中可以正常的升级或回滚；指定节点升级可以指定单节点与多节点进行升级或回滚，已升级节点不能再次升级。资料测试主要关注关于共享存储模式下关于升级的描述是否合理。本次测试发现问题2个，均已解决，并且回归通过，无遗留风险，整体质量一般。 | 1. 共享存储升级与非共享存储升级方式保持一致；<br />2. 共享存储升级基线为5.0.0版本；<br />3. 共享存储的rdma模式不支持升级。 | 无                                                           | <font color=green>▮</font>  | /    |
 
 2、工具链
 
@@ -333,7 +333,7 @@ openGauss 5.0.0 Release版本详细测试内容包括：
 |  7   | 【openGauss 5.0.0 Release】支持一键式关闭CM集群服务          | 共执行2轮测试，共执行用例53条，测试覆盖基本功能（暂停和恢复CM服务、暂停后CM的功能）和可靠性方面。通过故障注入等手段验证CM服务停止后CM的仲裁进程保活等能力。累计发现问题个，已验收1个，整体质量良好。 | 无                                                           | 无         | <font color=green>▮</font> | /    |
 |  8   | 【openGauss 5.0.0 Release】CM支持事件结束后调用用户自定义脚本 | 共执行2轮测试，共执行用例45条，测试覆盖基本功能（参数值、配置特定事件、不同场景触发脚本）和可靠性方面。通过故障注入等手段保证容器中CM仲裁和异常拉起能力的稳定性。累计发现问题个，已验收1个，整体质量良好。 | 无                                                           | 无         | <font color=green>▮</font> | /    |
 |  9   | 【openGauss 5.0.0 Release】CM支持容器化部署                  | 共执行3轮测试，共执行用例77条，测试覆盖基本功能（配置json文件、启动实例，集群功能）和可靠性方面。通过故障注入等手段保证容器中CM仲裁和异常拉起能力。累计发现issue8个，已验收8个，整体质量良好。 | 1.容器内仅提供CM和数据库内核工具，OM工具无法使用             | 无         | <font color=green>▮</font> | /    |
-|  10  | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统       | 主要包含在x86架构和arm架构的openEuler 22.03LTS系统编译数据库内核、OM、CM、JDBC/ODBC/python驱动、libpq以及迁移工具，以不同方式的安装数据库并执行基本SQL用例，和TPCC性能测试。共发现1个问题，待解决，性能不达标，整体质量良好。 | 1.只支持x86和arm两种架构<br />2.om编译使用定制三方库         | 无         | <font color=green>▮</font> | /    |
+|  10  | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统       | 主要包含在x86架构和arm架构的openEuler 22.03LTS系统编译数据库内核、OM、CM、JDBC/ODBC/python驱动、libpq以及迁移工具，以不同方式的安装数据库并执行基本SQL用例，和TPCC性能测试。共发现1个问题，待解决，整体质量良好。 | 1.只支持x86和arm两种架构<br />2.om编译使用定制三方库         | 无         | <font color=green>▮</font> | /    |
 |  11  | 【openGauss 5.0.0 Release】openGauss工具一体化平台           | 共执行5论测试，共执行用例301个用例，测试主要覆盖基本功能（添加、删除、修改物理机和AZ，对集群进行启停、切主、重建、卸载、删除操作，一键安装极简版单机，在线安装，离线安装和导入单机、一主一备的极简版和轻量版，在线安装，离线安装和导入单机、一主一备、一主两备的om企业版和一主两备的cm企业版，查询、新增、修改、删除安装包，查询、恢复、删除集群备份，查询、安装、卸载、启用、停用插件，查询、添加、删除、启用、停用账号和角色，配置角色权限，查询、添加、修改、删除白名单IP，查询、下载系统日志，设置系统日志设置，查询、查看操作日志详情），兼容性、易用性，以及资料测试。累计发现问题58个，55个已验收，3个已完成。 | 1.使用root用户，创建新用户og_ops，并授予sudo免密权限<br/>2.平台使用的数据库，当前仅支持openGauss数据库，并且需要提前创建database<br/>3.需要将部署服务器IP配置在平台使用的数据库（openGauss）的白名单列表中 | 无         | <font color=green>▮</font> | /    |
 |  12  | 【openGauss 5.0.0 Release】openGauss数据建模项目             | 共执行5论测试，共执行用例272个用例，测试主要覆盖基本功能（安装卸载插件、数据流工作区算子管理、数据流算子连线及配置规则及运行结果展示、数据流可视化图表生成、报表生成及分享），兼容性、易用性，以及资料测试。累计发现问题50个，48个已验收，2个已完成。 | 1.需要在一体化平台的基座上传bas-ops插件<br/>2.需要一体化平台拥有已经安装或导入的集群 | 无         | <font color=green>▮</font> | /    |
 
@@ -409,21 +409,21 @@ openGauss 5.0.0 Release版本所有适用的安全扫描和安全测试均已执
 
 性能测试对关键性能指标进行摸底和测试。
 
-| **指标大项** | **指标小项**                                     | **指标值** | **说明**                              | 测试结论                                                     |
-| ------------ | ------------------------------------------------ | ---------- | ------------------------------------- | ------------------------------------------------------------ |
-| TPCC         | 2P（Taishan 200 2280 7260）单节点 1H             | 150万      | 与Release基线数据差异小于5%以内可接受 | 单节点1H在极限场景配置下tpmC为***150.5***W+，验证通过        |
-|              | 2P（Taishan 200 2280 7260）单节点 8H             | 150万      | 与Release基线数据差异小于5%以内可接受 | 单节点8H在极限场景配置下tpmC为***145.7***W+。在5%浮动范围内，验证通过 |
-|              | 2P（Taishan 200 2280 7260）一主一备 1H           | 120万      | 与Release基线数据差异小于5%以内可接受 | 一主一备1H在极限场景配置下tpmC为***120.3***W+。验证通过      |
-|              | 4P（Taishan 200 2280 7260）单节点 1H             | 230万      | 与Release基线数据差异小于5%以内可接受 | 单节点在极限场景配置下tpmC为***232.1***W+。验证通过          |
-|              | 2P（Taishan 200 2280 5220）单节点 1H             | 100万      | 与Release基线数据差异小于5%以内可接受 | 单节点1H在极限场景配置下tpmC为***96***W+                     |
-|              | 分布式ss-jdbc性能损耗场景                        | 15%        | 与Release基线数据差异小于5%以内可接受 | ss-jdcbc1节点1H，tpmC 151W（数据库直连1节点1H，tpmC 150W），性能损耗为***0%*** |
-|              | 分布式OLTP，2P（Taishan 200 2280 7260）15节点 1H | 1200万     | 此即为release基线                     | 9pcs+6ss-jdbc+1ss-proxy，tpmC为***1257***W+                  |
-|              | 分布式OLTP，2P（Taishan 200 2280 7260）32节点 1H | 2100万     | 此即为release基线                     | 19pcs+12ss-jdbc+1ss-proxy，tpmC为***2110***W+                |
-| RTO          | 一主两同步备failover                             | 10s        | 与Release基线数据差异小于5%以内可接受 | **1**s，验证通过                                             |
-| 工具链       | 全量迁移                                         | 300MB/s    | 此即为release基线                     | 源端存在10张表，单表数据量3000万，线程数20场景下，M\*向openGauss全量迁移速度为***435MB/s*** |
-|              | 增量迁移                                         | 3w tps     | 此即为release基线                     | 源端存在10张表，单表数据量10万，线程数50，混合IUD场景下，M\*向openGauss增量迁移速度为***3.05w tps*** |
-|              | 反向迁移                                         | 1w tps     | 此即为release基线                     | 源端存在30张表，单表数据量1000，线程数30，insert场景下，openGauss向M\*反向迁移速度为***2.1w tps***<br />源端存在50张表，单表数据量10万，线程数50，混合IUD场景下，openGauss向M\*反向迁移速度为***2.1w tps*** |
-|              | 全量校验                                         | 70MB/s     | 此即为release基线                     | 1张表，单表数据量500万场景下，datachecker平均校验速度为***97.77MB/s***<br/>2张表，单表数据量250万场景下，datachecker平均校验速度为***93.6MB/s***<br/>10张表，单表数据量50万场景下，datachecker平均校验速度为***95.08MB/s***<br/>40张表，单表数据量12.5万场景下，datachecker平均校验速度为***125.42MB/s***<br/>200张表，单表数据量2.5万场景下，datachecker平均校验速度为***104.29MB/s***<br/>250张表，单表数据量2万场景下，datachecker平均校验速度为***95.48MB/s***<br/>500张表，单表数据量1万场景下，datachecker平均校验速度为***91.9MB/s*** |
+| **指标大项** | **指标小项**                                     | **指标值** | **说明**          | 测试结论                                                     |
+| ------------ | ------------------------------------------------ | ---------- | ----------------- | ------------------------------------------------------------ |
+| TPCC         | 2P（Taishan 200 2280 7260）单节点 1H             | 150万      | 此即为release基线 | 单节点1H在极限场景配置下tpmC为***150.5***W+                  |
+|              | 2P（Taishan 200 2280 7260）单节点 8H             | 150万      | 此即为release基线 | 单节点8H在极限场景配置下tpmC为***145.7***W+                  |
+|              | 2P（Taishan 200 2280 7260）一主一备 1H           | 120万      | 此即为release基线 | 一主一备1H在极限场景配置下tpmC为***120.3***W+                |
+|              | 4P（Taishan 200 2280 7260）单节点 1H             | 230万      | 此即为release基线 | 单节点在极限场景配置下tpmC为***232.1***W+                    |
+|              | 2P（Taishan 200 2280 5220）单节点 1H             | 100万      | 此即为release基线 | 单节点1H在极限场景配置下tpmC为***96***W+                     |
+|              | 分布式ss-jdbc性能损耗场景                        | 15%        | 此即为release基线 | ss-jdcbc1节点1H，tpmC 151W（数据库直连1节点1H，tpmC 150W），性能损耗为***0%*** |
+|              | 分布式OLTP，2P（Taishan 200 2280 7260）15节点 1H | 1200万     | 此即为release基线 | 9pcs+6ss-jdbc+1ss-proxy，tpmC为***1257***W+                  |
+|              | 分布式OLTP，2P（Taishan 200 2280 7260）32节点 1H | 2100万     | 此即为release基线 | 19pcs+12ss-jdbc+1ss-proxy，tpmC为***2110***W+                |
+| RTO          | 一主两同步备failover                             | 10s        | 此即为release基线 | **1**s                                                       |
+| 工具链       | 全量迁移                                         | 300MB/s    | 此即为release基线 | 源端存在10张表，单表数据量3000万，线程数20场景下，M\*向openGauss全量迁移速度为***435MB/s*** |
+|              | 增量迁移                                         | 3w tps     | 此即为release基线 | 源端存在10张表，单表数据量10万，线程数50，混合IUD场景下，M\*向openGauss增量迁移速度为***3.05w tps*** |
+|              | 反向迁移                                         | 1w tps     | 此即为release基线 | 源端存在30张表，单表数据量1000，线程数30，insert场景下，openGauss向M\*反向迁移速度为***2.1w tps***<br />源端存在50张表，单表数据量10万，线程数50，混合IUD场景下，openGauss向M\*反向迁移速度为***2.1w tps*** |
+|              | 全量校验                                         | 70MB/s     | 此即为release基线 | 1张表，单表数据量500万场景下，datachecker平均校验速度为***97.77MB/s***<br/>2张表，单表数据量250万场景下，datachecker平均校验速度为***93.6MB/s***<br/>10张表，单表数据量50万场景下，datachecker平均校验速度为***95.08MB/s***<br/>40张表，单表数据量12.5万场景下，datachecker平均校验速度为***125.42MB/s***<br/>200张表，单表数据量2.5万场景下，datachecker平均校验速度为***104.29MB/s***<br/>250张表，单表数据量2万场景下，datachecker平均校验速度为***95.48MB/s***<br/>500张表，单表数据量1万场景下，datachecker平均校验速度为***91.9MB/s*** |
 
 ### 兼容性测试
 
@@ -452,7 +452,7 @@ openGauss 5.0.0 Release版本所有适用的安全扫描和安全测试均已执
 
 | Domain       | 测试活动                                                     | 测试结论 |
 | ------------ | ------------------------------------------------------------ | -------- |
-| 支持云化部署 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/X86+openEuler 22.03 LTS/ARM+openEuler 22.03 LTS环境下，通过Docker（18.06.1-ce/18.09.0）安装部署openGauss 5.0.0 Release数据库 | 测试通过 |
+| 支持云化部署 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/X86+openEuler 22.03 LTS/ARM+openEuler 22.03 LTS环境下，通过Docker（18.03.1-ce/18.09.0）安装部署openGauss 5.0.0 Release数据库 | 测试通过 |
 | 操作系统兼容 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/X86+openEuler 22.03 LTS/ARM+openEuler 22.03 LTS/ARM+Kylin V10环境下，安装部署openGauss 5.0.0 Release数据库 | 测试通过 |
 
 ### 资料测试
@@ -499,10 +499,10 @@ openGauss 5.0.0 Release版本共发现问题844个，有效问题799个，无效
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
 | 1    | [I6IDTZ](https://e.gitee.com/opengaussorg/dashboard?issue=I6IDTZ) | 启用hot_standby_feedback参数，备库down的期间，主库表发生膨胀 | 次要     | 根因：当备机失连后不会同步给主机xmin，主机执行vacuum时只能清理此xmin之前的死亡页面。 <br />影响：备机故障后，vaccum无法回收死亡页面，磁盘占用持续上升，磁盘满后主机服务会变为只读。 | 1.此风险在开发手册中已经重点说明且默认不开启。<br/>2.带CM场景下备机会自动恢复，不带CM场景下手动执行命令也可恢复。 | /    |
 | 2    | [I6D740](https://gitee.com/opengaussorg/dashboard?issue_id=I6D740) | 执行计划选择 bitmap scan 更慢                                | 不重要   | 根因：对于bitmap、index、indexonly等计划优劣的边界范围，受到很多因素影响，并非一个绝对值，因此很多时候确实存在一些代价估算不准导致选错计划的情况。<br/>影响：不排除极特殊场景下代价公式的计算出现一些偏差问题或存在一些代价估算不准导致选错计划的情况。 | 1.目前使用的是2.0.0的版本，在3.0.0以及之后的版本之中进行过多次对于索引的代价模型优化，可以使用新版本进行测试。<br/>2.analyze保证统计数据的准确，尝试调整cpu_index_tuple_cost、cpu_tuple_cost、cpu_operator_cost、random_page_cost、enable_bitmapscan、enable_indexscan、enable_indexonlyscan等参数，或者考虑使用hint来进行 | /    |
-| 3    | [I6CC6J](https://e.gitee.com/opengaussorg/dashboard?issue=I6CC6J) | 【测试类型：功能测试】【测试版本：5.0.0】 【资源池化】执行sysbench+gstack压力操作，数据库产生core，Cannot access memory at address 0x8 | 不重要   | 根因：当磁盘文件损坏时，如果使用gstack查询数据库堆栈，会出现踩内存导致的空指针异常，进而引发数据库core。自2月1日该问题提单至今，已修复多个磁盘文件损坏问题，且在B009版本执行gstack查询10000+次未复现。<br />影响：磁盘文件损坏会导致数据库异常，此时数据库不可用，执行gstack操作后，数据库可能产生core | 数据库磁盘文件损坏时，应该运行磁阵快照和数据库备份等修复手段恢复文件数据 | /    |
+| 3    | [I6CC6J](https://e.gitee.com/opengaussorg/dashboard?issue=I6CC6J) | 【测试类型：功能测试】【测试版本：5.0.0】 【资源池化】执行sysbench+gstack压力操作，数据库产生core，Cannot access memory at address 0x8 | 不重要   | 根因：当磁盘文件损坏时，如果使用gstack查询数据库堆栈，会出现踩内存导致的空指针异常，进而引发数据库core。自2月1日该问题提单至今，已修复多个磁盘文件损坏问题，且执行gstack查询10000+次未复现。<br />影响：磁盘文件损坏会导致数据库异常，此时数据库不可用，执行gstack操作后，数据库可能产生core | 数据库磁盘文件损坏时，应该运行磁阵快照和数据库备份等修复手段恢复文件数据 | /    |
 | 4    | [I6NQ6U](https://e.gitee.com/opengaussorg/issues/table?issue=I6NQ6U) | 【测试类型：功能测试】【测试版本：5.0.0】 【资源池化】开启rto时主机执行业务而备机不执行业务，将主机踢出集群，cm的backend线程无法退出，触发重启Failover | 次要     | 根因：当前在线Failover为了避免回放无法完成，需要将业务线程退出。当前有一些cmagent的连接出现无法退出，在线failover失败。但cmagent线程不影响回放。<br/>影响：出现在线failover失败 | 出现因为cmagent的线程无法退出，进程会重启，在线failover转为重启failover | /    |
 | 5    | [I6DRSA](https://e.gitee.com/opengaussorg/projects/477260/bugs/table?issue=I6DRSA) | 【测试类型：功能】【测试版本：5.0.0】【GSC】线程池模式下，打开enable_global_syscache，进行新库创建后，连接库进行创建表操作时，建连报错:gsql: ERROR: aquire wrlock failed | 次要     | 根因：内核在初始化gsc时，保证eqfunc都是硬编码来自进程启动时构建的oidhash表中，但是插件会修改这个逻辑，导致eqfunc从其他hash表查询，导致查询失败，查询失败会读syscache，但是此时syscache不可用，导致死锁报错<br/>影响：建连会报错 | 重试可解决                                                   | /    |
-| 6    | [I6EWRZ](https://gitee.com/opengaussorg/dashboard?issue_id=I6EWRZ) | 【测试类型：存储功能】【测试版本：3.0.0】并发创建索引和表触发表空间最大值检测导致死锁 | 次要     | 根因：执行创建索引，新索引记录插入pg_index的索引表，且触发页面分裂，在这个过程中并发较大量DDL，触发relcache重置失效<br />影响：数据库死锁 | 重启数据库进程                                               | /    |
+| 6    | [I6EWRZ](https://gitee.com/opengaussorg/dashboard?issue_id=I6EWRZ) | 【测试类型：存储功能】【测试版本：3.0.0】并发创建索引和表触发表空间最大值检测导致死锁 | 次要     | 根因：执行创建索引，新索引记录插入pg_index的索引表，且触发页面分裂（1个pg_index所索引页面可以存放300条索引记录，概率是1/300），在这个过程中并发较大量DDL，触发relcache重置失效（通常业务在一开始建库时执行DDL建表，后续基本不会执行DDL操作）<br />影响：数据库死锁 | 重启数据库进程                                               | /    |
 
 # 致谢
 
