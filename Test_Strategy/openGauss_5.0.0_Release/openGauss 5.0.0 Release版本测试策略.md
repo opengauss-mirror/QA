@@ -70,48 +70,38 @@ openGauss 5.0.0 Release版本2023年发布的openGauss Release版本，维护周
 
 结合社区release-manager团队制定的[版本计划](https://gitee.com/opengauss/release-management/blob/master/openGauss%205.0.0/release-plan.md)，openGauss 5.0.0 Release版本发布的需求列表如下：
 
-1. **内核场景化**：涉及15个新特性，发布共享存储新特性，针对JDBC、ODBC等驱动侧做特性增强
+1. **内核场景化**：涉及9个新特性，发布共享存储新特性，针对JDBC、ODBC等驱动侧做特性增强
 
    | no   | feature                                                      | status   | sig           | owner |
    | ---- | ------------------------------------------------------------ | -------- | ------------- | ----- |
    | 1    | 【openGauss 5.0.0 Release】支持XML类型                       | 方案设计 | StorageEngine |       |
-   | 2    | 【openGauss 5.0.0 Release】支持慢SQL db_time统计补齐时间空洞 | 方案设计 | SQLEngine     |       |
-   | 3    | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | 方案设计 | Connectors    |       |
-   | 4    | 【openGauss 5.0.0 Release】ODBC windows版本发布              | 方案设计 | Connectors    |       |
-   | 5    | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统       | 需求验收 | StorageEngine |       |
-   | 6    | 【openGauss 5.0.0 Release】支持数据库物理读写块大小的配置功能 | 代码检视 | StorageEngine |       |
-   | 7    | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | 方案设计 | Connectors    |       |
-   | 8    | 【openGauss 5.0.0 Release】JDBC高可用优化                    | 方案设计 | Connectors    |       |
-   | 9    | 【openGauss 5.0.0 Release】JDBC实现集群状态发生变化后，快速实现负载均衡效果 | 方案设计 | Connectors    |       |
-   | 10   | 【openGauss 5.0.0 Release】升级后的数据字典校验              | 方案设计 | StorageEngine |       |
-   | 11   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | 方案设计 | StorageEngine |       |
-   | 12   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | 方案设计 | StorageEngine |       |
-   | 13   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | 方案设计 | StorageEngine |       |
-   | 14   | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | 方案设计 | StorageEngine |       |
-   | 15   | 【openGauss 5.0.0 Release】【资源池化】资源池化支持Dorado复制，支持主备双集群部署 | 方案设计 | StorageEngine |       |
+   | 2    | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | 方案设计 | Connectors    |       |
+   | 3    | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | 方案设计 | Connectors    |       |
+   | 4    | 【openGauss 5.0.0 Release】JDBC高可用优化                    | 方案设计 | Connectors    |       |
+   | 5    | 【openGauss 5.0.0 Release】JDBC实现集群状态发生变化后，快速实现负载均衡效果 | 方案设计 | Connectors    |       |
+   | 6    | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | 方案设计 | StorageEngine |       |
+   | 7    | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | 方案设计 | StorageEngine |       |
+   | 8    | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | 方案设计 | StorageEngine |       |
+   | 9    | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | 方案设计 | StorageEngine |       |
+   
+2. **工具链**：涉及12个新特性，主要是迁移工具、校验工具以及OM/CM等工具增强
 
-2. **工具链**：涉及16个新特性，主要是迁移工具、校验工具以及OM/CM等工具增强
-
-   | no   | feature                                                      | status   | sig   | owner |
-   | ---- | ------------------------------------------------------------ | -------- | ----- | ----- |
-   | 1    | 【openGauss 5.0.0 Release】【迁移工具】支持一站式迁移工具portal | 需求验收 | Tools |       |
-   | 2    | 【openGauss 5.0.0 Release】【迁移工具】数据校验支持行级、列级和全量比较规则 | 需求验收 | Tools |       |
-   | 3    | 【openGauss 5.0.0 Release】【迁移工具】MySQL数据迁移完整方案打通（增量迁移） | 需求验收 | Tools |       |
-   | 4    | 【openGauss 5.0.0 Release】【迁移工具】MySQL数据迁移完整方案打通（反向迁移） | 需求验收 | Tools |       |
-   | 5    | 【openGauss 5.0.0 Release】【迁移工具】MySQL数据迁移完整方案打通（校验工具） | 方案设计 | Tools |       |
-   | 6    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（全量迁移） | 方案设计 | Tools |       |
-   | 7    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（增量迁移） | 方案设计 | Tools |       |
-   | 8    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（数据校验） | 方案设计 | Tools |       |
-   | 9    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（反向迁移） | 方案设计 | Tools |       |
-   | 10   | 【openGauss 5.0.0 Release】【迁移工具】一体化平台集成portal，支持可视化迁移管理 | 方案设计 | Tools |       |
-   | 11   | 【openGauss 5.0.0 Release】【迁移工具】debezium全量迁移支持对MySQL对象的迁移 | 方案设计 | Tools |       |
-   | 12   | 【openGauss 5.0.0 Release】【迁移工具】MySQL迁移工具适配内核兼容性 | 方案设计 | Tools |       |
-   | 13   | 【openGauss 5.0.0 Release】【OM工具】支持python解析器和OM一起打包，屏蔽用户环境python版本差异 | 方案设计 | OM    |       |
-   | 14   | 【openGauss 5.0.0 Release】支持一键式关闭CM集群服务          | 方案设计 | CM    |       |
-   | 15   | 【openGauss 5.0.0 Release】CM支持事件结束后调用用户自定义脚本 | 方案设计 | CM    |       |
-   | 16   | 【openGauss 5.0.0 Release】CM支持容器化部署                  | 方案设计 | CM    |       |
-
-3. **兼容性**：涉及15个新特性，从数据类型兼容、系统函数兼容、DDL兼容、DML兼容、PL/SQL兼容、SHOW语法兼容和其他语法兼容方面提升openGauss对openGauss对M*的兼容率
+   | no   | feature                                                      | status   | sig           | owner |
+   | ---- | ------------------------------------------------------------ | -------- | ------------- | ----- |
+   | 1    | 【openGauss 5.0.0 Release】【迁移工具】支持一站式迁移工具portal | 需求验收 | Tools         |       |
+   | 2    | 【openGauss 5.0.0 Release】【迁移工具】数据校验支持行级、列级和全量比较规则 | 需求验收 | Tools         |       |
+   | 3    | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（增量迁移） | 需求验收 | Tools         |       |
+   | 4    | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（反向迁移） | 需求验收 | Tools         |       |
+   | 5    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（全量迁移） | 方案设计 | Tools         |       |
+   | 6    | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（数据校验） | 方案设计 | Tools         |       |
+   | 7    | 【openGauss 5.0.0 Release】支持一键式关闭CM集群服务          | 方案设计 | CM            |       |
+   | 8    | 【openGauss 5.0.0 Release】CM支持事件结束后调用用户自定义脚本 | 方案设计 | CM            |       |
+   | 9    | 【openGauss 5.0.0 Release】CM支持容器化部署                  | 方案设计 | CM            |       |
+   | 10   | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统       | 方案设计 | StorageEngine |       |
+   | 11   | 【openGauss 5.0.0 Release】openGauss工具一体化平台           | 方案设计 | Tools         |       |
+   | 12   | 【openGauss 5.0.0 Release】openGauss数据建模项目             | 方案设计 | Tools         |       |
+   
+3. **兼容性**：涉及23个新特性，从数据类型兼容、系统函数兼容、DDL兼容、DML兼容、PL/SQL兼容、SHOW语法兼容和其他语法兼容方面提升openGauss对openGauss对M*的兼容率
 
    | no   | feature                                                      | status         | sig    | owner    |
    | ---- | ------------------------------------------------------------ | -------------- | ------ | -------- |
@@ -120,16 +110,24 @@ openGauss 5.0.0 Release版本2023年发布的openGauss Release版本，维护周
    | 3    | 【openGauss 5.0.0 Release】【M兼容性】支持建表语句中不常见选项语法兼容 | 设计方案评审   | Plugin |          |
    | 4    | 【openGauss 5.0.0 Release】【M兼容性】create function语法兼容 | 方案设计       | Plugin |          |
    | 5    | 【openGauss 5.0.0 Release】【M兼容性】支持操作符行为和M兼容  | 代码编写与自测 | Plugin |          |
-   | 6    | 【openGauss 5.0.0 Release】【M兼容性】DataStudio/JDBC/ODBC/Go/python支持新数据类型的映射 | 方案设计       | Plugin |          |
-   | 7    | 【openGauss 5.0.0 Release】【M兼容性】distinct支持order by带表达式 | 代码编写与自测 | Plugin |          |
-   | 8    | 【openGauss 5.0.0 Release】【M兼容性】支持数据类型显式/隐式转换规则 | 方案设计       | Plugin |          |
-   | 9    | 【openGauss 5.0.0 Release】【M兼容性】导入导出、备份恢复工具支持M兼容性 | 方案设计       | Plugin |          |
-   | 10   | 【openGauss 5.0.0 Release】M兼容性 full text全文索引         | 方案设计       | Plugin | Enmotech |
-   | 11   | 【openGauss 5.0.0 Release】M兼容性 'user'@'host' 用户        | 方案设计       | Plugin | Enmotech |
-   | 12   | 【openGauss 5.0.0 Release】lock table相关特性                | 方案设计       | Plugin | Enmotech |
-   | 13   | 【openGauss 5.0.0 Release】外键支持关联到普通索引            | 方案设计       | Plugin | Enmotech |
-   | 14   | 【openGauss 5.0.0 Release】M兼容性 别名支持单引号            | 方案设计       | Plugin | Enmotech |
-   | 15   | 【openGauss 5.0.0 Release】M兼容性 show status语法           | 方案设计       | Plugin | Enmotech |
+   | 6    | 【openGauss 5.0.0 Release】【M兼容性】distinct支持order by带表达式 | 代码编写与自测 | Plugin |          |
+   | 7    | 【openGauss 5.0.0 Release】【M兼容性】支持视图、索引等语法带ALGORITHM选项 | 方案设计       | Plugin |          |
+   | 8    | 【openGauss 5.0.0 Release】M兼容性 full text全文索引         | 方案设计       | Plugin | Enmotech |
+   | 9    | 【openGauss 5.0.0 Release】M兼容性 'user'@'host' 用户        | 方案设计       | Plugin | Enmotech |
+   | 10   | 【openGauss 5.0.0 Release】lock table相关特性                | 方案设计       | Plugin | Enmotech |
+   | 11   | 【openGauss 5.0.0 Release】外键支持关联到普通索引            | 方案设计       | Plugin | Enmotech |
+   | 12   | 【openGauss 5.0.0 Release】M兼容性 show status语法           | 方案设计       | Plugin | Enmotech |
+   | 13   | 【openGauss 5.0.0 Release】支持binary数据类型及运算符        | 方案设计       | Plugin | Vastdata |
+   | 14   | 【openGauss 5.0.0 Release】支持create table select方式建表时指定字段 | 方案设计       | Plugin | Vastdata |
+   | 15   | 【openGauss 5.0.0 Release】支持字段大小写敏感                | 方案设计       | Plugin | Vastdata |
+   | 16   | 【openGauss 5.0.0 Release】支持dual表                        | 方案设计       | Plugin | Vastdata |
+   | 17   | 【openGauss 5.0.0 Release】select支持force关键字强制走索引   | 方案设计       | Plugin | Vastdata |
+   | 18   | 【openGauss 5.0.0 Release】支持authid作为列名                | 方案设计       | Plugin | Vastdata |
+   | 19   | 【openGauss 5.0.0 Release】set语法增强                       | 方案设计       | Plugin | Vastdata |
+   | 20   | 【openGauss 5.0.0 Release】支持declare handler               | 方案设计       | Plugin | Vastdata |
+   | 21   | 【openGauss 5.0.0 Release】create trigger 语法增强           | 方案设计       | Plugin | Vastdata |
+   | 22   | 【openGauss 5.0.0 Release】select语句支持用户自定义变量设置  | 方案设计       | Plugin | Vastdata |
+   | 23   | 【openGauss 5.0.0 Release】支持事件触发器                    | 方案设计       | Plugin | Vastdata |
 
 # 风险
 
@@ -144,51 +142,49 @@ openGauss 5.0.0 Release版本2023年发布的openGauss Release版本，维护周
 | 序号 | 需求                                                         | 开发主体      | 测试主体    | 验证策略                                                     |
 | ---- | ------------------------------------------------------------ | ------------- | ----------- | ------------------------------------------------------------ |
 | 1    | 【openGauss 5.0.0 Release】支持XML类型                       | StorageEngine | QA          | 1.验证xml数据类型取值，对无效值得处理；<br />2.验证类型转换功能；<br />3.类型和函数、操作符之间的交互使用；<br />4.xml类型上创建索引、约束。 |
-| 2    | 【openGauss 5.0.0 Release】支持慢SQL db_time统计补齐时间空洞 | SQLEngine     | QA          | 1.调整log_min_duration_statement，验证sql是否为慢sql<br />2.慢SQL是否满足parser+optimize+execute time=db_time<br />3.统计时间execute time是否存在时间空洞 |
-| 3    | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | Connectors    | QA          | 1.验证dblink支持通过ODBC连接异构数据库；<br />2.验证连接异构数据库后，增删该查等功能正常；<br />3.验证连接异构数据库后，dblink支持的函数功能正常 |
-| 4    | 【openGauss 5.0.0 Release】ODBC windows版本发布              | Connectors    | QA          | 验证ODBC是否支持windows平台，驱动的安装部署、基本函数的使用以及使用其连接数据库后增删改查等功能正常 |
-| 5    | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统       | StorageEngine | QA          | 1.数据库内核、OM、CM、JDBC/ODBC/python驱动、libpq以及迁移工具在openEuler 22.03LTS可编译；<br />2.OM、CM、JDBC/ODBC/python驱动等工具在openEuler 22.03LTS正常使用；<br />3.TPCC+gazelle组件性能满足180W tpmC。 |
-| 6    | 【openGauss 5.0.0 Release】支持数据库物理读写块大小的配置功能 | StorageEngine | QA          | 1.可修改的物理块大小的尺寸标准；<br />2.不同物理块大小的是适配对象；<br />3.验证物理块大小对数据库读取速度的影响。 |
-| 7    | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | Connectors    | QA          | 验证优化jdbc锁cleanup Timer后，jdbc性能是否有提升以及原有功能是否被影响 |
-| 8    | 【openGauss 5.0.0 Release】JDBC高可用优化                    | Connectors    | QA          | 对集群进行主备切换，主节点异常后备升主，主节点异常后恢复等操作，验证JDBC连接新主功能正常 |
-| 9    | 【openGauss 5.0.0 Release】JDBC实现 集群状态发生变化后，快速实现负载均衡效果 | Connectors    | QA          | 对集群进行主备切换，主节点异常后备升主，主节点异常后恢复，备节点进行异常后恢复等操作，验证JDBC连接针对当时状态正常的节点负载均衡 |
-| 10   | 【openGauss 5.0.0 Release】升级后的数据字典校验              | StorageEngine | QA          | 1.验证支持新版本数据字典（表、数据类型和cast、视图、函数）生成key为对象、值为对象hash值的基准文件不同类型覆盖测试<br/>2.针对升级后版本和基准文件进行校验，校验数量和结构，校验内容不能丢、不能出错等常见场景覆盖测试 |
-| 11   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | StorageEngine | QA          | 1.验证共享存储模式下非512字节整数倍读和写功能<br />2.验证共享存储模式下512字节整数倍读和写功能 |
-| 12   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | StorageEngine | QA          | 验证多节点集群下HA功能、性能以及压力场景下的HA能力，关注备机的可读能力 |
-| 13   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | StorageEngine | QA          | 验证并发场景下内存资源版本一致                               |
-| 14   | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | StorageEngine | QA          | 验证共享存储支持就地升级、灰度升级、滚动升级，升级前后数据一致，及升级后功能正常 |
-| 15   | 【openGauss 5.0.0 Release】【资源池化】资源池化支持Dorado复制，支持主备双集群部署 | StorageEngine | QA          | 1.验证资源池化支持主备双集群安装部署方式，适配环境；<br />2.验证基于Dorado复制的基本功能和资料 |
-| 16   | 【openGauss 5.0.0 Release】【迁移工具】支持一站式迁移工具portal | Tools         | QA          | 1.验证工具安装部署、卸载，以及工具命令参数校验<br/>2.验证是否具有全量迁移，增量迁移、反向迁移和数据校验能力，以及自定义组合命令使用 |
-| 17   | 【openGauss 5.0.0 Release】【迁移工具】数据校验支持行级、列级和全量比较规则 | Tools         | QA          | 1.验证通过设置表的黑白名单、行号、列字段校验特定数据<br/>2.构造迁移异常场景，更改openGauss数据，通过自定义规则校验数据生效<br/>3.验证可靠性场景，注入网络、cpu等故障，自定义行列级规则不受影响<br/>4.验证资料的一致性 |
-| 18   | 【openGauss 5.0.0 Release】【迁移工具】MySQL数据迁移完整方案打通（增量迁移） | Tools         | QA          | 1.验证增量迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证校验失败的数据展示是否完整,反向迁移支持迁移失败数据、DDL失败语句展示<br/>3.验证资料完整性和可操作性 |
-| 19   | 【openGauss 5.0.0 Release】【迁移工具】MySQL数据迁移完整方案打通（反向迁移） | Tools         | QA          | 1.验证反向迁移数据类型转换的一致性<br/>2.验证反向迁移和全量、增量迁移工具的衔接是否正常<br/>3.验证反向迁移性能支持3w tps |
-| 20   | 【openGauss 5.0.0 Release】【迁移工具】MySQL数据迁移完整方案打通（校验工具） | Tools         | QA          | 1.验证源端抽取服务从chameleon本地保存的csv文件解析<br/>2.验证通过csv文件解析后可正常进行数据校验且校验结果准确<br/>3.验证异常场景，构造数据差异，可以校验出两端数据以不一致，并给出修复提示<br/>4.可靠性测试，通过注入网络、cpu故障不影响解析csv文件及数据校验<br/>5.验证资料的一致性，可操作性 |
-| 21   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（全量迁移） | Tools         | QA          | 1.验证全量迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证全量迁移是否支持迁移失败对象的展示<br/>3.验证资料完整性和可操作性 |
-| 22   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（增量迁移） | Tools         | QA          | 1.验证增量迁移是否支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.增量迁移是否支持支持迁移失败数据、DDL失败语句展示<br/>3.验证资料完整性和可操作性 |
-| 23   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（数据校验） | Tools         | QA          | 1.验证通过自定义命令可以查看数据校验进度信息、状态信息<br/>2.验证自定义命令显示的进度信息、状态信息与后台保持一致<br/>3.资料测试，自定义命令可执行，释义准确 |
-| 24   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（反向迁移） | Tools         | QA          | 1.验证反向迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证校验失败的数据展示是否完整,反向迁移支持迁移失败数据、DDL失败语句展示<br/>3.验证资料完整性和可操作性 |
-| 25   | 【openGauss 5.0.0 Release】【迁移工具】一体化平台集成portal，支持可视化迁移管理 | Tools         | QA          | 1.验证任务流创建<br />2.参数配置是否生效<br />3. 查看结果和性能展示是否成功 |
-| 26   | 【openGauss 5.0.0 Release】【迁移工具】debezium全量迁移支持对MySQL对象的迁移 | Tools         | QA          | 1.验证是否支持使用Debezium对表、索引、约束、存储过程、函数、触发器、schema的全量迁移<br/>2.验证是否支持对MySQL对象的迁移 |
-| 27   | 【openGauss 5.0.0 Release】【迁移工具】MySQL迁移工具适配内核兼容性 | Tools         | QA          | 1.验证全量迁移（变色龙）和增量迁移（dbz）是否适配数据类型，ddl，字段，表名，表数据，是否支持大小写等方面的适配<br/>2.验证MySQL迁移工具是否适配内核兼容性 |
-| 28   | 【openGauss 5.0.0 Release】【OM工具】支持python解析器和OM一起打包，屏蔽用户环境python版本差异 | OM            | QA          | 不同python版本下，数据库的安装、卸载和工具使用以及功能完整性 |
-| 29   | 【openGauss 5.0.0 Release】支持一键式关闭CM集群服务          | CM            | QA          | 1.验证一键启停CM集群仲裁服务的功能<br/>2.验证停止CM服务后，数据库的调试和维护操作 |
-| 30   | 【openGauss 5.0.0 Release】CM支持事件结束后调用用户自定义脚本 | CM            | QA          | 1.验证定制化接口(failover后调度自定义脚本)的功能<br/>2.验证资料完整性和可操作性 |
-| 31   | 【openGauss 5.0.0 Release】CM支持容器化部署                  | CM            | QA          | 1.验证支持容器化安装<br/>2.验证容器化中的集群管理(建立互信，CM安装拉起等)功能 |
-| 32   | 【openGauss 5.0.0 Release】【M兼容性】支持隐藏索引           | Plugin        | QA          | 1.验证CREATE/ALTER TABLE时指定索引并设置可见性<br/>2.验证不同索引类型设置可见性<br/>3.验证设置不可见索引后查询计划是否忽略该索引<br/>4.验证多种数据类型、系统表新增及gs_dump工具导出结果<br/>5.参数控制索引可见性的设置 |
-| 33   | 【openGauss 5.0.0 Release】【M兼容性】支持union查询关联不同类型的字段 | Plugin        | QA          | 1.验证不同类型字段结合union查询<br>2.验证不同类型的表中的字段集合union查询<br>3.验证在select语句中包含where、like、操作符、函数、以及join链接查询情况，结合union查询 |
-| 34   | 【openGauss 5.0.0 Release】【M兼容性】支持建表语句中不常见选项语法兼容 | Plugin        | QA          | 1.验证建表及修改表时添加可选项是否成功<br>2.验证可选项的参数取值<br>3.验证回显结果，是否有warning提示 |
-| 35   | 【openGauss 5.0.0 Release】【M兼容性】create function语法兼容 | Plugin        | QA          | 1.验证单流程控制语句函数支持创建函数时函数主体前不加as $$ begin，末尾不加end; $$ language plpgsql标识<br>2.验证begin-end场景支持创建函数时函数主体前不加as $$ begin，末尾不加end; $$ language plpgsql标识 |
-| 36   | 【openGauss 5.0.0 Release】【M兼容性】支持操作符行为和M兼容  | Plugin        | QA          | 1.验证与M*行为不一致的操作符，其输出函数、返回值类型等<br/>2.验证系统表pg_operator_for_mysql的各字段及所存储的操作符信息 |
-| 37   | 【openGauss 5.0.0 Release】【M兼容性】DataStudio/JDBC/ODBC/Go/python支持新数据类型的映射 | Plugin        | QA          | 1.验证JDBC/ODBC/Go/Python驱动对新增数据类型的映射支持<br>2.验证DataStudio对新增类型编辑支持 |
-| 38   | 【openGauss 5.0.0 Release】【M兼容性】distinct支持order by带表达式 | Plugin        | QA          | 1.验证order by后指定单列或者多列，结合函数及运算符、指定asc/desc排序<br/>2.验证order by后跟的字段不在distinct列表中，并结合各类运算符<br/>3.验证order by后跟的字段不在distinct列表中时，distinct on expression语句<br/>4.参数控制distinct支持order by带表达式<br/>5.验证select子查询、嵌套查询及包含group by、having等子句带order by表达式的执行结果 |
-| 39   | 【openGauss 5.0.0 Release】【M兼容性】支持数据类型显式/隐式转换规则 | Plugin        | QA          | 1.验证数据类型显式/隐式转换时对合法入参和非法入参的处理是否符合预期<br>2.验证显式/隐式转换后的数据和函数、操作符之间的交互使用 |
-| 40   | 【openGauss 5.0.0 Release】【M兼容性】导入导出、备份恢复工具支持M兼容性 | Plugin        | QA          | 1.验证导入导出工具、备份恢复工具支持的对象<br>2.验证支持的数据类型<br>3.验证支持的语法<br>4.工具支持的参数测试<br>5.导出后执行导入，备份后执行恢复，验证数据是否一致完整<br>6.导出权限测试<br>7.工具可靠性测试，如频繁导入导出、导入文件异常、导出的对象不存在、备份恢复时数据库异常等情况 |
-| 41   | 【openGauss 5.0.0 Release】M兼容性 full text全文索引         | Plugin        | QA-Enmotech |1.验证在DDL语法中创建全文索引的使用<br/>2.验证在DML查询语法中的使用<br/>3.验证全文索引在单独创建中的使用|
-| 42   | 【openGauss 5.0.0 Release】M兼容性 'user'@'host' 用户        | Plugin        | QA-Enmotech |1.验证create user username@hostip的语法<br/>2.验证用户名@host方式的认证<br/>3.验证是否可以辨别来自不同主机相同用户名<br/>4.验证多个可匹配时的排序规则<br/>5.支持对象的owner字段支持用户名@host方式指定<br/>6.不支持username带@特殊字符<br/>7.验证兼容性开关对此函数的影响<br/>8.验证username@hostname合理报错 |
-| 43   | 【openGauss 5.0.0 Release】lock table相关特性                | Plugin        | QA-Enmotech |1.验证lock tables name read 语法<br/>2.验证lock table name write 语法<br/>3.验证unlock tables语法<br/>4.验证flush tables with read lock语法<br/>5.验证支持外键和触发器|
-| 44   | 【openGauss 5.0.0 Release】外键支持关联到普通索引            | Plugin        | QA-Enmotech |1.验证支持对唯一索引创建外键<br/>2.验证创建非唯一性索引的外键合理报错键<br/>3.验证对唯一索引创建外键，UPDATE之后对表中内容的影响键<br/>4.验证对唯一索引创建外键，DELETE 之后对表中内容的影响<br/>5.验证B_FORMAT模式对唯一索引创建外键的影响<br/> 6.B_FORMAT模式对非唯一索引创建外键的影响|
-| 45   | 【openGauss 5.0.0 Release】M兼容性 别名支持单引号            | Plugin        | QA-Enmotech |                                                              |
-| 46   | 【openGauss 5.0.0 Release】M兼容性 show status语法           | Plugin        | QA-Enmotech |                                                              |
+| 2    | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | Connectors    | QA          | 1.验证dblink支持通过ODBC连接异构数据库；<br />2.验证连接异构数据库后，增删该查等功能正常；<br />3.验证连接异构数据库后，dblink支持的函数功能正常 |
+| 3    | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | Connectors    | QA          | 验证优化jdbc锁cleanup Timer后，jdbc性能是否有提升以及原有功能是否被影响 |
+| 4    | 【openGauss 5.0.0 Release】JDBC高可用优化                    | Connectors    | QA          | 对集群进行主备切换，主节点异常后备升主，主节点异常后恢复等操作，验证JDBC连接新主功能正常 |
+| 5    | 【openGauss 5.0.0 Release】JDBC实现 集群状态发生变化后，快速实现负载均衡效果 | Connectors    | QA          | 对集群进行主备切换，主节点异常后备升主，主节点异常后恢复，备节点进行异常后恢复等操作，验证JDBC连接针对当时状态正常的节点负载均衡 |
+| 6    | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | StorageEngine | QA          | 1.验证共享存储模式下非512字节整数倍读和写功能<br />2.验证共享存储模式下512字节整数倍读和写功能 |
+| 7    | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | StorageEngine | QA          | 验证多节点集群下HA功能、性能以及压力场景下的HA能力，关注备机的可读能力 |
+| 8    | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | StorageEngine | QA          | 验证并发场景下内存资源版本一致                               |
+| 9    | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | StorageEngine | QA          | 验证共享存储支持就地升级、灰度升级、滚动升级，升级前后数据一致，及升级后功能正常 |
+| 10   | 【openGauss 5.0.0 Release】【迁移工具】支持一站式迁移工具portal | Tools         | QA          | 1.验证工具安装部署、卸载，以及工具命令参数校验<br/>2.验证是否具有全量迁移，增量迁移、反向迁移和数据校验能力，以及自定义组合命令使用 |
+| 11   | 【openGauss 5.0.0 Release】【迁移工具】数据校验支持行级、列级和全量比较规则 | Tools         | QA          | 1.验证通过设置表的黑白名单、行号、列字段校验特定数据<br/>2.构造迁移异常场景，更改openGauss数据，通过自定义规则校验数据生效<br/>3.验证可靠性场景，注入网络、cpu等故障，自定义行列级规则不受影响<br/>4.验证资料的一致性 |
+| 12   | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（增量迁移） | Tools         | QA          | 1.验证增量迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证校验失败的数据展示是否完整,反向迁移支持迁移失败数据、DDL失败语句展示<br/>3.验证资料完整性和可操作性 |
+| 13   | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（反向迁移） | Tools         | QA          | 1.验证反向迁移数据类型转换的一致性<br/>2.验证反向迁移和全量、增量迁移工具的衔接是否正常<br/>3.验证反向迁移性能支持1w tps |
+| 14   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（全量迁移） | Tools         | QA          | 1.验证全量迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证全量迁移是否支持迁移失败对象的展示<br/>3.验证资料完整性和可操作性 |
+| 15   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（数据校验） | Tools         | QA          | 1.验证通过自定义命令可以查看数据校验进度信息、状态信息<br/>2.验证自定义命令显示的进度信息、状态信息与后台保持一致<br/>3.资料测试，自定义命令可执行，释义准确 |
+| 16   | 【openGauss 5.0.0 Release】支持一键式关闭CM集群服务          | CM            | QA          | 1.验证一键启停CM集群仲裁服务的功能<br/>2.验证停止CM服务后，数据库的调试和维护操作 |
+| 17   | 【openGauss 5.0.0 Release】CM支持事件结束后调用用户自定义脚本 | CM            | QA          | 1.验证定制化接口(failover后调度自定义脚本)的功能<br/>2.验证资料完整性和可操作性 |
+| 18   | 【openGauss 5.0.0 Release】CM支持容器化部署                  | CM            | QA          | 1.验证支持容器化安装<br/>2.验证容器化中的集群管理(建立互信，CM安装拉起等)功能 |
+| 19   | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统       | StorageEngine | QA          | 1.数据库内核、OM、CM、JDBC/ODBC/python驱动、libpq以及迁移工具在openEuler 22.03LTS可编译；<br />2.OM、CM、JDBC/ODBC/python驱动等工具在openEuler 22.03LTS正常使用 |
+| 20   | 【openGauss 5.0.0 Release】openGauss工具一体化平台           | Tools         | QA          | 1.验证首页是否正确显示集群信息，跳转其他功能按钮是否正常，一键自检功能是否正常<br/>2.验证设备管理是否可正常添加物理机，AZ管理是否可以正常添加AZ，集群管理是否可以正常对集群进行启停、切主、重建、卸载、删除操作<br/>3.验证一键安装功能是否可以正常使用，集群安装是否可以正常在线安装、离线安装或导入极简版、轻量版、企业版om和cm<br/>4.验证安装包管理是否可以正常查询、新增、修改、删除安装包<br/>5.验证备份恢复是否可以正常查询、恢复、删除集群备份<br/>6.验证插件管理是否可以正常查询、安装、卸载、启用、停用插件<br/>7.验证账号管理是否可以正常查询、添加、删除、启用、停用账号<br/>8.验证角色与权限是否可以正常查询、添加、删除、启用、停用角色，是否可以正常配置角色权限<br/>9.验证访问白名单是否可以正常查询、添加、修改、删除IP<br/>10.验证系统日志是否可以正常查询、下载系统日志，是否可以正常设置日志设置<br/>11.验证操作日志是否可以正常查询日志、查看日志详情<br/>12.检查web页面的布局、UI设计、操作顺序是否符合逻辑<br/>13.验证资料的完整性和可操作性 |
+| 21   | 【openGauss 5.0.0 Release】openGauss数据建模项目             | Tools         | QA          | 1.验证数据流算子规则配置和连线是否生效<br/>2.验证数据流可视化图表生成功能是否合理准确<br/>3.验证报表生成和分享功能<br/>4.检查web页面的布局、UI设计、操作顺序是否符合逻辑<br/>5.验证资料的完整性和可操作性 |
+| 22   | 【openGauss 5.0.0 Release】【M兼容性】支持隐藏索引           | Plugin        | QA          | 1.CREATE/ALTER TABLE指定PRIMARY KEY/UNIQUE约束并设置可见性，或CREATE/ALTER TABLE直接设置索引可见性<br/>如CREATE TABLE t1(ID INT,INDEX KEY_ID(ID) INVISIBLE)；<br/>2.创建多种类型表如列存表、分区表等设置不同类型索引，设置可见性并观察执行计划是否执行该索引。 |
+| 23   | 【openGauss 5.0.0 Release】【M兼容性】支持union查询关联不同类型的字段 | Plugin        | QA          | 1.验证union/union all关联直接select不同的数据类型的场景；<br/>2.验证关联select不同类型的表中数据的场景；<br/>3.验证关联select不同函数的场景；<br/>4.验证关联select语句中结合where/like使用的场景；<br/>5.验证关联select语句中结合操作符、聚合函数使用的场景；<br/>6.验证关联子查询及join关联查询的场景。 |
+| 24   | 【openGauss 5.0.0 Release】【M兼容性】支持建表语句中不常见选项语法兼容 | Plugin        | QA          | 1.验证建表及修改表时添加可选项是否成功；<br/>2.验证可选项的参数取值；<br/>3.验证回显结果，是否有warning提示。 |
+| 25   | 【openGauss 5.0.0 Release】【M兼容性】create function语法兼容 | Plugin        | QA          | 1.验证单流程控制语句return、loop、while、if、repeat、case时函数功能正确性；<br/>2.验证函数体包含begin-end场景函数功能正确性；<br/>3.验证create function中函数选项支持，如comment、no sql、sql security等；<br/>4.验证函数创建语句查询显示正确性；<br/>5.验证函数return类型与主体返回不一致、函数选项不合理等异常场景。 |
+| 26   | 【openGauss 5.0.0 Release】【M兼容性】支持操作符行为和M兼容  | Plugin        | QA          | 1.针对与M*行为不一致的操作符，主要范围涉及数据类型(二进制、数字、浮点、字符串(set enum)、时间日期类型、json)的加减乘除运算；<br/>2.对操作符进行各种运算处理并结合函数运算，验证其执行结果和返回值类型。 |
+| 27   | 【openGauss 5.0.0 Release】【M兼容性】distinct支持order by带表达式 | Plugin        | QA          | 1.order by后跟字段在distinct列表中，order by表达式结合数学运算、函数运算、类型转换函数以及指定asc/desc排序；<br/>2.order by后跟字段不在distinct列表中，order by表达式结合数学运算、函数运算、类型转换函数以及指定asc/desc排序。 |
+| 28   | 【openGauss 5.0.0 Release】【M兼容性】支持视图、索引等语法带ALGORITHM选项 | Plugin        | QA          | 1.验证基于插件dolphin，兼容B模式下支持view的创建、修改以及index的创建、删除操作带ALGORITHM选项；<br/>2.仅实现语法兼容，不需要做功能兼容。 |
+| 29   | 【openGauss 5.0.0 Release】M兼容性 full text全文索引         | Plugin        | QA-Enmotech | 1.验证在DDL语法中创建全文索引的使用；<br/>2.验证在DML查询语法中的使用；<br/>3.验证全文索引在单独创建中的使用。 |
+| 30   | 【openGauss 5.0.0 Release】M兼容性 'user'@'host' 用户        | Plugin        | QA-Enmotech | 1.验证create user username@hostip的语法；<br/>2.验证用户名@host方式的认证；<br/>3.验证是否可以辨别来自不同主机相同用户名；<br/>4.验证多个可匹配时的排序规则；<br/>5.支持对象的owner字段支持用户名@host方式指定；<br/>6.不支持username带@特殊字符；<br/>7.验证兼容性开关对此函数的影响；<br/>8.验证username@hostname合理报错。 |
+| 31   | 【openGauss 5.0.0 Release】lock table相关特性                | Plugin        | QA-Enmotech | 1.验证lock tables name read 语法；<br/>2.验证lock table name write 语法；<br/>3.验证unlock tables语法；<br/>4.验证flush tables with read lock语法；<br/>5.验证支持外键和触发器。 |
+| 32   | 【openGauss 5.0.0 Release】外键支持关联到普通索引            | Plugin        | QA-Enmotech | 1.验证支持对唯一索引创建外键；<br/>2.验证创建非唯一性索引的外键合理报错键；<br/>3.验证对唯一索引创建外键，UPDATE之后对表中内容的影响；<br/>4.验证对唯一索引创建外键，DELETE 之后对表中内容的影响。 |
+| 33   | 【openGauss 5.0.0 Release】M兼容性 show status语法           | Plugin        | QA-Enmotech | 1.验证show status基本语法执行；<br/>2.验证对global、session关键字的支持；<br/>3.验证对where、like关键字的支持；<br/>4.验证查询结果的正确性。 |
+| 34   | 【openGauss 5.0.0 Release】支持binary数据类型及运算符        | Plugin        | QA-Vastdata | 1. 验证binary在建表和增删查改语句中使用是否正常；<br />2. 验证binary类型与其他类型进行转换运算；<br />3. 验证导入导出场景；<br />4. 验证binary类型转换运算为模糊匹配或完全匹配。 |
+| 35   | 【openGauss 5.0.0 Release】支持create table select方式建表时指定字段 | Plugin        | QA-Vastdata | 1. 验证create table select方式建表时指定字段语法是否能正常执行；<br />2. 验证建表后指定的新表的字段和字段属性是否正确。 |
+| 36   | 【openGauss 5.0.0 Release】支持字段大小写敏感                | Plugin        | QA-Vastdata | 1.验证查询返回字段名大小写是否可控；<br />2.验证大小写控制参数设置是否生效；<br />3.验证其他场景下使用字段名大小写是否能识别成功。 |
+| 37   | 【openGauss 5.0.0 Release】支持dual表                        | Plugin        | QA-Vastdata | 1. 验证查询语句使用dual表的场景；<br />2. 验证在存储过程、自定义函数、匿名块下使用dual表是否正常。 |
+| 38   | 【openGauss 5.0.0 Release】select支持force关键字强制走索引   | Plugin        | QA-Vastdata | 1. 验证使用force index语法指定执行计划是否生效；<br />2. 验证对force index为不同索引类型；<br />3.验证force与use index语法一起使用。 |
+| 39   | 【openGauss 5.0.0 Release】支持authid作为列名                | Plugin        | QA-Vastdata | 1.验证创建表指定字段名为authid是否能创建成功；<br />2. 验证其他SQL语句使用authid字段名是否正常。 |
+| 40   | 【openGauss 5.0.0 Release】set语法增强                       | Plugin        | QA-Vastdata | 1. 验证使用set语法后变量使用是否正常；<br />2. 验证set语法与存储过程、自定义函数、匿名块等一起使用。 |
+| 41   | 【openGauss 5.0.0 Release】支持declare handler               | Plugin        | QA-Vastdata | 1. 验证handler_action支持EXIT选项、condition_value支持SQLEXCEPTION选项时正常处理异常；<br />2. 验证在非M兼容模式下是否赋值成功；<br />3. 验证在存储过程、自定义函数、匿名块下是否赋值成功。 |
+| 42   | 【openGauss 5.0.0 Release】create trigger 语法增强           | Plugin        | QA-Vastdata | 1. 验证指定间隔符后，创建触发器末尾不加斜杆测试；<br />2.验证创建触发器使用M\*格式和原格式的语法使用。 |
+| 43   | 【openGauss 5.0.0 Release】select语句支持用户自定义变量设置  | Plugin        | QA-Vastdata | 1. 验证select @var:= expr 语法是否正常；<br />2. 验证自定义变量为不同数据类型的情况；<br />3. 验证在不同场景使用select @var:= expr 语法。 |
+| 44   | 【openGauss 5.0.0 Release】支持事件触发器                    | Plugin        | QA-Vastdata | 1. 验证事件触发器相关语法是否正常；<br />2. 验证支持DDL命令是否能触发触发器；<br />3. 验证在不同场景使用事件触发器。 |
 
 # 测试分析设计策略
 
@@ -197,51 +193,49 @@ openGauss 5.0.0 Release版本2023年发布的openGauss Release版本，维护周
 | 序号 | Feature                                                      | 重点                                                         | 设计思路                                                     | 备注 |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
 | 1    | 【openGauss 5.0.0 Release】支持XML类型                       | 重点关注取值范围、类型转换功能                               | 创建表的字段使用xml类型，插入/更新/导出/导入数据；从取值范围，类型转换，数据类型结合操作符等方面验证 |      |
-| 2    | 【openGauss 5.0.0 Release】支持慢SQL db_time统计补齐时间空洞 | 关注sql执行时间统计中是否存在时间空洞问题                    | 查看慢sql执行统计的时间是否为parser+optimize+execute time，并查看时间分配情况，验证execute time是否还存在时间空洞问题 |      |
-| 3    | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | 重点验证验证连接端数据库、远程数据库的连接，以及SQL操作、断连等功能 | 1.验证dblink支持通过ODBC连接异构数据库；<br />2.验证连接异构数据库后，增删该查等功能正常；<br />3.验证连接异构数据库后，dblink支持的函数功能正常；<br />4.验证连接异构数据库认证加密等安全方面；<br />5.验证异构数据库数据类型兼容性 |      |
-| 4    | 【openGauss 5.0.0 Release】ODBC windows版本发布              | 重点验证ODBC是否支持windows平台                              | 1.测试ODBC在windows平台安装部署；<br />2.windows平台通过ODBC连接数据库后，测试基本函数的功能正常；<br />3.windows平台通过ODBC连接数据库后，增删改查等功能正常 |      |
-| 5    | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统       | 验证数据库内核、OM、CM、JDBC/ODBC/python驱动、libpq以及迁移工具在openEuler 22.03LTS可编译，工具能正常使用，性能满足180W tpmC | 在x86架构和arm架构的openEuler 22.03LTS系统分别编译数据库内核和工具，并分别测试编译安装、om方式安装、极简安装数据库并执行基本功能，安装gazelle组件测试TPCC性能。 |      |
-| 6    | 【openGauss 5.0.0 Release】支持数据库物理读写块大小的配置功能 | 验证物理块大小可被修改，验证修改方式                         | 针对物理块可修改的范围，不同尺寸标准的物理块支持的存储对象以及不同大小物理块的读取速度多场景展开测试 |      |
-| 7    | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | 重点验证此需求实现后现有的cleanup Timer锁与之前的区别，是否成功实现了提升jdbc的性能以及优化后的jdbc功能是否正常 | 1.此需求成功实现后每个连接占用一把cleanup Timer锁可提升并发度验证<br />2.测试原先jdbc相比优化后高并发场景下性能是否有提升<br />3.测试新优化的jdbc已有功能是否被影响，测试方式可以使用TPCC或者jmeter压测 |      |
-| 8    | 【openGauss 5.0.0 Release】JDBC高可用优化                    | 主节点状态变化后，验证JDBC连接获取新主功能正常               | 模拟当前JDBC连接的主节点故障，主备状态发生切换或者未切换，新的JDBC连接是否能准确识别新主 |      |
-| 9    | 【openGauss 5.0.0 Release】JDBC实现 集群状态发生变化后，快速实现负载均衡效果 | 验证根据集群下各个节点的状态是否正常，JDBC连接自动识别正常节点并进行负载均衡 | 模拟主节点、备节点、或者主备状态发生变化时，JDBC连接是否能自动检测感知，对异常节点剔除，正常节点重新加入连接，且当前正常的所有节点是否负载均衡 |      |
-| 10   | 【openGauss 5.0.0 Release】升级后的数据字典校验              | 验证新版本和升级后数据字典等基准文件校验校验数量和结构内容不能出错 | 1.验证支持新版本数据字典（表、数据类型和cast、视图、函数）生成key为对象、值为对象hash值的基准文件不同类型覆盖测试<br/>2.针对升级后版本和基准文件进行校验，校验数量和结构，校验内容不能丢、不能出错等常见场景覆盖测试 |      |
-| 11   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | 重点验证共享存储模式下支持非512字节整数倍的读和写            | 1.测试共享存储模式下非512字节整数倍的读和写操作<br />2.测试512字节整数倍的读和写功能是否受影响 |      |
-| 12   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | 重点验证不同压力场景下的HA能力，关注其成功率及性能是否增强   | 部署不同的集群及压力模型，覆盖常规场景下、不同业务场景以及switchover、failover过程中故障的HA功能、可靠性、性能增强 |      |
-| 13   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | 主要测并发读写叠加reform场景时，页面版本是否正确             | 1.部署一主两备集群，验证并发读写场景时是否会产生死锁或者core<br />2.部署一主两备集群，验证并发读写叠加reform场景时是否会产生死锁或者core；<br />3.验证并发读写叠加reform场景时，页面版本是否正确 |      |
-| 14   | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | 验证共享存储支持就地升级、灰度升级、滚动升级，以及升级后基本功能是否正常，数据是否一致 | 1.测试在共享存储模式下就地升级、灰度升级、滚动升级功能正常<br />2.进行升级前后数据进行对比，数据保持一致<br />3.升级后连跑tpcc，测试升级后数据库功能正常 |      |
-| 15   | 【openGauss 5.0.0 Release】【资源池化】资源池化支持Dorado复制，支持主备双集群部署 | 验证资源池化架构模式下基于Dorado复制的基本功能，关注双集群部署模式 | 1.关注Dorado复制的基本功能实现，度量是否涉及可靠性验证；<br />2.关注部署方式 |      |
-| 16   | 【openGauss 5.0.0 Release】【迁移工具】支持一站式迁移工具portal | 验证迁移任务流创建，全量迁移，增量迁移，反向迁移和数据校验完整方案打通及资料描述 | 1.验证工具安装部署、卸载，以及工具命令参数校验<br/>2.验证是否具有全量迁移，增量迁移、反向迁移和数据校验能力，以及自定义组合命令使用 |      |
-| 17   | 【openGauss 5.0.0 Release】【迁移工具】数据校验支持行级、列级和全量比较规则 | 表、行列级规则生效，可以通过正则匹配去校验特定的数据         | 1.验证通过设置表的黑白名单、行号、列字段校验特定数据<br/>2.构造迁移异常场景，更改openGauss数据，通过自定义规则校验数据生效<br/>3.验证可靠性场景，注入网络、cpu等故障，自定义行列级规则不受影响<br/>4.验证资料的一致性 |      |
-| 18   | 【openGauss 5.0.0 Release】【迁移工具】MySQL数据迁移完整方案打通（增量迁移） | 验证增量迁移的功能、性能及资料描述                           | 1.验证增量迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证校验失败的数据展示是否完整,增量迁移支持迁移失败数据、DDL失败语句展示，增量量迁移支持迁移失败对象的展<br/>3.验证资料完整性和可操作性 |      |
-| 19   | 【openGauss 5.0.0 Release】【迁移工具】MySQL数据迁移完整方案打通（反向迁移） | 验证反向迁移的功能、性能及资料描述                           | 1.验证反向迁移数据类型转换的一致性<br/>2.验证反向迁移和全量、增量迁移工具的衔接是否正常<br/>3.验证反向迁移性能支持3w tps |      |
-| 20   | 【openGauss 5.0.0 Release】【迁移工具】MySQL数据迁移完整方案打通（校验工具） | 通过csv文件解析能够准确校验openGauss与MySQL数据的一致性      | 1.验证源端抽取服务从chameleon本地保存的csv文件解析<br/>2.验证通过csv文件解析后可正常进行数据校验且校验结果准确<br/>3.验证异常场景，构造数据差异，可以校验出两端数据以不一致，并给出修复提示<br/>4.可靠性测试，通过注入网络、cpu故障不影响解析csv文件及数据校验<br/>5.验证资料的一致性，可操作性 |      |
-| 21   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（全量迁移） | 验证全量迁移进度以及报错提示信息的展示                       | 1.验证全量迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证校验失败的数据展示是否完整,全量迁移支持迁移失败数据、DDL失败语句展示，全量迁移支持迁移失败对象的展<br/>3.验证资料完整性和可操作性 |      |
-| 22   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（增量迁移） | 验证增量迁移进度以及报错提示信息的展示                       | 1.验证增量迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证校验失败的数据展示是否完整,增量迁移支持迁移失败数据、DDL失败语句展示，全量迁移支持迁移失败对象的展<br/>3.验证资料完整性和可操作性 |      |
-| 23   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（数据校验） | 自定义命令可执行、展示结果准确                               | 1.验证通过自定义命令可以查看数据校验进度信息、状态信息<br/>2.验证自定义命令显示的进度信息、状态信息与后台保持一致<br/>3.资料测试，自定义命令可执行，释义准确 |      |
-| 24   | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（反向迁移） | 验证迁移和反向迁移进度以及报错提示信息的展示                 | 1.验证反向迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证校验失败的数据展示是否完整,反向迁移支持迁移失败数据、DDL失败语句展示<br/>3.验证资料完整性和可操作性 |      |
-| 25   | 【openGauss 5.0.0 Release】【迁移工具】一体化平台集成portal，支持可视化迁移管理 | 验证支持可视化迁移管理，包含迁移任务流创建，参数配置，过程打印，结果和性能展示 | 1.创建任务流，验证任务流创建<br />2.参数配置是否生效<br />3.查看过程打印是否成功<br />4. 查看结果和性能展示是否成功 |      |
-| 26   | 【openGauss 5.0.0 Release】【迁移工具】debezium全量迁移支持对MySQL对象的迁移 | 验证是否支持使用Debezium对表、索引、约束、存储过程、函数、触发器、schema的全量迁移 | 1.验证是否支持使用Debezium对表、索引、约束、存储过程、函数、触发器、schema的全量迁移<br/>2.验证是否支持对MySQL对象的迁移 |      |
-| 27   | 【openGauss 5.0.0 Release】【迁移工具】MySQL迁移工具适配内核兼容性 | 验证全量迁移（变色龙）和增量迁移（dbz）是否适配数据类型，ddl，字段，表名，表数据，是否支持大小写等方面的适配 | 1.验证全量迁移（变色龙）和增量迁移（dbz）是否适配数据类型，ddl，字段，表名，表数据，是否支持大小写等方面的适配<br/>2.验证MySQL迁移工具是否适配内核兼容性 |      |
-| 28   | 【openGauss 5.0.0 Release】【OM工具】支持python解析器和OM一起打包，屏蔽用户环境python版本差异 | 不同python版本下，数据库的安装、卸载和工具使用以及功能完整性 | 1.验证不同python版本下，数据库的安装、卸载和工具使用以及功能完整性<br/>2.验证资料完整性和可操作性 |      |
-| 29   | 【openGauss 5.0.0 Release】支持一键式关闭CM集群服务          | 验证一键启停CM集群仲裁服务的功能                             | 1.验证一键启停CM集群仲裁服务的功能<br/>2.验证停止CM服务后，数据库的调试和维护操作 |      |
-| 30   | 【openGauss 5.0.0 Release】CM支持事件结束后调用用户自定义脚本 | 验证定制化接口的功能                                         | 1.验证定制化接口(failover后调度自定义脚本)的功能<br/>2.验证资料完整性和可操作性 |      |
-| 31   | 【openGauss 5.0.0 Release】CM支持容器化部署                  | 验证在容器化中部署和集群管理功能                             | 1.验证支持容器化安装<br/>2.验证容器化中的集群管理(建立互信，CM安装拉起等)功能 |      |
-| 32   | 【openGauss 5.0.0 Release】【M兼容性】支持隐藏索引           | 1.验证CREATE/ALTER TABLE时指定索引并设置可见性<br/>2.验证不同索引类型设置可见性 | 1.CREATE/ALTER TABLE指定PRIMARY KEY/UNIQUE约束并设置可见性，或CREATE/ALTER TABLE直接设置索引可见性<br/>如CREATE TABLE t1(ID INT,INDEX KEY_ID(ID) INVISIBLE);<br/>2.创建多种类型表如列存表、分区表等设置不同类型索引，设置可见性并观察执行计划是否执行该索引 |      |
-| 33   | 【openGauss 5.0.0 Release】【M兼容性】支持union查询关联不同类型的字段 | 1.验证union/union all是否支持查询关联不同类型<br/>2.是否支持查询关联不同select语句 | 1.验证union/union all关联直接select不同的数据类型的场景<br/>2.验证关联select不同类型的表中数据的场景<br/>3.验证关联select不同函数的场景<br/>4.验证关联select语句中结合where/like使用的场景<br/>5.验证关联select语句中结合操作符、聚合函数使用的场景<br/>6.验证关联子查询及jion关联查询的场景 |      |
-| 34   | 【openGauss 5.0.0 Release】【M兼容性】支持建表语句中不常见选项语法兼容 | 验证建表及修改表添加可选项是否支持                           | 1.从可选项参数取值测试<br>2.创建表成功查看回显结果测试<br>3.不同表类型，添加可选项测试<br>4.验证新增的可选项是否影响已有参数 |      |
-| 35   | 【openGauss 5.0.0 Release】【M兼容性】create function语法兼容 | 主要验证create function支持创建函数时函数主体前不加as $$ begin，末尾不加end; $$ language plpgsql标识 | 1.验证单流程控制语句return、loop、while、if、repeat、case时函数功能正确性<br>2.验证函数体包含begin-end场景函数功能正确性<br>3.验证create function中函数选项支持，如comment、no sql、sql security等<br>4.验证函数创建语句查询显示正确性<br>5.验证函数return类型与主体返回不一致、函数选项不合理等异常场景 |      |
-| 36   | 【openGauss 5.0.0 Release】【M兼容性】支持操作符行为和M兼容  | 验证与M*行为不一致的操作符，其输出函数、返回值类型等         | 1.针对与M*行为不一致的操作符，主要范围涉及数据类型(二进制、数字、浮点、字符串(set enum)、时间日期类型、json)的加减乘除运算，<br/>2.对操作符进行各种运算处理并结合函数运算，验证其执行结果和返回值类型 |      |
-| 37   | 【openGauss 5.0.0 Release】【M兼容性】DataStudio/JDBC/ODBC/Go/python支持新数据类型的映射 | 主要验证DataStudio放开对新增类型编辑限制，数据类型映射及类型名映射正确性等 | 1.新增数据类型主要涉及year、uint1、uint2、uint4、uint8、binary、varbinary、tinyblob、mediumblob、longblob、bool、set、enum等，验证JDBC驱动对新增数据类型及类型名称映射正确性<br>2.验证ODBC驱动对新增数据类型的映射正确性<br>3.验证Go驱动对新增数据类型的映射正确性<br>4.验证Python驱动对新增数据类型的映射正确性 |      |
-| 38   | 【openGauss 5.0.0 Release】【M兼容性】distinct支持order by带表达式 | 当order by后的字段在或不在distinct列表中时，order by指定单列或者多列，结合函数及运算符，以及指定asc/desc排序 | 1.order by后跟字段在distinct列表中，order by表达式结合数学运算、函数运算、类型转换函数以及指定asc/desc排序<br/>2.order by后跟字段不在distinct列表中，order by表达式结合数学运算、函数运算、类型转换函数以及指定asc/desc排序 |      |
-| 39   | 【openGauss 5.0.0 Release】【M兼容性】支持数据类型显式/隐式转换规则 | 验证数据类型显式/隐式转换时对合法入参和非法入参的处理是否符合预期，验证转换后数据是否正确 | 从不同数据类型的取值范围、类型转换等方面结合系统函数和操作符等方面进行验证 |      |
-| 40   | 【openGauss 5.0.0 Release】【M兼容性】导入导出、备份恢复工具支持M兼容性 | 重点验证导入导出、备份恢复工具是否可用及数据是否完整一致     | 1.功能方面验证：<br>1.1 验证支持的对象、数据类型、语法<br>1.2 验证工具支持的参数<br>1.3 验证数据是否完整一致<br>1.4 验证已有的功能是否正常<br>2.可靠性方面验证：<br>2.1 恢复时，节点异常<br>2.2 导入导出同时执行DML操作<br>2.3 事务中，对恢复的表做操作不提交<br>2.4 导入及导出用户权限、文件权限验证<br>2.5 修改、清空导入的文件<br>2.6 频繁执行导入导出；导入导出大数据<br>2.7 主备切换执行导入导出 |      |
-| 41   | 【openGauss 5.0.0 Release】M兼容性 full text全文索引         | 主要验证full text全文索引语法与M执行结果是否一致 ，且保证一些特殊场景的应用 | 1.验证在DDL语法中创建全文索引的使用<br/>2.验证在DML查询语法中的使用<br/>3.验证全文索引在单独创建中的使用  |    |
-| 42   | 【openGauss 5.0.0 Release】M兼容性 'user'@'host' 用户        | 主要验证 'user'@'host' 用户语法与M执行结果是否一致，且保证一些特殊场景的应用| 1.验证create user username@hostip的语法<br/>2.验证用户名@host方式的认证<br/>3.验证是否可以辨别来自不同主机相同用户名<br/>4.验证多个可匹配时的排序规则<br/>5.支持对象的owner字段支持用户名@host方式指定<br/>6.不支持username带@特殊字符<br/>7.验证兼容性开关对此函数的影响<br/>8.验证username@hostname合理报错  |     |
-| 43   | 【openGauss 5.0.0 Release】lock table相关特性                |  主要验证 lock table语法与M执行结果是否一致，且保证一些特殊场景的应用   | 1.验证lock tables name read 语法<br/>2.验证lock table name write 语法<br/>3.验证unlock tables语法<br/>4.验证flush tables with read lock语法<br/>5.验证支持外键和触发器 | |
-| 44   | 【openGauss 5.0.0 Release】外键支持关联到普通索引            |  主要验证外键支持关联到普通索引与M执行结果是否一致，且保证一些特殊场景的应用           | 1.验证支持对唯一索引创建外键<br/>2.验证创建非唯一性索引的外键合理报错键<br/>3.验证对唯一索引创建外键，UPDATE之后对表中内容的影响键<br/>4.验证对唯一索引创建外键，DELETE 之后对表中内容的影响<br/>5.验证B_FORMAT模式对唯一索引创建外键的影响<br/> 6.验证B_FORMAT模式对非唯一索引创建外键的影响 |     |
-| 45   | 【openGauss 5.0.0 Release】M兼容性 别名支持单引号            |                                                              |                                                              |      |
-| 46   | 【openGauss 5.0.0 Release】M兼容性 show status语法           |                                                              |                                                              |      |
+| 2    | 【openGauss 5.0.0 Release】dblink支持通过ODBC连接异构数据库  | 重点验证验证连接端数据库、远程数据库的连接，以及SQL操作、断连等功能 | 1.验证dblink支持通过ODBC连接异构数据库；<br />2.验证连接异构数据库后，增删该查等功能正常；<br />3.验证连接异构数据库后，dblink支持的函数功能正常；<br />4.验证连接异构数据库认证加密等安全方面；<br />5.验证异构数据库数据类型兼容性 |      |
+| 3    | 【openGauss 5.0.0 Release】JDBC的cleanupTimer锁机制优化      | 重点验证此需求实现后现有的cleanup Timer锁与之前的区别，是否成功实现了提升jdbc的性能以及优化后的jdbc功能是否正常 | 1.此需求成功实现后每个连接占用一把cleanup Timer锁可提升并发度验证<br />2.测试原先jdbc相比优化后高并发场景下性能是否有提升<br />3.测试新优化的jdbc已有功能是否被影响，测试方式可以使用TPCC或者jmeter压测 |      |
+| 4    | 【openGauss 5.0.0 Release】JDBC高可用优化                    | 主节点状态变化后，验证JDBC连接获取新主功能正常               | 模拟当前JDBC连接的主节点故障，主备状态发生切换或者未切换，新的JDBC连接是否能准确识别新主 |      |
+| 5    | 【openGauss 5.0.0 Release】JDBC实现 集群状态发生变化后，快速实现负载均衡效果 | 验证根据集群下各个节点的状态是否正常，JDBC连接自动识别正常节点并进行负载均衡 | 模拟主节点、备节点、或者主备状态发生变化时，JDBC连接是否能自动检测感知，对异常节点剔除，正常节点重新加入连接，且当前正常的所有节点是否负载均衡 |      |
+| 6   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储支持非512字节整数倍读和写 | 重点验证共享存储模式下支持非512字节整数倍的读和写            | 1.测试共享存储模式下非512字节整数倍的读和写操作<br />2.测试512字节整数倍的读和写功能是否受影响 |      |
+| 7   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储HA场景加固 | 重点验证不同压力场景下的HA能力，关注其成功率及性能是否增强   | 部署不同的集群及压力模型，覆盖常规场景下、不同业务场景以及switchover、failover过程中故障的HA功能、可靠性、性能增强 |      |
+| 8   | 【openGauss 5.0.0 Release】【资源池化】openGauss 共享存储DFX增强 | 主要测并发读写叠加reform场景时，页面版本是否正确             | 1.部署一主两备集群，验证并发读写场景时是否会产生死锁或者core<br />2.部署一主两备集群，验证并发读写叠加reform场景时是否会产生死锁或者core；<br />3.验证并发读写叠加reform场景时，页面版本是否正确 |      |
+| 9   | 【openGauss 5.0.0 Release】【资源池化】openGauss共享存储方案支持升级 | 验证共享存储支持就地升级、灰度升级、滚动升级，以及升级后基本功能是否正常，数据是否一致 | 1.测试在共享存储模式下就地升级、灰度升级、滚动升级功能正常<br />2.进行升级前后数据进行对比，数据保持一致<br />3.升级后连跑tpcc，测试升级后数据库功能正常 |      |
+| 10  | 【openGauss 5.0.0 Release】【迁移工具】支持一站式迁移工具portal | 验证迁移任务流创建，全量迁移，增量迁移，反向迁移和数据校验完整方案打通及资料描述 | 1.验证工具安装部署、卸载，以及工具命令参数校验<br/>2.验证是否具有全量迁移，增量迁移、反向迁移和数据校验能力，以及自定义组合命令使用 |      |
+| 11  | 【openGauss 5.0.0 Release】【迁移工具】数据校验支持行级、列级和全量比较规则 | 表、行列级规则生效，可以通过正则匹配去校验特定的数据         | 1.验证通过设置表的黑白名单、行号、列字段校验特定数据<br/>2.构造迁移异常场景，更改openGauss数据，通过自定义规则校验数据生效<br/>3.验证可靠性场景，注入网络、cpu等故障，自定义行列级规则不受影响<br/>4.验证资料的一致性 |      |
+| 12  | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（增量迁移） | 验证增量迁移的功能、性能及资料描述                           | 1.验证增量迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证校验失败的数据展示是否完整,增量迁移支持迁移失败数据、DDL失败语句展示，增量量迁移支持迁移失败对象的展<br/>3.验证资料完整性和可操作性 |      |
+| 13  | 【openGauss 5.0.0 Release】【迁移工具】M\*数据迁移完整方案打通（反向迁移） | 验证反向迁移的功能、性能及资料描述                           | 1.验证反向迁移数据类型转换的一致性<br/>2.验证反向迁移和全量、增量迁移工具的衔接是否正常<br/>3.验证反向迁移性能支持1w tps |      |
+| 14 | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（全量迁移） | 验证全量迁移进度以及报错提示信息的展示                       | 1.验证全量迁移支持迁移进度展示（总量、剩余量、剩余时间等）<br/>2.验证校验失败的数据展示是否完整,全量迁移支持迁移失败数据、DDL失败语句展示，全量迁移支持迁移失败对象的展<br/>3.验证资料完整性和可操作性 |      |
+| 15 | 【openGauss 5.0.0 Release】【迁移工具】迁移工具可调试性增强、可靠性增强（数据校验） | 自定义命令可执行、展示结果准确                               | 1.验证通过自定义命令可以查看数据校验进度信息、状态信息<br/>2.验证自定义命令显示的进度信息、状态信息与后台保持一致<br/>3.资料测试，自定义命令可执行，释义准确 |      |
+| 16 | 【openGauss 5.0.0 Release】支持一键式关闭CM集群服务          | 验证一键启停CM集群仲裁服务的功能                             | 1.验证一键启停CM集群仲裁服务的功能<br/>2.验证停止CM服务后，数据库的调试和维护操作 |      |
+| 17 | 【openGauss 5.0.0 Release】CM支持事件结束后调用用户自定义脚本 | 验证定制化接口的功能                                         | 1.验证定制化接口(failover后调度自定义脚本)的功能<br/>2.验证资料完整性和可操作性 |      |
+| 18 | 【openGauss 5.0.0 Release】CM支持容器化部署                  | 验证在容器化中部署和集群管理功能                             | 1.验证支持容器化安装<br/>2.验证容器化中的集群管理(建立互信，CM安装拉起等)功能 |      |
+| 19 | 【openGauss 5.0.0 Release】支持openEuler 22.03 LTS系统 | 验证数据库内核、OM、CM、JDBC/ODBC/python驱动、libpq以及迁移工具在openEuler 22.03LTS可编译，工具能正常使用，性能满足180W tpmC | 在x86架构和arm架构的openEuler 22.03LTS系统分别编译数据库内核和工具，并分别测试编译安装、om方式安装、极简安装数据库并执行基本功能，安装gazelle组件测试TPCC性能。 | |
+| 20 | 【openGauss 3.1.1】openGauss工具一体化平台 | 验证基于可视化运维平台集成openGauss的工具链的功能 | 1.验证基于可视化运维平台集成openGauss工具链如数据建模平台、数据可视化平台，联调M\*数据迁移工具、数据校验工具、O\*数据迁移工具、分布式以及普罗米修斯监控的功能是否支持<br/>2.验证功能和操作是否与资料描述一致 | |
+| 21 | 【openGauss 3.1.1】openGauss数据建模项目 | 1.验证数据建模系统的易用性<br/>2.算子的可视化、编辑以及自由搭配<br/>3.产品界面与UI原型图一致 | 1.验证系统本身的易用性，能否一键部署<br/>2.验证建模过程中关键点可以算子化，并支持编辑与可视化预览<br/>3.验证链接数据库、导入、导出、写入数据库等基础算子支持<br/>4.验证产品界面与UI原型图一致 | |
+| 22  | 【openGauss 5.0.0 Release】【M兼容性】支持隐藏索引           | 1.验证CREATE/ALTER TABLE时指定索引并设置可见性<br/>2.验证不同索引类型设置可见性 | 1.CREATE/ALTER TABLE指定PRIMARY KEY/UNIQUE约束并设置可见性，或CREATE/ALTER TABLE直接设置索引可见性<br/>如CREATE TABLE t1(ID INT,INDEX KEY_ID(ID) INVISIBLE);<br/>2.创建多种类型表如列存表、分区表等设置不同类型索引，设置可见性并观察执行计划是否执行该索引 |      |
+| 23  | 【openGauss 5.0.0 Release】【M兼容性】支持union查询关联不同类型的字段 | 1.验证union/union all是否支持查询关联不同类型<br/>2.是否支持查询关联不同select语句 | 1.验证union/union all关联直接select不同的数据类型的场景<br/>2.验证关联select不同类型的表中数据的场景<br/>3.验证关联select不同函数的场景<br/>4.验证关联select语句中结合where/like使用的场景<br/>5.验证关联select语句中结合操作符、聚合函数使用的场景<br/>6.验证关联子查询及jion关联查询的场景 |      |
+| 24  | 【openGauss 5.0.0 Release】【M兼容性】支持建表语句中不常见选项语法兼容 | 验证建表及修改表添加可选项是否支持                           | 1.从可选项参数取值测试<br>2.创建表成功查看回显结果测试<br>3.不同表类型，添加可选项测试<br>4.验证新增的可选项是否影响已有参数 |      |
+| 25  | 【openGauss 5.0.0 Release】【M兼容性】create function语法兼容 | 主要验证create function支持创建函数时函数主体前不加as $$ begin，末尾不加end; $$ language plpgsql标识 | 1.验证单流程控制语句return、loop、while、if、repeat、case时函数功能正确性<br>2.验证函数体包含begin-end场景函数功能正确性<br>3.验证create function中函数选项支持，如comment、no sql、sql security等<br>4.验证函数创建语句查询显示正确性<br>5.验证函数return类型与主体返回不一致、函数选项不合理等异常场景 |      |
+| 26  | 【openGauss 5.0.0 Release】【M兼容性】支持操作符行为和M兼容  | 验证与M*行为不一致的操作符，其输出函数、返回值类型等         | 1.针对与M*行为不一致的操作符，主要范围涉及数据类型(二进制、数字、浮点、字符串(set enum)、时间日期类型、json)的加减乘除运算，<br/>2.对操作符进行各种运算处理并结合函数运算，验证其执行结果和返回值类型 |      |
+| 27 | 【openGauss 5.0.0 Release】【M兼容性】distinct支持order by带表达式 | 当order by后的字段在或不在distinct列表中时，order by指定单列或者多列，结合函数及运算符，以及指定asc/desc排序 | 1.order by后跟字段在distinct列表中，order by表达式结合数学运算、函数运算、类型转换函数以及指定asc/desc排序<br/>2.order by后跟字段不在distinct列表中，order by表达式结合数学运算、函数运算、类型转换函数以及指定asc/desc排序 |      |
+| 28 | 【openGauss 5.0.0 Release】【M兼容性】支持视图、索引等语法带ALGORITHM选项 | 验证数据类型显式/隐式转换时对合法入参和非法入参的处理是否符合预期，验证转换后数据是否正确 | 从不同数据类型的取值范围、类型转换等方面结合系统函数和操作符等方面进行验证 |      |
+| 29 | 【openGauss 5.0.0 Release】M兼容性 full text全文索引         | 主要验证full text全文索引语法与M执行结果是否一致 ，且保证一些特殊场景的应用 | 1.验证在DDL语法中创建全文索引的使用<br/>2.验证在DML查询语法中的使用<br/>3.验证全文索引在单独创建中的使用  |    |
+| 30 | 【openGauss 5.0.0 Release】M兼容性 'user'@'host' 用户        | 主要验证 'user'@'host' 用户语法与M执行结果是否一致，且保证一些特殊场景的应用| 1.验证create user username@hostip的语法<br/>2.验证用户名@host方式的认证<br/>3.验证是否可以辨别来自不同主机相同用户名<br/>4.验证多个可匹配时的排序规则<br/>5.支持对象的owner字段支持用户名@host方式指定<br/>6.不支持username带@特殊字符<br/>7.验证兼容性开关对此函数的影响<br/>8.验证username@hostname合理报错  |     |
+| 31 | 【openGauss 5.0.0 Release】lock table相关特性                |  主要验证 lock table语法与M执行结果是否一致，且保证一些特殊场景的应用   | 1.验证lock tables name read 语法<br/>2.验证lock table name write 语法<br/>3.验证unlock tables语法<br/>4.验证flush tables with read lock语法<br/>5.验证支持外键和触发器 | |
+| 32 | 【openGauss 5.0.0 Release】外键支持关联到普通索引            |  主要验证外键支持关联到普通索引与M执行结果是否一致，且保证一些特殊场景的应用           | 1.验证支持对唯一索引创建外键<br/>2.验证创建非唯一性索引的外键合理报错键<br/>3.验证对唯一索引创建外键，UPDATE之后对表中内容的影响键<br/>4.验证对唯一索引创建外键，DELETE 之后对表中内容的影响<br/>5.验证B_FORMAT模式对唯一索引创建外键的影响<br/>6.验证B_FORMAT模式对非唯一索引创建外键的影响 |     |
+| 33 | 【openGauss 5.0.0 Release】M兼容性 show status语法           | 主要验证 show status语法与M执行结果是否一致，且保证一些特殊场景的应用 | 1.验证show status基本语法执行；<br/>2.验证对global、session关键字的支持；<br/>3.验证对where、like关键字的支持；<br/>4.验证查询结果的正确性。 |      |
+| 34 | 【openGauss 5.0.0 Release】支持binary数据类型及运算符 | 1. 重点关注binary在建表和增删查改语句中使用是否正常<br />2. 重点关注binary类型与其他类型进行转换运算<br />3. 关注导入导出场景<br />4. 关注binary类型转换运算为模糊匹配或完全匹配 | 1. 验证binary在建表和增删查改语句中使用是否正常<br />2. 验证binary类型与其他类型进行转换运算<br />3. 验证导入导出场景<br />4. 验证binary类型转换运算为模糊匹配或完全匹配 | |
+| 35 | 【openGauss 5.0.0 Release】支持create table select方式建表时指定字段 | 1. 重点关注各种类型数据转换后是否正常<br />2. 重点关注各种字符转换成其他字符集后是否正常<br />3. 关注在DML、自定义函数、存储过程等场景下使用convert函数是否正常 | 1.验证各种类型数据转换后是否正常<br />2.验证各种字符转换成其他字符集后是否正常<br />3.验证在DML、自定义函数、存储过程等场景下使用convert函数是否正常 | |
+| 36 | 【openGauss 5.0.0 Release】M兼容性 支持字段大小写敏感 | 1. 重点关注查询返回字段名大小写是否可控<br />2. 重点关注大小写控制参数设置是否生效<br />3. 关注其他场景下使用字段名大小写是否能识别成功 | 1.验证查询返回字段名大小写是否可控<br />2.验证大小写控制参数设置是否生效<br />3.验证其他场景下使用字段名大小写是否能识别成功 | |
+| 37 | 【openGauss 5.0.0 Release】支持dual表                        | 1. 重点关注查询语句使用dual表的场景<br />2. 关注在存储过程、自定义函数、匿名块下使用dual表是否正常 | 1. 验证查询语句使用dual表的场景<br />2. 验证在存储过程、自定义函数、匿名块下使用dual表是否正常 |      |
+| 38   | 【openGauss 5.0.0 Release】select支持force关键字强制走索引   | 1. 重点关注使用force index语法指定执行计划是否生效<br />2. 关注对force index为不同索引类型<br />3.关注force与use index语法一起使用 | 1. 验证使用force index语法指定执行计划是否生效<br />2. 验证对force index为不同索引类型<br />3.验证force与use index语法一起使用 |      |
+| 39   | 【openGauss 5.0.0 Release】支持authid作为列名                | 1. 重点关注创建表指定字段名为authid是否能创建成功<br />2. 关注其他SQL语句使用authid字段名是否正常 | 1.验证创建表指定字段名为authid是否能创建成功<br />2. 验证其他SQL语句使用authid字段名是否正常 |      |
+| 40   | 【openGauss 5.0.0 Release】set语法增强                       | 1. 重点关注使用set语法后变量使用是否正常<br />2. 关注set语法与存储过程、自定义函数、匿名块等一起使用 | 1. 验证使用set语法后变量使用是否正常<br />2. 验证set语法与存储过程、自定义函数、匿名块等一起使用 |      |
+| 41   | 【openGauss 5.0.0 Release】支持declare handler               | 1. 重点关注handler_action支持EXIT选项、condition_value支持SQLEXCEPTION选项时正常处理异常<br />2. 关注在非M兼容模式下是否赋值成功<br />3. 关注在存储过程、自定义函数、匿名块下是否赋值成功 | 1. 验证handler_action支持EXIT选项、condition_value支持SQLEXCEPTION选项时正常处理异常<br />2. 验证在非M兼容模式下是否赋值成功<br />3. 验证在存储过程、自定义函数、匿名块下是否赋值成功 |      |
+| 42   | 【openGauss 5.0.0 Release】create trigger 语法增强           | 1. 重点关注指定间隔符后，创建触发器末尾不加斜杆测试<br />2.关注创建触发器使用mysql格式和原格式的语法使用 | 1. 验证指定间隔符后，创建触发器末尾不加斜杆测试<br />2.验证创建触发器使用mysql格式和原格式的语法使用 |      |
+| 43   | 【openGauss 5.0.0 Release】select语句支持用户自定义变量设置  | 1. 重点关注使用select语句自定义变量是否生效<br />2.关注使用此作为行号递增的变量测试 | 1. 验证使用select语句自定义变量是否生效<br />2.验证使用此作为行号递增的变量测试 |      |
+| 44   | 【openGauss 5.0.0 Release】支持事件触发器                    | 1. 重点关注事件触发器相关语法是否正常<br />2. 重点关注支持DDL命令是否能触发触发器<br />3. 关注在不同场景使用事件触发器 | 1. 验证事件触发器相关语法是否正常<br />2. 验证支持DDL命令是否能触发触发器 3. 验证在不同场景使用事件触发器 |      |
 
 ## 继承feature/组件测试设计策略
 
