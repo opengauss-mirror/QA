@@ -8,6 +8,7 @@
 | --------- | --------- | ---------------- | ----------- |
 | 2023-3-8  | V1.0      | 初稿             | zhanghuan96 |
 | 2023-3-16 | V1.1      | 根据评审意见修改 | zhanghuan96 |
+| 2023-3-24 | V1.2      | 修改检视意见-测试信息章节 | zhanghuan96 |
 
 关键词：
 
@@ -38,14 +39,14 @@
 | openGauss 5.0.0 build e94d3b43 | 2023-3-9     | 2023-3-10    |
 | openGauss 5.0.0 build 78f2bb65 | 2023-3-16    | 2023-3-16    |
 | openGauss 5.0.0 build eacf1d20 | 2023-3-19    | 2023-3-19    |
-| MySQL 5.7.35                   | 2023-2-23    | 2023-3-19    |
-| chameleon 3.1.1                | 2023-2-23    | 2023-3-19    |
-| Debezium v1.8.1.Final          | 2023-2-23    | 2023-3-19    |
 | dolphin build 2df314c0         | 2023-2-23    | 2023-3-8     |
 | dolphin build 4288a62f         | 2023-3-8     | 2023-3-9     |
 | dolphin build 1a5da341         | 2023-3-9     | 2023-3-10    |
 | dolphin build 0bfcd89f         | 2023-3-16    | 2023-3-16    |
 | dolphin build 3aa83d2d         | 2023-3-19    | 2023-3-19    |
+| MySQL 5.7.35                   | 2023-2-23    | 2023-3-19    |
+| chameleon 3.1.1                | 2023-2-23    | 2023-3-19    |
+| Debezium v1.8.1.Final          | 2023-2-23    | 2023-3-19    |
 
 ##### 性能测试
 
@@ -272,6 +273,8 @@ cd confluent-5.5.1
 | openGauss 5.0.0 build 5a69c469 | 30         | Passed:20<br/>Failed: 10    | 10           |
 | openGauss 5.0.0 build e94d3b43 | 3          | Passed:3<br/>Failed:0   | 0            |
 | openGauss 5.0.0 build eacf1d20 | 3          | Passed:3<br/>Failed:0   | 0            |
+| openGauss 5.0.0 build 78f2bb65 | 3          | Passed:3<br/>Failed:0   | 0            |
+| openGauss 5.0.0 build eacf1d20 | 1          | Passed:1<br/>Failed:0   | 0            |
 
 *数据项说明：*
 
