@@ -105,7 +105,7 @@ openGauss支持openEuler 22.03LTS系统共执行35个用例，主要覆盖功能
 
 | 测试步骤：                                                   | 测试结果                               |
 | ------------------------------------------------------------ | -------------------------------------- |
-| 1.在x86架构PAGE_SIZE=4k、arm架构PAGE_SIZE=4k和arm架构PAGE_SIZE=64k的openEuler 22.03LTS系统使 用JDBC/ODBC/python驱动连接数据库执行sql语句 | 共执行9条用例，执行结果符合预期 |
+| 1.在x86架构PAGE_SIZE=4k、arm架构PAGE_SIZE=4k和arm架构PAGE_SIZE=64k的openEuler 22.03LTS系统使用JDBC/ODBC/python驱动连接数据库执行sql语句 | 共执行9条用例，执行结果符合预期 |
 
 ### 4.1.2性能测试
 
@@ -130,7 +130,7 @@ openGauss支持openEuler 22.03LTS系统共执行35个用例，主要覆盖功能
 | 版本名称                       | 测试用例数 | 用例执行结果             | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------ | ------------ |
 | openGauss 3.1.1 build 2e4f56c4 | 3      | Passed : 3  Failed : 0 | 0           |
-| openGauss 3.1.1 build b658f54c | 30 | Passed : 21  Failed : 0 | 0 |
+| openGauss 3.1.1 build b658f54c | 30 | Passed : 30  Failed : 0 | 0 |
 | openGauss 3.1.1 build 95a55bfd | 2       | Passed : 2   Failed : 0 | 0            |
 
 *数据项说明：*
