@@ -151,7 +151,7 @@ MySQL数据迁移完整方案打通_增量迁移，共执行用例72个，主要
 | 22   | [I6EDSQ](https://gitee.com/opengauss/debezium/issues/I6EDSQ?from=project-issue) | 次要 | debezium+kafka增量迁移，drop table语句解析报错，迁移失败     | 已验收 |                                                              |
 | 23   | [I6KIWQ](https://gitee.com/opengauss/debezium/issues/I6KIWQ?from=project-issue) | 次要 | Debezium+kafka增量迁移，timestamp等时间戳类型，迁移后时间有误 | 已验收 | 和变色龙类型映射类型不一样                                   |
 | 24   | [I6K877](https://gitee.com/opengauss/debezium/issues/I6K877?from=project-issue) | 次要 | Debezium+kafka增量迁移，列属性含zerofill属性，insert报错     | 已验收 | Debezium原生bug                                              |
-| 25   | [I6JYPN](https://gitee.com/opengauss/debezium/issues/I6JYPN?from=project-issue) | 次要 | Debezium+kafka增量迁移，二进制类型insert成功，update、delete失败 | 已完成 | dolphin插件问题                                              |
+| 25   | [I6JYPN](https://gitee.com/opengauss/debezium/issues/I6JYPN?from=project-issue) | 次要 | Debezium+kafka增量迁移，二进制类型insert成功，update、delete失败 | 已验收 | dolphin插件问题                                              |
 | 26   | [I6L4F3](https://gitee.com/opengauss/debezium/issues/I6L4F3?from=project-issue) | 次要 | Debezium+kafka增量迁移，补充相关资料说明                     | 已验收 |                                                              |
 | 27   | [I6LTCP](https://gitee.com/opengauss/debezium/issues/I6LTCP?from=project-issue) | 主要 | Debezium+kafka增量迁移混合场景时，迁移性能达不到3W+ tps      | 已验收 |                                                              |
 
