@@ -338,7 +338,7 @@ M*、dolphin插件、`distinct`、`order by`、`invisible index`、操作符
 
 | 版本名称                       | 测试用例数 | 用例执行结果             | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------ | ------------ |
-| openGauss 5.0.0 build 8ecf040d | 27         | Passed：37<br>Failed：0  | 0            |
+| openGauss 5.0.0 build 8ecf040d | 27         | Passed：27<br>Failed：0  | 0            |
 | openGauss 5.0.0 build 8ecf040d | 32         | Passed：28<br>Failed：4  | 2            |
 | openGauss 5.0.0 build 8ecf040d | 72         | Passed：71<br>Failed：1  | 1            |
 | openGauss 5.0.0 build e94d3b43 | 131        | Passed：131<br>Failed：0 | 0            |
