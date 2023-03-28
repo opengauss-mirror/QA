@@ -9,6 +9,7 @@
 | ---------- | ----------- | ------------------ | ------ |
 | 2023-03-23 | 1.0         | 兼容性测试报告初稿 | 李鑫   |
 | 2023-03-23 | 1.1         | 升级测试报告初稿   | 白小丽 |
+| 2023-03-28 | 2.0         | 根据评审意见修改报告   | 白小丽 |
 
  关键词： 软件兼容；升级兼容；硬件兼容；灰度升级；openGauss 5.0.0
 
@@ -74,6 +75,7 @@ Docker版本信息：
 | ----------------------------- | ------------------------- |
 | CentOS-7.6                    | 18.03.1-ce, build 9ee9f40 |
 | OpenEuler release20.03（LTS） | 18.09.0, build 4f81b51    |
+| OpenEuler release22.03（LTS） | 18.09.0, build d1134d1    |
 
 
 
@@ -141,7 +143,7 @@ openGauss 5.0.0版本兼容性测试共计测试2轮，在X86+CentOS 7.6，ARM+o
 
 | Domain       | 测试活动                                                     | 测试结论 |
 | ------------ | ------------------------------------------------------------ | -------- |
-| 支持云化部署 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS环境下，通过Docker（18.03.1-ce, build 9ee9f40、18.09.0, build 4f81b51）安装部署openGauss 5.0.0数据库 | 测试通过 |
+| 支持云化部署 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/X86+openEuler 22.03 LTS/ARM+openEuler 22.03 LTS环境下，通过Docker（18.03.1-ce, build 9ee9f40、18.09.0, build 4f81b51、18.09.0, build d1134d1）安装部署openGauss 5.0.0数据库 | 测试通过 |
 | 操作系统兼容 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/ARM+Kylin V10环境下，安装部署openGauss 5.0.0数据库 | 测试通过 |
 
 ## 3.2   约束说明
