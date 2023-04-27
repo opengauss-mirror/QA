@@ -41,7 +41,7 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 | ShardingSphere-5.2.2-SNAPSHOT Commit ID: 753c0cee8ee6fd3db00536da55b64bc5198a3758 | 2022/11/23   | 2022/12/7    |
 | ShardingSphere-5.2.2-SNAPSHOT Commit ID: 631fdf40f87223e176abe5c851a51b3287b4d6de | 2022/12/12   | 2022/12/13   |
 | ShardingSphere-5.3.1-SNAPSHOT Commit ID: 0cbb5fb100de531e7e27382904197c1249baf2d6 | 2022/12/16   | 2022/12/16   |
-| ShardingSphere-5.3.1-SNAPSHOT Commit ID: fcb0e1ea635accbf34cf491ae3f5ad463a4cfbb9 | 2022/1/5     | 2022/1/5     |
+| ShardingSphere-5.3.1-SNAPSHOT Commit ID: fcb0e1ea635accbf34cf491ae3f5ad463a4cfbb9 | 2023/01/05   | 2023/01/05   |
 
 | 环境信息   | 配置信息                                                     | 备注                                                         |
 | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
