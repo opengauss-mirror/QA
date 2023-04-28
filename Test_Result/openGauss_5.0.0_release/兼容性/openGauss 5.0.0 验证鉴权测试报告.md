@@ -48,7 +48,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL的user@ho
 
 ## 3.1   测试整体结论
 
-openGauss dolphin插件MySQL兼容user@host功能，共计执行91个用例，主要覆盖了功能测试、约束测试、资料测试、升级测试。功能测试覆盖了create user语法测试、create user应用测试、鉴权测试以及user@host的多场景测试；约束测试验证了user@host功能的测试用例在非兼容“B”库下执行数据库可稳定运行；升级测试验证升级后执行结果正常。测试中发现3个问题，3个已解决且回归通过。
+openGauss dolphin插件MySQL兼容user@host功能，共计执行91个用例，主要覆盖了功能测试、约束测试、资料测试、升级测试。功能测试覆盖了create user语法测试、create user应用测试、鉴权测试以及user@host的多场景测试；约束测试验证了user@host功能的测试用例在非兼容“B”库下执行数据库可稳定运行。测试中发现3个问题，3个已解决且回归通过。
 
 | 测试活动 | 活动评价 |
 | -------- | -------- |
