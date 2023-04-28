@@ -38,7 +38,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL的lock ta
 
 | 环境信息 | 配置信息 | 备注 |
 | -------- | ------------ | ---- |
-| 虚拟机 |系统版本:openEuler 20.03 (LTS)<br />CPU:aarch64 64-bit Little Endian 8 Kunpeng-920<br />MEM:30Gi ||
+| 虚拟机 |系统版本:openEuler 20.03 (LTS)<br />CPU:aarch64 64-bit Little Endian 8 Kunpeng-920<br />MEM:30GB<br />DISK:200GB ||
 
 # 3     测试结论概述
 
