@@ -21,7 +21,7 @@
 
 # 1     特性概述
 
-openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL的fulltext功能。在Mysql场景中，经常会使用到match (col1, col2) against ('匹配字符’)；语法，openGauss为了兼容mysql全文索引的语法，需要做对应的语法转换处理。在功能上都使用ngram解析器，保证语法和功能的兼容一致性。
+openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL的fulltext功能。在Mysql场景中，经常会使用到match (col1, col2) against ('匹配字符')；语法，openGauss为了兼容mysql全文索引的语法，需要做对应的语法转换处理。在功能上都使用ngram解析器，保证语法和功能的兼容一致性。
 
 # 2     特性测试信息
 
@@ -38,7 +38,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL的fulltex
 
 | 环境信息 | 配置信息 | 备注 |
 | -------- | ------------ | ---- |
-| 虚拟机 |系统版本:openEuler 20.03 (LTS)<br />CPU:aarch64 64-bit Little Endian 8 Kunpeng-920<br />MEM:30Gi ||
+| 虚拟机 |系统版本:openEuler 20.03 (LTS)<br />CPU:aarch64 64-bit Little Endian 8 Kunpeng-920<br />MEM:30GB<br />DISK:200GB ||
 
 # 3     测试结论概述
 
