@@ -14,7 +14,7 @@
 
  
 
-摘要：本文验证ShardingSphere&openGauss数据库继续深化合作，针对15节点性能优化达到1200WtpmC的测试。
+摘要：本文验证ShardingSphere&openGauss数据库继续深化合作，针对15节点性能优化达到1300万tpmC的测试。
 
  
 
@@ -30,7 +30,7 @@
 
 # 1     特性概述
 
-openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。本阶段ShardingSphere&OpenGauss继续深化合作，提升15节点性能水平至1200WtpmC。
+openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。本阶段ShardingSphere&openGauss继续深化合作，提升15节点性能水平至1300WtpmC。
 
 # 2     特性测试信息
 
@@ -61,13 +61,13 @@ openGauss分布式方案中，第一阶段的性能1000万tpmc目标已达成。
 
 ## 3.1   测试整体结论
 
-共设计4个测试用例，分别覆盖了2节点、3节点和15节点tpcc性能测试，以及2节点24小时长稳测试。
+共设计4个测试用例，分别覆盖了2节点、3节点和15节点tpcc性能测试，以及2节点24小时长稳测试。15节点tpcc性能的测试结果为1246万 tpmC，未达到1300万目标，测试不通过。
 
 | 测试活动                       | 活动评价                                                     |
 | ------------------------------ | ------------------------------------------------------------ |
-| 2 节点测试 1 小时tpcc性能测试  | 1 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到140万，使用benchmarksql工具，在800并发下对1000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：136万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：141万；<br/> ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：138万。|
+| 2 节点测试 1 小时tpcc性能测试  | 1 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到140万，使用benchmarksql工具，在800并发下对1000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：136万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：141万；<br/> ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：138万。 |
 | 3 节点测试 1 小时tpcc性能测试  | 2 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到260万，使用benchmarksql工具，在1200并发下对2000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：220万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：234万；<br/> ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：222万。 |
-| 15 节点测试 1 小时tpcc性能测试 | 9 节点 openGauss + 6 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到1200万，使用benchmarksql工具，在1200并发下对9000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：1208万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：1246万；<br/> ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：1202万。 |
+| 15 节点测试 1 小时tpcc性能测试 | 9 节点 openGauss + 6 节点 ShardingSphere + BenchmarkSQL,性能测试tpmC预估达到1300万，使用benchmarksql工具，在1200并发下对9000仓数据进行测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本执行3次测试，tpmC取平均值为：1208万；<br/>ShardingSphere 5.2.0 + openGauss 3.0.0 Release版本执行3次测试，tpmC取平均值为：1246万；<br/> ShardingSphere 5.2.0 + openGauss Master 执行3次测试，tpmC取平均值为：1202万。 |
 | 2 节点测试 24 小时tpcc长稳测试 | 1 节点 openGauss + 1 节点 ShardingSphere + BenchmarkSQL,执行24小时tpcc测试。<br/>ShardingSphere 5.2.0 + openGauss 3.1.0 Preview版本功能正常，无异常日志。 |
 
 ## 3.2   约束说明
