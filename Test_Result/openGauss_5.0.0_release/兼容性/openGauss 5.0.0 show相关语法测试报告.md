@@ -21,7 +21,7 @@
 
 # 1     特性概述
 
-openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL  show storage engines+open tables+slave status语法。其中SHOW [STORAGE] ENGINES结果为系统对执行语句的用户所支持的存储引擎；SHOW OPEN TABLES [{FROM | IN} schema_name] [LIKE 'pattern' | WHERE expr]，列出所有table缓存中打开的表；SHOW {SLAVE | REPLICA} STATUS [FOR CHANNEL channel]查看wal（xlog）日志同步状态信息，例如发起端发送日志位置，接收端接收日志位置等。
+openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL  show storage engines+open tables+slave status语法。其中show [storage] engines结果为系统对执行语句的用户所支持的存储引擎；show open tables [{from | in} schema_name] [like 'pattern' | where expr]，列出所有table缓存中打开的表；show {slave | replica} status [for channel channel_name]查看wal（xlog）日志同步状态信息，例如发起端发送日志位置，接收端接收日志位置等。
 
 # 2     特性测试信息
 
@@ -29,7 +29,6 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL  show sto
 
 | 版本名称 | 测试起始时间 | 测试结束时间 |
 | -------- | ------------ | ------------ |
-| MySQL 5.7 | 2023-05-12 | 2023-05-18 |
 | openGauss 5.1.0 build af4bd962 | 2023-05-12 | 2023-05-18 |
 | openGauss 5.1.0 build 0812a0d7 | 2023-06-01 | 2023-06-01 |
 | dolphin 1.0 | 2023-05-12 | 2023-06-01 |
@@ -44,15 +43,15 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL  show sto
 
 ## 3.1   测试整体结论
 
-openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL  show storage engines+open tables+slave status语法，共计执行96个用例，主要覆盖了功能测试、约束测试、资料测试。功能测试覆盖了SHOW OPEN TABLES [{FROM|IN} schemaname] [LIKE 'pattern' | WHERE expr]语法；SHOW [STORAGE] ENGINES语法；SHOW {SLAVE | REPLICA} STATUS [FOR CHANNEL channel]语法。应用测试主要包括show open tables，show slave status，show  engines在不同应用场景中的测试。约束测试验证了show相关语法的测试用例在非兼容“B”库下执行数据库可稳定运行。测试中发现1个问题，1个已解决且回归通过。
+openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL  show storage engines+open tables+slave status语法，共计执行96个用例，主要覆盖了功能测试、约束测试、资料测试。功能测试覆盖了show open tables [{from|in} schema_name] [like 'pattern' | where expr]语法；show [storage] engines语法；show {slave | replica} status [for channel channel_name]语法。应用测试主要包括show open tables，show slave status，show  engines在不同应用场景中的测试。约束测试验证了show相关语法的测试用例在非兼容“B”库下执行数据库可稳定运行。测试中发现1个问题，1个已解决且回归通过。
 
 | 测试活动 | 活动评价 |
 | -------- | -------- |
 | 功能测试 | 编译安装数据库和插件，执行结果符合预期，通过 |
 | 功能测试 | 创建触发器语法测试，执行结果符合预期，通过 |
-| 功能测试 | SHOW OPEN TABLES [{FROM|IN} schemaname] [LIKE 'pattern' | WHERE expr]语法，执行结果符合预期，通过 |
-| 功能测试 | SHOW {SLAVE | REPLICA} STATUS [FOR CHANNEL channel]语法，执行结果符合预期，通过 |
-| 功能测试 | SHOW [STORAGE] ENGINES语法，执行结果符合预期，通过 |
+| 功能测试 | show open tables [{from|in} schema_name] [like 'pattern' | where expr]语法，执行结果符合预期，通过 |
+| 功能测试 | show {slave | replica} status [for channel channel_name]语法，执行结果符合预期，通过 |
+| 功能测试 | show [storage] engines语法，执行结果符合预期，通过 |
 | 约束测试 | 所有测试用例在非兼容"B"库下运行，不通过用例正常返回错误，数据库稳定性不受影响，执行结果符合预期，通过 |
 | 资料测试 | 资料描述准确，示例的执行结果正确，整体质量良好，符合预期，通过 |
 
@@ -98,7 +97,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL  show sto
 
 | 测试步骤 | 测试结果 |
 | -------- | -------- |
-| 1. SHOW OPEN TABLES [{FROM|IN} schemaname] [LIKE 'pattern' | WHERE expr]语法 <br />2. SHOW {SLAVE | REPLICA} STATUS [FOR CHANNEL channel]语法 <br />3. show相关语法的多场景测试 <br />4. SHOW [STORAGE] ENGINES语法 <br /> | 执行96条用例，发现1个问题，1个已修复且验收通过，其他测试通过 |
+| 1. show open tables [{from|in} schema_name] [like 'pattern' | where expr]语法 <br />2. show {slave | replica} status [for channel channel_name]语法 <br />3. show相关语法的多场景测试 <br />4. show [storage] engines语法 <br /> | 执行96条用例，发现1个问题，1个已修复且验收通过，其他测试通过 |
 
 ### 4.1.2 约束测试
 
