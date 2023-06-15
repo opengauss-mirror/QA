@@ -49,8 +49,8 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL  show sto
 | -------- | -------- |
 | 功能测试 | 编译安装数据库和插件，执行结果符合预期，通过 |
 | 功能测试 | 创建触发器语法测试，执行结果符合预期，通过 |
-| 功能测试 | show open tables [{from|in} schema_name] [like 'pattern' | where expr]语法，执行结果符合预期，通过 |
-| 功能测试 | show {slave | replica} status [for channel channel_name]语法，执行结果符合预期，通过 |
+| 功能测试 | show open tables语法，执行结果符合预期，通过 |
+| 功能测试 | show slave status for channel channel_name/show replica status for channel channel_name语法，执行结果符合预期，通过 |
 | 功能测试 | show [storage] engines语法，执行结果符合预期，通过 |
 | 约束测试 | 所有测试用例在非兼容"B"库下运行，不通过用例正常返回错误，数据库稳定性不受影响，执行结果符合预期，通过 |
 | 资料测试 | 资料描述准确，示例的执行结果正确，整体质量良好，符合预期，通过 |
@@ -97,7 +97,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现兼容MySQL  show sto
 
 | 测试步骤 | 测试结果 |
 | -------- | -------- |
-| 1. show open tables [{from|in} schema_name] [like 'pattern' | where expr]语法 <br />2. show {slave | replica} status [for channel channel_name]语法 <br />3. show相关语法的多场景测试 <br />4. show [storage] engines语法 <br /> | 执行96条用例，发现1个问题，1个已修复且验收通过，其他测试通过 |
+| 1. show open tables语法 <br />2. show slave status for channel channel_name/show replica status for channel channel_name语法 <br />3. show相关语法的多场景测试 <br />4. show [storage] engines语法 <br /> | 执行96条用例，发现1个问题，1个已修复且验收通过，其他测试通过 |
 
 ### 4.1.2 约束测试
 
