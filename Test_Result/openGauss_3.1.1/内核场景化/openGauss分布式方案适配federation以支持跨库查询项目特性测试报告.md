@@ -10,6 +10,7 @@
 | 2022-12-17 | 1.0         | 特性测试报告初稿完成 | peilinqian |
 | 2023-1-11  | 1.1         | 修改检视意见         | peilinqian |
 | 2023-4-27  | 1.2         | 修改版本测试起止日期 | peilinqian |
+| 2023-6-19  | 1.3         | 修改遗留问题单级别   | peilinqian |
 
 关键词： 
 
@@ -83,18 +84,18 @@ openGauss分布式方案中，当涉及非分片键的关联查询和跨库join�
 | [22375](https://github.com/apache/shardingsphere/issues/22375) | group by 语法，查询字段不能包含除groupby列以外的其他列。     | 次要     | group by以外的其他列查询会受影响。                           | 打开     |
 | [22388](https://github.com/apache/shardingsphere/issues/22388) | GROUPING SETS、ROLLUP、CUBE语法不支持。                      | 次要     | GROUPING SETS、ROLLUP、CUBE SQL无法执行。                    | 打开     |
 | [22412](https://github.com/apache/shardingsphere/issues/22412) | sharding-proxy使用未适配过sharding的tpcc执行tpcc异常，主键冲突；目前涉及的insert、update跨库操作不支持。 | 次要     | 会影响涉及跨库select的insert、update操作。                   | 打开     |
-| [22514](https://github.com/apache/shardingsphere/issues/22514) | 使用distinct on语法查询结果不正确，未进行去重。              | 主要     | distinct on 查询结果不正确。                                 | 打开     |
+| [22514](https://github.com/apache/shardingsphere/issues/22514) | 使用distinct on语法查询结果不正确，未进行去重。              | 次要     | distinct on 查询结果不正确。                                 | 打开     |
 | [22553](https://github.com/apache/shardingsphere/issues/22553) | 创建视图完成后，查询视图的结果概率性是数据源单个库的结果，而非所有数据源的查询结果；目前仅yat框架执行自动化SQL脚本存在问题。 | 次要     | 进行视图创建需要刷新元数据，创建视图后，可能会导致短暂查询视图不存在或者结果不正确。可以通过sleep等待1s左右再进行查询。后续优化。 | 打开     |
 | [22569](https://github.com/apache/shardingsphere/issues/22569) | 创建视图完成后，查询视图的结果概率性报错视图不存在，目前仅yat框架执行自动化SQL脚本存在问题。 | 次要     | 进行视图创建需要刷新元数据，创建视图后，可能会导致短暂查询视图不存在或者结果不正确。可以通过sleep等待1s左右再进行查询。后续优化。 | 打开     |
 | [22823](https://github.com/apache/shardingsphere/issues/22823) | 不区分大小写排序（order by nlssort）功能不支持，相关视图创建成功，查询报错。 | 次要     | 不区分大小写排序语法不支持。                                 | 打开     |
-| [22841](https://github.com/apache/shardingsphere/issues/22841) | 在federation场景下，视图与表关联查询，group by场景下，如果where条件有视图相关字段，sql语句执行异常。 | 主要     | group by场景下，视图关联查询时，where条件不能包含视图字段。  | 打开     |
+| [22841](https://github.com/apache/shardingsphere/issues/22841) | 在federation场景下，视图与表关联查询，group by场景下，如果where条件有视图相关字段，sql语句执行异常。 | 次要     | group by场景下，视图关联查询时，where条件不能包含视图字段。  | 打开     |
 
 ### 3.3.2 问题统计
 
 |        | 问题总数 | 严重  | 主要   | 次要   | 不重要 |
 | ------ | -------- | ----- | ------ | ------ | ------ |
-| 数目   | 19       | 0     | 11     | 8      | 0      |
-| 百分比 | 100%     | 0.00% | 57.89% | 42.11% | 0.00%  |
+| 数目   | 19       | 0     | 9      | 10     | 0      |
+| 百分比 | 100%     | 0.00% | 47.37% | 52.63% | 0.00%  |
 
 **是否本需求缺陷统计信息：**
 
