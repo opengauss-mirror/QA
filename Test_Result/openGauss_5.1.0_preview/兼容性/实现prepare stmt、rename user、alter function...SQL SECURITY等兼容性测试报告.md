@@ -149,7 +149,7 @@ openGauss实现对prepare stmt from、rename user、alter function sql security�
 | openGauss5.1.0 build 68d1772f | 26 | Passed:23<br />Failed:3 | 3 |
 | openGauss5.1.0 build 39f999f9 | 255 | Passed:255<br />Failed:0 | 0 |
 
-缺陷单共18个，其中一个为资料单，修改代码量为4.54kloc， 缺陷密度为3.74个/kloc
+缺陷单共18个，其中1个为资料单，修改代码量为4.54kloc， 缺陷密度为3.74个/kloc
 
 ## 4.3   后续测试建议
 
