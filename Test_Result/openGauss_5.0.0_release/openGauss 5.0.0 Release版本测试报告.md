@@ -414,7 +414,7 @@ openGauss 5.0.0 Release版本所有适用的安全扫描和安全测试均已执
 | TPCC         | 2P（Taishan 200 2280 7260）单节点 1H             | 150万      | 此即为release基线 | 单节点1H在极限场景配置下tpmC为***150.5***W+                  |
 |              | 2P（Taishan 200 2280 7260）单节点 8H             | 150万      | 此即为release基线 | 单节点8H在极限场景配置下tpmC为***145.7***W+                  |
 |              | 2P（Taishan 200 2280 7260）一主一备 1H           | 120万      | 此即为release基线 | 一主一备1H在极限场景配置下tpmC为***120.3***W+                |
-|              | 4P（Taishan 200 2280 7260）单节点 1H             | 230万      | 此即为release基线 | 单节点在极限场景配置下tpmC为***232.1***W+                    |
+|              | 4P（Taishan 200 2480 7260）单节点 1H             | 230万      | 此即为release基线 | 单节点在极限场景配置下tpmC为***232.1***W+                    |
 |              | 2P（Taishan 200 2280 5220）单节点 1H             | 100万      | 此即为release基线 | 单节点1H在极限场景配置下tpmC为***96***W+                     |
 |              | 分布式ss-jdbc性能损耗场景                        | 15%        | 此即为release基线 | ss-jdcbc1节点1H，tpmC 151W（数据库直连1节点1H，tpmC 150W），性能损耗为***0%*** |
 |              | 分布式OLTP，2P（Taishan 200 2280 7260）15节点 1H | 1200万     | 此即为release基线 | 9pcs+6ss-jdbc+1ss-proxy，tpmC为***1257***W+                  |
