@@ -106,5 +106,4 @@ grant需支持对函数做赋权操作特性测试中，共计执行用例25个�
 gs_testdb=# grant usage on *.* to u_test identified by 'Test@123';
 WARNING:  Using GRANT for creating new user is deprecatedand will be removed in future release. Create new user with CREATE USER statement.
 ALTER ROLE
-
 ```

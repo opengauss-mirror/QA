@@ -92,7 +92,7 @@ DataStudio支持新数据类型的映射特性测试中，共计执行用例204�
 
 | 测试步骤                                                     | 测试结果                                                     |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 1.支持以下新增类型的建表及修改操作year、 uint1、uint2、uint4、uint8、binary、varbinary、tinyblob、mediumblob、longblob、set、enum | 共执行测试用例108条 发现3个bug，其中1个问题单已取消，剩余问题但已全部回归通过。 |
+| 1.支持以下新增类型的建表及修改操作year、 uint1、uint2、uint4、uint8、binary、varbinary、tinyblob、mediumblob、longblob、set、enum | 共执行测试用例108条 发现3个bug，其中1个问题单已取消，剩余问题单已全部回归通过。 |
 
 ## 4.2   测试执行统计数据
 
