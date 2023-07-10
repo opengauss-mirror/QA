@@ -51,7 +51,7 @@
 | 功能测试 | Windows环境下，ODBC安装及配置测试                            |
 | 功能测试 | Windows环境下，ODBC连接openGauss数据库参数校验               |
 | 功能测试 | Windows环境下，通过ODBC连接openGauss数据库，常见DDL/DML/DCL语句执行等场景测试 |
-| 资料测试 | dblink相关资料，描述清晰，示例正确                           |
+| 资料测试 | ODBC相关资料，描述清晰，示例正确                           |
 
 ## 3.2   约束说明
 
