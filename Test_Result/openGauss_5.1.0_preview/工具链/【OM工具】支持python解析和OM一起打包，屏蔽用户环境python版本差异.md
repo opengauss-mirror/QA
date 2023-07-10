@@ -15,7 +15,7 @@ Python版本解析、OM屏蔽
 
  摘要：
 
-通过将不同Python版本便hi的动态库合入三方库install_tools目录中，并重新组织三方库中install_tools目录结构，在om加载动态库时根据系统的Python版本去对应的目录下寻找，用户无需改变自己环境Python版本，从而保证用户使用方式不变。主要解决当前环境下的Python版本必须与编译三方库使用的Python版本一致的问题。
+通过将不同Python版本的动态库合入三方库install_tools目录中，并重新组织三方库中install_tools目录结构，在om加载动态库时根据系统的Python版本去对应的目录下寻找，用户无需改变自己环境Python版本，从而保证用户使用方式不变。主要解决当前环境下的Python版本必须与编译三方库使用的Python版本一致的问题。
 
 缩略语清单：
 
@@ -33,10 +33,10 @@ Python版本解析、OM屏蔽
 
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
 | ------------------------------ | :----------- | ------------ |
-| openGauss 5.0.0 build 12c545f1 | 2023-4-13    | 2023-4-23    |
-| openGauss 5.0.0 build a7dd4e85 | 2023-4-24    | 2023-5-24    |
-| openGauss 5.0.0 build 9e183978 | 2023-5-25    | 2023-5-31    |
-| openGauss 5.0.0 build 584be3be | 2023-6-01    | 2023-6-08    |
+| openGauss 5.1.0 build 12c545f1 | 2023-4-13    | 2023-4-23    |
+| openGauss 5.1.0 build a7dd4e85 | 2023-4-24    | 2023-5-24    |
+| openGauss 5.1.0 build 9e183978 | 2023-5-25    | 2023-5-31    |
+| openGauss 5.1.0 build 584be3be | 2023-6-01    | 2023-6-08    |
 
 环境信息：
 
@@ -117,10 +117,10 @@ Python版本解析、OM屏蔽
 
 | 版本名称                       | 测试用例数 | 用例执行结果                | 发现问题单数 |
 | ------------------------------ | ---------- | --------------------------- | ------------ |
-| openGauss 5.0.0 build 12c545f1 | 16         | Passed：  15<br />Failed：1 | 1            |
-| openGauss 5.0.0 build a7dd4e85 | 29         | Passed： 28 <br />Failed：1 | 1            |
-| openGauss 5.0.0 build 9e183978 | 29         | Passed：29<br />Failed：0   | 0            |
-| openGauss 5.0.0 build 584be3be | 29         | Passed：29<br />Failed：0   | 0            |
+| openGauss 5.1.0 build 12c545f1 | 16         | Passed：  15<br />Failed：1 | 1            |
+| openGauss 5.1.0 build a7dd4e85 | 29         | Passed： 28 <br />Failed：1 | 1            |
+| openGauss 5.1.0 build 9e183978 | 29         | Passed：29<br />Failed：0   | 0            |
+| openGauss 5.1.0 build 584be3be | 29         | Passed：29<br />Failed：0   | 0            |
 
 *数据项说明：*
 
