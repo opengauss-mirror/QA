@@ -96,7 +96,7 @@
 
 | 测试步骤：                                                   | 测试结果                                      |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| 1.设置ss_parallel_thread_count=16，shared_buffers=350GB<br/>2.执行主备重启、switchover、failover、踢出/加入节点使集群发生reform<br/>3.查询DMS日志，reform剔除recovery阶段的时间小于9秒 | 共执行42条用例，发现缺陷2个，已修复且回归通过 |
+| 1.设置ss_parallel_thread_count=16，shared_buffers=350GB<br/>2.集群在空载和有业务压力的情况下，执行主备重启、switchover、failover、踢出/加入节点使集群发生reform<br/>3.查询DMS日志，reform剔除recovery阶段的时间小于9秒 | 共执行42条用例，发现缺陷2个，已修复且回归通过 |
 
 ### 4.1.2可靠性测试
 
