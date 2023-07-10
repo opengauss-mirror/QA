@@ -16,7 +16,7 @@ openGauss、datakit、一体化、portal、可视化迁移
 
 摘要：
 
-本文档主要介绍一体化平台基座openGauss-visualtool及基础运维插件Base-Ops和MySQL迁移工具插件的测试结果。
+本文档主要介绍一体化平台基座openGauss-visualtool及基础运维插件Base-Ops和M*迁移工具插件的测试结果。
 
 缩略语清单：
 
@@ -27,7 +27,7 @@ openGauss、datakit、一体化、portal、可视化迁移
 # 1     特性概述
 
 - 基于openGauss可视化运维平台集成数据建模平台
-- 基于openGauss可视化运维平台联调mysql数据迁移工具
+- 基于openGauss可视化运维平台联调M*数据迁移工具
 - 基于openGauss可视化运维平台联调数据校验工具
 - 基于openGauss可视化运维平台联调分布式
 - 支持插件的安装，卸载，升级，图标自定义，二级菜单
@@ -36,7 +36,7 @@ openGauss、datakit、一体化、portal、可视化迁移
 - 用户管理，支持登录、用户权限管理，适用于datakit本身和插件的权限控制
 - datakit本身支持国际化，黑白两种主题换肤
 - 新增物理机管理能力，可以接入用户的实例机器
-- 新增mysql jdbc管理能力，可以管理用户mysql的jdbc
+- 新增mysql jdbc管理能力，可以管理用户M*的jdbc
 - 支持openGauss实例导入功能
 - datakit本身支持一键部署。适配openEuler aarch64及x86_x64系统、centos x86系统
 - 运维支持备份恢复功能
@@ -52,11 +52,11 @@ openGauss、datakit、一体化、portal、可视化迁移
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-2-11    | 2023-2-23    |
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-2-24    | 2023-3-14    |
 | openGauss-visualtool<br/>base-ops 1.0.6<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-3-15    | 2023-3-23    |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-4-24    | 2023-5-10    |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-5-11    | 2023-5-24    |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-5-25    | 2023-5-31    |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-6-1     | 2023-6-7     |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-6-8     | 2023-6-30    |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-4-24    | 2023-5-10    |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-5-11    | 2023-5-24    |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-5-25    | 2023-5-31    |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-6-1     | 2023-6-7     |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-6-8     | 2023-6-30    |
 
 | 硬件型号      | 硬件配置信息                                                 | 备注 |
 | ------------- | ------------------------------------------------------------ | ---- |
@@ -101,7 +101,7 @@ openGauss、datakit、一体化、portal、可视化迁移
 
 -  平台默认的登录账号密码：admin/admin123，请在首次登录后及时修改密码。
 
--  源数据库mysql需要开启复制功能，在配置中增加以下配置参数，并重启：
+-  源数据库M*需要开启复制功能，在配置中增加以下配置参数，并重启：
 
   > binlog_format= ROW
   >
@@ -336,11 +336,11 @@ openGauss、datakit、一体化、portal、可视化迁移
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 243        | Passed：228<br>Failed：15 | 14           |
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 277        | Passed：269<br>Failed：8 | 5           |
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 301        | Passed：301<br>Failed：0 | 0           |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 94 | Passed：51<br/>Failed：43 | 19 |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 99 | Passed：48<br/>Failed：46 | 11 |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 118 | Passed：115<br/>Failed：3 | 2 |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 242 | Passed：241<br/>Failed：1 | 1 |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 325 | Passed：325<br/>Failed：0 | 0 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 94 | Passed：51<br/>Failed：43 | 19 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 99 | Passed：48<br/>Failed：46 | 11 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 118 | Passed：115<br/>Failed：3 | 2 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 242 | Passed：241<br/>Failed：1 | 1 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>M* 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 325 | Passed：325<br/>Failed：0 | 0 |
 
 *数据项说明：*
 
