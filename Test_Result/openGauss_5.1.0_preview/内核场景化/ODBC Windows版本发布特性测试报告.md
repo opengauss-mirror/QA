@@ -8,6 +8,7 @@
 | 日期       | 修订版本 | 修改描述         | 作者  |
 | ---------- | -------- | ---------------- | ----- |
 | 2023/05/18 | 1.0      | 特性报告初稿完成 | lixin |
+| 2023/07/7 | 2.0      | 修改缺陷描述 | lixin |
 
 关键词：ODBC、Windows
 
@@ -43,7 +44,7 @@
 
 ## 3.1   测试整体结论
 
-共设计22个测试用例，主要包含Windows环境下，ODBC安装及配置、ODBC连接openGauss数据库参数校验、连接成功后常见DDL/DML/DCL语句执行等。共计发现5个问题，均已修复且回归验证通过，整体质量良好。
+共设计22个测试用例，主要包含Windows环境下，ODBC安装及配置、ODBC连接openGauss数据库参数校验、连接成功后常见DDL/DML/DCL语句执行等。共计发现6个问题，其中4个问题开发分析和linux下odbc表现一致，非问题取消，其它2个问题均已修复且回归验证通过，整体质量良好。
 
 | 测试活动 | 活动评价                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -68,15 +69,19 @@
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   | 2   | 0    | 0  | 0 | 2    |
-| 百分比 |   100%       | 0%   | 0%  | 0% | 100% |
+| 数目   | 6   | 0    | 0  | 3 | 3    |
+| 百分比 |   100%       | 0%   | 0%  | 50% | 50% |
 
 ### 3.3.3 问题单汇总
 
 |序号| issue号                                                      | 级别 | 问题简述                                     | 状态   |
 | ---- | ------------------------------------------------------------ | ---- | -------------------------------------------- | ------ |
-| 1    | [I73P5T](https://gitee.com/opengauss/docs/issues/I73P5T?from=project-issue) | 不重要 | 【测试类型：资料】【测试版本：5.1.0】需求ODBC windows版本发布相关资料未更新至社区 | 已验收 |
-| 2 | [I7F620](https://gitee.com/opengauss/openGauss-connector-odbc/issues/I7F620?from=project-issue) | 不重要 | 【测试类型：资料】【测试版本：5.1.0】应用开发指南>基于ODBC开发章节，点击“odbc文档”404 | 已验收 |
+| 1 | [I76LHO](https://gitee.com/opengauss/openGauss-connector-odbc/issues/I76LHO?from=project-issue) | 次要 | 【测试类型：接口功能】【测试版本：5.1.0】 主机宕机，gsql备节点查询正常，windows环境下，通过ODBC连接备节点报错server is in hot standby mode | 已取消 |
+| 2 | [I73V2O](https://gitee.com/opengauss/openGauss-connector-odbc/issues/I73V2O?from=project-issue) | 次要 | 【测试类型：接口功能】【测试版本：5.1.0】 windows环境，odbc数据源管理配置其他信息正确，database为空时，连接报错信息不合理 | 已取消 |
+| 3 | [I73IMX](https://gitee.com/opengauss/openGauss-connector-odbc/issues/I73IMX?from=project-issue) | 次要 | 【【测试类型：接口功能】【测试版本：5.1.0】 windows环境使用odbc连接数据库，数据源配置时server为空，报错信息重复 | 已取消 |
+| 4 | [I73ITJ](https://gitee.com/opengauss/openGauss-connector-odbc/issues/I73ITJ?from=project-issue) | 不重要 | 【测试类型：接口功能】【测试版本：5.1.0】 windows环境，odbc数据源管理配置时，其他信息正确，Server为未加白名单ip，连接报错信息指向不清晰 | 已取消 |
+| 5    | [I73P5T](https://gitee.com/opengauss/docs/issues/I73P5T?from=project-issue) | 不重要 | 【测试类型：资料】【测试版本：5.1.0】需求ODBC windows版本发布相关资料未更新至社区 | 已验收 |
+| 6 | [I7F620](https://gitee.com/opengauss/openGauss-connector-odbc/issues/I7F620?from=project-issue) | 不重要 | 【测试类型：资料】【测试版本：5.1.0】应用开发指南>基于ODBC开发章节，点击“odbc文档”404 | 已验收 |
 
 # 4     测试执行
 
@@ -108,7 +113,7 @@
 
 *数据项说明：*
 
-* 累计发现资料单2个，不计入代码缺陷密度计算，代码缺陷密度为0(缺陷个数)/0.38k(代码行数)=0(个/kloc)
+* 累计发现问题单6个，4个非问题取消，2个资料但不计入代码缺陷密度计算，代码缺陷密度为0(缺陷个数)/0.38k(代码行数)=0(个/kloc)
 
 ## 4.3   后续测试建议
 
