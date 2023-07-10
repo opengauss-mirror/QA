@@ -52,11 +52,11 @@ openGauss、datakit、一体化、portal、可视化迁移
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-2-11    | 2023-2-23    |
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-2-24    | 2023-3-14    |
 | openGauss-visualtool<br/>base-ops 1.0.6<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-3-15    | 2023-3-23    |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-4-24    | 2023-5-10    |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-5-11    | 2023-5-24    |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-5-25    | 2023-5-31    |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-6-1     | 2023-6-7     |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-6-8     | 2023-6-30    |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-4-24    | 2023-5-10    |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-5-11    | 2023-5-24    |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-5-25    | 2023-5-31    |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-6-1     | 2023-6-7     |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 2023-6-8     | 2023-6-30    |
 
 | 硬件型号      | 硬件配置信息                                                 | 备注 |
 | ------------- | ------------------------------------------------------------ | ---- |
@@ -336,11 +336,11 @@ openGauss、datakit、一体化、portal、可视化迁移
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 243        | Passed：228<br>Failed：15 | 14           |
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 277        | Passed：269<br>Failed：8 | 5           |
 | openGauss-visualtool<br/>base-ops 1.0.5<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 301        | Passed：301<br>Failed：0 | 0           |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 94 | Passed：51<br/>Failed：43 | 19 |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 99 | Passed：48<br/>Failed：46 | 11 |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 118 | Passed：115<br/>Failed：3 | 2 |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 242 | Passed：241<br/>Failed：1 | 1 |
-| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.0.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 325 | Passed：325<br/>Failed：0 | 0 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 94 | Passed：51<br/>Failed：43 | 19 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 99 | Passed：48<br/>Failed：46 | 11 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 118 | Passed：115<br/>Failed：3 | 2 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 242 | Passed：241<br/>Failed：1 | 1 |
+| openGauss-visualtool<br/>base-ops 5.0.0<br/>data-migration<br/>mysql 5.7.41<br/>openGauss 5.1.0<br/>Chrome 111.0.5563.64<br/>Firefox 18.5.0.0 | 325 | Passed：325<br/>Failed：0 | 0 |
 
 *数据项说明：*
 
