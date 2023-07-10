@@ -11,7 +11,7 @@
 
  关键词： 
 
-资源池化，DMS，Reform
+资源池化，DMS，reform
 
 摘要：
 
@@ -43,7 +43,7 @@
 
 ## 3.1   测试整体结论
 
-资源池化备机支持事务内写转发共计执行用例190条，主要覆盖功能测试，可靠性测试和资料测试。功能测试包含新增GUC参数设置测试；可靠性测试复用执行现有资源池化可靠性用例。测试发现问题4个，均已回归通过，无遗留风险，整体质量良好。
+资源池化备机支持事务内写转发共计执行用例190条，主要覆盖功能测试，可靠性测试和资料测试。功能测试包含新增GUC参数测试和reform时间测试；可靠性测试复用执行现有资源池化可靠性用例。测试发现问题4个，均已回归通过，无遗留风险，整体质量良好。
 
 | 测试活动   | 活动评价                                         |
 | :--------- | :----------------------------------------------- |
@@ -76,7 +76,7 @@
 | issue号                                                      | 问题级别 | 问题简述                                                     | 问题状态 |
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
 | [I765E4](https://gitee.com/opengauss/openGauss-server/issues/I765E4?from=project-issue) | 次要     | 开启reform并行，主机执行业务过程中cm_ctl stop主机，备机failover成功，reform-recovery时间>9秒，dms_reform_start耗时6秒 | 已验收   |
-| [I77BPF](https://gitee.com/opengauss/openGauss-server/issues/I77BPF?from=project-issue) | 主要     | 开启reform并行，主备机执行业务过程中cm命令重启备机，stop对应reform阶段超过9s，dms_reform_drc_clean_parallel步骤耗时长 | 已验收   |
+| [I77BPF](https://gitee.com/opengauss/openGauss-server/issues/I77BPF?from=project-issue) | 次要     | 开启reform并行，主备机执行业务过程中cm命令重启备机，stop对应reform阶段超过9s，dms_reform_drc_clean_parallel步骤耗时长 | 已验收   |
 | [I78PJL](https://gitee.com/opengauss/openGauss-server/issues/I78PJL?from=project-issue) | 次要     | 主节点dss_home路径失效或mv dssserver二进制，kill -9 dssserver 集群无法产生新主，状态异常 | 已验收   |
 | [I7FARF](https://gitee.com/opengauss/openGauss-server/issues/I7FARF?from=project-issue) | 次要     | 资源池化的函数ss_buffer_ctrl()在传统数据库执行导致数据库coredump | 已验收   |
 
