@@ -84,9 +84,9 @@ openGauss dolphin插件MySQL兼容user@host功能，共计执行91个用例，�
 
 | 问题单号 | 问题描述 | 问题级别 | 当前状态 |
 | -------- | -------- | -------- | -------- |
-| [I6TCWE](https://gitee.com/opengauss/Plugin/issues/I6TCWE?from=project-issue) | 兼容B库下，可以成功创建user@localhost用户 但是无法连接 | 次要 | 已完成 |
-| [I6TAR5](https://gitee.com/opengauss/Plugin/issues/I6TAR5?from=project-issue) | user@host中当用户名过长时的报错信息与mysql报错信息不一致 | 次要 | 已完成 |
-| [I6TAW9](https://gitee.com/opengauss/Plugin/issues/I6TAW9?from=project-issue) | 用户名中允许出现@符号 | 次要 | 已完成 |
+| [I6TCWE](https://gitee.com/opengauss/Plugin/issues/I6TCWE?from=project-issue) | 兼容B库下，可以成功创建user@localhost用户 但是无法连接 | 次要 | 已验收 |
+| [I6TAR5](https://gitee.com/opengauss/Plugin/issues/I6TAR5?from=project-issue) | user@host中当用户名过长时的报错信息与mysql报错信息不一致 | 次要 | 已验收 |
+| [I6TAW9](https://gitee.com/opengauss/Plugin/issues/I6TAW9?from=project-issue) | 用户名中允许出现@符号 | 次要 | 已验收 |
 
 # 4     测试执行
 
