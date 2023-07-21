@@ -52,7 +52,7 @@ performance_schema.table_io_waits_summary_by_index_usage
 ## 3.1   测试整体结论
 
 openGauss安装dolphin插件实现MySQL兼容Performance schema的部分视图，包括以下八种视图：1:performance_schema.events_statements_current、2:performance_schema.events_statements_history、3:performance_schema.events_statements_summary_by_digest、4:performance_schema.events_waits_current、5:performance_schema.events_waits_summary_global_by_event_name、6:performance_schema.file_summary_by_instance、
-7:performance_schema.table_io_waits_summary_by_table、8:performance_schema.table_io_waits_summary_by_index_usage，共计执行74个用例，主要覆盖了功能测试、约束测试、资料测试。功能测试覆盖了该模式不支持ddl,dml等操作；每个视图对应的结构不允许修改；对视图中每个字段进行功能验证；不可以删除当前模式中的任意视图。约束测试验证了指定模式创建触发器功能的测试用例在非兼容“B”库下执行数据库可稳定运行。测试中发现4个问题，4个已解决且回归通过。
+7:performance_schema.table_io_waits_summary_by_table、8:performance_schema.table_io_waits_summary_by_index_usage，共计执行74个用例，主要覆盖了功能测试、约束测试、资料测试。功能测试覆盖了该模式不支持ddl,dml等操作；每个视图对应的结构不允许修改；对视图中每个字段进行功能验证；不可以删除当前模式中的任意视图。约束测试验证了指定模式创建触发器功能的测试用例在非兼容“B”库下执行数据库可稳定运行。测试中发现3个问题，3个已解决且回归通过。
 
 | 测试活动 | 活动评价 |
 | -------- | -------- |
@@ -81,7 +81,7 @@ openGauss安装dolphin插件实现MySQL兼容Performance schema的部分视图�
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   | 4        | 0    | 0    | 4    | 0      |
+| 数目   | 3        | 0    | 0    | 3    | 0      |
 | 百分比 | 100%     | 0%    | 0%  | 100%  | 0%      |
 
 ### 3.3.3 问题列表
@@ -120,7 +120,7 @@ openGauss安装dolphin插件实现MySQL兼容Performance schema的部分视图�
 
 | 测试步骤 | 测试结果 |
 | -------- | -------- |
-| 1. 文档描述<br />2. 文档示例<br /> | 文档描述发现4个问题，4个已修复且验收通过 |
+| 1. 文档描述<br />2. 文档示例<br /> | 文档描述发现3个问题，3个已修复且验收通过 |
 
 ## 4.2   测试执行统计数据
 
