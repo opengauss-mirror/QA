@@ -4,11 +4,11 @@
 
 修订记录
 
-| 日期       | 修订 版本 | 修改描述   | 作者        |
-| ---------- | --------- | ---------- | ----------- |
-| 2023-05-19 | 1.0       | 报告初稿   | zhanghuan96 |
-| 2023-06-14 | 1.1       | 补充问题单 | zhanghuan96 |
-
+| 日期       | 修订 版本 | 修改描述                 | 作者        |
+| ---------- | --------- | ------------------------ | ----------- |
+| 2023-05-19 | 1.0       | 报告初稿                 | zhanghuan96 |
+| 2023-06-14 | 1.1       | 补充问题单               | zhanghuan96 |
+| 2023-7-24  | 1.2       | 修改评审意见，补充问题单 | zhanghuan96 |
 关键词：兼容B库，dolphin插件，导入导出
 
 摘要：本文档为openGauss在兼容B库情形下实现导入导出、备份恢复工具支持M\*特性。包括逻辑导入导出工具（gs_dump、gs_dumpall、gs_restore）和物理备份恢复工具（gs_basebackup、gs_probackup）支持M*兼容性，兼容需求包括openGauss3.0.0、3.1.0、3.1.1的对象、数据类型、DDL语法的测试报告。
@@ -87,6 +87,7 @@ openGauss在兼容B库情形下安装dolphin插件，实现逻辑导入导出工
 | 3    | [I6WOW7](https://gitee.com/opengauss/Plugin/issues/I6WOW7?from=project-issue) | 列名使用反引号含空格，gs_dump导出报错                        | 次要     | 已验收   |
 | 4    | [I6YM6D](https://gitee.com/opengauss/openGauss-server/issues/I6YM6D?from=project-issue) | 导入导出、备份恢复工具支持M*兼容性需求社区没有资料，请添加   | 次要     | 已验收   |
 | 5    | [I7880I](https://gitee.com/opengauss/Plugin/issues/I7880I?from=project-issue) | year(2)类型使用gs_restore导入后是4位年份，预期应该和导入前一致，保持两位年份 | 次要     | 已验收   |
+| 6    | [I7K0VY](https://gitee.com/opengauss/docs/issues/I7K0VY?from=project-issue) | 导入导出、备份恢复工具支持M*兼容性需求添加约束说明           | 不重要   | 已验收   |
 
 # 4 测试执行
 
