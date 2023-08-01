@@ -230,10 +230,10 @@
 
 <div>
 <div style="float:left;">
-<img src="images/智能运维问题分布图-按特性.png" width = "500" height = "400" alt="问题分布图-特性" />
+<img src="../images/智能运维问题分布图-按特性.png" width = "500" height = "400" alt="问题分布图-特性" />
 </div>
 <div>
-<img src="images/智能运维问题分布图-按重要级别.png" width = "500" height = "400" alt="问题分布图-重要级别" />
+<img src="../images/智能运维问题分布图-按重要级别.png" width = "500" height = "400" alt="问题分布图-重要级别" />
 </div>
 </div>
 <br>
