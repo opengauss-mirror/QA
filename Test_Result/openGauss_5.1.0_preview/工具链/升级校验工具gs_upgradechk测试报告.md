@@ -48,7 +48,7 @@ upgrade-checker是一个升级之后元数据完整性的检测工具，由pytho
 
 ## 3.1   测试整体结论
 
-gs_upgradechk升级校验工具，共计执行21条用例，主要覆盖了功能测试和资料测试。功能测试覆盖gs_upgradechk的导出元数据校验地图功能，以及基于元数据校验并生成报告的功能，还在升级过程中测试gs_upgradechk的相关功能。累计发现缺陷单5个，4个问题单均已修复，1个资料问题单正在修复中，还未回归测试，整体质量良好。
+gs_upgradechk升级校验工具，共计执行21条用例，主要覆盖了功能测试和资料测试。功能测试覆盖gs_upgradechk的导出元数据校验地图功能，以及基于元数据校验并生成报告的功能，还在升级过程中测试gs_upgradechk的相关功能。累计发现缺陷单5个，5个问题单均已修复，整体质量良好。
 
 | 测试活动 |                           活动评价                           |
 | :------: | :----------------------------------------------------------: |
@@ -84,10 +84,10 @@ gs_upgradechk升级校验工具，共计执行21条用例，主要覆盖了功�
 | 序号 |                           issue号                            | 问题级别 |                 问题简述                  | 问题状态 |
 | :--: | :----------------------------------------------------------: | :------: | :---------------------------------------: | :------: |
 |  1   | [I7CNUM](https://e.gitee.com/opengaussorg/issues/list?issue=I7CNUM) |   次要   |        导出报告模式指定detail报错         |  已完成  |
-|  2   | [I7CB64](https://e.gitee.com/opengaussorg/issues/list?issue=I7CB64) |   次要   | gs_upgradechk生成报告中校验了不必要的信息 |  已完成  |
-|  3   | [I7CATK](https://e.gitee.com/opengaussorg/issues/list?issue=I7CATK) |   次要   |    文档描述help不区分大小写与实现不符     |  已完成  |
+|  2   | [I7CB64](https://e.gitee.com/opengaussorg/issues/list?issue=I7CB64) |   次要   | gs_upgradechk生成报告中校验了不必要的信息  |  已完成  |
+|  3   | [I7CATK](https://e.gitee.com/opengaussorg/issues/list?issue=I7CATK) |   次要   |    文档描述help不区分大小写与实现不符      |  已完成  |
 |  4   | [I7DGLS](https://e.gitee.com/opengaussorg/issues/list?issue=I7DGLS) |  不重要  |   gs_upgradechk资料README里部分标点缺失   |  已完成  |
-|  5   | [I7HBYW](https://e.gitee.com/opengaussorg/issues/list?issue=I7HBYW) |  不重要  |     官网资料gs_upgradechk部分描述有误     |  待办的  |
+|  5   | [I7HBYW](https://e.gitee.com/opengaussorg/issues/list?issue=I7HBYW) |  不重要  |     官网资料gs_upgradechk部分描述有误     |  已完成 |
 
 # 4     测试执行
 
@@ -115,19 +115,19 @@ gs_upgradechk升级校验工具，共计执行21条用例，主要覆盖了功�
 
 | 测试步骤：                                                | 测试结果                                    |
 | --------------------------------------------------------- | ------------------------------------------- |
-| 1. 资料对于新增加的功能描述准确<br/>2. 示例的执行结果正确 | 发现2个bug，1个bug已修复且验收通过,1个bug为待办的 |
+| 1. 资料对于新增加的功能描述准确<br/>2. 示例的执行结果正确 | 发现2个bug，2个bug已修复且验收通过 |
 
 ## 4.2  测试执行统计数据
 
 | 版本名称                       | 测试用例数   | 用例执行结果             | 发现问题单数 |
 | ------------------------------ | ------------ | ------------------------ | ------------ |
 | openGauss 3.0.3 build 0b0270b1 | 21           | Passed：16<br>Failed：5 | 5            |
-| openGauss 3.0.3 build 0b0270b1 | 回归issue：5 | Passed：5<br>Failed：0   | 0            |
+| openGauss 3.0.3 build 0b0270b1 | 回归issue：5  | Passed：5<br>Failed：0   | 0            |
 | openGauss 5.0.0 build 584be3be | 回归issue：5 | Passed：5<br>Failed：0   | 0            |
 
 *数据项说明：*
 
-* 累计发现缺陷单5个，1个缺陷为待办的.4个缺陷均已解决且回归通过
+* 累计发现缺陷单5个.5个缺陷均已解决且回归通过
 * 失败用例已在后续问题修复后，回归issue执行通过
 * 缺陷密度: 3(缺陷个数)/5.027kloc(代码行数)=0.597(个/kloc)
 
