@@ -73,7 +73,7 @@
 
 | 序号 | issue号                                                      | 级别 | 问题简述                                                     | 状态   |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------ |
-| 1    | [I7DQRP](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I7DQRP?from=project-issue) | 次要 | 全量迁移工具支持读取csv文件用于数据迁移，当csv文件异常（如：列字段名称不正确。csv文件列名不存在，contain_columns配置为Yes），程序报错后未自动终止进程，一直打印错误直到读完csv文件 | 已完成 |
+| 1    | [I7DQRP](https://gitee.com/opengauss/openGauss-tools-chameleon/issues/I7DQRP?from=project-issue) | 次要 | 全量迁移工具支持读取csv文件用于数据迁移，当csv文件异常（如：列字段名称不正确。csv文件列名不存在，contain_columns配置为Yes），程序报错后未自动终止进程，一直打印错误直到读完csv文件 | 已验收 |
 
 
 
@@ -104,6 +104,8 @@
 |            版本名称            | 测试用例数 |     用例执行结果     | 发现问题单数 |
 | :----------------------------: | :--------: | :------------------: | :----------: |
 | openGauss 5.1.0 build 68d1772f |     27     | Passed：26 Failed：1 |      1       |
+| openGauss 5.1.0 build 68d1772f |     1     | Passed：1 Failed：0 |      0       |
+
 
 数据说明
 
