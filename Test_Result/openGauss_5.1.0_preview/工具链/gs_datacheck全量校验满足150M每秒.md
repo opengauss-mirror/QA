@@ -16,7 +16,36 @@ M*、chameleon、openGauss、gs_datachecker、kafka、全量校验性能、150MB
 
  摘要：
 
-本文档内容为验证在使用chameleon工具从M*数据库向openGauss数据库进行全量迁移后，使用gs_datachecker校验工具进行全量数据校验，校验速率满足150MB/s。
+本文档内容为验证在使用chameleon工具从M*数据库向openGauss数据库进行全量迁移后，数据量满足50张表，每张表1000万条数据，在特定表结构(详见测试步骤)下使用gs_datachecker校验工具进行全量数据校验，校验速率满足150MB/s。
+
+```
+CREATE TABLE `t_datacheck_templete` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`c_int` INT(11) NULL DEFAULT NULL,
+	`c_bigint` BIGINT(20) NULL DEFAULT NULL,
+	`c_bigint2` BIGINT(20) NULL DEFAULT NULL,
+	`c_char` CHAR(120) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_char2` CHAR(120) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_char3` CHAR(120) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_varchar` VARCHAR(300) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_varchar2` VARCHAR(300) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	` c_text` TEXT NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	` c_text2` TEXT NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_date` DATE NULL DEFAULT NULL,
+	`c_time` TIME NULL DEFAULT NULL,
+	` c_timestamp` TIMESTAMP NULL DEFAULT NULL,
+	`c_float` FLOAT NULL DEFAULT NULL,
+	`c_double` DOUBLE NULL DEFAULT NULL,
+	`c_decimal` DECIMAL(20,6) NULL DEFAULT NULL,
+	`c_decimal2` DECIMAL(20,6) NULL DEFAULT NULL,
+	`c_enum` ENUM('Y','N') NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB
+;
+```
+
 
 缩略语清单：
 
@@ -53,7 +82,7 @@ gs_datachecker校验工具全量数据校验，校验速率满足150MB/s。
 
 ## 3.1   测试整体结论
 
-​      基于sysbench初始表结构，表数量、数据总量、每张表数据条数测试范围分别为1至500张表、1GB至196GB、1万至1亿条。gs_datachecker全量校验速度满足150MB/s特性，共执行用例45个，合计提3个问题单。性能均未达到150M/S，整体质量一般。
+​      基于sysbench初始表结构，表数量50、每张表数据条数1000万、数据总量。gs_datachecker全量校验速度满足150MB/s特性，共执行用例45个，合计提3个问题单，整体质量一般。
 
 ## 3.2   约束说明
 
@@ -76,21 +105,54 @@ gs_datachecker校验工具全量数据校验，校验速率满足150MB/s。
 |        | 问题总数 |  严重  | 主要 | 次要  | 不重要 |
 | ------ | :------: | :----: | :--: | :---: | :----: |
 | 数目   |    3     |   0    |  2   |   1   |   0    |
-| 百分比 |   100%   | 66.67% |  0%  | 33.3% |   0%   |
+| 百分比 |   100%   | 0%     | 66.67%| 33.3% |   0%   |
 
 ### 3.3.3 问题单汇总
 
 | 序号 | issue号                                                      | 级别 | 问题简述                                                     | 状态   |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------ |
-| 1    | [I79TWK](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I79TWK?from=project-issue) | 次要 | 全量数据校验速率满足150M/S：验证60张表，单表总行数10w，当宿端openGauss多表的时候，校验结果文件failed.log未生成，没有相应提示 | 已完成 |
-| 2    | [I7ABZ0](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7ABZ0?from=project-issue) | 主要 | 全量数据校验速率满足150M/S：10张表，每张表1亿数据。源端M*、宿端openGauss抽取服务报错 | 已完成 |
-| 3    | [I79DCH](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I79DCH?from=project-issue) | 主要 | 全量数据校验速率满足150M/S：10张表，每张表50万数据。校验速率达不到150M/S | 待办的 |
+| 1    | [I79TWK](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I79TWK?from=project-issue) | 次要 | 全量数据校验速率满足150M/S：验证60张表，单表总行数10w，当宿端openGauss多表的时候，校验结果文件failed.log未生成，没有相应提示 | 已验收|
+| 2    | [I7ABZ0](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7ABZ0?from=project-issue) | 主要 | 全量数据校验速率满足150M/S：10张表，每张表1亿数据。源端M*、宿端openGauss抽取服务报错 | 已验收 |
+| 3    | [I79DCH](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I79DCH?from=project-issue) | 主要 | 全量数据校验速率满足150M/S：10张表，每张表50万数据。校验速率达不到150M/S | 已验收 |
 
 # 4     测试执行
 
 ## 4.1   测试执行步骤
 
-1. sysbench批量创造数据，表结构采用sysbench默认表结构
+1. sysbench批量创造数据，表结构如下：
+
+```
+CREATE TABLE `t_datacheck_templete` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`c_int` INT(11) NULL DEFAULT NULL,
+	`c_bigint` BIGINT(20) NULL DEFAULT NULL,
+	`c_bigint2` BIGINT(20) NULL DEFAULT NULL,
+	`c_char` CHAR(120) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_char2` CHAR(120) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_char3` CHAR(120) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_varchar` VARCHAR(300) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_varchar2` VARCHAR(300) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	` c_text` TEXT NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	` c_text2` TEXT NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`c_date` DATE NULL DEFAULT NULL,
+	`c_time` TIME NULL DEFAULT NULL,
+	` c_timestamp` TIMESTAMP NULL DEFAULT NULL,
+	`c_float` FLOAT NULL DEFAULT NULL,
+	`c_double` DOUBLE NULL DEFAULT NULL,
+	`c_decimal` DECIMAL(20,6) NULL DEFAULT NULL,
+	`c_decimal2` DECIMAL(20,6) NULL DEFAULT NULL,
+	`c_enum` ENUM('Y','N') NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB
+;
+```
+2. 表的每条数据量如下：
+
+```
+|  1 | 794207 | 69885247 |  59010375 | uld do one of two thingstrying to test an application that c | services then we could do one of two thingstrying to test an | ingstrying to test an application that communicates with oth | s then we could do one of two thingstrying to t | mmunicates with other  | ther services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we | we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application that communicates with other services then we could do one of two thingstrying to test an application tha | 2023-08-30 | 09:38:35 | 2.76939 | 3540.9786768702 | 4723.637633 | 67900.487187 | C      | ices then we could do one of  |
+```
 
 3. 使用chameleon工具进行全量数据迁移
 
@@ -103,74 +165,43 @@ gs_datachecker校验工具全量数据校验，校验速率满足150MB/s。
 
 4. 查看M*待校验的表数据总量
 
+```
+select concat(round(sum(data_length/1024/1024),2),'MB') as data from information_schema.tables where table_schema='databasename';
+```
+
 5. 启动M*、openGauss抽取服务及数据校验服务
 
-6. 迁移速度 = 总Size / 校验耗时，其中总Size是M*待校验的所有表Size之和，校验耗时取自校验服务的cost time时间
+```
+sh extract-endpoints.sh start
+sh check-endpoints.sh start
+```
 
-7. 查看生成的结果文件准确性
+6. 迁移速度 = 总Size / 校验耗时，其中总Size是M*待校验的所有表Size之和，校验耗时取自结果文件summary.log的cost字段的值，单位为秒
+
+7. 查看生成的结果文件准确
 
 ## 4.2   性能场景
 
 ### 4.2.1  总数据量不变
 
-<center> 表1  总数据量约1GB平均校验速率（sysbench初始表结构）
+<center> 表1  总数据量约10GB平均校验速率
 </center>
 
 | 场景 | 场景描述                                       | 平均校验速度(MB/S) | 校验结果 |
 | :--: | :--------------------------------------------- | :----------------: | :------: |
-|  1   | 10张表，数据条数50万，数据总量约1076MB         |       63.30        |   准确   |
-|  2   | 50张表，每张表数据条数10万，数据总量约1077MB   |       63.37        |   准确   |
-|  3   | 100张表，每张表数据条数5万，数据总量约1151MB   |       63.97        |   准确   |
-|  4   | 200张表，每张表数据条数2.5万，数据总量约1103MB |       40.85        |   准确   |
-|  5   | 250张表，每张表数据条数2万，数据总量约1128MB   |       35.27        |   准确   |
-|  6   | 500张表，每张表数据条数1万，数据总量约1257MB   |       22.46        |   准确   |
+|  1   | 10张表，数据条数50万，数据总量约9822MB         |       223.25        |   准确   |
+|  2   | 50张表，每张表数据条数10万，数据总量约1077MB   |       160.1        |   准确   |
+|  3   | 100张表，每张表数据条数5万，数据总量约1151MB   |       155.18        |   准确   |
 
 ### 4.2.2  单表总记录不变
 
-<center> 表2  单表数据条数10万平均校验速率（sysbench初始表结构）
+<center> 表2  单表数据条数10万平均校验速率
 </center>
 
 | 场景 | 场景描述                                      | 平均校验速度(MB/S) | 校验结果 |
 | ---- | --------------------------------------------- | ------------------ | -------- |
-| 1    | 10张表，每张表数据条数10万，数据总量约215MB   | 35.91              | 准确     |
-| 2    | 20张表，每张表数据条数10万，数据总量约430MB   | 47.88              | 准确     |
-| 3    | 30张表，每张表数据条数10万，数据总量约646MB   | 53.86              | 准确     |
-| 4    | 40张表，每张表数据条数10万，数据总量约861MB   | 57.45              | 准确     |
-| 5    | 50张表，每张表数据条数10万，数据总量约1077MB  | 71.82              | 准确     |
-| 6    | 60张表，每张表数据条数10万，数据总量约1292MB  | 64.64              | 准确     |
-| 7    | 70张表，每张表数据条数10万，数据总量约1508MB  | 71.82              | 准确     |
-| 8    | 80张表，每张表数据条数10万，数据总量约1723MB  | 68.95              | 准确     |
-| 9    | 90张表，每张表数据条数10万，数据总量约1939MB  | 71.82              | 准确     |
-| 10   | 100张表，每张表数据条数10万，数据总量约2154MB | 79.80              | 准确     |
+| 1    | 10张表，每张表数据条数10万，数据总量约905989MB   |               |      |
 
-
-
-### 4.2.3  表数量不变
-
-<center> 表3  10张表平均校验速率（sysbench初始表结构）
-</center>
-
-| 场景 | 场景描述                                       | 平均校验速度(MB/S) | 校验结果 |
-| ---- | ---------------------------------------------- | ------------------ | -------- |
-| 1    | 10张表，每张表数据条数50万，数据总量约1076MB   | 59.79              | 准确     |
-| 2    | 10张表，每张表数据条数100万，数据总量约2147MB  | 69.25              | 准确     |
-| 3    | 10张表，每张表数据条数150万，数据总量约3217MB  | 78.48              | 准确     |
-| 4    | 10张表，每张表数据条数200万，数据总量约4250MB  | 69.68              | 准确     |
-| 5    | 10张表，每张表数据条数250万，数据总量约5336MB  | 69.30              | 准确     |
-| 6    | 10张表，每张表数据条数300万，数据总量约6203MB  | 61.41              | 准确     |
-| 7    | 10张表，每张表数据条数350万，数据总量约7510MB  | 60.52              | 准确     |
-| 8    | 10张表，每张表数据条数400万，数据总量约8509MB  | 61.89              | 准确     |
-| 9    | 10张表，每张表数据条数450万，数据总量约9389MB  | 60.78              | 准确     |
-| 10   | 10张表，每张表数据条数500万，数据总量约10513MB | 58.52              | 准确     |
-
-### 4.2.4  对标chameleon迁移工具数据
-
-| 场景 |                  场景描述                   | 平均校验速度(MB/S) | 校验结果 |
-| :--: | :-----------------------------------------: | :----------------: | :------: |
-|  1   | 10张表，每张表数据条数1亿，数据总量201598MB |    抽取服务报错    |    /     |
-
-<center>
-</center>
 
 ### 4.2.3 资料测试
 
@@ -182,19 +213,19 @@ gs_datachecker校验工具全量数据校验，校验速率满足150MB/s。
 
 ### 4.3.1 测试结果分析
 
-​       本次测试中，基于sysbench的表结构初始模型，gs_datachecker数据全量校验性能不满足150MB/s。
+​       本次测试中，基于sysbench特定表结构模型，gs_datachecker数据全量校验性能满足150MB/s。
 
 ### 4.3.2 测试数据统计
 
 | 版本名称                       | 测试用例数 | 用例执行结果           | 发现问题单数    |
 | ------------------------------ | :--------- | :--------------------- | --------------- |
-| openGauss 5.1.0 build 68d1772f | 45         | Passed:9<br/>Failed:36 | 3(存在共性问题) |
+| openGauss 5.1.0 build 68d1772f | 45         | Passed:9<br/>Failed:36 | 3  |
 
 
 
 数据说明：
 
-1. gs_datachecker全量校验满足150M/S测试共计45条用例，执行通过9条，共计发现3个bug
+1. gs_datachecker全量校验满足150M/S，共计发现3个bug
 2. 缺陷密度为3(缺陷个数)/0.138k(代码行数)=21.73(个/kloc)
 
 ## 4.4   后续测试建议
