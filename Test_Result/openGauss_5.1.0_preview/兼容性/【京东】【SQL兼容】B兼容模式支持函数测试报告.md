@@ -112,7 +112,7 @@ B兼容模式支持M*内置函数，共计执行75条用例，主要覆盖了功
 ## 4.2 测试执行统计数据
 | 版本名称                       | 测试用例数 | 用例执行结果         | 发现问题单数 |
 | ------------------------------ | ---------- | -------------------- | ------------ |
-| openGauss 5.1.0 build a74b7333 | 75         | Passed: 69 Failed: 6 | 6            |
+| openGauss 5.1.0 build a74b7333 | 75         | Passed: 69 Failed: 7 | 7            |
 | openGauss 5.1.0 build ad27d72a | 2          | Passed: 2 Failed: 0  | 0            |
 | openGauss 5.1.0 build 2819e518 | 4          | Passed: 4 Failed: 0  | 0            |
 | openGauss 5.1.0 build 5762b67e | 1          | Passed: 0 Failed: 0  | 0            |
