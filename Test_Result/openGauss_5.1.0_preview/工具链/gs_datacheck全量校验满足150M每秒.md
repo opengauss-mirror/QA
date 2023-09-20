@@ -16,35 +16,7 @@ M*、chameleon、openGauss、gs_datachecker、kafka、全量校验性能、150MB
 
  摘要：
 
-本文档内容为验证在使用chameleon工具从M*数据库向openGauss数据库进行全量迁移后，数据量满足50张表，每张表1000万条数据，在特定表结构(详见测试步骤)下使用gs_datachecker校验工具进行全量数据校验，校验速率满足150MB/s。
-
-```
-CREATE TABLE `t_datacheck_templete` (
-	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-	`c_int` INT(11) NULL DEFAULT NULL,
-	`c_bigint` BIGINT(20) NULL DEFAULT NULL,
-	`c_bigint2` BIGINT(20) NULL DEFAULT NULL,
-	`c_char` CHAR(120) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	`c_char2` CHAR(120) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	`c_char3` CHAR(120) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	`c_varchar` VARCHAR(300) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	`c_varchar2` VARCHAR(300) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	` c_text` TEXT NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	` c_text2` TEXT NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	`c_date` DATE NULL DEFAULT NULL,
-	`c_time` TIME NULL DEFAULT NULL,
-	` c_timestamp` TIMESTAMP NULL DEFAULT NULL,
-	`c_float` FLOAT NULL DEFAULT NULL,
-	`c_double` DOUBLE NULL DEFAULT NULL,
-	`c_decimal` DECIMAL(20,6) NULL DEFAULT NULL,
-	`c_decimal2` DECIMAL(20,6) NULL DEFAULT NULL,
-	`c_enum` ENUM('Y','N') NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	PRIMARY KEY (`id`) USING BTREE
-)
-COLLATE='utf8mb4_general_ci'
-ENGINE=InnoDB
-;
-```
+本文档内容为验证在使用chameleon工具从M*数据库向openGauss数据库进行全量迁移后，数据量满足50张表，每张表1000万条数据，在特定表结构(详见测试步骤)下使用gs_datachecker校验工具进行全量数据校验，校验速率满足150MB/s、20w条/s。
 
 
 缩略语清单：
@@ -63,12 +35,12 @@ gs_datachecker校验工具全量数据校验，校验速率满足150MB/s。
 
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
 | ------------------------------ | :----------- | ------------ |
-| openGauss 5.1.0 build 68d1772f | 2023-05-26   | 2023-06-29   |
-| M* 5.7.27                      | 2022-05-26   | 2023-06-29   |
-| chameleon 5.0.0                | 2022-05-26   | 2023-06-29   |
-| jdk 11.0.16                    | 2022-05-26   | 2023-06-29   |
-| kafka 2.13-2.8.11              | 2022-05-26   | 2023-06-29   |
-| gs_datachecker master          | 2022-05-26   | 2023-06-29   |
+| openGauss 5.1.0 build 68d1772f | 2023-05-26   | 2023-08-20   |
+| M* 5.7.27                      | 2022-05-26   | 2023-08-20   |
+| chameleon 5.0.0                | 2022-05-26   | 2023-08-20   |
+| jdk 11.0.16                    | 2022-05-26   | 2023-08-20   |
+| kafka 2.13-2.8.11              | 2022-05-26   | 2023-08-20   |
+| gs_datachecker master          | 2022-05-26   | 2023-08-20   |
 
 硬件环境信息：
 
@@ -82,7 +54,7 @@ gs_datachecker校验工具全量数据校验，校验速率满足150MB/s。
 
 ## 3.1   测试整体结论
 
-​      基于sysbench初始表结构，表数量50、每张表数据条数1000万、数据总量。gs_datachecker全量校验速度满足150MB/s特性，共执行用例45个，合计提3个问题单，整体质量一般。
+​      基于sysbench自定义表结构数据预置。通过更改sysbench的lua脚本，使用自定义表结构对M*数据库预置50张表，每张表1000万条数据。使用chameleon全量迁移工具将数据从M*迁移至openGauss,利用gs_datachecker工具对M*与openGauss数据库的数据一致性校验速率进行测试。计算数据库大小与数据总条数，校验完成后性指标满足：总size/time≥150M/s、总条数/time≥20w条/s且数据校验结果准确。共计执行用例50个，累计发现缺陷3个，3个缺陷已解决，回归通过，整体质量良好
 
 ## 3.2   约束说明
 
@@ -182,59 +154,44 @@ sh check-endpoints.sh start
 
 ## 4.2   性能场景
 
-### 4.2.1  总数据量不变
-
-<center> 表1  总数据量约10GB平均校验速率
-</center>
-
-| 场景 | 场景描述                                       | 平均校验速度(MB/S) | 校验结果 |
+| 场景 | 场景描述                                       | 平均校验速度 | 校验结果 |
 | :--: | :--------------------------------------------- | :----------------: | :------: |
-|  1   | 10张表，数据条数50万，数据总量约9822MB         |       223.25        |   准确   |
-|  2   | 50张表，每张表数据条数10万，数据总量约1077MB   |       160.1        |   准确   |
-|  3   | 100张表，每张表数据条数5万，数据总量约1151MB   |       155.18        |   准确   |
-
-### 4.2.2  单表总记录不变
-
-<center> 表2  单表数据条数10万平均校验速率
-</center>
-
-| 场景 | 场景描述                                      | 平均校验速度(MB/S) | 校验结果 |
-| ---- | --------------------------------------------- | ------------------ | -------- |
-| 1    | 10张表，每张表数据条数10万，数据总量约905989MB   |               |      |
+|  1   | 50张表，每张表数据条数1000万，数据总量约884G         | 442m/s、24w条/s |   准确   |
 
 
-### 4.2.3 资料测试
+
+### 4.3 资料测试
 
 | 测试步骤：                     | 测试结果  |
 | ------------------------------ | --------- |
 | 1. 使用方法描述<br>2. 示例测试 | 未发现bug |
 
-## 4.3   测试结果
+## 4.4   测试结果
 
-### 4.3.1 测试结果分析
+### 4.4.1 测试结果分析
 
-​       本次测试中，基于sysbench特定表结构模型，gs_datachecker数据全量校验性能满足150MB/s。
+​       本次测试中，基于sysbench特定表结构模型，gs_datachecker数据全量校验性能满足150MB/s、20w条/s。
 
-### 4.3.2 测试数据统计
+### 4.4.2 测试数据统计
 
 | 版本名称                       | 测试用例数 | 用例执行结果           | 发现问题单数    |
 | ------------------------------ | :--------- | :--------------------- | --------------- |
 | openGauss 5.1.0 build 68d1772f | 45         | Passed:9<br/>Failed:36 | 3  |
-
+| openGauss 5.1.0 build 24d9203f | 5         | Passed:5<br/>Failed:0 | 0  |
 
 
 数据说明：
 
-1. gs_datachecker全量校验满足150M/S，共计发现3个bug
+1. gs_datachecker全量校验满足150M/S、20w条/s，共计发现3个bug
 2. 缺陷密度为3(缺陷个数)/0.138k(代码行数)=21.73(个/kloc)
 
-## 4.4   后续测试建议
+## 4.5   后续测试建议
 
 暂无
 
-# 5     附件
+# 6     附件
 
-## 5.1 校验速率计算
+## 6.1 校验速率计算
 
 校验速率 =  源端(MySQL)数据库大小 / 校验时间
 
