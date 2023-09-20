@@ -54,7 +54,7 @@ gs_datachecker校验工具全量数据校验，校验速率满足150MB/s、20w�
 
 ## 3.1   测试整体结论
 
-​      基于sysbench自定义表结构数据预置。通过更改sysbench的lua脚本，使用自定义表结构对M*数据库预置50张表，每张表1000万条数据。使用chameleon全量迁移工具将数据从M\*迁移至openGauss,利用gs_datachecker工具对M\*与openGauss数据库的数据一致性校验速率进行测试。计算数据库大小与数据总条数，校验完成后性指标满足：总size/time≥150M/s、总条数/time≥20w条/s且数据校验结果准确。共计执行用例50个，累计发现缺陷3个，3个缺陷已解决，回归通过，整体质量良好
+​基于sysbench自定义表结构数据预置。通过更改sysbench的lua脚本，使用自定义表结构对M*数据库预置50张表，每张表1000万条数据。使用chameleon全量迁移工具将数据从M\*迁移至openGauss,利用gs_datachecker工具对M\*与openGauss数据库的数据一致性校验速率进行测试。计算数据库大小与数据总条数，校验完成后性指标满足：总size/time≥150MB/s、总条数/time≥20w条/s且数据校验结果准确。共计执行用例50个，累计发现缺陷3个，3个缺陷已解决，回归通过，整体质量良好
 
 ## 3.2   约束说明
 
@@ -156,7 +156,7 @@ sh check-endpoints.sh start
 
 | 场景 | 场景描述                                       | 平均校验速度 | 校验结果 |
 | :--: | :--------------------------------------------- | :----------------: | :------: |
-|  1   | 50张表，每张表数据条数1000万，数据总量约884G         | 442m/s、24w条/s |   准确   |
+|  1   | 50张表，每张表数据条数1000万，数据总量约884G         | 442MB/s、24w条/s |   准确   |
 
 
 
@@ -182,7 +182,7 @@ sh check-endpoints.sh start
 
 数据说明：
 
-1. gs_datachecker全量校验满足150M/S、20w条/s，共计发现3个bug
+1. gs_datachecker全量校验满足150MB/S、20w条/s，共计发现3个bug
 2. 缺陷密度为3(缺陷个数)/0.138k(代码行数)=21.73(个/kloc)
 
 ## 4.5   后续测试建议
@@ -197,4 +197,4 @@ sh check-endpoints.sh start
 
 源端数据库大小：select concat(round(sum(data_length/1024/1024),2),'MB') as data from information_schema.tables where table_schema='databasename';
 
-校验时间：在校验服务日志check.log日志中打印cost time作为时间统计
+校验时间：结果文件summary.log的cost字段的值，单位为秒
