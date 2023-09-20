@@ -104,7 +104,7 @@
 |            版本名称            | 测试用例数 |     用例执行结果     | 发现问题单数 |
 | :----------------------------: | :--------: | :------------------: | :----------: |
 | openGauss 5.1.0 build 68d1772f |     27     | Passed：26 Failed：1 |      1       |
-| openGauss 5.1.0 build 68d1772f |     1     | Passed：1 Failed：0 |      0       |
+| openGauss 5.1.0 build fd7e64df |     1     | Passed：1 Failed：0 |      0       |
 
 
 数据说明
