@@ -12,11 +12,11 @@
 
  关键词： 
 
-M*、chameleon、openGauss、gs_datachecker、kafka、全量校验性能、150MB/s
+M*、chameleon、openGauss、gs_datachecker、kafka、全量校验性能、150MB/s、20w条/s
 
  摘要：
 
-本文档内容为验证在使用chameleon工具从M*数据库向openGauss数据库进行全量迁移后，数据量满足50张表，每张表1000万条数据，在特定表结构(详见测试步骤)下使用gs_datachecker校验工具进行全量数据校验，校验速率满足150MB/s、20w条/s。
+本文档内容为验证在使用chameleon工具从M\*数据库向openGauss数据库进行全量迁移后，数据量满足50张表，每张表1000万条数据，在特定表结构(详见测试步骤)下使用gs_datachecker校验工具进行全量数据校验，校验速率满足150MB/s、20w条/s。
 
 
 缩略语清单：
@@ -27,7 +27,7 @@ M*、chameleon、openGauss、gs_datachecker、kafka、全量校验性能、150MB
 
 # 1     特性概述
 
-gs_datachecker校验工具全量数据校验，校验速率满足150MB/s。
+gs_datachecker校验工具全量数据校验，校验速率满足150MB/s、20w条/s。
 
 # 2     特性测试信息
 
@@ -54,7 +54,7 @@ gs_datachecker校验工具全量数据校验，校验速率满足150MB/s。
 
 ## 3.1   测试整体结论
 
-​      基于sysbench自定义表结构数据预置。通过更改sysbench的lua脚本，使用自定义表结构对M*数据库预置50张表，每张表1000万条数据。使用chameleon全量迁移工具将数据从M*迁移至openGauss,利用gs_datachecker工具对M*与openGauss数据库的数据一致性校验速率进行测试。计算数据库大小与数据总条数，校验完成后性指标满足：总size/time≥150M/s、总条数/time≥20w条/s且数据校验结果准确。共计执行用例50个，累计发现缺陷3个，3个缺陷已解决，回归通过，整体质量良好
+​      基于sysbench自定义表结构数据预置。通过更改sysbench的lua脚本，使用自定义表结构对M*数据库预置50张表，每张表1000万条数据。使用chameleon全量迁移工具将数据从M\*迁移至openGauss,利用gs_datachecker工具对M\*与openGauss数据库的数据一致性校验速率进行测试。计算数据库大小与数据总条数，校验完成后性指标满足：总size/time≥150M/s、总条数/time≥20w条/s且数据校验结果准确。共计执行用例50个，累计发现缺陷3个，3个缺陷已解决，回归通过，整体质量良好
 
 ## 3.2   约束说明
 
@@ -189,9 +189,9 @@ sh check-endpoints.sh start
 
 暂无
 
-# 6     附件
+# 5     附件
 
-## 6.1 校验速率计算
+## 5.1 校验速率计算
 
 校验速率 =  源端(MySQL)数据库大小 / 校验时间
 
