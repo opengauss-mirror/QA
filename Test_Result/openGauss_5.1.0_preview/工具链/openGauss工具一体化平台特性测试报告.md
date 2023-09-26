@@ -73,7 +73,7 @@ openGauss、datakit、一体化、portal、可视化迁移
 
 ## 3.1   测试整体结论
 
-一体化平台基座openGauss-visualtool及基础运维插件Base-Ops、迁移插件 data-migration，共计执行637条用例，主要覆盖了功能测试、可靠性测试、兼容性测试、易用性测试、资料测试。功能测试覆盖首页、资源中心、安装部署、基础运维、数据迁移、插件管理、安全中心、日志中心、平台基础功能，资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单98个，91个缺陷均已解决且回归通过，7个缺陷未解决。业务建模的测试结论详见单独的测试报告[《openGauss数据建模项目测试报告》](https://gitee.com/opengauss/QA/blob/master/Test_Result/openGauss_5.0.0_release/%E5%B7%A5%E5%85%B7%E9%93%BE/openGauss%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E9%A1%B9%E7%9B%AE%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)。
+一体化平台基座openGauss-visualtool及基础运维插件Base-Ops、迁移插件 data-migration，共计执行637条用例，主要覆盖了功能测试、可靠性测试、兼容性测试、易用性测试、资料测试。功能测试覆盖首页、资源中心、安装部署、基础运维、数据迁移、插件管理、安全中心、日志中心、平台基础功能，资料测试覆盖校验资料的描述及示例的执行结果是否成功。累计发现缺陷单98个，98个缺陷均已解决且回归通过。业务建模的测试结论详见单独的测试报告[《openGauss数据建模项目测试报告》](https://gitee.com/opengauss/QA/blob/master/Test_Result/openGauss_5.0.0_release/%E5%B7%A5%E5%85%B7%E9%93%BE/openGauss%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E9%A1%B9%E7%9B%AE%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)。
 
 | 测试活动   | 活动评价                                                     |
 | ---------- | :----------------------------------------------------------- |
