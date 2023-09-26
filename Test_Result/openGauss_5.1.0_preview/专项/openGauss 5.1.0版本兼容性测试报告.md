@@ -9,7 +9,7 @@
 | ---------- | ----------- | ------------------ | ---- |
 | 2023-09-19 | 1.0         | 兼容性测试报告初稿 | 宋晶 |
 | 2023-09-21 | 1.1         | 增加升级测试部分   | 李鑫 |
-|            |             |                    |      |
+| 2023-09-26 | 1.2         | 补充升级路径       | 李鑫 |
 
  关键词： 软件兼容；升级兼容；硬件兼容；灰度升级；openGauss 5.1.0
 
@@ -40,7 +40,7 @@
 | openGauss 5.1.0 build 2ef75654 | 2023-09-06   | 2023-09-08   |
 | openGauss 5.1.0 build 86199cfa | 2023-09-05   | 2023-09-13   |
 | openGauss 5.1.0 build 8cfdb19a | 2023-09-14   | 2023-09-19   |
-| openGauss 5.1.0 build 24ebc36b | 2023-09-20   | 2023-09-21   |
+| openGauss 5.1.0 build 24ebc36b | 2023-09-20   | 2023-09-22   |
 
 ## 2.2   测试环境的硬件信息
 
@@ -83,7 +83,7 @@ Docker版本信息：
 
 openGauss 5.1.0版本支持从openGauss 2.0.0/openGauss 2.0.1/openGauss 3.0.0/openGauss 3.1.0/openGauss 3.0.5/openGauss 5.0.0/openGauss 5.0.1灰度升级和就地升级至openGauss 5.1.0，升级失败或者升级未提交可以回滚到原版本，故障场景环境恢复后升级可以重入并升级成功；支持在X86/鲲鹏服务器上部署，支持在本地盘、云盘上部署，支持在SAS、SATA、SSD部署；支持容器化部署，支持在openEuler 20.03 LTS、CentOS 7.6操作系统上部署。满足版本兼容性要求。
 
-openGauss 5.1.0版本升级测试共计测试3轮，共128个场景，覆盖直接升级和间接升级、就地升级和灰度升级、回滚和强制回滚、带cm升级和不带cm升级，32个场景不支持，其他测试通过，共发现5个问题，1个非问题取消，其余均已修复并验证回归通过。
+openGauss 5.1.0版本升级测试共计测试3轮，共143个场景，覆盖直接升级和间接升级、就地升级和灰度升级、回滚和强制回滚、带cm升级和不带cm升级，32个场景不支持，其他测试通过，共发现5个问题，1个非问题取消，其余均已修复并验证回归通过。
 
 openGauss 5.1.0版本兼容性测试共计测试2轮，在X86+CentOS 7.6，ARM+openEuler 20.03 LTS，X86+openEuler 20.03 LTS，ARM+openEuler 22.03 LTS，X86+openEuler 22.03 LTS环境下共计执行14个用例，测试用例累计执行率100%，测试发现1个问题，已修复并验证回归通过。
 
@@ -122,15 +122,15 @@ openGauss 5.1.0版本兼容性测试共计测试2轮，在X86+CentOS 7.6，ARM+o
 | openGauss 3.0.0带cm就地升级到openGauss 3.0.5/openGauss 3.1.0/openGauss 5.0.0带cm，再就地升级到openGauss 5.1.0带cm | 测试通过 |
 | openGauss 3.0.0不带cm就地升级到openGauss 3.0.5/openGauss 3.1.0/openGauss 5.0.0带cm，再就地升级到openGauss 5.1.0带cm | 测试通过 |
 | openGauss 3.0.0不带cm就地升级到openGauss 3.0.5/openGauss 3.1.0/openGauss 5.0.0不带cm，再就地升级到openGauss 5.1.0带cm | 测试通过 |
-| openGauss 3.1.0灰度升级到openGauss 5.0.0，再灰度升级到openGauss 5.1.0 | 不支持   |
-| openGauss 3.1.0灰度升级到openGauss 5.0.0，再灰度升级到openGauss 5.1.0，再回滚，再升级提交 | 不支持   |
-| openGauss 3.1.0灰度升级到openGauss 5.0.0，再灰度升级到openGauss 5.1.0，再强制回滚，再升级提交 | 不支持   |
-| openGauss 3.1.0就地升级到openGauss 5.0.0，再就地升级到openGauss 5.1.0 | 不支持   |
-| openGauss 3.1.0就地升级到openGauss 5.0.0，再就地升级到openGauss 5.1.0，再回滚，再升级提交 | 不支持   |
-| openGauss 3.1.0就地升级到openGauss 5.0.0，再就地升级到openGauss 5.1.0，再强制回滚，再升级提交 | 不支持   |
-| openGauss 3.1.0带cm就地升级到openGauss 5.0.0带cm，再就地升级到openGauss 5.1.0带cm | 不支持   |
-| openGauss 3.1.0不带cm就地升级到openGauss 5.0.0带cm，再就地升级到openGauss 5.1.0带cm | 不支持   |
-| openGauss 3.1.0不带cm就地升级到openGauss 5.0.0不带cm，再就地升级到openGauss 5.1.0带cm | 不支持   |
+| openGauss 3.1.0灰度升级到openGauss 5.0.1，再灰度升级到openGauss 5.1.0 | 测试通过   |
+| openGauss 3.1.0灰度升级到openGauss 5.0.1，再灰度升级到openGauss 5.1.0，再回滚，再升级提交 | 测试通过   |
+| openGauss 3.1.0灰度升级到openGauss 5.0.1，再灰度升级到openGauss 5.1.0，再强制回滚，再升级提交 | 测试通过   |
+| openGauss 3.1.0就地升级到openGauss 5.0.1，再就地升级到openGauss 5.1.0 | 测试通过   |
+| openGauss 3.1.0就地升级到openGauss 5.0.1，再就地升级到openGauss 5.1.0，再回滚，再升级提交 | 测试通过   |
+| openGauss 3.1.0就地升级到openGauss 5.0.1，再就地升级到openGauss 5.1.0，再强制回滚，再升级提交 | 测试通过   |
+| openGauss 3.1.0带cm就地升级到openGauss 5.0.1带cm，再就地升级到openGauss 5.1.0带cm | 测试通过   |
+| openGauss 3.1.0不带cm就地升级到openGauss 5.0.1带cm，再就地升级到openGauss 5.1.0带cm | 测试通过   |
+| openGauss 3.1.0不带cm就地升级到openGauss 5.0.1不带cm，再就地升级到openGauss 5.1.0带cm | 测试通过   |
 
 #### 3.1.2 硬件兼容
 
@@ -192,7 +192,7 @@ openGauss 5.1.0版本兼容性测试共计测试2轮，在X86+CentOS 7.6，ARM+o
 | openGauss 5.1.0 build 2ef75654 | 2          | Passed:2  Failed:0 | 0            |
 | openGauss 5.1.0 build 86199cfa | 2023-09-05 | 2023-09-13         | 2            |
 | openGauss 5.1.0 build 8cfdb19a | 2023-09-14 | 2023-09-19         | 2            |
-| openGauss 5.1.0 build 24ebc36b | 2023-09-20 | 2023-09-21         | 0            |
+| openGauss 5.1.0 build 24ebc36b | 2023-09-20 | 2023-09-22         | 0            |
 
 *数据项说明：*
 
