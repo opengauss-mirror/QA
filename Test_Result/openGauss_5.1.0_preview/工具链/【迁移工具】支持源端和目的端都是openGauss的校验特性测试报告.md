@@ -66,11 +66,9 @@ gs_datacheck数据校验工具支持源端和目的端都是openGauss的校验�
 
 ### 3.3.1 遗留问题影响以及规避措施
 
-| 问题单号                                                     | 问题描述                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I7EUAH](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7EUAH?from=project-issue) | 全量校验，校验结束后，查看check.log日志delete topic报错      |
-| [I7EZ28](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7EZ28?from=project-issue) | 全量校验源端和目的端均为openGauss，字段类型包含clob类型和xml类型，实际数据一致，校验不通过，修复语句不正确 |
-| [I7F0AJ](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7F0AJ?from=project-issue) | 全量校验源端和目的端均为openGauss，字段类型包含bytea类型，修复语句不正确 |
+| 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
+| :------ | :------ | :------ | :---------------- | :------ |
+|    NA    |  |          |  |  |
 
 ### 3.3.2 问题统计
 
@@ -84,11 +82,11 @@ gs_datacheck数据校验工具支持源端和目的端都是openGauss的校验�
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                     | 问题状态 |
 | ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
 | 1    | [I7EK1E](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7EK1E?from=project-issue) | 次要     | 支持源端和目的端都是openGauss的校验，需同时支持全量校验和增量校验，资料未更新 | 已验收   |
-| 2    | [I7EUAH](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7EUAH?from=project-issue) | 次要     | 全量校验，校验结束后，查看check.log日志delete topic报错      | 已完成   |
-| 3    | [I7EZ28](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7EZ28?from=project-issue) | 次要     | 全量校验源端和目的端均为openGauss，字段类型包含clob类型和xml类型，实际数据一致，校验不通过，修复语句不正确 | 已完成   |
-| 4    | [I7F0AJ](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7F0AJ?from=project-issue) | 次要     | 全量校验源端和目的端均为openGauss，字段类型包含bytea类型，修复语句不正确 | 已完成   |
+| 2    | [I7EUAH](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7EUAH?from=project-issue) | 次要     | 全量校验，校验结束后，查看check.log日志delete topic报错      | 已验收   |
+| 3    | [I7EZ28](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7EZ28?from=project-issue) | 次要     | 全量校验源端和目的端均为openGauss，字段类型包含clob类型和xml类型，实际数据一致，校验不通过，修复语句不正确 | 已验收   |
+| 4    | [I7F0AJ](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7F0AJ?from=project-issue) | 次要     | 全量校验源端和目的端均为openGauss，字段类型包含bytea类型，修复语句不正确 | 已验收   |
 | 5    | [I7F5NW](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I7F5NW?from=project-issue) | 次要     | 全量校验源端和目的端均为openGauss，字段类型包含文本搜索类型，修复语句不正确 | 已验收   |
-| 6    | [I6R0HN](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I6R0HN?from=project-issue) | 次要     | 全量数据校验工具，校验结束偶现不产生修复报告文件 2.bit类型修复语句不准确 | 已完成   |
+| 6    | [I6R0HN](https://gitee.com/opengauss/openGauss-tools-datachecker-performance/issues/I6R0HN?from=project-issue) | 次要     | 全量数据校验工具，校验结束偶现不产生修复报告文件 2.bit类型修复语句不准确 | 已验收   |
 
 # 4     测试执行
 
@@ -145,7 +143,7 @@ gs_datacheck数据校验工具支持源端和目的端都是openGauss的校验�
 
 *数据项说明：*
 
-* 累计发现缺陷单6个，1个为资料单，3个缺陷均已解决且回归通过，3个缺陷未解决
+* 累计发现缺陷单6个，1个为资料单，6个缺陷均已解决且回归通过
 * 缺陷密度为5个(缺陷个数)/12.83kloc(代码行数)=0.39(个/kloc)
 
 ## 4.3   后续测试建议
