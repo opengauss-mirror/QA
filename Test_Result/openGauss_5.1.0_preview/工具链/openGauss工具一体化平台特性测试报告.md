@@ -131,15 +131,9 @@ openGauss、datakit、一体化、portal、可视化迁移
 
 ### 3.3.1 遗留问题影响以及规避措施
 
-| 问题单号                                                     | 问题描述                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I78CPZ](https://gitee.com/opengauss/openGauss-workbench/issues/I78CPZ?from=project-issue) | 按照要求配置数据库后无法开启反向迁移                         |
-| [I77PJT](https://gitee.com/opengauss/openGauss-workbench/issues/I77PJT?from=project-issue) | 点击启动反向后任务进度卡在反向迁移开始，结束迁移任务后，查看后台进程仍存在 |
-| [I7DBER](https://gitee.com/opengauss/openGauss-workbench/issues/I7DBER?from=project-issue) | 创建迁移任务，分配执行机器，勾选已安装迁移套件的机器，再卸载迁移套件，任务仍可创建成功，启动后任务状态不正常 |
-| [I79YUW](https://gitee.com/opengauss/openGauss-workbench/issues/I79YUW?from=project-issue) | 配置迁移任务参数，全局参数中增加规则数量后点击保存，再次打开全局参数，配置的规则消失 |
-| [I6YSJZ](https://gitee.com/opengauss/openGauss-workbench/issues/I6YSJZ?from=project-issue) | 安装迁移套件，已安装的物理机没有删除迁移套件功能，安装失败的物理机没有取消安装并清理安装文件的功能 |
-| [I6YRLI](https://gitee.com/opengauss/openGauss-workbench/issues/I6YRLI?from=project-issue) | 数据迁移，配置迁移过程参数未校验格式，导致迁移任务执行异常   |
-| [I6YGR3](https://gitee.com/opengauss/openGauss-workbench/issues/I6YGR3?from=project-issue) | 数据迁移离线模式，迁移失败的表没有具体的报错信息             |
+| 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
+| :------ | :------ | :------ | :---------------- | :------ |
+|    NA    |  |          |  |  |
 
 ### 3.3.2 问题统计
 
@@ -220,16 +214,16 @@ openGauss、datakit、一体化、portal、可视化迁移
 | 66   | [I6YERK](https://gitee.com/opengauss/openGauss-workbench/issues/I6YERK?from=project-issue) | 次要     | 数据迁移在线模式，增量迁移统计信息不正确                     | 已验收   |
 | 67   | [I6YEV0](https://gitee.com/opengauss/openGauss-workbench/issues/I6YEV0?from=project-issue) | 主要     | 数据迁移在线模式，增量迁移结束后，点击启动反向没反应         | 已验收   |
 | 68   | [I6YGAF](https://gitee.com/opengauss/openGauss-workbench/issues/I6YGAF?from=project-issue) | 次要     | 创建新账号并授予所有功能的权限，新账号登陆后只有首页和插件管理 | 已验收   |
-| 69   | [I6YGR3](https://gitee.com/opengauss/openGauss-workbench/issues/I6YGR3?from=project-issue) | 次要     | 数据迁移离线模式，迁移失败的表没有具体的报错信息             | 已完成   |
+| 69   | [I6YGR3](https://gitee.com/opengauss/openGauss-workbench/issues/I6YGR3?from=project-issue) | 次要     | 数据迁移离线模式，迁移失败的表没有具体的报错信息             | 已验收   |
 | 70   | [I6YH4C](https://gitee.com/opengauss/openGauss-workbench/issues/I6YH4C?from=project-issue) | 次要     | 数据迁移，不勾选迁移任务点击批量删除，报错提示不友好，再勾选迁移任务点击批量删除，无法删除迁移任务 | 已验收   |
 | 71   | [I6YHF0](https://gitee.com/opengauss/openGauss-workbench/issues/I6YHF0?from=project-issue) | 次要     | 数据迁移，创建两个迁移任务，目的库相同，同时开启迁移任务，迁移失败 | 已验收   |
 | 72   | [I6YMJG](https://gitee.com/opengauss/openGauss-workbench/issues/I6YMJG?from=project-issue) | 次要     | java版本非jdk11，安装portal失败，无详细报错提示，日志无内容  | 已验收   |
 | 73   | [I6YMZI](https://gitee.com/opengauss/openGauss-workbench/issues/I6YMZI?from=project-issue) | 主要     | 数据迁移，创建包含两个子任务的迁移任务，迁移失败             | 已验收   |
 | 74   | [I6YO02](https://gitee.com/opengauss/openGauss-workbench/issues/I6YO02?from=project-issue) | 次要     | 创建多个子任务的迁移任务，修改某个子任务的参数配置，查询子任务后再重置，导致子任务仅剩一个 | 已验收   |
 | 75   | [I6YQMC](https://gitee.com/opengauss/openGauss-workbench/issues/I6YQMC?from=project-issue) | 次要     | 创建迁移任务，参数填写顺序易用性不好，需要调整               | 已验收   |
-| 76   | [I6YRLI](https://gitee.com/opengauss/openGauss-workbench/issues/I6YRLI?from=project-issue) | 次要     | 数据迁移，配置迁移过程参数未校验格式，导致迁移任务执行异常   | 已完成   |
+| 76   | [I6YRLI](https://gitee.com/opengauss/openGauss-workbench/issues/I6YRLI?from=project-issue) | 次要     | 数据迁移，配置迁移过程参数未校验格式，导致迁移任务执行异常   | 已验收   |
 | 77   | [I6YS4P](https://gitee.com/opengauss/openGauss-workbench/issues/I6YS4P?from=project-issue) | 次要     | 数据迁移，迁移状态和进度不能自动刷新，点击查看详情后才会刷新 | 已验收   |
-| 78   | [I6YSJZ](https://gitee.com/opengauss/openGauss-workbench/issues/I6YSJZ?from=project-issue) | 次要     | 安装迁移套件，已安装的物理机没有删除迁移套件功能，安装失败的物理机没有取消安装并清理安装文件的功能 | 已完成   |
+| 78   | [I6YSJZ](https://gitee.com/opengauss/openGauss-workbench/issues/I6YSJZ?from=project-issue) | 次要     | 安装迁移套件，已安装的物理机没有删除迁移套件功能，安装失败的物理机没有取消安装并清理安装文件的功能 | 已验收   |
 | 79   | [I6YZET](https://gitee.com/opengauss/openGauss-workbench/issues/I6YZET?from=project-issue) | 主要     | 数据迁移，迁移过程配置部分参数未生效，部分portal全局配置参数缺失 | 已验收   |
 | 80   | [I6YZST](https://gitee.com/opengauss/openGauss-workbench/issues/I6YZST?from=project-issue) | 主要     | 数据迁移，在线模式迁移失败，提示查看日志，实际没有日志       | 已验收   |
 | 81   | [I6Z3FV](https://gitee.com/opengauss/openGauss-workbench/issues/I6Z3FV?from=project-issue) | 次要     | 数据迁移，配置迁移参数，无法增加规则数量                     | 已验收   |
@@ -242,11 +236,11 @@ openGauss、datakit、一体化、portal、可视化迁移
 | 88   | [I77AFM](https://gitee.com/opengauss/openGauss-workbench/issues/I77AFM?from=project-issue) | 次要     | 迁移套件安装，填写的安装路径不存在时，无法自动创建           | 已验收   |
 | 89   | [I77CA3](https://gitee.com/opengauss/openGauss-workbench/issues/I77CA3?from=project-issue) | 主要     | mysql创建100张表，离线迁移任务在数据校验步骤卡住             | 已验收   |
 | 90   | [I77NYN](https://gitee.com/opengauss/openGauss-workbench/issues/I77NYN?from=project-issue) | 次要     | 数据迁移，开启在线迁移任务，全量迁移完成后启动反向按钮突然出现 | 已验收   |
-| 91   | [I77PJT](https://gitee.com/opengauss/openGauss-workbench/issues/I77PJT?from=project-issue) | 主要     | 点击启动反向后任务进度卡在反向迁移开始，结束迁移任务后，查看后台进程仍存在 | 已完成   |
-| 92   | [I78CPZ](https://gitee.com/opengauss/openGauss-workbench/issues/I78CPZ?from=project-issue) | 主要     | 按照要求配置数据库后无法开启反向迁移                         | 已完成   |
+| 91   | [I77PJT](https://gitee.com/opengauss/openGauss-workbench/issues/I77PJT?from=project-issue) | 主要     | 点击启动反向后任务进度卡在反向迁移开始，结束迁移任务后，查看后台进程仍存在 | 已验收   |
+| 92   | [I78CPZ](https://gitee.com/opengauss/openGauss-workbench/issues/I78CPZ?from=project-issue) | 主要     | 按照要求配置数据库后无法开启反向迁移                         | 已验收   |
 | 93   | [I78HDW](https://gitee.com/opengauss/openGauss-workbench/issues/I78HDW?from=project-issue) | 主要     | 使用sysbench预置10张表，每张表10万行数据，增量迁移使用sysbench压测数据报错 | 已验收   |
-| 94   | [I79YUW](https://gitee.com/opengauss/openGauss-workbench/issues/I79YUW?from=project-issue) | 次要     | 配置迁移任务参数，全局参数中增加规则数量后点击保存，再次打开全局参数，配置的规则消失 | 已完成   |
-| 95   | [I7DBER](https://gitee.com/opengauss/openGauss-workbench/issues/I7DBER?from=project-issue) | 次要     | 创建迁移任务，分配执行机器，勾选已安装迁移套件的机器，再卸载迁移套件，任务仍可创建成功，启动后任务状态不正常 | 已完成   |
+| 94   | [I79YUW](https://gitee.com/opengauss/openGauss-workbench/issues/I79YUW?from=project-issue) | 次要     | 配置迁移任务参数，全局参数中增加规则数量后点击保存，再次打开全局参数，配置的规则消失 | 已验收   |
+| 95   | [I7DBER](https://gitee.com/opengauss/openGauss-workbench/issues/I7DBER?from=project-issue) | 次要     | 创建迁移任务，分配执行机器，勾选已安装迁移套件的机器，再卸载迁移套件，任务仍可创建成功，启动后任务状态不正常 | 已验收   |
 | 96   | [I6TK28](https://gitee.com/opengauss/openGauss-workbench/issues/I6TK28?from=project-issue) | 次要     | Datakit在Firefox 浏览器上，不显示插件图标                    | 已验收   |
 | 97   | [I6N0HL](https://gitee.com/opengauss/openGauss-workbench/issues/I6N0HL?from=project-issue) | 次要     | base-ops插件，升级后插件图标显示异常                         | 已验收   |
 | 98   | [I7A4Z9](https://gitee.com/opengauss/openGauss-workbench/issues/I7A4Z9?from=project-issue) | 不重要   | 安装插件失败，但是操作日志显示成功，点击详情后返回参数显示error，操作状态显示成功 | 已验收   |
