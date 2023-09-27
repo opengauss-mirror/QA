@@ -31,8 +31,8 @@ datacheck、全量校验、增量校验
 
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
 | ------------------------------ | ------------ | ------------ |
-| M* 5.7.35<br/>openGauss 5.0.0 build b82d5699<br/>chameleon 5.0.0<br>debezium 5.0.0<br>gs_datacheck 5.0.0 | 2023-6-19  | 2023-6-29 |
-| M* 5.7.35<br/>openGauss 5.0.0 build b82d5699<br/>openGauss 5.1.0 build ad27d72a<br>chameleon 5.0.0<br/>debezium 5.0.0<br/>gs_datacheck 5.0.0 | 2023-6-30   | 2023-6-30 |
+| M* 5.7.35<br/>openGauss 5.1.0 build 68d1772f<br/>chameleon 5.0.0<br>debezium 5.0.0<br>gs_datacheck 5.0.0 | 2023-6-19  | 2023-6-29 |
+| M* 5.7.35<br/>openGauss 5.1.0 build ad27d72a<br>chameleon 5.0.0<br/>debezium 5.0.0<br/>gs_datacheck 5.0.0 | 2023-6-30   | 2023-6-30 |
 
 | 硬件型号   | 硬件配置信息                                                 | 备注 |
 | ---------- | ------------------------------------------------------------ | ---- |
@@ -138,8 +138,8 @@ gs_datacheck数据校验工具支持源端和目的端都是openGauss的校验�
 
 | 版本名称                                                     | 测试用例数 | 用例执行结果            | 发现问题单数 |
 | ------------------------------------------------------------ | ---------- | ----------------------- | ------------ |
-| M* 5.7.35<br/>openGauss 5.0.0 build b82d5699<br/>chameleon 5.0.0<br/>debezium 5.0.0<br/>gs_datacheck 5.0.0 | 66         | Passed：58<br>Failed：8 | 6            |
-| M* 5.7.35<br/>openGauss 5.0.0 build b82d5699<br/>openGauss 5.1.0 build ad27d72a<br/>chameleon 5.0.0<br/>debezium 5.0.0<br/>gs_datacheck 5.0.0 | 8          | Passed：8<br>Failed：0  | 0            |
+| M* 5.7.35<br/>openGauss 5.1.0 build 68d1772f<br/>chameleon 5.0.0<br/>debezium 5.0.0<br/>gs_datacheck 5.0.0 | 66         | Passed：58<br>Failed：8 | 6            |
+| M* 5.7.35<br/>openGauss 5.1.0 build ad27d72a<br/>chameleon 5.0.0<br/>debezium 5.0.0<br/>gs_datacheck 5.0.0 | 8          | Passed：8<br>Failed：0  | 0            |
 
 *数据项说明：*
 
