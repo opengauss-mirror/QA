@@ -82,6 +82,8 @@ whale 插件基于openGauss的A兼容（dbcompatibility='A'）扩展，从关键
 
 2.安装测试：
 
+
+
 | whale安装 | 安装步骤                                                     |
 | --------- | ------------------------------------------------------------ |
 | 编译安装  | 1. 编译安装好openGauss<br/>2. 将whale源码拷贝到openGauss-server源码的contrib目录下<br/>3. 进入whale目录执行make install<br/>4. 创建A库并使用初始用户连接A库，创建whale插件create extension whale; |
@@ -140,187 +142,93 @@ whale 插件基于openGauss的A兼容（dbcompatibility='A'）扩展，从关键
 
 ###  4.1.1 GMS_ALERT包函数测试
 
-| 测试函数                                                     | 测试结果                                         |
-| ------------------------------------------------------------ | ------------------------------------------------ |
-| 1.gms_alert.register<br/>2.gms_alert.remove
-3.gms_alert.removeall()
-4.gms_alert.signal
-5.gms_alert.waitany
-6.gms_alert.waitone
-7.gms_alert.set_defaults | 执行7条用例<br/>发现1个bug
-执行6条通过，1条未通过 |
+| 测试函数                                                     | 测试结果                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1.gms_alert.register<br/>2.gms_alert.remove<br/>3.gms_alert.removeall()<br/>4.gms_alert.signal<br/>5.gms_alert.waitany<br/>6.gms_alert.waitone<br/>7.gms_alert.set_defaults | 执行7条用例，执行结果符合预期，测试通过，发现1个bug，1个问题已解决回归通过 |
 
 ### 4.1.2 GMS_ASSERT包函数测试
 
-| 测试函数                                                     | 测试结果                          |
-| ------------------------------------------------------------ | --------------------------------- |
-| 1.gms_assert.enquote_literal<br/>2.gms_assert.enquote_name
-3.gms_assert.noop
-4.gms_assert.schema_name
-5.gms_assert.object_name
-6.gms_assert.simple_sql_name
-7.gms_assert.qualified_sql_name | 执行7条用例<br/>未发现bug
-执行通过 |
+| 测试函数                                                     | 测试结果                                       |
+| ------------------------------------------------------------ | ---------------------------------------------- |
+| 1.gms_assert.enquote_literal<br/>2.gms_assert.enquote_name<br/>3.gms_assert.noop<br/>4.gms_assert.schema_name<br/>5.gms_assert.object_name<br/>6.gms_assert.simple_sql_name<br/>7.gms_assert.qualified_sql_name | 执行7条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.3 GMS_OUTPUT包函数测试
 
-| 测试函数                                                     | 测试结果                          |
-| ------------------------------------------------------------ | --------------------------------- |
-| 1.gms_output.enable<br/>2.ggms_output.disable
-3.gms_output.put
-4.gms_output.put_line
-5.gms_output.serveroutput
-6.gms_output.get_line
-7.gms_output.new_line
-8.gms_output.get_lines | 执行8条用例<br/>未发现bug
-执行通过 |
+| 测试函数                                                     | 测试结果                                       |
+| ------------------------------------------------------------ | ---------------------------------------------- |
+| 1.gms_output.enable<br/>2.ggms_output.disable<br/>3.gms_output.put<br/>4.gms_output.put_line<br/>5.gms_output.serveroutput<br/>6.gms_output.get_line<br/>7.gms_output.new_line<br/>8.gms_output.get_lines | 执行7条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.4 GMS_RANDOM包函数测试
 
-| 测试函数                                                     | 测试结果                                         |
-| ------------------------------------------------------------ | ------------------------------------------------ |
-| 1.gms_random.initialize<br/>2.gms_random.normal
-3.gms_random.seed
-4.gms_random.string
-5.gms_random.terminate
-6.gms_random.value
-7.gms_random.random | 执行9条用例<br/>发现2个bug
-执行7条通过，2条未通过 |
+| 测试函数                                                     | 测试结果                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1.gms_random.initialize<br/>2.gms_random.normal<br/>3.gms_random.seed<br/>4.gms_random.string<br/>5.gms_random.terminate<br/>6.gms_random.value<br/>7.gms_random.random | 执行7条用例，执行结果符合预期，测试通过，发现2个bug，2个问题已解决回归通过 |
 
 ### 4.1.5 GMS_UTILITY包函数测试
 
-| 测试函数                                                   | 测试结果                          |
-| ---------------------------------------------------------- | --------------------------------- |
-| 1.gms_utility.format_call_stack<br/>2.gms_utility.get_time | 执行2条用例<br/>未发现bug
-执行通过 |
+| 测试函数                                                   | 测试结果                                       |
+| ---------------------------------------------------------- | ---------------------------------------------- |
+| 1.gms_utility.format_call_stack<br/>2.gms_utility.get_time | 执行2条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.6 GMS_PIPE包函数测试
 
-| 测试函数                                                     | 测试结果                           |
-| ------------------------------------------------------------ | ---------------------------------- |
-| 1.gms_pipe.pack_message<br/>2.gms_pipe.send_message
-3.gms_pipe.receive_message
-4.gms_pipe.unpack_message_text
-5.gms_pipe.unpack_message_date
-6.gms_pipe.unpack_message_timestamp
-7.gms_pipe.unpack_message_number
-8.gms_pipe.unpack_message_bytea
-9.gms_pipe.unpack_message_record
-10.gms_pipe.unique_session_name
-11.gms_pipe.__list_pipes
-12.gms_pipe.next_item_type
-13.gms_pipe.create_pipe
-14.gms_pipe.reset_buffer
-15.gms_pipe.purge
-16.gms_pipe.remove_pipe | 执行16条用例<br/>未发现bug
-执行通过 |
+| 测试函数                                                     | 测试结果                                        |
+| ------------------------------------------------------------ | ----------------------------------------------- |
+| 1.gms_pipe.pack_message<br/>2.gms_pipe.send_message<br/>3.gms_pipe.receive_message<br/>4.gms_pipe.unpack_message_text<br/>5.gms_pipe.unpack_message_date<br/>6.gms_pipe.unpack_message_timestamp<br/>7.gms_pipe.unpack_message_number<br/>8.gms_pipe.unpack_message_bytea<br/>9.gms_pipe.unpack_message_record<br/>10.gms_pipe.unique_session_name<br/>11.gms_pipe.__list_pipes<br/>12.gms_pipe.next_item_type<br/>13.gms_pipe.create_pipe<br/>14.gms_pipe.reset_buffer<br/>15.gms_pipe.purge<br/>16.gms_pipe.remove_pipe | 执行16条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.7 UTL_FILE包函数测试
 
-| 测试函数                                                     | 测试结果                                           |
-| ------------------------------------------------------------ | -------------------------------------------------- |
-| 1.utl_file.fopen<br/>2.utl_file.is_open
-3.utl_file.put
-4.utl_file.new_line
-5.utl_file.put_line
-6.utl_file.putf
-7.utl_file.fflush
-8.utl_file.fclose
-9.utl_file.fclose_all
-10.utl_file.fremove
-11.utl_file.frename
-12.utl_file.fcopy
-13.utl_file.fgetattr
-14.utl_file.tmpdir | 执行14条用例<br/>发现1个bug
-执行13条通过，1条未通过 |
+| 测试函数                                                     | 测试结果                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1.utl_file.fopen<br/>2.utl_file.is_open<br/>3.utl_file.put<br/>4.utl_file.new_line<br/>5.utl_file.put_line<br/>6.utl_file.putf<br/>7.utl_file.fflush<br/>8.utl_file.fclose<br/>9.utl_file.fclose_all<br/>10.utl_file.fremove<br/>11.utl_file.frename<br/>12.utl_file.fcopy<br/>13.utl_file.fgetattr<br/>14.utl_file.tmpdir | 执行14条用例，执行结果符合预期，测试通过，发现1个bug，1个问题已解决回归通过 |
 
 ### 4.1.8 数字操作函数和操作符测试
 
-| 测试函数                                                     | 测试结果                          |
-| ------------------------------------------------------------ | --------------------------------- |
-| 1.函数sinh<br/>2.函数cosh
-3.函数tanh
-4.函数nanvl(f1 float4, f2 float4)
-5.函数nanvl(f1 float8, f2 float8)
-6.函数nanvl(n1 numeric, n2 numeric) | 执行6条用例<br/>未发现bug
-执行通过 |
+| 测试函数                                                     | 测试结果                                       |
+| ------------------------------------------------------------ | ---------------------------------------------- |
+| 1.函数sinh<br/>2.函数cosh<br/>3.函数tanh<br/>4.函数nanvl(f1 float4, f2 float4)<br/>5.函数nanvl(f1 float8, f2 float8)<br/>6.函数nanvl(n1 numeric, n2 numeric) | 执行6条用例，执行结果符合预期，测试通过，无bug |
+
+
 
 ### 4.1.9 字符处理函数和操作符测试
 
-| 测试函数                                                     | 测试结果                           |
-| ------------------------------------------------------------ | ---------------------------------- |
-| 1.to_multi_byte<br/>2.to_single_byte
-3.dump(any)
-4.dump(any, integer)
-5.dump(text)
-6.dump(src text, fmt integer)
-7.orafce.substr
-8.strposb
-9.orafce.lpad
-10.orafce.rpad
-11.orafce.ltrim
-12.orafce.rtrim
-13.orafce.btrim
-14.orafce.length
-15.orafce.regexp_like
-16.orafce.regexp_count
-17.orafce.regexp_instr
-18.orafce.regexp_substr | 执行18条用例<br/>未发现bug
-执行通过 |
+| 测试函数                                                     | 测试结果                                        |
+| ------------------------------------------------------------ | ----------------------------------------------- |
+| 1.to_multi_byte<br/>2.to_single_byte<br/>3.dump(any)<br/>4.dump(any, integer)<br/>5.dump(text)<br/>6.dump(src text, fmt integer)<br/>7.orafce.substr<br/>8.strposb<br/>9.orafce.lpad<br/>10.orafce.rpad<br/>11.orafce.ltrim<br/>12.orafce.rtrim<br/>13.orafce.btrim<br/>14.orafce.length<br/>15.orafce.regexp_like<br/>16.orafce.regexp_count<br/>17.orafce.regexp_instr<br/>18.orafce.regexp_substr | 执行18条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.10 时间和日期处理函数和操作符测试
 
-| 测试函数                                                     | 测试结果                          |
-| ------------------------------------------------------------ | --------------------------------- |
-| 1.months_between<br/>2.round
-3.orafce.months_between
-4.orafce.to_char
-5.orafce.sessiontimezone
-6.orafce.dbtimezone | 执行8条用例<br/>未发现bug
-执行通过 |
+| 测试函数                                                     | 测试结果                                       |
+| ------------------------------------------------------------ | ---------------------------------------------- |
+| 1.months_between<br/>2.round<br/>3.orafce.months_between<br/>4.orafce.to_char<br/>5.orafce.sessiontimezone<br/>6.orafce.dbtimezone | 执行6条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.11 条件表达式函数测试
 
-| 测试函数                                                     | 测试结果                             |
-| ------------------------------------------------------------ | ------------------------------------ |
-| 1.nvl(expr1, expr2)<br/>2.nvl2(expr1, expr2, expr3)
-3.public.decode(expr1, expr2, result1 ,...) | 执行3条用例<br/>共发现0条bug
-执行通过 |
-
-
+| 测试函数                                                     | 测试结果                                       |
+| ------------------------------------------------------------ | ---------------------------------------------- |
+| 1.nvl(expr1, expr2)<br/>2.nvl2(expr1, expr2, expr3)<br/>3.public.decode(expr1, expr2, result1 ,...) | 执行3条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.12 聚合函数测试
 
-| 测试函数      | 测试结果                               |
-| ------------- | -------------------------------------- |
-| 1.median(col) | 执行1条用例<br/>未发现bug<br/>执行通过 |
+| 测试函数      | 测试结果                                       |
+| ------------- | ---------------------------------------------- |
+| 1.median(col) | 执行1条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.13 whale插件安装测试
 
-| 安装测试 | 测试步骤                                                     | 测试结果                          |
-| -------- | ------------------------------------------------------------ | --------------------------------- |
-| OM安装   | 1.om安装方式安装数据库<br/>2.创建A兼容性数据库
-create database dbtest dbcompatibility='A';
-3.在A库中创建whale插件
-create extension whale; | 执行2条用例<br/>未发现bug
-执行通过 |
-| 编译安装 | 1. 编译安装好openGauss<br/>2. 将whale源码拷贝到openGauss-server源码的contrib目录下
-3. 进入whale目录执行make install
-4. 创建A库并使用初始用户连接A库，创建whale插件create extension whale; | 执行1条用例<br/>未发现bug
-执行通过 |
+| 安装测试 | 测试步骤                                                     | 测试结果                                       |
+| -------- | ------------------------------------------------------------ | ---------------------------------------------- |
+| OM安装   | 1.om安装方式安装数据库<br/>2.创建A兼容性数据库<br/>create database dbtest dbcompatibility='A';<br/>3.在A库中创建whale插件<br/>create extension whale; | 执行2条用例，执行结果符合预期，测试通过，无bug |
+| 编译安装 | 1. 编译安装好openGauss<br/>2. 将whale源码拷贝到openGauss-server源码的<br/>contrib目录下<br/>3. 进入whale目录执行make install<br/>4. 创建A库并使用初始用户连接A库，创建whale插件<br/>create extension whale; | 执行1条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.14 guc参数测试
 
-| GUC参数                         | 测试步骤                                                     | 测试结果                          |
-| ------------------------------- | ------------------------------------------------------------ | --------------------------------- |
-| whale.a_compatibility_mode      | set whale.a_compatibility_mode = on;<br/>show whale.a_compatibility_mode; | 执行1条用例<br/>未发现bug
-执行通过 |
-| whale.timezone                  | set whale.timezone = GMT;<br/>show whale.timezone;           | 执行1条用例<br/>未发现bug
-执行通过 |
-| whale.nls_date_format           | set whale.nls_date_format = 'YYYY-MM-DD HH24:MI:SS';<br/>show whale.nls_date_format; | 执行1条用例<br/>未发现bug
-执行通过 |
-| whale.varchar2_null_safe_concat | set whale.varchar2_null_safe_concat = on;<br/>show whale.varchar2_null_safe_concat; | 执行1条用例<br/>未发现bug
-执行通过 |
+| GUC参数                         | 测试步骤                                                     | 测试结果                                       |
+| ------------------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
+| whale.a_compatibility_mode      | set whale.a_compatibility_mode = on;<br/>show whale.a_compatibility_mode; | 执行1条用例，执行结果符合预期，测试通过，无bug |
+| whale.timezone                  | set whale.timezone = GMT;<br/>show whale.timezone;           | 执行1条用例，执行结果符合预期，测试通过，无bug |
+| whale.nls_date_format           | set whale.nls_date_format = 'YYYY-MM-DD HH24:MI:SS';<br/>show whale.nls_date_format; | 执行1条用例，执行结果符合预期，测试通过，无bug |
+| whale.varchar2_null_safe_concat | set whale.varchar2_null_safe_concat = on;<br/>show whale.varchar2_null_safe_concat; | 执行1条用例，执行结果符合预期，测试通过，无bug |
 
 
 
