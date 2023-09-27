@@ -84,14 +84,8 @@ whale 插件基于openGauss的A兼容（dbcompatibility='A'）扩展，从关键
 
 | whale安装 | 安装步骤                                                     |
 | --------- | ------------------------------------------------------------ |
-| 编译安装  | 1. 编译安装好openGauss
-2. 将whale源码拷贝到openGauss-server源码的contrib目录下
-3. 进入whale目录执行make install
-4. 创建A库并使用初始用户连接A库，创建whale插件create extension whale; |
-| OM安装    | 1.创建A兼容性数据库
-create database dbtest dbcompatibility='A';
-2.在A库中创建whale插件
-create extension whale; |
+| 编译安装  | 1. 编译安装好openGauss<br/>2. 将whale源码拷贝到openGauss-server源码的contrib目录下<br/>3. 进入whale目录执行make install<br/>4. 创建A库并使用初始用户连接A库，创建whale插件create extension whale; |
+| OM安装    | 1.创建A兼容性数据库<br/>create database dbtest dbcompatibility='A';<br/>2.在A库中创建whale插件<br/>create extension whale; |
 
 3.GUC参数测试：
 
