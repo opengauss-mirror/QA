@@ -43,7 +43,7 @@ M*、dolphin插件、协议、`JDBC`
 
 ## 3.1 测试整体结论
 
-基于dolphin插件兼容M*协议增强的语法特性测试，共计执行60条用例，主要覆盖了功能测试和资料测试。功能测试覆盖以下7点：
+基于dolphin插件兼容M*协议增强的语法特性测试，共计执行60条用例，主要覆盖了功能测试和资料测试。功能测试覆盖以下13点：
 
 1. M\*客户端`TCP/IP`连接测试及创建用户连接测试；
 2. `CREATE/DROP DATABASE/SCHEMA`测试；
@@ -100,7 +100,7 @@ M*、dolphin插件、协议、`JDBC`
 
 | 序号 | issue号                                                    | 问题级别 | 问题简述                                        | 问题状态 |
 | ---- | ---------------------------------------------------------- | -------- | ----------------------------------------------- | -------- |
-| 2    | [I7X75N](https://gitee.com/opengauss/Plugin/issues/I7X75N) | 次要     | 使用mysql客户端连接B库，tinyint数据类型插入失败 | 已验收   |
+| 1    | [I7X75N](https://gitee.com/opengauss/Plugin/issues/I7X75N) | 次要     | 使用mysql客户端连接B库，tinyint数据类型插入失败 | 已验收   |
 
 # 4    测试执行
 
@@ -116,7 +116,7 @@ M*、dolphin插件、协议、`JDBC`
 
 | 测试步骤                                                     | 测试结果                               |
 | ------------------------------------------------------------ | -------------------------------------- |
-| 1.`CREATE DATABASE`<br/>2.`CREATE SCHEMA`<br/>3.`DROP DATABASE`<br/>4.`DROP SCHEMA` | 执行1条用例<br/>未发现bug<br/>执行通过 |
+| 1.`CREATE DATABASE`<br/>2.`CREATE SCHEMA`<br/>3.`DROP DATABASE`<br/>4.`DROP SCHEMA` | 执行2条用例<br/>未发现bug<br/>执行通过 |
 
 ### 4.1.3 `CREATE TABLE`结合约束、存储引擎、`COMMENT`及表类型和分区表测试
 
