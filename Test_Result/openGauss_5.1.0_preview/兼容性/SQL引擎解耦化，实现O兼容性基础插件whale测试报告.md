@@ -156,7 +156,7 @@ whale 插件基于openGauss的A兼容（dbcompatibility='A'）扩展，从关键
 
 | 测试函数                                                     | 测试结果                                       |
 | ------------------------------------------------------------ | ---------------------------------------------- |
-| 1.gms_output.enable<br/>2.ggms_output.disable<br/>3.gms_output.put<br/>4.gms_output.put_line<br/>5.gms_output.serveroutput<br/>6.gms_output.get_line<br/>7.gms_output.new_line<br/>8.gms_output.get_lines | 执行7条用例，执行结果符合预期，测试通过，无bug |
+| 1.gms_output.enable<br/>2.ggms_output.disable<br/>3.gms_output.put<br/>4.gms_output.put_line<br/>5.gms_output.serveroutput<br/>6.gms_output.get_line<br/>7.gms_output.new_line<br/>8.gms_output.get_lines | 执行8条用例，执行结果符合预期，测试通过，无bug |
 
 ### 4.1.4 GMS_RANDOM包函数测试
 
