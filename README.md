@@ -18,7 +18,7 @@
 
   - [@dbowner_zhang](https://gitee.com/dbowner_zhang)
 
-  - [@yansong_lee](https://gitee.com/yansong_lee)
+  - [ @jiexiao1413 ](https://gitee.com/jiexiao1413)
 
 + ##### Committer列表
 
@@ -32,6 +32,7 @@
   - [@min-sun](https://gitee.com/min-sun)
   - [@sun-jingyuan](https://gitee.com/sun-jingyuan)
   - [@szoscar55](https://gitee.com/szoscar55)
+  - [@maxz](https://gitee.com/maxz)
 
 #### 联系方式
 

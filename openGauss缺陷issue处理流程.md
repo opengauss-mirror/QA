@@ -11,6 +11,7 @@
 | --------- | -------- | ---------------------- | ---------------- | ----------- |
 | 2022.4.21 | 1.0      | 初稿撰写               |                  | yansong_lee |
 | 2022.11.2 | 1.1      | 内容-缺陷issue撤销原则 | 补充异常场景处理 | yansong_lee |
+| 2023.9.11 | 1.2      | 内容-缺陷issue撤销原则 | 补充状态更改责任人 | jiexiao1413 |
 
 
 
@@ -68,9 +69,10 @@
 
 + 问题现象、问题根因相同的重复问题单可撤销
 
-+ 与提单人确认为非问题的issue可撤销；若联系不到提单人，需要通过[社区邮件](https://opengauss.org/zh/community/onlineCommunication/)向community、问题所属sig组和QA sig组公示7天，且通过CCB裁决非问题，允许以非问题撤销
++ 与提单人确认为非问题的issue可撤销；若联系不到提单人，需要通过[社区邮件](https://opengauss.org/zh/community/onlineCommunication/)向community、问题所属sig组和QA sig组公示7天，允许以非问题撤销
 
 + 对于联系不到提单人，且按照issue中描述的操作步骤无法复现问题（至少复现20次）的场景，通过[社区邮件](https://opengauss.org/zh/community/onlineCommunication/)向community、问题所属sig组和QA sig组公示7天，允许撤销此问题。之后提单人如有异议，可以重新打开此issue，并在issue中补充可复现的测试步骤、可供定位的堆栈日志等详细信息
++ 无论是何种情况，对于需要转非问题的issue，应只会到相应的模块leader并征得同意，由QA sig组maintainer确认后修改状态，不得自行更改状态
 
 ### 6、缺陷issue降级原则
 
