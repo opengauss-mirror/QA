@@ -27,7 +27,7 @@
 
 # 1     特性概述
 
-本报告是面向开源的openGauss 5.10版本兼容性测试报告，报告主要包括openGauss 5.1.0 版本兼容性测试的三个方面：升级兼容性测试：重点关注升级后特性功能运行正常、升级失败或者升级未提交可以回滚到原版本，支持任意版本升级至openGauss 5.1.0版本；硬件兼容：支持在X86/鲲鹏服务器上部署，支持在本地盘、云盘上部署，支持在SAS、SATA、SSD部署；软件兼容：支持容器化部署，支持在OpenEuler 20.03 LTS、OpenEuler 22.03 LTS、CentOS 7.6等操作系统上部署。报告对兼容性测试工作进行总结，结合兼容性问题解决情况，为openGauss 5.1.0 版本开源提供依据。
+本报告是面向开源的openGauss 5.1.0版本兼容性测试报告，报告主要包括openGauss 5.1.0 版本兼容性测试的三个方面：升级兼容性测试：重点关注升级后特性功能运行正常、升级失败或者升级未提交可以回滚到原版本，支持任意版本升级至openGauss 5.1.0版本；硬件兼容：支持在X86/鲲鹏服务器上部署，支持在本地盘、云盘上部署，支持在SAS、SATA、SSD部署；软件兼容：支持容器化部署，支持在OpenEuler 20.03 LTS、OpenEuler 22.03 LTS、CentOS 7.6等操作系统上部署。报告对兼容性测试工作进行总结，结合兼容性问题解决情况，为openGauss 5.1.0 版本开源提供依据。
 
 # 2     特性测试信息
 
@@ -143,8 +143,8 @@ openGauss 5.1.0版本兼容性测试共计测试2轮，在X86+CentOS 7.6，ARM+o
 
 | Domain       | 测试活动                                                     | 测试结论                      |
 | ------------ | ------------------------------------------------------------ | ----------------------------- |
-| 支持云化部署 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/X86+openEuler 22.03 LTS/ARM+openEuler 22.03 LTS环境下，通过Docker（18.03.1-ce, build 9ee9f40、18.09.0, build 4f81b51、18.09.0, build d1134d1）安装部署openGauss 5.1.0数据库 | 发现1个问题，已修复且回归通过 |
-| 操作系统兼容 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/ARM+Kylin V10环境下，安装部署openGauss 5.1.0数据库 | 测试通过                      |
+| 支持云化部署 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/X86+openEuler 22.03 LTS/ARM+openEuler 22.03 LTS环境下，通过Docker（18.03.1-ce, build 9ee9f40、18.09.0, build 8f92b96、18.09.0, build d1134d1）安装部署openGauss 5.1.0数据库 | 发现1个问题，已修复且回归通过 |
+| 操作系统兼容 | 在X86+Centos7.6/X86+openEuler 20.03 LTS/ARM+openEuler 20.03 LTS/ARM下，安装部署openGauss 5.1.0数据库 | 测试通过                      |
 
 ## 3.2   约束说明
 
@@ -188,7 +188,7 @@ openGauss 5.1.0版本兼容性测试共计测试2轮，在X86+CentOS 7.6，ARM+o
 
 | 版本名称                       | 测试用例数 | 用例执行结果       | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------ | ------------ |
-| openGauss 5.1.0 build 2ef75654 | 9          | Passed:7  Failed:2 | 1            |
+| openGauss 5.1.0 build 2ef75654 | 14         | Passed:12  Failed:2 | 1            |
 | openGauss 5.1.0 build 2ef75654 | 2          | Passed:2  Failed:0 | 0            |
 | openGauss 5.1.0 build 86199cfa | 2023-09-05 | 2023-09-13         | 2            |
 | openGauss 5.1.0 build 8cfdb19a | 2023-09-14 | 2023-09-19         | 2            |
