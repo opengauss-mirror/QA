@@ -8,7 +8,7 @@
 | 日期 | 修订   版本 | 修改描述 | 作者 |
 | ---- | ----------- | -------- | ---- |
 | 2023-09-20|	1.0	|特性测试报告初稿完成|	shaohua.guan     |
-| 2023-09-25|	1.1	|补充测试 关闭并行apply优化功能和大压力下的场景22个；|	shaohua.guan     |
+| 2023-09-25|	1.1	|补充测试 关闭并行apply优化功能和大压力下的场景22个|	shaohua.guan     |
 
 关键词： 并行apply
 
@@ -61,9 +61,15 @@ openGauss备机replay速度优化特性，共计执行用例100个，主要覆�
 
 | 测试活动 | 活动评价 |
 | -------- | -------- |
-| 功能测试 |  验证并行apply优化 GUC参数开关和值设置，通过 |
-| 功能测试 |  验证并行apply优化 开启并使用不同配置的时候，回放是否正常，通过|
-| 可靠性测试| 验证并行apply优化 开启和关闭 的时候，在大压力和故障场景下，能否正常拉起、回放正常，通过|
+| 功能测试 |  验证并行apply优化 GUC参数名称和有效值范围的设置，通过 |
+| 功能测试 |  验证并行apply优化 功能关闭时，无压力情况下，parallel_recovery_batch、parallel_recovery_timeout配置在有效值的最小、最大、默认值下，执行简单的CRUD，验证主备回放是否正常，通过|
+| 功能测试 |  验证并行apply优化 功能开启时，无压力情况下，parallel_recovery_batch、parallel_recovery_timeout配置在有效值的最小、最大、默认值下，执行简单的CRUD，验证主备回放是否正常，通过|
+| 功能测试 |  验证并行apply优化 功能开启时，TPCC 3000仓600并发情况下，parallel_recovery_batch、parallel_recovery_timeout配置在有效值的最小、最大、默认值下，验证主备回放是否正常，通过
+| 功能测试 |  验证并行apply优化 功能关闭时时，TPCC 3000仓600并发情况下，parallel_recovery_batch、parallel_recovery_timeout配置在有效值的最小、最大、默认值下，验证主备回放是否正常，通过|
+| 可靠性测试| 验证并行apply优化 开启时，在大压力（TPCC 3000仓600并发）和不同场景（switchover/kill -9/节点启停)下，能否正常拉起、回放正常，通过|
+| 可靠性测试| 验证并行apply优化 关闭时，在大压力（TPCC 3000仓600并发）和不同场景（switchover/kill -9/节点启停)下，能否正常拉起、回放正常，通过|
+| 可靠性测试| 验证并行apply优化 关闭时，在小压力（少量insert和select）和不同场景（switchover/kill -9/节点启停)下，能否正常拉起、回放正常，通过|
+| 可靠性测试| 验证并行apply优化 开启时，在小压力（少量insert和select）和不同场景（switchover/kill -9/节点启停)下，能否正常拉起、回放正常，通过|
 | 文档测试 |  验证文档描述是否准，通过 |
 
 ## 3.2   约束说明
