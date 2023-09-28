@@ -178,6 +178,7 @@ sh check-endpoints.sh start
 | ------------------------------ | :--------- | :--------------------- | --------------- |
 | openGauss 5.1.0 build 68d1772f | 7         | Passed:4<br/>Failed:3 | 3  |
 | openGauss 5.1.0 build 24d9203f | 3         | Passed:3<br/>Failed:0 | 0  |
+| openGauss 5.1.0 build b5a8d5b0 | 1         | Passed:1<br/>Failed:0 | 0  |
 
 
 数据说明：
