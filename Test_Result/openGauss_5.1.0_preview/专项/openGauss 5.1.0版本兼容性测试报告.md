@@ -30,7 +30,7 @@
 
 本报告是面向开源的openGauss 5.1.0版本兼容性测试报告，报告主要包括openGauss 5.1.0 版本兼容性测试的四个方面：
 - 企业版升级兼容性测试：重点关注通过就地升级/灰度升级等方式，直接/间接升级至openGauss 5.1.0版本，升级失败或升级未提交时回滚/强制回滚到原版本，再重新升级提交至openGauss 5.1.0版本，升级后特性功能运行正常；
-- 轻量版升级兼容性测试：重点关注升级后特性功能运行正常、升级失败或者升级未提交可以回滚到原版本，支持3.0.0之后的任意版本升级至openGauss 5.1.0版本
+- 轻量版升级兼容性测试：重点关注升级后特性功能运行正常、升级失败或者升级未提交可以回滚到原版本；
 - 硬件兼容：支持在X86/鲲鹏服务器上部署，支持在本地盘、云盘上部署，支持在SAS、SATA、SSD部署；
 - 软件兼容：支持容器化部署，支持在OpenEuler 20.03 LTS、OpenEuler 22.03 LTS、CentOS 7.6等操作系统上部署。
 
@@ -92,7 +92,7 @@ Docker版本信息：
 兼容性测试整体结论如下，满足版本兼容性要求。
 
 - openGauss 5.1.0 企业版支持从openGauss 2.0.0/openGauss 2.0.1/openGauss 3.0.0/openGauss 3.1.0/openGauss 3.0.5/openGauss 5.0.0/openGauss 5.0.1灰度升级和就地升级至openGauss 5.1.0，升级失败或者升级未提交可以回滚到原版本，故障场景环境恢复后升级可以重入并升级成功；openGauss 5.1.0 企业版升级测试共计测试3轮，共143个场景，覆盖直接升级和间接升级、就地升级和灰度升级、回滚和强制回滚、带cm升级和不带cm升级，32个场景不支持，其他测试通过，共发现5个问题，1个非问题取消，其余均已修复并验证回归通过。
-- openGauss轻量版本支持从openGauss 3.0.0/openGauss 5.0.0/升级至openGauss 5.1.0，升级失败或者升级未提交可以回滚到原版本，故障场景环境恢复后升级可以重入并升级成功；openGauss 3.1.0暂不支持升级至openGauss 5.0.0/5.1.0，当前遗留，后续修复；openGauss 5.1.0轻量版升级测试共计测试1轮，共12个场景，包含直接升级和间接升级，共发现3个问题，1个遗留，其余均已修复并验证回归通过。
+- openGauss轻量版本支持从openGauss 3.0.0/openGauss 5.0.0/升级至openGauss 5.1.0，升级失败或者升级未提交可以回滚到原版本，故障场景环境恢复后升级可以重入并升级成功；openGauss 3.1.0暂不支持升级至openGauss 5.0.0/5.1.0，当前遗留，后续修复；openGauss 5.1.0轻量版升级测试共计测试2轮，共12个场景，包含直接升级和间接升级，共发现3个问题，1个遗留，1个非问题取消，1个已修复并验证回归通过。
 - 支持在X86/鲲鹏服务器上部署，支持在本地盘、云盘上部署，支持在SAS、SATA、SSD部署；支持容器化部署，支持在openEuler 20.03 LTS、CentOS 7.6操作系统上部署；openGauss 5.1.0企业版软硬件兼容性测试共计测试2轮，在X86+CentOS 7.6，ARM+openEuler 20.03 LTS，X86+openEuler 20.03 LTS，ARM+openEuler 22.03 LTS，X86+openEuler 22.03 LTS环境下共计执行14个用例，测试用例累计执行率100%，测试发现1个问题，已修复并验证回归通过。
 
 #### 3.1.1 企业版升级兼容
@@ -196,8 +196,8 @@ Docker版本信息：
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   | 8        | 0    | 4    | 4    | 0      |
-| 百分比 | 100%     | 0%   | 50%  | 50%  | 0%     |
+| 数目   | 7        | 0    | 4    | 3    | 0      |
+| 百分比 | 100%     | 0%   | 570%  | 43%  | 0%     |
 
 ### 3.3.3问题单汇总
 
@@ -210,7 +210,7 @@ Docker版本信息：
 | [I7ZYTB](https://gitee.com/opengauss/openGauss-server/issues/I7ZYTB?from=project-issue) | 主要     | 【测试类型：工具功能】【测试版本：5.1.0】【升级】2.0.0-3.0.0-5.1.0就地升级，升级到3.0.0失败，报错无法识别comm_quota_size等参数 | 已取消     |
 | [I7ZKSO](https://gitee.com/opengauss/openGauss-container/issues/I7ZKSO?from=project-issue) | 次要     | 在x86环境中通过buildDockerImage.sh创建镜像，启动容器后查询部署集群状态查询失败 | 已验收     |
 | [I845ZN](https://gitee.com/opengauss/openGauss-server/issues/I845ZN?from=project-issue) | 次要     | 轻量版3.0.0升级到5.1.0版本报错，无法连接兼容B库，ERROR:  type "anyset" is only a shell | 已验收     |
-| [I84A4S](https://gitee.com/opengauss/openGauss-server/issues/I84A4S?from=project-issue)) | 次要     | openGauss轻量版低版本升级到5.1.0，回滚升级后查询插件显示有1.0版本dolphin插件，实际验证没有 | 已验收     |
+| [I84A4S](https://gitee.com/opengauss/openGauss-server/issues/I84A4S?from=project-issue) | 次要     | openGauss轻量版低版本升级到5.1.0，回滚升级后查询插件显示有1.0版本dolphin插件，实际验证没有 | 已取消     |
 | [I7ZKSO](https://gitee.com/opengauss/openGauss-container/issues/I7ZKSO?from=project-issue) | 次要     | 轻量版3.1.0升级到5.1.0版本报错，Exec sql on postgres failed.Error: upgrade post sql failed | 待办的     |
 
 # 4     测试执行
@@ -225,7 +225,7 @@ Docker版本信息：
 | openGauss 5.1.0 build 8cfdb19a | / |企业版升级 |/         | 2            |
 | openGauss 5.1.0 build 24ebc36b | / |企业版升级 | /         | 0            |
 | openGauss 5.1.0 build 4e532edf | / |轻量版升级 |/         | 2            |
-| openGauss 5.1.0 build b5a8d5b0 | / |轻量版升级 | /         | 1            |
+| openGauss 5.1.0 build b5a8d5b0 | / |轻量版升级 | /         | 0            |
 
 *数据项说明：*
 
