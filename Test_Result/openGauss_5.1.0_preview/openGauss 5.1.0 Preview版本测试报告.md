@@ -608,7 +608,7 @@ openGauss 5.1.0 Preview版本共发现问题1436个，有效问题1160个。详�
 | chameleon迁移日期时间 类型及二进制类型，日期时间类型迁移成功，但迁移日志有报错，二进制类型，迁移后数据有误 | 次要   | openGauss | 变色龙对类型tinyblob、 mediumblob、 longblob未适配兼容性     | mysql端数据迁移到opengauss后 数据不一致                      | 可以通过类型映射覆写，把tinyblob、 mediumblob、 longblob覆写为原来的blob |
 | 【测试类型：压力长稳】tpcc1500仓长稳测试时，数据库发生等待锁超时 | 主要   | openGauss | Issue中测试是用的B019跑长稳，20min报了锁超时的错。最近在用B020和B021跑长稳，B020跑到67小时报了另外一个线程池enlarge的问题，B021目前跑了90小时还没出问题。锁超时问题之前在2.0.0和3.0.0出现过，定位到是线程在BufferAlloc中循环刷脏，一直有其他线程对请求的页面置脏，在并发量大，shared_buffers小的场景容易出现。后面是通过调整shared_buffers到128G没问题了。这种并发问题具有偶然性，最新的B021没问题。 对于线程池enlarge的问题，通过分析代码，线程池worker的状态由pending变成run之后，在报错代码处判断m_currentSession是否为空之前，在这个窗口内listener为这个worker赋值了m_currentSession（DispatchSession），导致不为NULL的判断走进去报错了。但目前只是可疑，加了sleep扩大这个时间窗后，还是没有复现。 | 业务执行失败，数据库整体状态不受影响                         | 调大shared_buffers参数值，可以规避此问题                     |
 | 【测试类型：压力长稳】tpcc 1500仓长稳测试连跑67小时，出现异常 | 主要   | openGauss | 新版本未复现。代码正在分析中。                               | 业务执行失败，数据库整体状态不受影响                         | 开发提供规避措施：线程池参数设置扩大，大于业务并发数，待验证 |
-| 【测试类型：极致RTO】【测试版本：5.1.0】【可靠性】 一主两备开启极致RTO后，进行tpcc过程中，备机进行kill-19故障后kill-18 恢复，关闭极致RTO后，查询主备数据偶现不一致 | 主要   | openGauss | 备机查询计划走index only scan场景查询select count(*）某张表数据量不正确 | 长期数据是一致的                                             | 规避措施，可以通过set enable_indexonlyscan=off，不走indexonlyscan索引来规避此问题。 |
+| 【测试类型：极致RTO】【测试版本：5.1.0】【可靠性】 一主两备开启极致RTO后，进行tpcc过程中，备机进行kill-19故障后kill-18 恢复，关闭极致RTO后，查询主备数据偶现不一致 | 主要   | openGauss | 备机查询计划走index only scan场景查询select count(*）某张表数据量不正确 | 走indexonlyscan的场景会出现某些表count数据结果不一致的情况   | 规避措施，可以通过set enable_indexonlyscan=off，不走indexonlyscan索引来规避此问题。 |
 
 # 致谢
 
