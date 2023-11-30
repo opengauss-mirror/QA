@@ -137,7 +137,7 @@ instr_unique_sql_track_type = all
 
 | 版本名称                       | 测试用例数 | 用例执行结果         | 发现问题单数 |
 | ------------------------------ | ---------- | -------------------- | ------------ |
-| openGauss 5.1.1 build 5099d94c | 47         | Passed：47 Failed：1 | 1            |
+| openGauss 5.1.1 build 5099d94c | 47         | Passed：46 Failed：1 | 1            |
 | openGauss 5.1.1 build de769317 | 47         | Passed：47 Failed：0 | 0            |
 
 *数据项说明：*
