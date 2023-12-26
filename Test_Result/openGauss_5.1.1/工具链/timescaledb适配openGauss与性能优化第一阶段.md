@@ -25,10 +25,10 @@ openGauss、timescaleDB
 
 # 1     特性概述
 
-   TimescaleDB是一个开源的时间序列数据库，专门用于高性能和可扩展的时间序列数据存储和分析。本次需求实现openGauss 5.1.1版本适配PostgreSQL9.6.3+TimescaleDB 1.7.4。
+   TimescaleDB是一个开源的时间序列数据库，用于高性能和可扩展的时间序列数据存储和分析。本次需求实现openGauss 5.1.1版本适配基于PostgreSQL9.6.3的TimescaleDB 1.7.4插件。
 
 ## 1.1 适配openGauss 5.1.1内核中缺失的TimescaleDB所依赖的扩展点
-
+   根据开发交付件识别出结构体、函数、算子扩展点如下：
 ### 1.1.1 openGauss内核中缺失的TimescaleDB所依赖的结构体
 
 | 序号 | 结构体                        | 说明                                                         |                                                              |
