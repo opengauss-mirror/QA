@@ -276,7 +276,7 @@ openGauss、timescaleDB
 | 35   | timescaledb_post_restore                            | 备份     |
 
 ## 1.3 已适配系统函数统计
-PostgreSQL9.6.3+TimescaleDB 1.7.4合计系统函数68个。openGauss适配TimescaleDB插件，涉及28个系统函数无法适配(明细见：openGauss无法适配TimescaleDB系统函数表格)，可适配系统函数39个，第一阶段适配接口23个，第一阶段适配的接口占可适配接口的比例为58.9%。
+PostgreSQL9.6.3+TimescaleDB 1.7.4合计系统函数67个。openGauss适配TimescaleDB插件，涉及28个系统函数无法适配(明细见：openGauss无法适配TimescaleDB系统函数表格)，可适配系统函数39个，第一阶段适配接口23个，第一阶段适配的接口占可适配接口的比例为58.9%。
 
 ### 1.3.1 TimescaleDB一阶段已实现系统函数
 | 序号 | 系统函数名                                              |
