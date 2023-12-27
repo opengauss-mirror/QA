@@ -249,19 +249,19 @@ openGauss、timescaleDB
 | 8    | timescaledb_information.drop_chunks_policies        | policy   |
 | 9    | timescaledb_information.policy_stats                | policy   |
 | 10   | timescaledb_information.reorder_policies            | policy   |
-| 11   | alter   view (continuous aggregate)                 | 窗口函数 |
-| 12   | create   view (continuous aggregate)                | 窗口函数 |
-| 13   | drop   view (continuous aggregate)                  | 窗口函数 |
-| 14   | first                                               | 窗口函数 |
-| 15   | get_telemetry_report                                | 窗口函数 |
-| 16   | interpolate                                         | 窗口函数 |
-| 17   | last                                                | 窗口函数 |
-| 18   | locf                                                | 窗口函数 |
-| 19   | refresh   materialized view (continuous aggregate)  | 窗口函数 |
-| 20   | time_bucket_gapfill                                 | 窗口函数 |
-| 21   | timescaledb_information.continuous_aggregates       | 窗口函数 |
-| 22   | timescaledb_information.continuous_aggregate_stats  | 窗口函数 |
-| 23   | histogram                                           | 窗口函数 |
+| 11   | alter   view (continuous aggregate)                 | 聚合函数 |
+| 12   | create   view (continuous aggregate)                | 聚合函数 |
+| 13   | drop   view (continuous aggregate)                  | 聚合函数 |
+| 14   | first                                               | 聚合函数 |
+| 15   | get_telemetry_report                                | 聚合函数 |
+| 16   | interpolate                                         | 聚合函数 |
+| 17   | last                                                | 聚合函数 |
+| 18   | locf                                                | 聚合函数 |
+| 19   | refresh   materialized view (continuous aggregate)  | 聚合函数 |
+| 20   | time_bucket_gapfill                                 | 聚合函数 |
+| 21   | timescaledb_information.continuous_aggregates       | 聚合函数 |
+| 22   | timescaledb_information.continuous_aggregate_stats  | 聚合函数 |
+| 23   | histogram                                           | 聚合函数 |
 | 24   | timescaledb_information.compressed_chunk_stats      | chunk    |
 | 25   | timescaledb_information.compressed_hypertable_stats | chunk    |
 | 26   | timescaledb.license_key                             | chunk    |
