@@ -275,6 +275,94 @@ openGauss、timescaleDB
 | 34   | timescaledb_pre_restore                             | 备份     |
 | 35   | timescaledb_post_restore                            | 备份     |
 
+## 1.3 已适配系统函数统计
+PostgreSQL9.6.3+TimescaleDB 1.7.4合计系统函数68个。openGauss适配TimescaleDB插件，涉及28个系统函数无法适配(明细见：openGauss无法适配TimescaleDB系统函数表格)，可适配系统函数39个，第一阶段适配接口23个，第一阶段适配的接口占可适配接口的比例为58.9%。
+
+### 1.3.1 TimescaleDB一阶段已实现系统函数
+| 序号 | 系统函数名                                              |
+| ---- | --------------------------------------------------- |
+| 1    | _timescaledb_internal.current_license_key           |
+| 2    | _timescaledb_internal.license_expiration_time       |
+| 3    | _timescaledb_internal.print_license_expiration_info |
+| 4    | _timescaledb_internal.license_edition               |
+| 5    | _timescaledb_intermal.to_unix_microseconds          |
+| 6    | _timescaledb_intermal.to_timestamp                  |
+| 7    | _timescaledb_internal.to_timestamp_without_timezone |
+| 8    | _timescaledb_internal.to_date                       |
+| 9    | _timescaledb_internal.to_interval                   |
+| 10   | _timescaledb_internal.time_literal_sql              |
+| 11   | _timescaledb_internal.dimension_is_finite           |
+| 12   | _timescaledb_internal.get_partition_for_key         |
+| 13   | _timescaledb_internal.get_partition_hash            |
+| 14   | _timescaledb_internal.get_time_type                 |
+| 15   | _timescaledb_internal.is_main_table                 |
+| 16   | _timescaledb_internal.main_table_from_hypertable    |
+| 17   | _timescaledb_internal.get_git_commit                |
+| 18   | _timescaledb_internal.get_os_info                   |
+| 19   | _timescaledb_internal.range_value_to_pretty         |
+| 20   | _timescaledb_internal.generate_uuid                 |
+| 21   | _timescaledb_internal.partitioning_column_to_pretty |
+| 22   | _timescaledb_internal.valid_ts_interval             |
+| 23   | _timescaledb_internal.get_create_command            |
+
+
+### 1.3.2 TimescaleDB二阶段待实现系统函数
+
+| 序号 | 系统函数名                                                | 所属类别   |
+| ---- | ----------------------------------------------------------- | ---------- |
+| 1    | _timescaledb_internal.insert_blocker                        | 触发器相关 |
+| 2    | _timescaledb_internal.continuous_agg_invalidation_trigger   | 触发器相关 |
+| 3    | _timescaledb_internal.chunks_in                             | chunk相关  |
+| 4    | _timescaledb_internal.chunk_id_from_relid                   | chunk相关  |
+| 5    | _timescaledb_internal.chunk_dml_blocker                     | chunk相关  |
+| 6    | _timescaledb_internal.chunk_index_clone                     | chunk相关  |
+| 7    | _timescaledb_internal.chunk_index_replace                   | chunk相关  |
+| 8    | _timescaledb_internal.interval_to_usec                      | chunk相关  |
+| 9    | _timescaledb_internal.dimension_slice_get_constraint_sql    | chunk相关  |
+| 10   | _timescaledb_internal.chunk_constraint_add_table_constraint | chunk相关  |
+| 11   | _timescaledb_internal.time_col_name_for_chunk               | chunk相关  |
+| 12   | _timescaledb_internal.time_col_type_for_chunk               | chunk相关  |
+| 13   | _timescaledb_internal.process_ddl_event                     | 触发器相关 |
+| 14   | _timescaledb_internal.calculate_chunk_interval              | chunk相关  |
+| 15   | _timescaledb_internal.hypertable_from_main_table            |            |
+| 16   | _timescaledb_internal.time_to_internal                      |            |
+
+
+
+### 1.3.3 openGauss无法适配TimescaleDB系统函数
+
+| 序号 | 系统函数名                                                 | 所属类别     |
+| ---- | ------------------------------------------------------------ | ------------ |
+| 1    | _timescaledb_internal.restart_background_workers             | BGW相关      |
+| 2    | _timescaledb_internal.compressed_data_in                     | 压缩相关     |
+| 3    | _timescaledb_internal.compressed_data_out                    | 压缩相关     |
+| 4    | _timescaledb_internal.compressed_data_send                   | 压缩相关     |
+| 5    | _timescaledb_internal.compressed_data_recv                   | 压缩相关     |
+| 6    | _timescaledb_internal.enterprise_enabled                     | License相关  |
+| 7    | _timescaledb_internal.tsl_loaded                             | License相关  |
+| 8    | _timescaledb_internal.current_db_set_license_key             | License相关  |
+| 9    | _timescaledb_internal.hypertable_constraint_add_table_fk_constraint | License相关  |
+| 10   | _timescaledb_internal.first_sfunc                            | 聚合函数相关 |
+| 11   | _timescaledb_internal.first_combinefunc                      | 聚合函数相关 |
+| 12   | _timescaledb_internal.last_sfunc                             | 聚合函数相关 |
+| 13   | _timescaledb_internal.last_combinefunc                       | 聚合函数相关 |
+| 14   | _timescaledb_internal.bookend_finalfunc                      | 聚合函数相关 |
+| 15   | _timescaledb_internal.bookend_serializefunc                  | 聚合函数相关 |
+| 16   | _timescaledb_internal.bookend_deserializefunc                | 聚合函数相关 |
+| 17   | _timescaledb_internal.hist_sfunc                             | 聚合函数相关 |
+| 18   | _timescaledb_internal.hist_combinefunc                       | 聚合函数相关 |
+| 19   | _timescaledb_internal.hist_serializefunc                     | 聚合函数相关 |
+| 20   | _timescaledb_internal.hist_deserializefunc                   | 聚合函数相关 |
+| 21   | _timescaledb_internal.hist_finalfunc                         | 聚合函数相关 |
+| 22   | _timescaledb_internal.stop_background_workers                | BGW相关      |
+| 23   | _timescaledb_internal.start_background_workers               | BGW相关      |
+| 24   | _timescaledb_internal.partialize_agg                         | 聚合函数相关 |
+| 25   | _timescaledb_internal.finalize_agg_sfunc                     | 聚合函数相关 |
+| 26   | _timescaledb_internal.finalize_agg_ffunc                     | 聚合函数相关 |
+| 27   | _timescaledb_internal.cagg_watermark                         | 聚合函数相关 |
+| 28   | _timescaledb_internal.finalize_agg                           | 聚合函数相关 |
+
+
 # 2     特性测试信息
 
 | 版本名称                       | 测试起始时间 | 测试结束时间 |
