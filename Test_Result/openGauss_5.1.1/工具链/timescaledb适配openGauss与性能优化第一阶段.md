@@ -290,7 +290,7 @@ openGauss、timescaleDB
 
 ## 3.1   测试整体结论
 
-​       timescaledb适配openGauss与性能优化第一阶段实现接口合计11个,其中6个与第二阶段实现的chunk功能存在交互（资料中已加约束），待第二阶段转测后测试涉及到与chunk交互的功能。第一阶段累计发现缺陷17个，其中已验收13个、修复中4个，总体质量一般。
+​       timescaledb适配openGauss与性能优化第一阶段实现接口合计11个,其中6个与第二阶段实现的chunk功能存在交互（资料中已加约束），待第二阶段转测后测试涉及到与chunk交互的功能。第一阶段累计发现缺陷17个，其中已验收16个、修复中1个(遗留问题)，总体质量一般。
 
 ## 3.2   约束说明
 
@@ -299,6 +299,7 @@ openGauss、timescaleDB
 - 目前TimescaleDB安装之后，不支持删除TimescaleDB插件
 - TimescaleDB插件依赖于public schema，因此不支持使用drop schema的方式删除public schema
 - chunk功能不支持
+- 在不同数据库创建插件需要重启数据库
 
 ## 3.3   遗留问题分析
 
@@ -306,7 +307,9 @@ openGauss、timescaleDB
 
 | 问题单号 | 问题描述 |
 | -------- | -------- |
-| NA       |          |
+| [I8MRMC](https://gitee.com/opengauss/Plugin/issues/I8MRMC?from=project-issue)       |  timescaleDB 插件不支持同时在两个库中创建          |
+
+遗留问题导致无法在两个pg兼容库下分别创建TimescaleDB插件。规避措施：在不同pg库下创建timescaleDB插件前需要先重启数据库，已在资料中加说明。
 
 ### 3.3.2 问题统计
 
@@ -324,18 +327,17 @@ openGauss、timescaleDB
 | 3    | [I8H6XI](https://gitee.com/opengauss/Plugin/issues/I8H6XI?from=project-issue) | 主要     | timescaleDB指定两个时间列创建超表失败                        | 已验收   |
 | 4    | [I8HBKC](https://gitee.com/opengauss/Plugin/issues/I8HBKC?from=project-issue) | 主要     | timescaleDB自定义模式名创建超表失败                          | 已验收   |
 | 5    | [I8IECT](https://gitee.com/opengauss/Plugin/issues/I8IECT?from=project-issue) | 次要     | timescaleDB chunk_time_interval 参数可通过 INTERVAL '0 day'方式设置为0，未合理报错 | 已验收   |
-| 6    | [I8HX1M](https://gitee.com/opengauss/Plugin/issues/I8HX1M?from=project-issue) | 主要     | timescaleDB 标准表指定表空间后创建超表失败                   | 修复中   |
+| 6    | [I8HX1M](https://gitee.com/opengauss/Plugin/issues/I8HX1M?from=project-issue) | 主要     | timescaleDB 标准表指定表空间后创建超表失败                   | 已验收   |
 | 7    | [I8JT6P](https://gitee.com/opengauss/Plugin/issues/I8JT6P?from=project-issue) | 不重要   | timescaleDB 查询许可证信息timescaledb_information.license报错 | 已验收   |
-| 8    | [I8MRMC](https://gitee.com/opengauss/Plugin/issues/I8MRMC?from=project-issue) | 次要     | timescaleDB 插件不支持同时在两个库中创建                     | 修复中   |
-| 9    | [I8HEAG](https://gitee.com/opengauss/Plugin/issues/I8HEAG?from=project-issue) | 次要     | timescaleDB 删除超表后，系统表_timescaledb_catalog.hypertable中该超表的信息存在 | 已验收   |
-| 10   | [I8JYI8](https://gitee.com/opengauss/Plugin/issues/I8JYI8?from=project-issue) | 次要     | timescaleDB set_chunk_time_interval()函数通过interval 设置时间间隔，默认单位为天，应为秒 | 已验收   |
-| 11   | [I8NGQF](https://gitee.com/opengauss/Plugin/issues/I8NGQF?from=project-issue) | 次要     | timescaleDB 系统函数 _timescaledb_internal.get_partition_for_key()获取的值不准确 | 已验收   |
-| 12   | [I8NHP9](https://gitee.com/opengauss/Plugin/issues/I8NHP9?from=project-issue) | 次要     | timescaleDB 表非超表，系统函数_timescaledb_internal.get_create_command()提示信息不准确 | 已验收   |
-| 13   | [I8NOM4](https://gitee.com/opengauss/Plugin/issues/I8NOM4?from=project-issue) | 次要     | timescaleDB 补充包括插件安装步骤、已实现接口、约束及操作示例资料 | 已验收   |
-| 14   | [I8NUT9](https://gitee.com/opengauss/Plugin/issues/I8NUT9?from=project-issue) | 主要     | timescaleDB 插件的系统函数、系统视图、系统表、序列涉及46个未适配 | 已验收   |
-| 15   | [I8QMIL](https://gitee.com/opengauss/Plugin/issues/I8QMIL?from=project-issue) | 次要     | timescaleDB 创建插件报错                                     | 已验收   |
-| 16   | [I8R5JC](https://gitee.com/opengauss/Plugin/issues/I8R5JC?from=project-issue) | 不重要   | timescaleDB 超表已实现不用cascade即可删除，去掉资料中的约束加cascade，第二阶段实现的功能代码尚未合入资料暂不体现 | 修复中   |
-| 17   | [I8R610](https://gitee.com/opengauss/Plugin/issues/I8R610?from=project-issue) | 主要     | timescaleDB 在执行sql语句的过程中会出现卡住的情况            | 修复中   |
+| 8    | [I8HEAG](https://gitee.com/opengauss/Plugin/issues/I8HEAG?from=project-issue) | 次要     | timescaleDB 删除超表后，系统表_timescaledb_catalog.hypertable中该超表的信息存在 | 已验收   |
+| 9   | [I8JYI8](https://gitee.com/opengauss/Plugin/issues/I8JYI8?from=project-issue) | 次要     | timescaleDB set_chunk_time_interval()函数通过interval 设置时间间隔，默认单位为天，应为秒 | 已验收   |
+| 10   | [I8NGQF](https://gitee.com/opengauss/Plugin/issues/I8NGQF?from=project-issue) | 次要     | timescaleDB 系统函数 _timescaledb_internal.get_partition_for_key()获取的值不准确 | 已验收   |
+| 11   | [I8NHP9](https://gitee.com/opengauss/Plugin/issues/I8NHP9?from=project-issue) | 次要     | timescaleDB 表非超表，系统函数_timescaledb_internal.get_create_command()提示信息不准确 | 已验收   |
+| 12   | [I8NOM4](https://gitee.com/opengauss/Plugin/issues/I8NOM4?from=project-issue) | 次要     | timescaleDB 补充包括插件安装步骤、已实现接口、约束及操作示例资料 | 已验收   |
+| 13   | [I8NUT9](https://gitee.com/opengauss/Plugin/issues/I8NUT9?from=project-issue) | 主要     | timescaleDB 插件的系统函数、系统视图、系统表、序列涉及46个未适配 | 已验收   |
+| 14   | [I8QMIL](https://gitee.com/opengauss/Plugin/issues/I8QMIL?from=project-issue) | 次要     | timescaleDB 创建插件报错                                     | 已验收   |
+| 15   | [I8R5JC](https://gitee.com/opengauss/Plugin/issues/I8R5JC?from=project-issue) | 不重要   | timescaleDB 超表已实现不用cascade即可删除，去掉资料中的约束加cascade，第二阶段实现的功能代码尚未合入资料暂不体现 | 已验收   |
+| 16   | [I8R610](https://gitee.com/opengauss/Plugin/issues/I8R610?from=project-issue) | 主要     | timescaleDB 在执行sql语句的过程中会出现卡住的情况            | 已验收   |
 
 # 5     测试执行
 
@@ -387,7 +389,7 @@ openGauss、timescaleDB
 
 ### 5.1.3 TimescaleDB 1.7.4 官方fastcheck用例执行
 
-合计151个用例，测试用例的sql语法需要更改适配openGauss。第一阶段实现的功能仅支持5个用例的执行，5个通过，提交issue1个。
+合计151个用例，测试用例的sql语法需要更改适配openGauss。第一阶段实现的功能仅支持5个用例的执行，5个通过，提交issue1个，已验收
 
 | 用例名称              | 测试点                                                       | 执行结果             |
 | --------------------- | ------------------------------------------------------------ | -------------------- |
@@ -411,12 +413,12 @@ openGauss、timescaleDB
 
 | 版本名称                       | 测试用例数 | 用例执行结果              | 发现问题单数 |
 | ------------------------------ | ---------- | ------------------------- | ------------ |
-| openGauss 5.1.1 build 3172134f | 150        | Passed：130<br>Failed：20 | 13           |
-| openGauss 5.1.1 build 7442024f | 20         | Passed：20<br/>Failed：4  | 4            |
+| openGauss 5.1.1 build 3172134f | 150        | Passed：130<br>Failed：20 | 17           |
+| openGauss 5.1.1 build 4df8f86c | 20         | Passed：20<br/>Failed：0  | 0            |
 
 *数据项说明：*
 
-- 第一阶段累计发现缺陷单17个，已验收13个，修复中4个
+- 第一阶段累计发现缺陷单17个，已验收16个，修复中1个（遗留问题）
 - 缺陷密度为17个(缺陷个数)/71.435kloc(代码行数)=0.238(个/kloc)
 
 ## 5.3   后续测试建议
