@@ -77,7 +77,7 @@ openGauss 分布式、ShardingSphere-Proxy、PITR物理备份及恢复、CDC逻�
   - ZK+GlT配置+Redis部署，提供全局 CSN
   - 带CDC Server模块，且开启
 -  OpenGauss
-  - 目前仅3.0.0分支支持GLT功能，提供全局 CSN
+  - 目前仅3.1.0分支支持GLT功能，提供全局 CSN
   - 设置GUC参数wal_level=logical
   - 设置GUC参数max_replication_slots>=每个节点所需的（物理流复制槽数+逻辑复制槽数）
   - 设置cdc server端IP replication权限白名单配置
@@ -106,7 +106,7 @@ openGauss 分布式、ShardingSphere-Proxy、PITR物理备份及恢复、CDC逻�
 |        | 问题总数 | 严重 | 主要  | 次要  | 不重要 |
 | ------ | -------- | ---- | ----- | ----- | ------ |
 | 数目   | 19       | 0    | 7     | 12    | 0      |
-| 百分比 | 100%     | 0%   | 36.8% | 36.2% | 0%     |
+| 百分比 | 100%     | 0%   | 36.8% | 63.2% | 0%     |
 
 #### 2.2.3.3 问题单汇总
 
@@ -136,8 +136,6 @@ openGauss 分布式、ShardingSphere-Proxy、PITR物理备份及恢复、CDC逻�
 
 ### 2.3.1   测试组网图
 
-
-
 ```
                                              +------------------+
                                              | DN 1:            |
@@ -161,7 +159,7 @@ openGauss 分布式、ShardingSphere-Proxy、PITR物理备份及恢复、CDC逻�
 | ------------------------------------------------------------ | ---------- | ----------------------- | ------------ |
 | ShardingSphere-5.4.2-SNAPSHOT Commit ID:152f56c1195f324d310e794c443bec2b3be7190d | 10         | Pass：6<br />Failed：4  | 8            |
 | ShardingSphere-5.4.2-SNAPSHOT Commit ID:eb4dc319b97aba2133073446fa310763c4f0a9fb | 15         | Pass：10<br />Failed：5 | 6            |
-| ShardingSphere-5.4.2-SNAPSHOT Commit ID:bcde6f374c4a3a025173fbc9f6d0e66ed686a042 | 10         | Pass：10<br />Failed：5 | 5            |
+| ShardingSphere-5.4.2-SNAPSHOT Commit ID:bcde6f374c4a3a025173fbc9f6d0e66ed686a042 | 10         | Pass：5<br />Failed：5  | 5            |
 | ShardingSphere-5.4.2-SNAPSHOT Commit ID:1ac5eaecf2b044fe9a1e1d9d91dd48941d301c6e | 5          | Pass：3<br />Failed：2  | 0            |
 
 *数据项说明：*
@@ -311,7 +309,7 @@ SQL ALTER STREAMING RULE (READ( WORKER_THREAD=20, BATCH_SIZE=100, SHARDING_SIZE=
 | ---------- | ------------------------------------------------------------ |
 | 功能测试   | 1. pitr-agent工具验证：<br />（1）参数正常启动、参数异常启动、帮助功能、日志打印功能验证正常，异常及错误日志可正常打印；<br />2. gs_pitr backup 备份功能验证：<br />（1）参数正常，备份功能正常（备份模式全量、增量覆盖；备份线程数不同覆盖）；<br />（2）参数异常，备份可正常抛错（连接ss-proxy参数不正确、连接pirt-agent参数不正确等）<br />（3）备份业务场景覆盖，多次全量备份、多次增量备份、备份前dn节点未进行gs_probackup init操作、备份过程中是否继续选择n；<br />（4）help功能打印正确<br />3. gs_pitr restore 恢复备份功能验证：<br />（1）参数正常，恢复功能正常（备份线程数不同、通过csn恢复、通过id恢复、全量备份恢复，增量备份恢复）；<br />（2）参数异常，恢复可正常抛错（连接ss-proxy参数不正确、连接pirt-agent参数不正确、恢复id不存在、恢复csn不存在等）<br />（3）备份业务场景覆盖，恢复csn存在多条备份记录、恢复过程中是否继续选择n等<br />（4）help功能打印正确<br />4. gs_pitr delete 删除备份功能验证：<br />（1）参数正常，删除功能正常（通过csn删除、通过id删除、删除后实际dn节点备份记录清理）；<br />（2）参数异常，恢复可正常抛错（连接ss-proxy参数不正确、连接pirt-agent参数不正确、恢复id不存在、恢复csn不存在等）<br />（3）help功能打印正确<br />5. gs_pitr show 查询备份功能验证<br />（1）备份记录信息正确、备份、备份删除后，备份记录数据正确<br />（2）按备份id查询正确、按备份csn查询正确<br />（3）无备份记录、按备份id、csn查询不正确，正常提示<br />**以上基础功能模块功能正常，验收通过；** |
 | 可靠性测试 | 备份、恢复、删除时，注入如下故障，可以正常抛错处理：<br />（1）sharding-proxy未启动、端口网络不通、进程挂住<br />（2）某个节点pitr-agent未启动、端口网络不通、进程挂住<br />（3）dn节点库未启动、磁盘满<br />**以上可靠性场景功能正常，验收通过；** |
-| 稳定性测试 | pitr工具性能主要是各dn节点性能，与工具本身无关，所以仅验证测试大数据量下全量，增量备份稳定性正常即可<br />**存在1个遗留问题单；见遗留问题1；** |
+| 稳定性测试 | pitr工具性能主要是各dn节点性能，与工具本身无关，所以仅验证测试大数据量下全量，增量备份稳定性正常即可<br />**存在1个遗留问题单；见遗留问题2；** |
 
 ### 3.2.2    约束说明
 
@@ -323,7 +321,7 @@ SQL ALTER STREAMING RULE (READ( WORKER_THREAD=20, BATCH_SIZE=100, SHARDING_SIZE=
 
   -  OpenGauss
 
-    （1）目前仅3.0.0分支支持GLT功能，提供全局 CSN
+    （1）目前仅3.1.0分支支持GLT功能，提供全局 CSN
 
     （2）设置enable_cbm_tracking为on
 
