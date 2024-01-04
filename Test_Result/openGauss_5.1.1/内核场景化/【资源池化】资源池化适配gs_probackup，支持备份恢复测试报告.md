@@ -113,7 +113,17 @@ gs_probackup是一个用于管理openGauss数据库物理备份和恢复的工�
 
 # 5     附件
 
-gs_probackup工具资源池化集群全量恢复流程简化脚本：
+## 5.1 源代码文档PR
+
+资源池化适配gs_probackup,实现增量备份、备份合并、备份恢复PR：
+
+https://e.gitee.com/opengaussorg/repos/opengauss/openGauss-server/pulls/4462
+
+gs_probackup相关文档修改PR：
+
+https://e.gitee.com/opengaussorg/repos/opengauss/docs/pulls/5972
+
+## 5.2 gs_probackup工具资源池化集群全量恢复流程简化脚本
 
 https://gitee.com/opengauss/blog/blob/f47793a0d96329cb5c7d218524acdb70dff4efe4/app/zh/blogs/liuzhanfeng/gs_probackup%E5%85%A8%E9%87%8F%E6%81%A2%E5%A4%8D%E6%B5%81%E7%A8%8B%E7%AE%80%E5%8C%96%E8%84%9A%E6%9C%AC.md
 
