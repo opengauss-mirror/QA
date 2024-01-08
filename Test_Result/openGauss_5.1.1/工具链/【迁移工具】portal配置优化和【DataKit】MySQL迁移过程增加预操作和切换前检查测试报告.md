@@ -26,7 +26,7 @@ portal配置优化、mysql迁移、预操作检查
 
 ## 1.1 【迁移工具】portal配置优化
 
-该特性可优化Datakit->portal->工具配置能力，支持新增工具参数配置而不用重新出Datakit portal版本，支持kafka配置都那口安装，提高portal的安装效率，下发portal任务后配置得以保留，优化工具的问题定位能力。
+该特性可优化Datakit->portal->工具配置能力，支持新增工具参数配置而不用重新出Datakit portal版本，支持kafka配置端口安装，提高portal的安装效率，下发portal任务后配置得以保留，优化工具的问题定位能力。
 
 ## 1.2 【DataKit】MySQL迁移过程增加预操作和切换前检查
 
