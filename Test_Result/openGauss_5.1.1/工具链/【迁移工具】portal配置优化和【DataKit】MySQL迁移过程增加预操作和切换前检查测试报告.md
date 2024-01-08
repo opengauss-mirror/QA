@@ -142,18 +142,20 @@ MySQL迁移过程增加预操作和切换前检查：1(缺陷个数)2.121/kloc(�
 # 5 附件
 
 ## 5.1 源代码及文档PR
-
-【工具链】portal配置优化PR
+【工具链】portal配置优化PR<br />
 https://e.gitee.com/opengaussorg/repos/opengauss/openGauss-workbench/pulls/458
 
-【工具链】portal配置优化文档PR
+【工具链】portal配置优化文档PR<br />
+
 https://e.gitee.com/opengaussorg/repos/opengauss/openGauss-workbench/pulls/528
 
-【工具链】MySQL迁移过程增加预操作和切换前检查PR
+【工具链】MySQL迁移过程增加预操作和切换前检查PR<br />
 
 https://e.gitee.com/opengaussorg/repos/opengauss/openGauss-migration-portal/pulls/97
 
-【工具链】MySQL迁移过程增加预操作和切换前检查文档PR
+【工具链】MySQL迁移过程增加预操作和切换前检查文档PR<br />
 
 https://gitee.com/opengauss/openGauss-workbench/pulls/528
+
+
 
