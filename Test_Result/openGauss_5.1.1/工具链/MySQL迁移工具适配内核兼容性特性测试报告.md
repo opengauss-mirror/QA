@@ -133,5 +133,12 @@ MySQL迁移工具适配内核兼容性，共执行用例39个，主要覆盖了�
 无
 
 # 5 附件
+## 5.1 源代码及文档PR
 
-无
+https://gitee.com/opengauss/openGauss-tools-chameleon/pulls/174
+
+https://gitee.com/opengauss/openGauss-tools-chameleon/pulls/161
+
+https://gitee.com/opengauss/openGauss-tools-chameleon/pulls/190
+
+https://gitee.com/opengauss/openGauss-tools-sql-translator/pulls/12
