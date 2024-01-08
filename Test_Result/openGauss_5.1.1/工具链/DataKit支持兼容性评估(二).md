@@ -42,7 +42,7 @@
 
 ## 3.1   测试整体结论
 
-​        DataKit支持兼容性评估，实现抽取jdbc执行的SQL语句及堆栈信息并输出到文本文件中。累计发现缺陷单4个，其中待办的1个、修复中1个、已完成2个，整体质量一般。
+​        DataKit支持兼容性评估，实现抽取jdbc执行的SQL语句及堆栈信息并输出到文本文件中。累计发现缺陷单4个，已完成4个，整体质量良好。
 
 ## 3.2   约束说明
 
@@ -70,8 +70,8 @@
 
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                     | 问题状态 |
 | ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| 1    | [I8I98B](https://gitee.com/opengauss/compatibility-assessment/issues/I8I98B?from=project-issue) | 不重要   | 采集到的sql语句及stack信息没有对应的时间                     | 待办的   |
-| 2    | [I8IVRT](https://gitee.com/opengauss/compatibility-assessment/issues/I8IVRT?from=project-issue) | 不重要   | tool.jar工具配置application.yml的账户名或密码错误，提示信息不准确 | 修复中   |
+| 1    | [I8I98B](https://gitee.com/opengauss/compatibility-assessment/issues/I8I98B?from=project-issue) | 不重要   | 采集到的sql语句及stack信息没有对应的时间                     | 已完成   |
+| 2    | [I8IVRT](https://gitee.com/opengauss/compatibility-assessment/issues/I8IVRT?from=project-issue) | 不重要   | tool.jar工具配置application.yml的账户名或密码错误，提示信息不准确 | 已完成   |
 | 3    | [I8IT5I](https://gitee.com/opengauss/compatibility-assessment/issues/I8IT5I?from=project-issue) | 主要     | user.jar与tool.jar在不同的机器上，采集到的sql、stack无法下载到本地与Linux且 采集到的sql、stack信息未按天多文件保存 | 已完成   |
 | 4    | [I8HQOQ](https://gitee.com/opengauss/compatibility-assessment/issues/I8HQOQ?from=project-issue) | 次要     | 采集到的sql语句+号丢失。当sql语句中有换行的两关键字时，采集到的信息将这两个关键字拼接到了一起 | 已完成   |
 
@@ -114,7 +114,7 @@
 
 *数据项说明：*
 
-* 第一阶段累计发现缺陷单4个，待办的1个、修复中1个、已完成2个
+* 第一阶段累计发现缺陷单4个，已完成4个
 * 缺陷密度为4个(缺陷个数)/3.470kloc(代码行数)=1.15(个/kloc)
 
 ## 4.6   后续测试建议
