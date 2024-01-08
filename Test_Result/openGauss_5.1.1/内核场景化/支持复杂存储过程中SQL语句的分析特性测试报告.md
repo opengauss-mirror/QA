@@ -151,8 +151,13 @@ instr_unique_sql_track_type = all
 无
 
 # 5 附件
+## 5.1 源代码及文档PR
 
-### 5.1 查询系统表pg_stat_activity定位存储过程执行的sql语句
+https://gitee.com/opengauss/openGauss-server/pulls/4006
+
+https://gitee.com/opengauss/docs/pulls/5608
+
+## 5.2 查询系统表pg_stat_activity定位存储过程执行的sql语句
 
 ```
 建表并插数据
