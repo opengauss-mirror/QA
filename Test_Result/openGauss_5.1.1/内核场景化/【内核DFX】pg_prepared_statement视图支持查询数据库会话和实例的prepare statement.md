@@ -117,6 +117,16 @@
 
 https://docs-opengauss.osinfra.cn/zh/docs/latest/docs/SQLReference/%E5%85%B6%E5%AE%83%E5%87%BD%E6%95%B0.html
 
+源代码及文档PR
+- 【内核DFX】pg_prepared_statement视图支持查询数据库会话和实例的prepare statement
+https://e.gitee.com/opengaussorg/repos/opengauss/openGauss-server/pulls/4493
+- 【内核DFX】pg_prepared_statement视图支持查询数据库会话和实例的prepare statement（core问题修复）
+https://e.gitee.com/opengaussorg/repos/opengauss/openGauss-server/pulls/4524
+- 【内核DFX】pg_prepared_statement视图支持查询数据库会话和实例的prepare statement（需求相关文档修改）
+https://e.gitee.com/opengaussorg/repos/opengauss/docs/pulls/5991
+- 关于pg_prepared_statement()函数修改文档，表格中描述有误
+https://e.gitee.com/opengaussorg/repos/opengauss/docs/pulls/6028
+
 
 
  
