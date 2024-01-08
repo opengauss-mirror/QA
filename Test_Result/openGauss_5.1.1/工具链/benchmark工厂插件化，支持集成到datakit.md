@@ -146,5 +146,4 @@ benchmark工厂插件化，支持集成到DataKit，共执行用例10个，主�
 1、测试除TPCC外的兼容性测试和ISV防伪测试
 
 # 5 附件
-
-benchmark工厂插件化PR<br>https://codehub-y.huawei.com/openGauss-server/bmf_plugin/merge_requests/1<br>benchmark插件资料PR<br>https://codehub-y.huawei.com/openGauss-server/bmf_plugin/merge_requests/8
+无
