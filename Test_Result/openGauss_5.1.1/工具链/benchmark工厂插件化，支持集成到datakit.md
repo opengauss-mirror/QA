@@ -22,6 +22,8 @@ benchmark、DataKit
 
 # 1 特性概述
 
+Benchmark工厂为公司内部公开的项目源码，目前主要负责承载高斯数据库的各类测试任务。目前的benchmark工厂是一个基于spring-cloud的微服务项目，负责了测试任务调度执行过程中全部业务事项，因此，目前的benchmark工厂由于其依赖众多的工具，并不能方便地移植其项目主程序到任意环境中。此外目前的benchmark工厂支持的数据库实例类型仅仅包括有限的GaussKernel、openGauss等类型，因此想要利用benchmark工厂的基础功能扩展到其他类型的数据库并不方便。
+因此基于以上原因，且openGauss的Datakit平台恰好提供了各类数据库等资源的运维管理功能，借助Datakit的能力可以完美地解决方便地将目前benchmark工厂的基础功能推广到更多测试任务的需求。
 
 
 # 2 特性测试信息
