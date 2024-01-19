@@ -119,10 +119,14 @@ openGauss openGauss中增加函数：gs_stat_walsender、gs_stat_walreceiver、g
 | -------- | ---------- | ------------ | ------------ | ------------ |
 | openGauss 5.1.1 build 6aa32485 | 42 | Passed: 42<br />Failed: 0 | 0 | 0% |
 
+**数据项说明：**
+
+- 缺陷密度：0(缺陷个数)/0.95kloc(代码行数)=0(个/kloc)
+
 ## 4.3   后续测试建议
 
 无
 # 5     附件
-
-无
+- 资料pr https://gitee.com/opengauss/docs/pulls/5945
+- 代码PR https://gitee.com/opengauss/openGauss-server/pulls/4416/files
  
