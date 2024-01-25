@@ -103,7 +103,7 @@ openGauss dolphin插件以及兼容A库下实现视图解耦功能，共计执�
 
 |  测试步骤 |  测试结果 |
 | -------- | -------- |
-| 1. 在兼容"A"、"B"类型数据库下执行所有测试用例<br />2. 用例全部执行，正常返结果，执行完成后数据库稳定运行 | 执行80条用例，发现1个问题，5个用例没有通过，其他测试通过 |
+| 1. 在兼容"A"、"B"类型数据库下执行所有测试用例,用例全部执行，正常返结果，执行完成后数据库稳定运行 | 执行80条用例，发现1个问题，5个用例没有通过，其他测试通过 |
 
 ### 4.1.3 资料测试
 
@@ -119,10 +119,16 @@ openGauss dolphin插件以及兼容A库下实现视图解耦功能，共计执�
 | -------- | ---------- | ------------ | ------------ | ------------ |
 | openGauss 5.1.1 build 7442024f | 80 | Passed: 75<br />Failed: 5 | 1 | 1% |
 | openGauss 6.0.0 build d2533e77 |  80  | Passed: 80<br />Failed: 0 | 0 | 0% |
+
+**数据项说明：**
+
+- 缺陷密度：1(缺陷个数)/0.49kloc(代码行数)=2.04(个/kloc)
+
 ## 4.3   后续测试建议
 
 无
 # 5     附件
 
-无
+- 代码PR https://gitee.com/opengauss/openGauss-server/pulls/4553/files
+- 资料PR https://docs-opengauss.osinfra.cn/zh/docs/latest/docs/SQLReference/ALTER-TABLE.html
  
