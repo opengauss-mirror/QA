@@ -5,19 +5,19 @@
 
 修订记录
 
-| 日期       | 修订版本 | 修改描述            | 作者 |
-| ---------- | -------- | ------------------- | ---- |
-| 2023-12-27 | 1.0      | 初稿                | 2JQ  |
-| 2024-01-24 | 1.1      | 补充测试项和bug验收 | 张山 |
-|            |          |                     |      |
+| 日期       | 修订版本 | 修改描述             | 作者 |
+| ---------- | -------- | -------------------- | ---- |
+| 2023-12-27 | 1.0      | 初稿                 | 2JQ  |
+| 2024-01-24 | 1.1      | 补充测试项和bug验收  | 张山 |
+| 2024-02-22 | 1.2      | 根据检视意见修改描述 | 张山 |
 
  关键词： 
 
-Oracle，openGauss，反向迁移 
+O*，openGauss，反向迁移 
 
 摘要：
 
- 本报告主要介绍Oracle向openGauss反向迁移的测试结果。
+ 本报告主要介绍O*向openGauss反向迁移的测试结果。
 
 缩略语清单：
 
@@ -27,7 +27,7 @@ Oracle，openGauss，反向迁移
 
 # 1     特性概述
 
-支持Oracle数据库在全量迁移和增量迁移过后，对openGauss数据库进行数据的反向迁移操作。
+支持O*数据库在全量迁移和增量迁移过后，对openGauss数据库进行数据的反向迁移操作。
 
 其中，支持的反向迁移操作包括：
 
@@ -39,8 +39,8 @@ dml操作：insert、update、delete操作
 
 | 版本名称           | 测试起始时间 | 测试结束时间 |
 | ------------------ | ------------ | ------------ |
-| Opengauss5.1.1B009 | 2023-12-15   | 2023-12-22   |
-| Opengauss5.1.1B009 | 2024-01-17   | 2024-01-24   |
+| openGauss5.1.1B009 | 2023-12-15   | 2023-12-22   |
+| openGauss5.1.1B009 | 2024-01-17   | 2024-01-24   |
 |                    |              |              |
 
 描述特性测试的硬件环境信息
@@ -52,8 +52,8 @@ dml操作：insert、update、delete操作
 | 硬件     | 内存            | 7GB                                                          |
 | 硬件     | 磁盘            | SDA  100GB                                                   |
 | 硬件     | 网络            | 10000Mb/s                                                    |
-| 软件     | Opengauss数据库 | OpenGauss-5.1.1-CentOS-64bit                                 |
-| 软件     | Oracle数据库    | Oracle_11g-11.2.0.1.0-64bit                                  |
+| 软件     | openGauss数据库 | openGauss-5.1.1-CentOS-64bit                                 |
+| 软件     | O*数据库        | O*_11g-11.2.0.1.0-64bit                                      |
 | 软件     | Kafka中间数据库 | Kafka_2.13-3.6.0                                             |
 | 软件     | Confluent中间件 | Confluent-5.5.1                                              |
 | 软件     | Postman         | Postman-10.21.0.0                                            |
@@ -62,7 +62,7 @@ dml操作：insert、update、delete操作
 
 ## 3.1   测试整体结论
 
-反向迁移特性，共计执行55个用例，主要覆盖了功能测试和资料测试，功能测试覆盖已支持的oracle常用数据类型、表类型等测试，以及不同的dml语法对于反向迁移的影响。校验资料的描述及示例的执行结果是否通过。累计发现issue2个，已验收通过，整体质量良好。
+反向迁移特性，共计执行55个用例，主要覆盖了功能测试和资料测试，功能测试覆盖已支持的O*常用数据类型、表类型等测试，以及不同的dml语法对于反向迁移的影响。校验资料的描述及示例的执行结果是否通过。累计发现issue2个，已验收通过，整体质量良好。
 
 | 测试活动   | 活动评价                                                     |
 | ---------- | ------------------------------------------------------------ |
@@ -121,7 +121,7 @@ dml操作：insert、update、delete操作
 
 | 版本名称           | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | ------------------ | ---------- | ------------ | ------------ |
-| Opengauss5.1.1B009 | 55         | 通过：53     | 2            |
+| openGauss5.1.1B009 | 55         | 通过：53     | 2            |
 |                    |            |              |              |
 |                    |            |              |              |
 
@@ -138,13 +138,13 @@ dml操作：insert、update、delete操作
 
 文档资料：
 
-https://gitee.com/opengauss/debezium/blob/master/README.md
+https://gitee.com/openGauss/debezium/blob/master/README.md
 
 代码资料：
 
- https://gitee.com/opengauss/debezium/pulls/194
+ https://gitee.com/openGauss/debezium/pulls/194
 
-https://gitee.com/opengauss/debezium/pulls/210
+https://gitee.com/openGauss/debezium/pulls/210
 
  
 

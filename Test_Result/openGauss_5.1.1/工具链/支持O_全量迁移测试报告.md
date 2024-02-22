@@ -5,19 +5,19 @@
 
 修订记录
 
-| 日期       | 修订版本 | 修改描述            | 作者 |
-| ---------- | -------- | ------------------- | ---- |
-| 2023-12-27 | 1.0      | 初稿                | 2JQ  |
-| 2024-01-24 | 1.1      | 补充测试项和bug验收 | 张山 |
-|            |          |                     |      |
+| 日期       | 修订版本 | 修改描述             | 作者 |
+| ---------- | -------- | -------------------- | ---- |
+| 2023-12-27 | 1.0      | 初稿                 | 2JQ  |
+| 2024-01-24 | 1.1      | 补充测试项和bug验收  | 张山 |
+| 2024-02-22 | 1.2      | 根据检视意见修改描述 | 张山 |
 
  关键词： 
 
- Oracle，openGauss，全量迁移
+ O*，openGauss，全量迁移
 
 摘要：
 
- 本报告主要介绍Oracle向openGauss全量迁移的测试结果。
+ 本报告主要介绍O*向openGauss全量迁移的测试结果。
 
 缩略语清单：
 
@@ -27,20 +27,20 @@
 
 # 1     特性概述
 
-支持Oracle数据库的常用数据类型、表类型、索引、约束、序列、视图、表空间、同义词等对象全量迁移至openGauss。
+支持O*数据库的常用数据类型、表类型、索引、约束、序列、视图、表空间、同义词等对象全量迁移至openGauss。
 
-支持的Oracle数据类型为：
+支持的O*数据类型为：
 
-- 字符型：char、nchar、varchar2、nvarchar2、…
-- 数值型：number、float、int、decimal、numeric、real、double、…
+- 字符型：char、nchar、varchar2、nvarchar2、varchar
+- 数值型：number、numeric、decimal、dec、integer、int、smallint、double precision、float、real
 - 时间日期类型：timestamp、date
 
 - 大对象型：blob、clob、nclob、long
 - raw类型：raw、long raw
 
-支持的Oracle索引类型：Btree索引
+支持的O*索引类型：Btree索引
 
-支持的Oracle约束类型：主键约束、唯一约束、外键约束、check约束
+支持的O*约束类型：主键约束、唯一约束、外键约束、check约束
 
 # 2     特性测试信息
 
@@ -48,8 +48,8 @@
 
 | 版本名称           | 测试起始时间 | 测试结束时间 |
 | ------------------ | ------------ | ------------ |
-| Opengauss5.1.1B009 | 2023-12-15   | 2023-12-22   |
-| Opengauss5.1.1B009 | 2024-01-17   | 2024-01-24   |
+| openGauss5.1.1B009 | 2023-12-15   | 2023-12-22   |
+| openGauss5.1.1B009 | 2024-01-17   | 2024-01-24   |
 |                    |              |              |
 
 描述特性测试的硬件环境信息
@@ -61,14 +61,14 @@
 | 硬件     | 内存            | 7GB                                                          |
 | 硬件     | 磁盘            | SDA  100GB                                                   |
 | 硬件     | 网络            | 10000Mb/s                                                    |
-| 软件     | Opengauss数据库 | OpenGauss-5.1.1-CentOS-64bit                                 |
-| 软件     | Oracle数据库    | Oracle_11g-11.2.0.1.0-64bit                                  |
+| 软件     | openGauss数据库 | openGauss-5.1.1-CentOS-64bit                                 |
+| 软件     | O*数据库        | O*_11g-11.2.0.1.0-64bit                                      |
 
 # 3     测试结论概述
 
 ## 3.1   测试整体结论
 
-全量迁移特性，共计执行58个用例，主要覆盖了功能测试和资料测试，功能测试覆盖已支持的oracle常用数据类型、表类型、索引、约束、序列、视图、表空间、同义词等对象测试。资料测试覆盖校验资料的描述及示例的执行结果是否通过。累计发现issue4个，已验收通过，整体质量良好。
+全量迁移特性，共计执行58个用例，主要覆盖了功能测试和资料测试，功能测试覆盖已支持的O*常用数据类型、表类型、索引、约束、序列、视图、表空间、同义词等对象测试。资料测试覆盖校验资料的描述及示例的执行结果是否通过。累计发现issue4个，已验收通过，整体质量良好。
 
 | 测试活动   | 活动评价                                                     |
 | ---------- | ------------------------------------------------------------ |
@@ -82,15 +82,15 @@
 
 ## 3.2   约束说明
 
-1. 需要配置Oracle和openGauss数据库用户的连接权限、执行sql的权限
+1. 需要配置O*和openGauss数据库用户的连接权限、执行sql的权限
 
-   oracle：
+   O*：
 
    CREATE USER test IDENTIFIED BY 'password123';
 
    GRANT CONNECT TO test;
 
-   opengauss：
+   openGauss：
 
    create user test sysadmin password 'password123';
 
@@ -116,10 +116,10 @@
 
 | 序号 | issue号 | 问题级别 |                           问题简述                           | 问题状态 |
 | ---- | :-----: | :------: | :----------------------------------------------------------: | :------: |
-| 1    | I8PQ5P  |   次要   | 【测试类型：工具功能】【测试版本：5.1.1】 oracle对象和同义词在不同模式下迁移成功，但同义词模式（schema）不正确 |  已验收  |
-| 2    | I8PPXK  |   次要   | 【测试类型：工具功能】【测试版本：5.1.1】 A库下，oracle迁移表字段oracle迁移带comment的表迁移失败 |  已验收  |
-| 3    | I8PPKB  |   次要   | 【测试类型：工具功能】【测试版本：5.1.1】 oracle迁移分区表，到目标库表实际未分区为普通表 |  已验收  |
-| 4    | I8OSL0  |   次要   | 【测试类型：工具功能】【测试版本：5.1.1】 oracle迁移表字段类型为numeric(5,-2)的数据时，报脏数据 |  已验收  |
+| 1    | I8PQ5P  |   次要   | 【测试类型：工具功能】【测试版本：5.1.1】 O*对象和同义词在不同模式下迁移成功，但同义词模式（schema）不正确 |  已验收  |
+| 2    | I8PPXK  |   次要   | 【测试类型：工具功能】【测试版本：5.1.1】 A库下，O\*迁移带comment的表迁移失败 |  已验收  |
+| 3    | I8PPKB  |   次要   | 【测试类型：工具功能】【测试版本：5.1.1】 O*迁移分区表，到目标库表实际未分区为普通表 |  已验收  |
+| 4    | I8OSL0  |   次要   | 【测试类型：工具功能】【测试版本：5.1.1】 O*迁移表字段类型为numeric(5,-2)的数据时，报脏数据 |  已验收  |
 
 
 
@@ -129,7 +129,7 @@
 
 | 版本名称           | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | ------------------ | ---------- | ------------ | ------------ |
-| Opengauss5.1.1B009 | 58         | 通过：54     | 4            |
+| openGauss5.1.1B009 | 58         | 通过：54     | 4            |
 |                    |            |              |              |
 |                    |            |              |              |
 
@@ -146,16 +146,16 @@
 
 文档资料：
 
-https://gitee.com/opengauss/ora-migration-tool/blob/master/userGuid.md
+https://gitee.com/openGauss/ora-migration-tool/blob/master/userGuid.md
 
-https://gitee.com/opengauss/ora-migration-tool/blob/master/迁移说明.md
+https://gitee.com/openGauss/ora-migration-tool/blob/master/迁移说明.md
 
 代码资料：
-https://gitee.com/opengauss/ora-migration-tool/pulls/1
-https://gitee.com/opengauss/ora-migration-tool/pulls/15
-https://gitee.com/opengauss/ora-migration-tool/pulls/16
-https://gitee.com/opengauss/ora-migration-tool/pulls/17
-https://gitee.com/opengauss/ora-migration-tool/pulls/18
+https://gitee.com/openGauss/ora-migration-tool/pulls/1
+https://gitee.com/openGauss/ora-migration-tool/pulls/15
+https://gitee.com/openGauss/ora-migration-tool/pulls/16
+https://gitee.com/openGauss/ora-migration-tool/pulls/17
+https://gitee.com/openGauss/ora-migration-tool/pulls/18
 
 
 
