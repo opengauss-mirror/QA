@@ -19,20 +19,29 @@
   - [@dbowner_zhang](https://gitee.com/dbowner_zhang)
 
   - [  @justbk  ](https://gitee.com/justbk)
+  
+  - [  @sungang14  ](https://gitee.com/sungang14)
 
 + ##### Committer列表
 
-  - [@xiongdaofu](https://gitee.com/xiongdaofu)
   - [@j00313273](https://gitee.com/j00313273)
-  - [@zhoufangyuan](https://gitee.com/zhoufangyuan)
-  - [@chendong76](https://gitee.com/chendong76)
-  - [@zhangao_za](https://gitee.com/zhangao_za)
-  - [@liao-shiting](https://gitee.com/liao-shiting)
+  - [@wanfang5](https://gitee.com/wanfang5)
+  - [@dolphin-m](https://gitee.com/dolphin-m)
+  - [@cloudsbreak](https://gitee.com/cloudsbreak)
   - [@roxanne315](https://gitee.com/roxanne315)
+  - [@JusticeArbiter](https://gitee.com/JusticeArbiter)
   - [@min-sun](https://gitee.com/min-sun)
-  - [@sun-jingyuan](https://gitee.com/sun-jingyuan)
-  - [@szoscar55](https://gitee.com/szoscar55)
-  - [@maxz](https://gitee.com/maxz)
+  - [@lvzhaofei](https://gitee.com/lvzhaofei)
+  - [@songfei](https://gitee.com/songfei)
+  - [@zcg001](https://gitee.com/zcg001)
+  - [@feiyang](https://gitee.com/feiyang)
+  - [@zengseliang](https://gitee.com/zengseliang)
+  - [@feelingpeng](https://gitee.com/feelingpeng)
+  - [@wangmo](https://gitee.com/wangmo)
+  - [@feiyang](https://gitee.com/feiyang)
+  - [@stella_fan](https://gitee.com/stella_fan)
+  - [@dreamalloc](https://gitee.com/dreamalloc)
+  - [@chendong76](https://gitee.com/chendong76)
 
 #### 联系方式
 
