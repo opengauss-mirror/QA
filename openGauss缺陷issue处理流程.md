@@ -126,11 +126,11 @@
 
 + 降级问题提交到对应特性sig 组[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)评审裁决，在可以联系到环境和提单人的前提下，满足1个月不复现或者3000次不复现的要求，对于不复现的问题单需要提供影响分析
 
-### 7、缺陷issue挂起原则
+### 7、缺陷issue遗留原则
 
-+ 对于经过努力仍然长期不可复现的问题，在[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)评审以后，可以挂起。参考“缺陷issue降级原则”进行处理，直到降为“非问题”
-+ 社区当前版本无法解决、且不是阻塞性问题，经过[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)裁决可以挂起，在下个版本激活解决
-+ 社区当前版本无法解决，解决成本较高，但对质量影响不大的问题，经过[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)裁决可以挂起，在下个版本激活解决
++ 对于经过努力仍然长期不可复现的问题，参考“缺陷issue降级原则”进行处理，直到降为“非问题”
++ 社区当前版本无法解决、且不是阻塞性问题，经过[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)裁决后遗留下个版本
++ 社区当前版本无法解决，解决成本较高，但对质量影响不大的问题，经过[CCB](https://gitee.com/opengauss/QA/issues/I54UZA?from=project-issue)裁决后遗留下个版本
 
 ### 8、缺陷issue转需求原则
 
