@@ -666,3 +666,15 @@ https://gitee.com/opengauss/openGauss-workbench/pulls/842
 
 30、智能诊断插件BUG修复
 https://gitee.com/opengauss/openGauss-workbench/pulls/770
+
+31、【业务开发】【智能运维】修复集群监控切换主备节点报错问题和编辑表设置唯一键问题
+https://gitee.com/opengauss/openGauss-workbench/pulls/850
+
+32、【智能运维】实例监控前端添加提示
+https://gitee.com/opengauss/openGauss-workbench/pulls/851
+
+33、【智能运维】告警监控告警记录修改样式
+https://gitee.com/opengauss/openGauss-workbench/pulls/855
+
+34、【告警监控】解决告警规则引用删除问题
+https://gitee.com/opengauss/openGauss-workbench/pulls/844

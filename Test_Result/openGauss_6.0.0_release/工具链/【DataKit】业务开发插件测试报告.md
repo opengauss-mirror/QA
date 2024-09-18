@@ -443,3 +443,6 @@ https://gitee.com/opengauss/openGauss-workbench/pulls/712
 
 11、【智能运维】实例监控插件修复集群监控bug
 https://gitee.com/opengauss/openGauss-workbench/pulls/681
+
+12、【业务开发】【智能运维】修复集群监控切换主备节点报错问题和编辑表设置唯一键问题
+https://gitee.com/opengauss/openGauss-workbench/pulls/850
