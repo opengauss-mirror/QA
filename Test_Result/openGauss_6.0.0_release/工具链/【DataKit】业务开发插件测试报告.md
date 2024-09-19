@@ -5,9 +5,10 @@
 
 修订记录
 
-| 日期         | 修订版本 | 修改描述 | 作者           |
-|------------|------|------|--------------|
-| 2024.08.08 | V1.0 | 新建   | Feiling Peng |
+| 日期         | 修订版本 | 修改描述                 | 作者           |
+|------------|------|----------------------|--------------|
+| 2024.08.08 | V1.0 | 新建                   | Feiling Peng |
+| 2024.09.19 | V1.1 | 更新遗留问题列表、增加按特性的缺陷率统计 | Feiling Peng |
 
 [TOC]
 
@@ -336,6 +337,14 @@ export const httpHeartbeatTime = 1000 * 30;
 | |查询模式_模式显示不全的问题|一般| 关闭        |
 
 
+### 5.2.3 缺陷率统计
+
+| 特性                         |问题数|代码量| 缺陷率  |
+|----------------------------|----|---|------|
+|DataKit 业务开发- 消息窗口功能优化<br>DataKit 业务开发- 对象窗口功能优化<br>DataKit 业务开发- 执行窗口功能优化<br>DataKit 业务开发- 实例连接状态功能优化<br>DataKit 业务开发- 新建连接功能优化|4190|1.43|
+
+
+
 # 6 测试过程评估
 
 ##  6.1 测试策略回顾
@@ -441,8 +450,5 @@ https://gitee.com/opengauss/openGauss-workbench/pulls/723
 10、修复业务开发插件与实例监控插件缺陷
 https://gitee.com/opengauss/openGauss-workbench/pulls/712
 
-11、【智能运维】实例监控插件修复集群监控bug
-https://gitee.com/opengauss/openGauss-workbench/pulls/681
-
-12、【业务开发】【智能运维】修复集群监控切换主备节点报错问题和编辑表设置唯一键问题
+11、【业务开发】【智能运维】修复集群监控切换主备节点报错问题和编辑表设置唯一键问题
 https://gitee.com/opengauss/openGauss-workbench/pulls/850
