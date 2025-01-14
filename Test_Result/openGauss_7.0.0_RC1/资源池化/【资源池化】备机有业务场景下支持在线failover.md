@@ -60,7 +60,7 @@
 
 | 特性                                         | 特性价值评估                                   | 应用说明及关键约束假设依赖 | 关键遗留事项如缺陷等 | 测试整体覆盖情况 | 特性质量评估                                          | 主要风险 |
 | -------------------------------------------- | ---------------------------------------------- | -------------------------- | -------------------- | ---------------- | ----------------------------------------------------- | -------- |
-| 【资源池化】备机有业务场景下支持在线failover | 资源池化集群内主节点故障后集群failover功能优化 | 资源池化集群               | 无                   | 100%             | <font color=yellow><font color=yellow>▲</font></font> | 无       |
+| 【资源池化】备机有业务场景下支持在线failover | 资源池化集群内主节点故障后集群failover功能优化 | 资源池化集群               | 无                   | 100%             | <font color=green>▮</font> | 无       |
 
 *特性质量评估说明*：
 
@@ -138,7 +138,7 @@
 | [IB7817](https://e.gitee.com/opengaussorg/issues/table?issue=IB7817) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】【备机在线failover】kill主节点dn进程构造failover场景，待升主节点产生LWLockAcquire相关core | 主要     | 已验收   |
 | [IB7BN5](https://e.gitee.com/opengaussorg/issues/table?issue=IB7BN5) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】【备机在线failover】kill主节点dn进程构造failover场景，待升主节点因TrackStmtWorker线程持锁未释放致worker线程无法退出导致升主失败状态卡在promoting | 主要     | 已验收   |
 | [IB7ZA0](https://e.gitee.com/opengaussorg/issues/table?issue=IB7ZA0) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】【备机在线failover】kill主节点dn进程构造failover场景，回放线程持有页面未释放导致升主节点卡住 | 次要     | 已验收   |
-| [IBAH9S](https://e.gitee.com/opengaussorg/issues/table?issue=IBAH9S) | 【测试类型：故障注入】【测试版本：7.0.0-RC1】【资源池化】【备机在线failover】down掉主节点网卡构造faiover场景，某个备节点存在worker线程无法退出导致集群状态一直卡在starting | 次要     | 已完成   |
+| [IBAH9S](https://e.gitee.com/opengaussorg/issues/table?issue=IBAH9S) | 【测试类型：故障注入】【测试版本：7.0.0-RC1】【资源池化】【备机在线failover】down掉主节点网卡构造faiover场景，某个备节点存在worker线程无法退出导致集群状态一直卡在starting | 次要     | 已验收   |
 
 # 6 测试过程评估
 
@@ -164,7 +164,7 @@
 | openGauss 7.0.0-RC1 B008 | 3                | 10         | 10         | 1          | 0.025K | 1        |
 | openGauss 7.0.0-RC1 B009 | 5                | 10         | 10         | 1          | 0.025K | 1        |
 
-本次测试共发现6个issue，部分已修复并回归通过，缺陷密度为6/1k=6，整体质量一般，后续可进行多次复测发现潜在问题。
+本次测试共发现6个issue，全部已修复并回归通过，缺陷密度为6/1k=6，整体质量良好，后续可进行多次复测发现潜在问题。
 
 ###  6.3.2 测试用例执行结果统计数据
 
@@ -175,7 +175,7 @@
 | 10           | 10               | 8      | 2      | 0       | 0           | 100%   | 80%        |
 | 10           | 10               | 9      | 1      | 0       | 0           | 100%   | 90%        |
 
-本次测试共输出测试用例34个，执行测试共4轮，发现issue共6个，部分已修复并回归通过，整体质量一般。
+本次测试共输出测试用例34个，执行测试共4轮，发现issue共6个，全部已修复并回归通过，整体质量良好。
 
 # 7 附件
 
@@ -192,3 +192,7 @@ https://gitee.com/opengauss/openGauss-server/pulls/6637
 测试设计：
 
 https://devcloud.cn-east-3.huaweicloud.com/testmind/project/03669bfd256c444bbfda6d7fb8b83bb2/testmind/mindmap?mindId=bf38bc61406d4b4d87b58366d8a0444e&hideDevcloudHead=true
+
+测试用例：
+
+https://devcloud.cn-east-3.huaweicloud.com/cloudtestportal/project/03669bfd256c444bbfda6d7fb8b83bb2/testcase?branch_id=vb100000vvqelovg
