@@ -102,7 +102,7 @@ datakit适配断点续传功能，主要包括功能测试，接口测试。功�
 
 | 序号 | 测试章节 | 测试结论 |
 | ---- | -------- | -------- |
-| 1    |          |          |
+| 1    |  [datakit断点续传资料](https://gitee.com/opengauss/openGauss-workbench/pulls/1064)   |    测试通过   |
 
 # 5 测试对象质量评估
 
@@ -156,7 +156,7 @@ datakit适配断点续传功能，主要包括功能测试，接口测试。功�
 
 | 总测试用例数 | 实际测试的用例数 | Passed | Failed | Blocked | Unavailable | 执行率 | 执行通过率 |
 | ------------ | ---------------- | ------ | ------ | ------- | ----------- | ------ | ---------- |
-| 25           | 2525             |        | 0      | 0       | 0           | 100%   | 100%       |
+| 25           | 25             |        | 0      | 0       | 0           | 100%   | 100%       |
 
 本次测试共输出测试用例25个，执行测试共2轮，发现issue共3个，均已修复并回归通过，无遗留问题，整体质量良好。
 
@@ -176,6 +176,6 @@ https://e.gitee.com/opengaussorg/repos/opengauss/openGauss-workbench/pulls/1009
 
 https://e.gitee.com/opengaussorg/repos/opengauss/openGauss-workbench/pulls/1010
 
-资料pr：
+资料pr：https://gitee.com/opengauss/openGauss-workbench/pulls/1064
 
 测试设计：https://devcloud.cn-east-3.huaweicloud.com/testmind/project/03669bfd256c444bbfda6d7fb8b83bb2/testmind/mindmap?mindId=5dd601aed3164686b896882263612e3b&hideDevcloudHead=true
