@@ -154,8 +154,8 @@ openGauss 支持被依赖的对象允许修改的行为与A库一致，共计执
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   | 3        | 0    | 0    | 3    | 0      |
-| 百分比 | 100%     | 0%   | 0%   | 100% | 0%     |
+| 数目   | 3        | 0    | 1    | 2    | 0      |
+| 百分比 | 100%     | 0%   | 34%  | 66%  | 0%     |
 
 ### 5.2.2 缺陷列表
 
@@ -163,7 +163,7 @@ openGauss 支持被依赖的对象允许修改的行为与A库一致，共计执
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- |
 | 1    | [IBJ1VH](https://gitee.com/opengauss/openGauss-server/issues/IBJ1VH?from=project-issue) | 删除物化视图依赖的基表后再删除物化视图，报错，预期删除成功   | 次要     | 已验收   |
 | 2    | [IBMYOL](https://gitee.com/opengauss/openGauss-server/issues/IBMYOL?from=project-issue) | 删除并重建视图依赖的自定义函数或存储过程后先查询视图定义报错 | 次要     | 已验收   |
-| 3    | [IBMODS](https://gitee.com/opengauss/openGauss-server/issues/IBMODS?from=project-issue) | 视图依赖2个自定义函数，删除其中一个并重建后，查询视图定义/查询视图数据，数据库挂掉并产生core | 次要     | 已验收   |
+| 3    | [IBMODS](https://gitee.com/opengauss/openGauss-server/issues/IBMODS?from=project-issue) | 视图依赖2个自定义函数，删除其中一个并重建后，查询视图定义/查询视图数据，数据库挂掉并产生core | 主要     | 已验收   |
 
 # 6 测试过程评估
 
