@@ -47,7 +47,7 @@
 
 # 3 版本概要测试结论、关键风险和规避措施
 
-本报告主要测试gs_ddr工具的适配情况，使用该工具是否能够实现单双集群的切换主要包含：网络、存储双集群搭建、双集群主备集群倒换、备集群failover升主、双集群拆解等，测试范围包含基本功能测试、可靠性测试、升级测试、资料测试等，输出用例58条，测试过程中发现11个问题，整体质量一般。
+本报告主要测试gs_ddr工具的适配情况，使用该工具是否能够实现单双集群的切换主要包含：网络、存储双集群搭建、双集群主备集群倒换、备集群failover升主、双集群拆解等，测试范围包含基本功能测试、可靠性测试、升级测试、资料测试等，输出用例58条，测试过程中发现10个问题，整体质量一般。
 
 # 4 版本详细测试结论
 
@@ -133,25 +133,25 @@
 
 |        | 问题总数 | 严重 | 主要  | 次要  | 不重要 |
 | ------ | -------- | ---- | ----- | ----- | ------ |
-| 数目   | 11       | 0    | 0     | 10     | 1      |
-| 百分比 | 100%     | 0%   | 0% | 90.9% | 9.1%     |
+| 数目   | 10       | 0    | 0     | 9     | 1      |
+| 百分比 | 100%     | 0%   | 0% | 90% | 10%     |
 
 代码行数：0.159K
-缺陷密度：11/0.5K = 20KLoc
+缺陷密度：8/0.5K = 16KLoc
 
 ###   5.2.2 缺陷列表
 
 | 问题单号                                                     | 问题描述                                                     | 问题级别 | 当前状态 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- |
-| [IBOJV3](https://e.gitee.com/opengaussorg/issues/table?issue=IBOJV3) | 【测试类型：工具功能】【测试版本：7.0.0-RC1】【资源池化】gs_ddr搭建网络双集群，同时指定xml配置和json配置，搭建双集群失败 | 次要     | 代办的   |
-| [IBOIDE](https://e.gitee.com/opengaussorg/issues/table?issue=IBOIDE) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】搭建池化双集群，指定--time-out，没有对0值进行校验 | 不重要     | 代办的   |
-| [IBMDNT](https://e.gitee.com/opengaussorg/issues/table?issue=IBMDNT) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】gs_ddr工具搭建网络双集群，备机群执行报错 | 次要     | 修复中   |
-| [IBO1O4](https://e.gitee.com/opengaussorg/issues/table?issue=IBO1O4) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】网络双集群主集群switchover primary，备集群switchover primary，双集群分裂为单集群 | 次要     | 已完成   |
-| [IBN602](https://e.gitee.com/opengaussorg/issues/table?issue=IBN602) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】双集群使用gs_ddr工具操作集群，不能正常校验执行命令，导致集群异常 | 次要     | 已完成   |
-| [IBMYEO](https://e.gitee.com/opengaussorg/issues/table?issue=IBMYEO) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】存储双集群使用gs_ddr工具查询集群状态错误  | 次要     | 已验收   |
-| [IBMTBZ](https://e.gitee.com/opengaussorg/issues/table?issue=IBMTBZ) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】双集群搭建工具gs_ddr文档存在笔误  | 次要     | 已验收   |
+| [IBOJV3](https://e.gitee.com/opengaussorg/issues/table?issue=IBOJV3) | 【测试类型：工具功能】【测试版本：7.0.0-RC1】【资源池化】gs_ddr搭建网络双集群，同时指定xml配置和json配置，搭建双集群失败 | 次要     | 已验收   |
+| [IBO1O4](https://e.gitee.com/opengaussorg/issues/table?issue=IBO1O4) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】网络双集群主集群switchover primary，备集群switchover primary，双集群分裂为单集群 | 次要     | 已验收   |
+| [IBN602](https://e.gitee.com/opengaussorg/issues/table?issue=IBN602) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】双集群使用gs_ddr工具操作集群，不能正常校验执行命令，导致集群异常 | 次要     | 已验收   |
+| [IBMYEO](https://e.gitee.com/opengaussorg/issues/table?issue=IBMYEO) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】存储双集群使用gs_ddr工具查询集群状态错误 | 次要     | 已验收   |
+| [IBMTBZ](https://e.gitee.com/opengaussorg/issues/table?issue=IBMTBZ) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】双集群搭建工具gs_ddr文档存在笔误 | 次要     | 已验收   |
 | [IBMMPR](https://e.gitee.com/opengaussorg/issues/table?issue=IBMMPR) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】gs_ddr查看工具命令缺少--disaster_type用法  | 次要     | 已验收   |
-| [IBMTBZ](https://e.gitee.com/opengaussorg/issues/table?issue=IBMTBZ) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】双集群搭建工具gs_ddr文档存在笔误  | 次要     | 已验收   |
+| [IBMDNT](https://e.gitee.com/opengaussorg/issues/table?issue=IBMDNT) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】gs_ddr工具搭建网络双集群，备机群执行报错  | 次要     | 已验收   |
+| [IBOIDE](https://e.gitee.com/opengaussorg/issues/table?issue=IBOIDE) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】gs_ddr查看工具命令缺少--disaster_type用法  | 次要     | 已验收   |
+| [IBMTBZ](https://e.gitee.com/opengaussorg/issues/table?issue=IBMTBZ) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】搭建池化双集群，指定--time-out，没有对0值进行校验  | 不重要     | 已验收   |
 | [IBMVMP](https://e.gitee.com/opengaussorg/issues/table?issue=IBMVMP) | 【测试类型：功能测试】【测试版本：7.0.0-RC1】【资源池化】存储双集群使用gs_ddr failover时报错  | 次要     | 已取消   |
 
 # 6 测试过程评估
@@ -177,7 +177,7 @@
 | openGauss7.0.0-RC1.B015 | 5                | 30      | 5         | 
 | openGauss7.0.0-RC1.B016 | 5                | 28       | 6         |
 
-本次测试发现问题单共11个，其中资料问题一个。
+本次测试发现问题单共10个，其中资料问题一个，非问题一个。
 
 
 # 7 附件
