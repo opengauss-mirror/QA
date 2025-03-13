@@ -76,11 +76,42 @@
 
 ###  4.2.1 性能测试结论
 
-该特性对性能要求为：支持远端内存借用性能提升10%。测试结果如下，性能达标。
+该特性对性能要求为：支持远端内存借用性能提升10%。测试结果如下，汇总加速比1.1，平均加速比1.1，性能达标。
 
 | 测试步骤                                                     | 测试结果           |
 | ------------------------------------------------------------ | ------------------ |
 | 1.依赖RackServer环境，支持远端内存借用特性，开启行列融合特性（编译时--enable-htap）<br />2.tpch 1T数据，测试HTAP本地+落盘 VS HTAP本地+内存借用性能 | 1.成功<br />2.性能达标，加速比为1.1 |
+
+各query详细数据如下:
+
+| /               | HTAP本地+落盘                                                | HTAP本地+内存借用                                            | 加速比 |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
+| 查询 \ 参数配置 | Imemfabric_client_path正确路径<br />max_imcs_cache=450GB<br />work_mem=20GB<br />shared_buffers=50GB<br />comm_max_stream=60000<br />enable_borrow_memory=off<br />max_borrow_memory=1024GB<br />htap_borrow_mem_percent=50<br />max_connections=20000<br />enable_imcsscan=on<br />query_dop=32 | memfabric_client_path正确路径<br />max_imcs_cache=900GB<br />work_mem=20GB<br />shared_buffers=50GB<br />comm_max_stream=60000<br />enable_borrow_memory=on<br />max_borrow_memory=1024GB<br />htap_borrow_mem_percent=50<br />max_connections=20000<br />enable_imcsscan=on<br />query_dop=32 | /      |
+| query1          | 226.3                                                        | 200.3                                                        | 1.13   |
+| query2          | 25.7                                                         | 22.1                                                         | 1.16   |
+| query3          | 112.6                                                        | 125.9                                                        | 0.89   |
+| query4          | 71.8                                                         | 71.5                                                         | 1      |
+| query5          | 94.6                                                         | 88.0                                                         | 1.07   |
+| query6          | 60                                                           | 16.8                                                         | 3.57   |
+| query7          | 233.6                                                        | 277.0                                                        | 0.81   |
+| query8          | 68.1                                                         | 74.7                                                         | 0.91   |
+| query9          | 1299.2                                                       | 1218.9                                                       | 1.07   |
+| query10         | 112.2                                                        | 97.4                                                         | 1.15   |
+| query11         | 55.6                                                         | 56.7                                                         | 0.98   |
+| query12         | 249.9                                                        | 189.4                                                        | 1.32   |
+| query13         | 77.6                                                         | 52.2                                                         | 1.49   |
+| query14         | 86.8                                                         | 13.8                                                         | 6.29   |
+| query15         | 197.7                                                        | 219.7                                                        | 0.9    |
+| query16         | 16.7                                                         | 18.9                                                         | 0.88   |
+| query17         | 661.4                                                        | 628.7                                                        | 1.05   |
+| query18         | 521.6                                                        | 493                                                          | 1.06   |
+| query19         | 200.1                                                        | 76.2                                                         | 2.63   |
+| query20         | 65.7                                                         | 46.9                                                         | 1.4    |
+| query21         | 189.5                                                        | 178.4                                                        | 1.06   |
+| query22         | 141.4                                                        | 133.4                                                        | 1.06   |
+| 汇总            | 4758.2                                                       | 4299.6                                                       | 1.11   |
+| 平均值          | 216.3                                                        | 195.4                                                        | 1.1    |
+
 
 ###  4.2.3 安全&隐私保护测试结论
 
