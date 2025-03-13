@@ -94,6 +94,7 @@
 | 资源池化双集群(网络复制)，备集群内开启极致RTO，备集群内在switchover和failover场景下，验证节点切换前后新首备节点对段页式对象的可读情况 | 测试通过，首备可读，从备不可读，数据一致 |
 | 资源池化双集群(网络复制)，集群间发生切换，新备集群内开启极致RTO，验证新备集群内首备节点对段页式对象的可读，以及新备集群内在switchover和failover场景下验证段页式对象的可读情况 | 测试通过，首备可读，从备不可读，数据一致 |
 
+*备注*：switchover操作在开启极致RTO场景下，存在偶现性失败，此特性已转为需求适配；
 ###  4.2.3 安全&隐私保护测试结论
 
 无
@@ -147,18 +148,30 @@
 | 问题单号                                                     | 问题描述                                                     | 问题级别 | 当前状态 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- |
 | [IBJMX5](https://e.gitee.com/opengaussorg/issues/table?issue=IBJMX5) | 【极致RTO备机可读】资源池化双集群，备集群内开启极致RTO，备集群 \d+ 查看表结构失败 | 次要     | 已验收   |
-| [IBK8CD](https://e.gitee.com/opengaussorg/issues/table?issue=IBK8CD) | 【极致RTO备机可读】资源池化双集群，备集群内从备节点查看数据时节点异常退出 | 次要     | 已验收   |
-| [IBKTH2](https://e.gitee.com/opengaussorg/issues/table?issue=IBKTH2) | 【极致RTO备机可读】网络复制双集群，备集群replay卡住，且首备节点查询连接丢失 | 次要     | 已验收   |
-| [IBOJL8](https://e.gitee.com/opengaussorg/issues/table?issue=IBOJL8) | 【极致RTO备机可读】双集群模式，开启极致RTO，备集群首备查询表数据时报错internal error | 次要     | 已验收   |
 | [IBIBUD](https://e.gitee.com/opengaussorg/issues/table?issue=IBIBUD) | 【极致RTO备机可读】传统集群，创建段页式表&开启极致RTO，备节点查看表信息时产生SegmentCheck failed相关core | 主要     | 已验收   |
 | [IBKH1D](https://e.gitee.com/opengaussorg/issues/table?issue=IBKH1D) | 【极致RTO备机可读】资源池化网络复制双集群，主集群插入数据，备集群首备内\d+查看表结构，首备节点异常coredump | 主要     | 已验收   |
-| [IBKTA6](https://e.gitee.com/opengaussorg/issues/table?issue=IBKTA6) | 【极致RTO备机可读】开启极致RTO，传统集群备1节点同步复制阻塞  | 次要     | 已完成   |
-| [IBOHM3](https://e.gitee.com/opengaussorg/issues/table?issue=IBOHM3) | 【极致RTO备机可读】开启极致RTO，备集群首备查看\d+表结构打印大量warning信息 | 次要     | 已完成   |
+| [IBOHM3](https://e.gitee.com/opengaussorg/issues/table?issue=IBOHM3) | 【极致RTO备机可读】开启极致RTO，备集群首备查看\d+表结构打印大量warning信息 | 次要     | 待回归   |
 | [IBPOG2](https://e.gitee.com/opengaussorg/issues/table?issue=IBPOG2) | 【极致RTO备机可读】网络复制双集群，备集群内开启极致RTO，首备节点查看表数据偶现数据不一致 | 次要     | 待办的   |
-| [IBPP63](https://e.gitee.com/opengaussorg/issues/table?issue=IBPP63) | 【极致RTO备机可读】双集群模式，主集群创建物化视图，导致备集群回放过程中发生异常reform | 次要     | 待回归   |
-| [IBPQL2](https://e.gitee.com/opengaussorg/issues/table?issue=IBPQL2) | 【极致RTO备机可读】双集群模式，主集群内执行业务，备集群内switchover切换失败 | 次要     | 转需求   |
-| [IBPOWF](https://e.gitee.com/opengaussorg/issues/table?issue=IBPOWF) | 【极致RTO备机可读】双集群模式(存储/网络)，备集群内开启极致RTO，select查询数据时偶现异常导致节点coredump | 主要     | 已完成   |
+| [IBPOWF](https://e.gitee.com/opengaussorg/issues/table?issue=IBPOWF) | 【极致RTO备机可读】双集群模式(存储/网络)，备集群内开启极致RTO，select查询数据时偶现异常导致节点coredump | 主要     | 待回归   |
 | [IBQVT2](https://e.gitee.com/opengaussorg/issues/table?issue=IBQVT2) | 【资源池化】【极致RTO备机可读】存储复制双集群，备集群开启极致RTO，首备只读业务出现index xxx contains unexpected zero page相关ERROR | 次要     | 待办的   |
+
+*备注*：IBJMX5与IBIBBUD同根因，IBPOGO与IBPOWF同根因，具体详情查看issue解决PR；
+
+##### 非需求引入问题
+
+| 问题单号                                                     | 问题描述                                                     | 问题级别 | 当前状态 | 根因                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ------------------------- |
+| [IBPP63](https://e.gitee.com/opengaussorg/issues/table?issue=IBPP63) | 【极致RTO备机可读】双集群模式，主集群创建物化视图，导致备集群回放过程中发生异常reform | 次要     | 待回归   | 池化适配dss问题           |
+| [IBK8CD](https://e.gitee.com/opengaussorg/issues/table?issue=IBK8CD) | 【极致RTO备机可读】资源池化双集群，备集群内从备节点查看数据时节点异常退出 | 次要     | 已验收   | 双集群RTO备集群可读问题   |
+| [IBKTH2](https://e.gitee.com/opengaussorg/issues/table?issue=IBKTH2) | 【极致RTO备机可读】网络复制双集群，备集群replay卡住，且首备节点查询连接丢失 | 次要     | 已验收   | 双集群极致RTO性能优化问题 |
+| [IBOJL8](https://e.gitee.com/opengaussorg/issues/table?issue=IBOJL8) | 【极致RTO备机可读】双集群模式，开启极致RTO，备集群首备查询表数据时报错internal error | 次要     | 已验收   | 双集群极致RTO性能优化问题 |
+| [IBKTA6](https://e.gitee.com/opengaussorg/issues/table?issue=IBKTA6) | 【极致RTO备机可读】开启极致RTO，传统集群备1节点同步复制阻塞  | 次要     | 待回归   | 内核原始问题              |
+
+##### 其他问题
+
+| 问题单号                                                     | 问题描述                                                     | 当前状态 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
+| [IBPQL2](https://e.gitee.com/opengaussorg/issues/table?issue=IBPQL2) | 【极致RTO备机可读】双集群模式，主集群内执行业务，备集群内switchover切换失败 | 转需求   |
 
 # 6 测试过程评估
 
@@ -168,8 +181,8 @@
 | ---- | -------------- | ------------------------------------------------------------ | -------------------- |
 | 1    | 功能测试       | 基本对象功能验证，覆盖普通表、一级分区表、二级分区表、视图、物化视图 | YES                  |
 | 2    | 可靠性测试     | 覆盖集群内&集群间 switchover+failover操作                    | YES                  |
-| 3    | 稳定性测试     | 主集群读写+备集群首备只读，2*24H                             | YES                  |
-| 4    | 性能测试(摸底) | 存储复制，30w tpmc，小于10s<br>网络复制，30w tpmc，小于10s   | YES                  |
+| 3    | 稳定性测试     | 传统集群，主机读写，备机只读，2x24H<br>池化双集群，主集群读写+备集群首备只读，2x24H                             | YES                  |
+| 4    | 性能测试(摸底) | 存储复制，30w tpmc，小于20s<br>网络复制，30w tpmc，小于20s   | YES                  |
 
 ##  6.2 测试设计评估
 
@@ -188,7 +201,7 @@
 | openGauss 7.0.0-RC1 B016 | 6                | 77         | 36         | 2          | 0.628K | 3.18     |
 | openGauss 7.0.0-RC1 B017 | 2                | 77         | 12         | 4          | 0.628K | 6.37     |
 
-本次测试共发现13个issue，已修复并回归通过，缺陷密度为13/0.628k=20.7，整体质量一般。
+本次测试共发现特性相关7个issue，部分已修复并回归通过，缺陷密度为5/0.898k=5.56，整体质量一般。
 
 ###  6.3.2 测试用例执行结果统计数据
 
@@ -201,7 +214,7 @@
 | 77           | 36               | 35     | 1      | 0       | 0           | 100%   | 97%        |
 | 77           | 12               | 10     | 1      | 0       | 0           | 100%   | 90%        |
 
-本次测试共输出测试用例77个，执行测试共6轮，发现issue共13个，部分已修复并回归通过，测试过程中发现部分偶现问题，整体质量一般，后续可进行多轮复测发现潜在问题。
+本次测试共输出测试用例77个，执行测试共6轮，发现特性相关issue共7个，部分已修复并回归通过，测试过程中发现部分偶现问题，整体质量一般，后续可进行多轮复测发现潜在问题。
 
 # 7 附件
 
