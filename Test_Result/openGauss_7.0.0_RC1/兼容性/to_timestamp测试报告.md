@@ -13,7 +13,7 @@
 
 **Keywords 关键词**：*to_timestamp，函数，功能测试*
 
-**Abstract 摘要**：*本次测试是对to_timestamp函数的default功能的测试。主要测试常用场景为基本功能测试，性能测试，升级回滚测试，资料测试等，共发现3个issue，2个新引入的问题，1个遗留问题，。*
+**Abstract 摘要**：*本次测试是对to_timestamp函数的default功能的测试。主要测试常用场景为基本功能测试，性能测试，升级回滚测试，资料测试等，共发现5个issue，4个新引入的问题，1个遗留问题。目前均已验收通过，开发质量良好*
 
 # 1 概述
 
@@ -58,11 +58,11 @@
 
 | 风险类型     | 风险描述 | 风险影响 | 规避措施和计划 | 责任人 | 当前进展 |
 | ------------ | -------- | -------- | -------------- | ------ | -------- |
-|质量风险|default后的参数为列时数据库会崩溃|导致数据库崩溃|不在default后填入列参数|李浩|待办的|
-|质量风险|升级回滚导致元数据不一致|函数在升级和直装两种情况下表现不一致|不升级|李浩|已合入|
-|质量风险|当第一个入参为null并且使用default功能时，会报错，而不是输出null|输出结果不符合预期|使用default功能时第一个参数不为null|李浩|待办的|
-|质量风险|to_timestamp的fmt不支持字母的大小写|opengauss的sql无法兼容A库|保证fmt处的值全大写或全小写|李浩|待办的|
-|质量风险|只判断第一个入参，若没问题直接执行|利用sql向A库迁移数据时会出现sql不兼容的问题|保证default正确输入|李浩|待办的|
+|质量风险|default后的参数为列时数据库会崩溃|导致数据库崩溃|不在default后填入列参数|李浩|已验收|
+|质量风险|升级回滚导致元数据不一致|函数在升级和直装两种情况下表现不一致|不升级|李浩|已验收|
+|质量风险|当第一个入参为null并且使用default功能时，会报错，而不是输出null|输出结果不符合预期|使用default功能时第一个参数不为null|李浩|已验收|
+|质量风险|to_timestamp的fmt不支持字母的大小写|opengauss的sql无法兼容A库|保证fmt处的值全大写或全小写|李浩|已验收|
+|质量风险|只判断第一个入参，若没问题直接执行|利用sql向A库迁移数据时会出现sql不兼容的问题|保证default正确输入|李浩|已验收|
 
 # 4 版本详细测试结论
 
@@ -72,7 +72,7 @@
 
 | 特性 | 特性价值评估                                                 | 应用说明及关键约束假设依赖 | 关键遗留事项如缺陷等 | 测试整体覆盖情况 | 特性质量评估               | 主要风险               |
 | ---- | ------------------------------------------------------------ | -------------------------- | -------------------- | ---------------- | -------------------------- | ---------------------- |
-| 新增to_timestamp函数对DEFAULT子句的支持  | 支持to_timestamp函数的default功能 | 无| 5个| 100% |<font color=red>●</font>| 在有fmt的情况下触发default会导致数据库崩溃 |
+| 新增to_timestamp函数对DEFAULT子句的支持  | 支持to_timestamp函数的default功能 | 无| 5个| 100% |<font color=green>●</font>| 在有fmt的情况下触发default会导致数据库崩溃 |
 
 
 ## 4.2 产品质量属性目标(DFX)测试结论
@@ -156,11 +156,11 @@ PS：数据量挡位为100W，300W，1000W*
 
 | 问题单号 | 问题描述 | 问题级别 | 当前状态 |
 | -------- | -------- | -------- | -------- |
-| IB3TLI  | 对比直接安装7.0.0-RC1，6.0.0升级至7.0.0-RC1后，元数据不一致 | 主要 | 待办的|
-| IBNCMC  | to_timestamp函数default后的参数若为列，则数据库core |主要 | 待办的  |
-| IBN7X2  | to_timestamp(expr default return_value on conversion error ,fmt) 若expr为null，输出既不为null又不将return_vales输出，但若不使用default，则可以正常输出null| 次要|待办的|
-| IBMY1I  |SELECT TO_TIMESTAMP ('11-01-02 10:10:10.123000','Dd-MM-RR HH24:MI:SS.FF') ;执行上述sql时若描述day的部分是大小写不统一的则会报错 | 次要|待办的|
-| IBNJXP  |to_timestamp(expr default return_value on conversion error,'YYYY-MM-DD HH24:MI:SS')，当expr正确，return_value错误时不报错，而是正确输出 | 次要|待办的|
+| IB3TLI  | 对比直接安装7.0.0-RC1，6.0.0升级至7.0.0-RC1后，元数据不一致 | 主要 | 已验收|
+| IBNCMC  | to_timestamp函数default后的参数若为列，则数据库core |主要 | 已验收  |
+| IBN7X2  | to_timestamp(expr default return_value on conversion error ,fmt) 若expr为null，输出既不为null又不将return_vales输出，但若不使用default，则可以正常输出null| 次要|已验收|
+| IBMY1I  |SELECT TO_TIMESTAMP ('11-01-02 10:10:10.123000','Dd-MM-RR HH24:MI:SS.FF') ;执行上述sql时若描述day的部分是大小写不统一的则会报错 | 次要|已验收|
+| IBNJXP  |to_timestamp(expr default return_value on conversion error,'YYYY-MM-DD HH24:MI:SS')，当expr正确，return_value错误时不报错，而是正确输出 | 次要|已验收|
 
 # 6 测试过程评估
 
