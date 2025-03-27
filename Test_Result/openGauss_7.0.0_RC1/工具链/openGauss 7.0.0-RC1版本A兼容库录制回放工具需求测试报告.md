@@ -1,4 +1,4 @@
-![avatar](../../images/openGauss.png)
+﻿![avatar](../../images/openGauss.png)
 
 版权所有 © 2024  openGauss社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问[*https://creativecommons.org/licenses/by-sa/4.0/*](https://creativecommons.org/licenses/by-sa/4.0/) 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：[*https://creativecommons.org/licenses/by-sa/4.0/legalcode*](https://creativecommons.org/licenses/by-sa/4.0/legalcode)。
@@ -171,10 +171,10 @@
 ###   5.2.2 缺陷列表
 
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                     | 问题状态 |
-| ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| 1    | https://gitee.com/opengauss/compatibility-assessment/issues/IBJTS9?from=project-issue | 次要     | A兼容性数据库其他连接方式录制回放工具sql解析报错，解析出的语句出现问题 | 已完成   |
-| 2    | https://gitee.com/opengauss/compatibility-assessment/issues/IBJHCD?from=project-issue | 次要     | A兼容性数据库录制回放工具数据类型识别错误                    | 已完成   |
-| 3    | https://gitee.com/opengauss/compatibility-assessment/issues/IBKY74?from=project-issue | 不重要   | A兼容性数据库其他连接方式解析时报错Unexpected para type first byte value: 105 | 待办的   |
+| ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |------|
+| 1    | https://gitee.com/opengauss/compatibility-assessment/issues/IBJTS9?from=project-issue | 次要     | A兼容性数据库其他连接方式录制回放工具sql解析报错，解析出的语句出现问题 | 已验收  |
+| 2    | https://gitee.com/opengauss/compatibility-assessment/issues/IBJHCD?from=project-issue | 次要     | A兼容性数据库录制回放工具数据类型识别错误                    | 已验收  |
+| 3    | https://gitee.com/opengauss/compatibility-assessment/issues/IBKY74?from=project-issue | 不重要   | A兼容性数据库其他连接方式解析时报错Unexpected para type first byte value: 105 | 已验收  |
 
 # 6 测试过程评估
 
@@ -220,8 +220,8 @@
 ##  7.1 附件1：遗留问题列表
 
 | 序号 | issue号                                                      | 问题级别 | 问题简述                                                     | 问题状态 |
-| ---- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| 1    | https://gitee.com/opengauss/compatibility-assessment/issues/IBKY74?from=project-issue | 不重要   | A兼容性数据库其他连接方式解析时报错Unexpected para type first byte value: 105 | 待办的   |
+|----| ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
+
 
 ##  7.2 附件2：特性相关PR
 
