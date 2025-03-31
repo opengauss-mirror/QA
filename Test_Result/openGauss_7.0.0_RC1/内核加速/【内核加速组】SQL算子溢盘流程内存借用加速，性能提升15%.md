@@ -74,11 +74,70 @@
 
 ###  4.2.1 性能测试结论
 
-该特性对性能要求为：SQL算子溢盘流程内存借用加速，性能提交15%。测试结果如下，性能达标。
+该特性对性能要求为：SQL算子溢盘流程内存借用加速，性能提交15%。测试结果如下：
 
 | 测试步骤                                                     | 测试结果           |
 | ------------------------------------------------------------ | ------------------ |
 | 1.依赖RackServer环境，支持远端内存借用特性，开启行列融合特性（编译时--enable-htap）<br />2.tpch 1T数据，对比测试无借用及借用远端内存性能 | 1.成功<br />2.成功 |
+各query详细数据如下:
+
+| 测试项               | HTAP+算子不借用                                              | HTAP+算子借用                                                | 加速比 |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
+| 查询 \ 参数配置 | Imemfabric_client_path正确路径<br />max_imcs_cache=400GB<br />work_mem=20GB<br />shared_buffers=50GB<br />comm_max_stream=60000<br />enable_borrow_memory=on<br />max_borrow_memory=96GB<br />htap_borrow_mem_percent=0<br />max_connections=20000<br />enable_imcsscan=on<br />query_dop=32<br />borrow_work_mem=0<br />max_process_memory=1300GB | memfabric_client_path正确路径<br />max_imcs_cache=400GB<br />work_mem=20GB<br />shared_buffers=50GB<br />comm_max_stream=60000<br />enable_borrow_memory=on<br />max_borrow_memory=96GB<br />htap_borrow_mem_percent=0<br />max_connections=20000<br />enable_imcsscan=on<br />query_dop=32<br />borrow_work_mem=32GB<br />max_process_memory=1300GB | /      |
+| query1          | 275.18                                                       | 288.49                                                       | 0.95   |
+| query2          | 51.92                                                        | 50.86                                                        | 1.02   |
+| query3          | 150.69                                                       | 181.73                                                       | 0.83   |
+| query4          | 147.87                                                       | 139.91                                                       | 1.06   |
+| query5          | 189.55                                                       | 218.26                                                       | 0.87   |
+| query6          | 86.73                                                        | 83.44                                                        | 1.04   |
+| query7          | 359.21                                                       | 126.78                                                       | 2.83   |
+| query8          | 75.46                                                        | 51.20                                                        | 1.47   |
+| query9          | 1283.35                                                      | 247.80                                                       | 5.18   |
+| query10         | 164.88                                                       | 217.04                                                       | 0.76   |
+| query11         | 69.40                                                        | 65.20                                                        | 1.06   |
+| query12         | 266.93                                                       | 186.83                                                       | 1.43   |
+| query13         | 74.58                                                        | 62.6                                                         | 1.19   |
+| query14         | 168.66                                                       | 132.79                                                       | 1.27   |
+| query15         | 242.43                                                       | 264.36                                                       | 0.92   |
+| query16         | 20.96                                                        | 47.77                                                        | 0.44   |
+| query17         | 654.90                                                       | 636.58                                                       | 1.03   |
+| query18         | 539.88                                                       | 469.44                                                       | 1.15   |
+| query19         | 275.31                                                       | 258.81                                                       | 1.06   |
+| query20         | 119.14                                                       | 126.15                                                       | 0.94   |
+| query21         | 307.30                                                       | 291.86                                                       | 1.05   |
+| query22         | 163.79                                                       | 155.21                                                       | 1.06   |
+| 汇总            | 5688.13                                                      | 4303.11                                                      | 1.32   |
+| 平均值          | 258.55                                                       | 195.60                                                       | 1.32   |
+
+
+
+| 测试项               | 行存+算子不借用                                              | 行存+算子借用                                                | 加速比 |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
+| 查询 \ 参数配置 | Imemfabric_client_path正确路径<br />max_imcs_cache=400GB<br />work_mem=20GB<br />shared_buffers=50GB<br />comm_max_stream=60000<br />enable_borrow_memory=on<br />max_borrow_memory=96GB<br />htap_borrow_mem_percent=0<br />max_connections=20000<br />enable_imcsscan=on<br />query_dop=32<br />borrow_work_mem=0<br />max_process_memory=1300GB | memfabric_client_path正确路径<br />max_imcs_cache=400GB<br />work_mem=20GB<br />shared_buffers=50GB<br />comm_max_stream=60000<br />enable_borrow_memory=on<br />max_borrow_memory=96GB<br />htap_borrow_mem_percent=0<br />max_connections=20000<br />enable_imcsscan=on<br />query_dop=32<br />borrow_work_mem=32GB<br />max_process_memory=1300GB | /      |
+| query1          | 550.98                                                       | 556.56                                                       | 0.99   |
+| query2          | 375.29                                                       | 349.36                                                       | 1.07   |
+| query3          | 451.56                                                       | 403.63                                                       | 1.12   |
+| query4          | 419.17                                                       | 330.95                                                       | 1.27   |
+| query5          | 784.04                                                       | 791.90                                                       | 1.00   |
+| query6          | 127.76                                                       | 136.56                                                       | 0.94   |
+| query7          | 467.49                                                       | 468.55                                                       | 1.00   |
+| query8          | 606.97                                                       | 285.26                                                       | 2.13   |
+| query9          | 1627.66                                                      | 1378.29                                                      | 1.18   |
+| query10         | 307.64                                                       | 299.37                                                       | 1.03   |
+| query11         | 449.97                                                       | 430.80                                                       | 1.04   |
+| query12         | 340.48                                                       | 353.05                                                       | 0.96   |
+| query13         | 214.45                                                       | 204.53                                                       | 1.05   |
+| query14         | 171.92                                                       | 175.53                                                       | 0.98   |
+| query15         | 2306.25                                                      | 2323.56                                                      | 0.99   |
+| query16         | 99.53                                                        | 75.68                                                        | 1.32   |
+| query17         | 1098.71                                                      | 1057.99                                                      | 1.04   |
+| query18         | 1007.20                                                      | 738.43                                                       | 1.36   |
+| query19         | 170.79                                                       | 124.88                                                       | 1.37   |
+| query20         | 255.70                                                       | 222.90                                                       | 1.15   |
+| query21         | 1288.54                                                      | 1105.98                                                      | 1.17   |
+| query22         | 327.50                                                       | 289.31                                                       | 1.13   |
+| 汇总            | 13449.59                                                     | 12093.06                                                     | 1.11   |
+| 平均值          | 611.35                                                       | 549.68                                                       | 1.11   |
 
 ###  4.2.3 安全&隐私保护测试结论
 
