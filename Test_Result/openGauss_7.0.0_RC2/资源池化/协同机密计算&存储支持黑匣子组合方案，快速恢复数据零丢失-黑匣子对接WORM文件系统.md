@@ -153,11 +153,11 @@ worm文件系统挂载后，拉起WR服务，对worm注入磁盘满故障测试�
 
 | 问题单号                                         | 问题描述                                                     | 问题级别 | 当前状态 |
 | ------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- |
-| [1](https://gitcode.com/opengauss/WR/issues/12)   | 【黑匣子】对接worm后，对于初始态文件查看文件信息返回结果错误                    | 次要     | 待办的   |
-| [2](https://gitcode.com/opengauss/WR/issues/13)   | 【黑匣子】对接worm，过期时间和文件状态不一致             | 次要     | 代办的   |
-| [3](https://gitcode.com/opengauss/WR/issues/14)   | 【黑匣子】对接worm，打开文件方式指定O_CREAT、O_TRUNC功能异常                 | 次要     | 代办的   |
-| [4](https://gitcode.com/opengauss/WR/issues/15)   | 【黑匣子】对接worm，文件操作完成后，关闭文件指定need_lock=true，文件为进入保护态       | 次要     | 代办的   |
-| [5](https://gitcode.com/opengauss/WR/issues/21)   | 【黑匣子】【资料】对接worm文件系统后，api发生调整，资料未修改、未新增新的api说明      | 次要     | 代办的   |
+| [1](https://gitcode.com/opengauss/WR/issues/12)   | 【黑匣子】对接worm后，对于初始态文件查看文件信息返回结果错误                    | 次要     | 已验收   |
+| [2](https://gitcode.com/opengauss/WR/issues/13)   | 【黑匣子】对接worm，过期时间和文件状态不一致             | 次要     | 已验收   |
+| [3](https://gitcode.com/opengauss/WR/issues/14)   | 【黑匣子】对接worm，打开文件方式指定O_CREAT、O_TRUNC功能异常                 | 次要     | 已验收   |
+| [4](https://gitcode.com/opengauss/WR/issues/15)   | 【黑匣子】对接worm，文件操作完成后，关闭文件指定need_lock=true，文件为进入保护态       | 次要     | 已验收   |
+| [5](https://gitcode.com/opengauss/WR/issues/21)   | 【黑匣子】【资料】对接worm文件系统后，api发生调整，资料未修改、未新增新的api说明      | 次要     | 已验收   |
 
 
 
