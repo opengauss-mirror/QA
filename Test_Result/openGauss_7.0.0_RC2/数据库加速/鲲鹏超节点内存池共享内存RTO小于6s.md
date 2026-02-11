@@ -38,9 +38,9 @@
 
 ###  2.2.1 环境硬件信息
 
-| 环境信息 | 硬件型号                                            | 硬件配置信息                                                 | 备注                                         |
-| -------- | --------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------- |
-| 物理机   | ARM+Kunpeng-920 7280Z 320核| 内存：1980GB<br/>硬盘：7.2TB<br/>OS：EulerOS 2.0(SP15) | 需要灵衢的机器，安装rackmanager、smb_mgr |
+| 环境信息 | 硬件型号                                            | 硬件配置信息                                                 | 备注                                        |
+| -------- | --------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| 物理机   | ARM+Kunpeng-920 7280Z 320核| 内存：1980GB<br/>硬盘：7.2TB<br/>OS：EulerOS 2.0(SP15) | 需要鲲鹏超节点机器，安装rackmanager、smb_mgr |
 
 # 3 版本概要测试结论、关键风险和规避措施
 
@@ -148,11 +148,11 @@
 ###   5.2.2 缺陷列表
 
 | 问题单号 | 问题描述 | 问题级别 | 当前状态 |
-| -------- | -------- | -------- | -------- |
-|  [7298](https://gitcode.com/opengauss/openGauss-server/issues/7298)        |  [Bug]: 【测试类型：SQL功能】【测试版本：7.0.0】【需求：内存池共享内存，RTO<6s】无rackmanager的环境，设置max_smb_memory参数，数据库启动失败产生core         |     主要    |  已验收        |
-|  [7362](https://gitcode.com/opengauss/openGauss-server/issues/7362)        | [Bug]: 【测试类型：SQL功能】【测试版本：7.0.0】【需求：内存池共享内存，RTO<6s】配置SMB参数后，停止数据库时，第一次会停失败，stop第2次才会成功          |   次要       |    已验收      |
-|  [7361](https://gitcode.com/opengauss/openGauss-server/issues/7361)        |   [Bug]: 【测试类型：SQL功能】【测试版本：7.0.0】【需求：内存池共享内存，RTO<6s】gs_guc设置max_smb_memory参数带kB、MB、GB时，设置失败，但是smb_mgr申请共享内存时，max_smb_memory参数必须带单位才能申请成功，需要修改gs_guc参数设置无法带单位问题       |    次要      |  已验收        |
-|  [7373](https://gitcode.com/opengauss/openGauss-server/issues/7373)        |   [Bug]: 【测试类型：SQL功能】【测试版本：7.0.0】【需求：内存池共享内存，RTO<6s】灵衢环境测试，设置高性能参数后，数据库跑不到5分钟主机或者备机就会挂       |    次要      |   待办的       |
+| -------- | -------- | -------- |------|
+|  [7298](https://gitcode.com/opengauss/openGauss-server/issues/7298)        |  [Bug]: 【测试类型：SQL功能】【测试版本：7.0.0】【需求：内存池共享内存，RTO<6s】无rackmanager的环境，设置max_smb_memory参数，数据库启动失败产生core         |     主要    | 已验收  |
+|  [7362](https://gitcode.com/opengauss/openGauss-server/issues/7362)        | [Bug]: 【测试类型：SQL功能】【测试版本：7.0.0】【需求：内存池共享内存，RTO<6s】配置SMB参数后，停止数据库时，第一次会停失败，stop第2次才会成功          |   次要       | 已验收  |
+|  [7361](https://gitcode.com/opengauss/openGauss-server/issues/7361)        |   [Bug]: 【测试类型：SQL功能】【测试版本：7.0.0】【需求：内存池共享内存，RTO<6s】gs_guc设置max_smb_memory参数带kB、MB、GB时，设置失败，但是smb_mgr申请共享内存时，max_smb_memory参数必须带单位才能申请成功，需要修改gs_guc参数设置无法带单位问题       |    次要      | 已验收  |
+|  [7373](https://gitcode.com/opengauss/openGauss-server/issues/7373)        |   [Bug]: 【测试类型：SQL功能】【测试版本：7.0.0】【需求：内存池共享内存，RTO<6s】鲲鹏超节点环境测试，设置高性能参数后，数据库跑不到5分钟主机或者备机就会挂       |    次要      | 已验收  |
 
 # 6 测试过程评估
 
@@ -194,11 +194,7 @@
 # 7 附件
 
 ##  7.1 附件1：遗留问题列表
-
-| 序号 | 问题单号 | 问题描述 | 分类 | 问题级别 | 问题分析与影响 | 规避措施                           |
-| ---- | -------- | -------- | ---- | -------- | -------------- | ---------------------------------- |
-| 1    | [7373](https://gitcode.com/opengauss/openGauss-server/issues/7373)       | [Bug]: 【测试类型：SQL功能】【测试版本：7.0.0】【需求：内存池共享内存，RTO<6s】灵衢环境测试，设置高性能参数后，数据库跑不到5分钟主机或者备机就会挂       | 功能  | 次要      | 不同机器主备场景无法进行tpcc测试            | 恢复手段：主备部署在同一台机器上可以进行tpcc测试 |
-
+无
 ##  7.2 附件2：特性相关PR
 
 需求pr:
@@ -213,5 +209,5 @@ https://devcloud.cn-east-3.huaweicloud.com/testmind/project/03669bfd256c444bbfda
 
 https://devcloud.cn-east-3.huaweicloud.com/cloudtestportal/project/03669bfd256c444bbfda6d7fb8b83bb2/testcase?branch_id=vb2100010cof2bn7
 
-目录：特性目录/内核/灵衢内存共享rto小于6s
+目录：特性目录/内核/鲲鹏超节点内存共享rto小于6s
 
