@@ -110,9 +110,9 @@ HNSWPQ、IVFPQ索引创建、修改、重建、与dml交互测试、索引检索
 
 ###  4.2.2 性能测试结论
 
-（1）基于920B完成HNSWPQ索引性能测试，openGauss向量数据库HNSW索引整体吞吐量相比EMR8558P上的PGVector/milvus高于30%以上；达到性能验收标准；
+（1）基于920新型号7270z完成HNSWPQ索引性能测试，openGauss向量数据库HNSW索引整体吞吐量相比EMR8558P上的PGVector/milvus高于30%以上；达到性能验收标准；
 
-（2）基于920B完成IVFPQ索引性能测试，IVFPQ索引性能较IVFFLAT索引性能吞吐量提升30%；达到性能验收标准。
+（2）基于920新型号7270z完成IVFPQ索引性能测试，IVFPQ索引性能较IVFFLAT索引性能吞吐量提升30%；达到性能验收标准。
 
 **HNSWPQ性能测试比对EMR环境信息**
 
@@ -120,14 +120,14 @@ EMR8558P 操作系统：openEuler 22.03LTS SP3，编译器：GCC10.3，python:3.
 
 **HNSWPQ性能测试结果：**
 
-| 压测工具       | 数据集        | 920B/openGaussPQ（QPS） | EMR  4numa/PGVector（QPS） | EMR  4numa/Milvus（QPS） | 性能提升 |
-| -------------- | ------------- | ----------------------- | -------------------------- | ------------------------ | -------- |
-| ann-benchmarks | DEEP          | 10556.46                | 5691.05                    | /                        | 85.49%   |
-| ann-benchmarks | Fashion-MNIST | 33802.52                | 13792.12                   | /                        | 145.09%  |
-| ann-benchmarks | GIST          | 8219.37                 | 2682.22                    | /                        | 206.44%  |
-| ann-benchmarks | GloVe         | 5038.19                 | 3473.95                    | /                        | 45.03%   |
-| ann-benchmarks | SIFT          | 11766.28                | 7838.97                    | /                        | 50.10%   |
-| VectorDBBench  | Cohere        | 6728.26                 | /                          | 3675.20                  | 83.07%   |
+| 压测工具       | 数据集        | 920新型号7270z/openGaussPQ（QPS） | EMR  4numa/PGVector（QPS） | EMR  4numa/Milvus（QPS） | 性能提升 |
+| -------------- | ------------- |------------------------------| -------------------------- | ------------------------ | -------- |
+| ann-benchmarks | DEEP          | 10556.46                     | 5691.05                    | /                        | 85.49%   |
+| ann-benchmarks | Fashion-MNIST | 33802.52                     | 13792.12                   | /                        | 145.09%  |
+| ann-benchmarks | GIST          | 8219.37                      | 2682.22                    | /                        | 206.44%  |
+| ann-benchmarks | GloVe         | 5038.19                      | 3473.95                    | /                        | 45.03%   |
+| ann-benchmarks | SIFT          | 11766.28                     | 7838.97                    | /                        | 50.10%   |
+| VectorDBBench  | Cohere        | 6728.26                      | /                          | 3675.20                  | 83.07%   |
 
 **IVFFLAT与IVFPQ性能比对测试结果：**
 
