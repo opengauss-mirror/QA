@@ -153,7 +153,7 @@
 
 | 问题单号                                         | 问题描述                                                     | 问题级别 | 当前状态 |
 | ------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- |
-| [CM-RestAPI:14](https://gitcode.com/opengauss/CM-RestAPI/issues/14) | [Bug]: 【黑匣子api】获取黑匣子指定参数的结果，接口入参含有特殊字符-单引号、双引号，接口未识别错误参数，请求正常  | 次要     | 待办的   |
+| [CM-RestAPI:14](https://gitcode.com/opengauss/CM-RestAPI/issues/14) | [Bug]: 【黑匣子api】获取黑匣子指定参数的结果，接口入参含有特殊字符-单引号、双引号，接口未识别错误参数，请求正常  | 次要     | 已验收   |
 | [CM-RestAPI:11](https://gitcode.com/opengauss/CM-RestAPI/issues/11) | [Bug]: 【黑匣子】stopRestApi接口测试新增传入异常参数，执行成功          | 次要     | 已验收   |
 | [CM-RestAPI:10](https://gitcode.com/opengauss/CM-RestAPI/issues/10) | [Bug]: 【黑匣子api】停止对应节点restapi服务，接口未传参数请求成功，返回shutdown成功，查看状态显示在线 | 次要     | 已验收   |
 | [CM-RestAPI:9](https://gitcode.com/opengauss/CM-RestAPI/issues/9) | [Bug]: 【黑匣子api】获取黑匣子指定参数的结果，接口返回值异常 | 次要     | 已验收   |
