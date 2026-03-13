@@ -110,9 +110,11 @@
 |---------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 920上openGauss和Milvus均以容器限核的形式运行，测试IVFFLAT_RabitQ、HNSW_RabitQ索引在不同规格机器上的的性能并进行比较 | openGauss IVFFLAT_RabitQ索引在4核以上比Milvus IVFFLAT_RabitQ索引高14%-46%，平均高30%以上。<br/>openGauss HNSW_RabitQ比Milvus IVFFLAT_RabitQ索引高4.x-5.x，比Milvus HNSW索引高1.x-2.x。 |
 
-![image.png](https://raw.gitcode.com/user-images/assets/5891555/eb669f38-609a-49bd-857b-e97da6c3e8c7/image.png 'image.png')
-![image.png](https://raw.gitcode.com/user-images/assets/5891555/bfa23783-6364-4f0a-854a-9dcc262626ee/image.png 'image.png')
-![image.png](https://raw.gitcode.com/user-images/assets/5891555/79a612d7-cae4-4653-b9dd-7636320afaba/image.png 'image.png')
+![image-20260313112822828](C:\Users\s00474811\AppData\Roaming\Typora\typora-user-images\image-20260313112822828.png)
+
+容量
+
+![image-20260313113031327](C:\Users\s00474811\AppData\Roaming\Typora\typora-user-images\image-20260313113031327.png)
 
 ###  4.3.2 可靠性测试结论
 
