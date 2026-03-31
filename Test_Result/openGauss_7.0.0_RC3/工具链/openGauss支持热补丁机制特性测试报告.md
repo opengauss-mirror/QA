@@ -8,7 +8,7 @@
 |------------| -------- | -------- |--------|
 | 2026/01/21 | v1.0     | 创建     | lijing |
 
-**Keywords 关键词**：SQL Server、openGauss、syscare
+**Keywords 关键词**：D兼容性、openGauss、syscare
 
 **Abstract 摘要**：热补丁修复openGauss
 
