@@ -187,8 +187,8 @@ LFC+Prefetch，功能测试主要覆盖开启prefetch预取功能是否正常，
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   |  5       |  0   |  0    |  5    |   0     |
-| 百分比 | 100%     | 0%   | 0%   | 100% | 0%     |
+| 数目   |  7       |  0   |  1    |  5    |   0     |
+| 百分比 | 100%     | 0%   | 29%   | 71% | 0%     |
 
 ###   5.2.2 缺陷列表
 
@@ -196,9 +196,11 @@ LFC+Prefetch，功能测试主要覆盖开启prefetch预取功能是否正常，
 | -------- | -------- | -------- | -------- |
 | [7244](https://gitcode.com/opengauss/docs/issues/7244) | 数据分支章节示例无法执行  | 次要    |  待办的       |
 | [7245](https://gitcode.com/opengauss/docs/issues/7245) | 数据分支LFC+prefetch章节关于参数默认值与实际查询值不一致，若初始化时修改，在文档中补充说明  | 次要    |  待办的       |
+| [7248](https://gitcode.com/opengauss/docs/issues/7248) | 数据分支设置LFC+prefetch相关参数配置配置未生效，涉及多个参数 | 次要    |  待办的       |
 | [1](https://gitcode.com/opengauss/neon/issues/1) | 数据分支在新建endpoint时，在指定租户ID下指定endpoint名与已有endpoint重名，会把旧的endpoint删掉建新的endpoint，未做endpoint名称检查  | 次要    |  已验收       |
 | [2](https://gitcode.com/opengauss/neon/issues/2) | 数据分支LFC+prefetch功能关于neon.readahead_getpage_pull_timeout参数查询报错  | 次要     |  已验收       |
 | [3](https://gitcode.com/opengauss/neon/issues/3) | 数据分支设置LFC+prefetch相关参数配置配置未生效，涉及多个参数  | 主要    |  待办的       |
+| [4](https://gitcode.com/opengauss/neon/issues/4) | 按照官网数据分支快速开始的编译流程，编译过程报错  | 主要    |  待办的       |
 
 # 6 测试过程评估
 
@@ -224,9 +226,9 @@ LFC+Prefetch，功能测试主要覆盖开启prefetch预取功能是否正常，
 
 | 版本名称                 | 工作量投入(人天) | 测试用例数 | 用例执行数 | 发现缺陷数 | 代码量（k） | 缺陷密度 |
 | ------------------------ | ---------------- | ---------- | ---------- | ---------- | ----------- | -------- |
-| neon(4b8cbdc2eb87159e57858e4b1c66ee79f69b9cac) | 12                | 60         | 60         | 6          | 2           | 0.33/kloc |
+| neon(4b8cbdc2eb87159e57858e4b1c66ee79f69b9cac) | 12                | 60         | 60         | 2          | 3.5           | 0.6/kloc |
 
-本次测试发现问题5个，其中2个本需求问题，代码量不足500行按500行计算缺陷密度
+本次测试发现问题7个，其中2个本需求问题
 
 ###  6.3.2 测试用例执行结果统计数据
 
